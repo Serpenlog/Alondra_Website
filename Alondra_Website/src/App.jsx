@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import './App.css';
+import Envelope from './Envelope.jsx';
 
 function App() {
-    return (
+    const [open, setOpen] = useState(false);
 
-        <div className="min-h-screen bg-gradient-to-br from-pink-200 to-purple-300 flex flex-col items-center justify-center text-center p-6">
+    return (
+        <>
+            {!open && <Envelope onOpen={() => setOpen(true)} />}
+            <div
+                className={`min-h-screen bg-gradient-to-br from-pink-200 to-purple-300 flex flex-col items-center justify-center text-center p-6${open ? '' : ' opacity-0'}`}
+            >
             <h1 className="text-5xl font-bold mb-4">🎉 You're Invited! 🎉</h1>
             <h1 className="text-5xl text-red-600 font-bold">Tailwind is working!</h1>
 
@@ -24,7 +31,8 @@ function App() {
                     </button>
                 </form>
             </div>
-        </div>
+            </div>
+        </>
     );
 }
 
