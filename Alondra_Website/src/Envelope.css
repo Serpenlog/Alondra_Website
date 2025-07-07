@@ -1,0 +1,30 @@
+.envelope-overlay {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-white;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.envelope-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: bottom center;
+  transition: transform 0.7s ease-in-out;
+}
+
+.envelope-top.open {
+  transform: translateY(-100%);
+}
+
+.envelope-stamp {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 4rem;
+  cursor: pointer;
+}
