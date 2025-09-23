@@ -475,7 +475,6 @@ function App() {
                                     </p>
                                     <ul className="mt-4 space-y-2 text-[rgba(162,126,172,0.7)]">
                                         <li>✨ Kindly respond for each guest in your party.</li>
-                                        <li>🥗 Vegetarian or gluten-free meals available upon request.</li>
                                         <li>🎶 Add your favorite song—our DJ is taking requests!</li>
                                     </ul>
                                 </div>
