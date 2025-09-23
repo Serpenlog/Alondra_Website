@@ -128,7 +128,7 @@ function App() {
             >
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
-                        <p className="text-xs uppercase tracking-[0.5em] text-[rgba(82,191,232,0.75)]">Alondra Hernandez</p>
+                        <p className="text-xs uppercase tracking-[0.5em] text-[rgba(82,191,232,0.75)]">Alondra Lopez Flores</p>
                         <p className="font-display text-2xl text-[rgba(162,126,172,0.95)]">Mis XV Celebration</p>
                     </div>
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(211,214,247,0.6)] bg-[rgba(185,245,255,0.4)] p-1 shadow-lg sm:mx-0">
@@ -296,8 +296,8 @@ function App() {
                             <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 text-center shadow-xl">
                                 <figure className="overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] shadow-md">
                                     <img
-                                        src={GALLERY_PHOTOS[0].src}
-                                        alt={GALLERY_PHOTOS[0].alt}
+                                        src={GALLERY_PHOTOS[1].src}
+                                        alt={GALLERY_PHOTOS[1].alt}
                                         className="h-48 w-full object-cover"
                                     />
                                 </figure>
@@ -305,7 +305,6 @@ function App() {
                                     <p className="font-script text-3xl text-[rgba(201,148,158,1)]">Con mucho amor</p>
                                     <p className="mt-2 text-[rgba(162,126,172,0.7)]">
                                         Hosted with love by her parents, Marisol Flores &amp; Jesus Lopez, for the Lopez family.
-                                        Madrina: Sofia Ruiz • Padrino: Alejandro Torres
                                     </p>
                                 </div>
                                 <div className="space-y-3 text-[rgba(162,126,172,0.7)]">
