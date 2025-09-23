@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import Envelope from './Envelope.jsx';
 import Contact from './pages/Contact.jsx';
@@ -7,20 +6,71 @@ import Home from './pages/Home.jsx';
 import Photos from './pages/Photos.jsx';
 import Travel from './pages/Travel.jsx';
 import WeekendGuide from './pages/WeekendGuide.jsx';
+import InternalLink from './components/InternalLink.jsx';
+import { NavigationContext } from './navigationContext.js';
 
 const NAV_LINKS = [
-    { to: '/', label: 'Home' },
-    { to: '/photos', label: 'Photos' },
-    { to: '/travel', label: 'Travel' },
-    { to: '/weekend-guide', label: 'Weekend Guide' },
-    { to: '/contact', label: 'Contact' }
+    { id: 'home', label: 'Home' },
+    { id: 'photos', label: 'Photos' },
+    { id: 'travel', label: 'Travel' },
+    { id: 'weekend-guide', label: 'Weekend Guide' },
+    { id: 'contact', label: 'Contact' }
 ];
 
 function App() {
     const [open, setOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState('home');
+
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return undefined;
+        }
+
+        const handleHashChange = () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            const isValid = NAV_LINKS.some((link) => link.id === hash);
+            if (isValid) {
+                setCurrentPage(hash);
+            }
+        };
+
+        handleHashChange();
+        window.addEventListener('hashchange', handleHashChange);
+
+        return () => {
+            window.removeEventListener('hashchange', handleHashChange);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        const newHash = `#${currentPage}`;
+        if (window.location.hash !== newHash) {
+            window.history.replaceState(null, '', newHash);
+        }
+    }, [currentPage]);
+
+    const ActivePage = useMemo(() => {
+        switch (currentPage) {
+            case 'photos':
+                return Photos;
+            case 'travel':
+                return Travel;
+            case 'contact':
+                return Contact;
+            case 'weekend-guide':
+                return WeekendGuide;
+            case 'home':
+            default:
+                return Home;
+        }
+    }, [currentPage]);
 
     return (
-        <>
+        <NavigationContext.Provider value={{ currentPage, navigate: setCurrentPage }}>
             {!open && <Envelope onOpen={() => setOpen(true)} />}
             <div
                 className={`min-h-screen w-full bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 px-4 text-rose-900 transition-opacity duration-500 ease-out md:px-8 ${
@@ -30,22 +80,24 @@ function App() {
                 <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-16 py-12 md:py-16">
                     <header className="rounded-full border border-rose-200/70 bg-white/70 px-6 py-4 shadow-xl backdrop-blur">
                         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-                            <NavLink to="/" className="font-script text-3xl text-rose-600 transition hover:text-rose-700" end>
+                            <button
+                                type="button"
+                                onClick={() => setCurrentPage('home')}
+                                className="font-script text-3xl text-rose-600 transition hover:text-rose-700"
+                            >
                                 Alondra&apos;s XV
-                            </NavLink>
+                            </button>
                             <nav aria-label="Primary">
                                 <ul className="flex flex-wrap justify-center gap-3">
                                     {NAV_LINKS.map((link) => (
-                                        <li key={link.to}>
-                                            <NavLink
-                                                to={link.to}
-                                                end={link.to === '/'}
-                                                className={({ isActive }) =>
-                                                    `nav-link ${isActive ? 'nav-link-active' : ''}`
-                                                }
+                                        <li key={link.id}>
+                                            <button
+                                                type="button"
+                                                onClick={() => setCurrentPage(link.id)}
+                                                className={`nav-link ${currentPage === link.id ? 'nav-link-active' : ''}`}
                                             >
                                                 {link.label}
-                                            </NavLink>
+                                            </button>
                                         </li>
                                     ))}
                                 </ul>
@@ -54,14 +106,7 @@ function App() {
                     </header>
 
                     <main className="flex flex-1 flex-col gap-16 px-1 md:px-0">
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/photos" element={<Photos />} />
-                            <Route path="/travel" element={<Travel />} />
-                            <Route path="/contact" element={<Contact />} />
-                            <Route path="/weekend-guide" element={<WeekendGuide />} />
-                            <Route path="*" element={<Home />} />
-                        </Routes>
+                        <ActivePage />
                     </main>
 
                     <footer className="rounded-3xl border border-rose-200/70 bg-white/60 px-6 py-6 text-center text-sm text-rose-900/70 shadow-inner">
@@ -71,19 +116,19 @@ function App() {
                         </p>
                         <p className="mt-2">
                             Need help? Visit the{' '}
-                            <NavLink to="/contact" className="font-semibold text-rose-600 underline">
+                            <InternalLink to="contact" className="font-semibold text-rose-600 underline">
                                 contact page
-                            </NavLink>{' '}
+                            </InternalLink>{' '}
                             or explore the{' '}
-                            <NavLink to="/travel" className="font-semibold text-rose-600 underline">
+                            <InternalLink to="travel" className="font-semibold text-rose-600 underline">
                                 travel guide
-                            </NavLink>
+                            </InternalLink>
                             .
                         </p>
                     </footer>
                 </div>
             </div>
-        </>
+        </NavigationContext.Provider>
     );
 }
 

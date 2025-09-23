@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { AIRPORTS, CAR_RENTALS, TAXI_SERVICES, VENUE } from '../data/eventContent.js';
+import InternalLink from '../components/InternalLink.jsx';
 
 function Travel() {
     return (
@@ -142,9 +142,9 @@ function Travel() {
                 </div>
                 <p className="mt-4 text-sm text-rose-900/70">
                     Need help coordinating flights or sharing arrival times? Reach out through the{' '}
-                    <Link to="/contact" className="font-semibold text-rose-600 underline">
+                    <InternalLink to="contact" className="font-semibold text-rose-600 underline">
                         contact page
-                    </Link>{' '}
+                    </InternalLink>{' '}
                     so we can pair you with other guests arriving around the same time.
                 </p>
             </section>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { IMPORTANT_CONTACTS, VENUE } from '../data/eventContent.js';
+import InternalLink from '../components/InternalLink.jsx';
 
 const initialFormState = {
     name: '',
@@ -163,13 +163,13 @@ function Contact() {
                         <p className="mt-2">Formal attire requested. Please save gold and white for Alondra&apos;s spotlight look.</p>
                         <p className="mt-3">
                             Need travel logistics? Visit the{' '}
-                            <Link to="/travel" className="font-semibold text-rose-600 underline">
+                            <InternalLink to="travel" className="font-semibold text-rose-600 underline">
                                 travel guide
-                            </Link>{' '}
+                            </InternalLink>{' '}
                             or explore the{' '}
-                            <Link to="/weekend-guide" className="font-semibold text-rose-600 underline">
+                            <InternalLink to="weekend-guide" className="font-semibold text-rose-600 underline">
                                 weekend schedule
-                            </Link>
+                            </InternalLink>
                             .
                         </p>
                     </div>

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { DRESS_CODE, ITINERARY, VENUE, WEEKEND_TIPS } from '../data/eventContent.js';
+import InternalLink from '../components/InternalLink.jsx';
 
 function WeekendGuide() {
     return (
@@ -52,9 +52,9 @@ function WeekendGuide() {
                     </ul>
                     <p className="mt-4 text-sm text-rose-900/70">
                         If you have questions about attire or need accessibility accommodations, contact the{' '}
-                        <Link to="/contact" className="font-semibold text-rose-600 underline">
+                        <InternalLink to="contact" className="font-semibold text-rose-600 underline">
                             planning team
-                        </Link>
+                        </InternalLink>
                         .
                     </p>
                 </div>
@@ -72,9 +72,9 @@ function WeekendGuide() {
                         </li>
                         <li>
                             <span className="font-semibold text-rose-600">Photo Spots:</span> The lobby staircase and the seaside gazebo make perfect backdrops. Stop by the{' '}
-                            <Link to="/photos" className="font-semibold text-rose-600 underline">
+                            <InternalLink to="photos" className="font-semibold text-rose-600 underline">
                                 photo page
-                            </Link>{' '}
+                            </InternalLink>{' '}
                             to share your favorites.
                         </li>
                     </ul>
@@ -94,9 +94,9 @@ function WeekendGuide() {
                     </div>
                     <div className="rounded-3xl border border-rose-200/70 bg-white/75 p-6 text-rose-900/75 shadow-md">
                         Traveling with family? Coordinate shared rides on the{' '}
-                        <Link to="/contact" className="font-semibold text-rose-600 underline">
+                        <InternalLink to="contact" className="font-semibold text-rose-600 underline">
                             contact page
-                        </Link>{' '}
+                        </InternalLink>{' '}
                         to link up with other guests landing around the same time.
                     </div>
                 </div>

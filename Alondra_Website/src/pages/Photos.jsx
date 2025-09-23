@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { VENUE } from '../data/eventContent.js';
+import InternalLink from '../components/InternalLink.jsx';
 
 const SAMPLE_GALLERY = [
     {
@@ -42,8 +42,9 @@ function Photos() {
     const objectUrls = useRef([]);
 
     useEffect(() => {
+        const storedUrls = objectUrls.current;
         return () => {
-            objectUrls.current.forEach((url) => {
+            storedUrls.forEach((url) => {
                 URL.revokeObjectURL(url);
             });
         };
@@ -247,8 +248,8 @@ function Photos() {
 
             <div className="text-center text-sm text-rose-900/70">
                 <p>
-                    Ready to relive the magic in person again? <Link to="/" className="font-semibold text-rose-600 underline">Return to the home page</Link> or keep planning your stay with the{' '}
-                    <Link to="/travel" className="font-semibold text-rose-600 underline">travel guide</Link>.
+                    Ready to relive the magic in person again? <InternalLink to="home" className="font-semibold text-rose-600 underline">Return to the home page</InternalLink> or keep planning your stay with the{' '}
+                    <InternalLink to="travel" className="font-semibold text-rose-600 underline">travel guide</InternalLink>.
                 </p>
             </div>
         </div>

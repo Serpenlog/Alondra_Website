@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import InternalLink from '../components/InternalLink.jsx';
 import {
     EVENT_START,
     EVENT_END,
@@ -212,12 +212,12 @@ function Home() {
                     >
                         Save to Google Calendar
                     </a>
-                    <Link
-                        to="/travel"
+                    <InternalLink
+                        to="travel"
                         className="rounded-full border border-transparent bg-rose-100 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-rose-700 shadow-lg transition hover:bg-rose-200"
                     >
                         Plan Your Trip
-                    </Link>
+                    </InternalLink>
                 </div>
             </section>
 
@@ -246,7 +246,7 @@ function Home() {
                     <p className="mt-4 text-lg text-rose-900/80">{PARENTS.message}</p>
                     <p className="mt-6 text-rose-900/70">
                         Thank you for surrounding Alondra with so much love. Please feel welcome to share your blessings,
-                        advice, and stories on the <Link to="/photos" className="font-semibold text-rose-600 underline">photo guestbook</Link>.
+                        advice, and stories on the <InternalLink to="photos" className="font-semibold text-rose-600 underline">photo guestbook</InternalLink>.
                     </p>
                 </div>
                 <div className="glass-panel flex flex-col gap-6 rounded-3xl p-8 shadow-xl">
@@ -265,12 +265,12 @@ function Home() {
                             heading home.
                         </li>
                     </ul>
-                    <Link
-                        to="/weekend-guide"
+                    <InternalLink
+                        to="weekend-guide"
                         className="self-start rounded-full border border-rose-200/80 bg-white/80 px-6 py-2 text-sm font-semibold uppercase tracking-widest text-rose-600 shadow-md transition hover:border-rose-400 hover:text-rose-700"
                     >
                         Explore the full weekend guide
-                    </Link>
+                    </InternalLink>
                 </div>
             </section>
 
@@ -430,18 +430,18 @@ function Home() {
                         </li>
                     </ul>
                     <div className="mt-6 flex flex-wrap gap-3">
-                        <Link
-                            to="/travel"
+                        <InternalLink
+                            to="travel"
                             className="rounded-full border border-rose-200/80 bg-white/80 px-6 py-2 text-sm font-semibold uppercase tracking-widest text-rose-600 shadow-md transition hover:border-rose-400 hover:text-rose-700"
                         >
                             Full Travel Guide
-                        </Link>
-                        <Link
-                            to="/contact"
+                        </InternalLink>
+                        <InternalLink
+                            to="contact"
                             className="rounded-full border border-transparent bg-rose-100 px-6 py-2 text-sm font-semibold uppercase tracking-widest text-rose-700 shadow-md transition hover:bg-rose-200"
                         >
                             Contact Support Team
-                        </Link>
+                        </InternalLink>
                     </div>
                 </div>
                 <div className="overflow-hidden rounded-3xl shadow-xl">
