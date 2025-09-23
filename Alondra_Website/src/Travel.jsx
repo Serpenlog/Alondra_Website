@@ -1,4 +1,9 @@
 import './App.css';
+import alondra10 from './alondra_images/alondra10.JPG';
+import alondra11 from './alondra_images/alondra11.JPG';
+import alondra12 from './alondra_images/alondra12.JPG';
+import alondra13 from './alondra_images/alondra13.JPG';
+import alondra14 from './alondra_images/alondra14.JPG';
 
 const VENUE_NAME = 'Rincón of the Seas Grand Caribbean Hotel & Villa';
 const VENUE_ADDRESS = 'Road 115 KM 12.2, Rincón, Puerto Rico';
@@ -60,7 +65,17 @@ const LOCAL_TIPS = [
     }
 ];
 
+const TRAVEL_PHOTOS = [
+    { src: alondra10, alt: 'Alondra walking the shoreline in Rincón, Puerto Rico.' },
+    { src: alondra11, alt: 'Alondra smiling during a sunset stroll by the ocean.' },
+    { src: alondra12, alt: 'Alondra posing beneath swaying palm trees.' },
+    { src: alondra13, alt: 'Alondra sharing a laugh while exploring the resort grounds.' },
+    { src: alondra14, alt: 'Alondra framed by tropical blooms near the venue.' }
+];
+
 export default function Travel() {
+    const featurePhotos = TRAVEL_PHOTOS.slice(0, 3);
+
     return (
         <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-14">
             <section className="glass-panel rounded-3xl p-8 shadow-xl">
@@ -70,6 +85,20 @@ export default function Travel() {
                     The celebration takes place at <strong>{VENUE_NAME}</strong>, located at {VENUE_ADDRESS}. Please arrive with enough
                     time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.
                 </p>
+                <div className="mt-8 grid gap-4 md:grid-cols-3">
+                    {featurePhotos.map((photo) => (
+                        <figure
+                            key={photo.src}
+                            className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
+                        >
+                            <img
+                                src={photo.src}
+                                alt={photo.alt}
+                                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </figure>
+                    ))}
+                </div>
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
                     <div className="rounded-3xl border border-[rgba(251,208,235,0.6)] bg-[rgba(251,208,235,0.75)] p-6 shadow-md">
                         <h2 className="text-lg font-semibold text-[rgba(162,126,172,0.9)]">Venue Details</h2>
@@ -101,20 +130,23 @@ export default function Travel() {
                         </ul>
                     </div>
                     <div className="rounded-3xl border border-[rgba(251,208,235,0.6)] bg-[rgba(251,208,235,0.75)] p-6 shadow-md">
-                        <h2 className="text-lg font-semibold text-[rgba(162,126,172,0.9)]">Weekend Snapshot</h2>
+                        <h2 className="text-lg font-semibold text-[rgba(162,126,172,0.9)]">Celebration Week Snapshot</h2>
                         <ul className="mt-3 space-y-2 text-sm text-[rgba(162,126,172,0.7)]">
                             <li>
-                                <strong>Friday:</strong> Arrivals and casual meet-up at the hotel lobby lounge (from 7:00 PM)
+                                <strong>Sunday:</strong> Early arrivals and relaxed beach afternoon with family
                             </li>
                             <li>
-                                <strong>Saturday:</strong> Ceremony & reception at {VENUE_NAME} (doors open 3:45 PM)
+                                <strong>Monday:</strong> Sunset rehearsal walk-through and dessert tasting (6:30 PM)
                             </li>
                             <li>
-                                <strong>Sunday:</strong> Beachside farewell breakfast on property (10:30 AM)
+                                <strong>Tuesday:</strong> Ceremony & reception at {VENUE_NAME} (doors open 3:45 PM)
+                            </li>
+                            <li>
+                                <strong>Wednesday:</strong> Farewell brunch overlooking the Caribbean (10:30 AM)
                             </li>
                         </ul>
                         <p className="mt-4 text-sm text-[rgba(162,126,172,0.6)]">
-                            Need assistance during the weekend? Email
+                            Need assistance during the week? Email
                             <a
                                 className="ml-1 font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                 href="mailto:LA@RINCONOFTHESEAS.COM"
@@ -166,6 +198,13 @@ export default function Travel() {
                 </div>
 
                 <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 shadow-xl">
+                    <figure className="overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] shadow-md">
+                        <img
+                            src={TRAVEL_PHOTOS[3].src}
+                            alt={TRAVEL_PHOTOS[3].alt}
+                            className="h-48 w-full object-cover"
+                        />
+                    </figure>
                     <div>
                         <h2 className="font-display text-3xl">Flying In</h2>
                         <p className="mt-3 text-[rgba(162,126,172,0.75)]">
@@ -225,7 +264,7 @@ export default function Travel() {
 
             <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">Weekend Highlights</h2>
+                    <h2 className="font-display text-3xl">Rincón Highlights</h2>
                     <p className="mt-3 text-[rgba(162,126,172,0.75)]">
                         Make the most of your time in Rincón. These moments capture the relaxed coastal vibe Alondra loves sharing with
                         family and friends.
@@ -248,6 +287,27 @@ export default function Travel() {
                         referrerPolicy="no-referrer-when-downgrade"
                         allowFullScreen
                     ></iframe>
+                </div>
+            </section>
+
+            <section className="glass-panel rounded-3xl p-8 shadow-xl">
+                <h2 className="font-display text-3xl text-center">Alondra&apos;s Travel Postcards</h2>
+                <p className="mt-3 text-center text-[rgba(162,126,172,0.75)]">
+                    Picture yourself celebrating alongside Alondra—these snapshots showcase the vibrant energy of her Puerto Rico adventure.
+                </p>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {TRAVEL_PHOTOS.map((photo) => (
+                        <figure
+                            key={photo.src}
+                            className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
+                        >
+                            <img
+                                src={photo.src}
+                                alt={photo.alt}
+                                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </figure>
+                    ))}
                 </div>
             </section>
         </main>

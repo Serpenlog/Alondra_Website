@@ -2,8 +2,41 @@ import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import Envelope from './Envelope.jsx';
 import Travel from './Travel.jsx';
+import alondra1 from './alondra_images/alondra1.JPG';
+import alondra2 from './alondra_images/alondra2.JPG';
+import alondra3 from './alondra_images/alondra3.JPG';
+import alondra4 from './alondra_images/alondra4.JPG';
+import alondra5 from './alondra_images/alondra5.JPG';
+import alondra6 from './alondra_images/alondra6.JPG';
+import alondra7 from './alondra_images/alondra7.JPG';
+import alondra8 from './alondra_images/alondra8.JPG';
+import alondra9 from './alondra_images/alondra9.JPG';
+import alondra10 from './alondra_images/alondra10.JPG';
+import alondra11 from './alondra_images/alondra11.JPG';
+import alondra12 from './alondra_images/alondra12.JPG';
 
-const EVENT_DATE = new Date('2025-06-14T17:00:00-05:00');
+const EVENT_DATE = new Date('2026-07-28T17:00:00-04:00');
+
+const HERO_PHOTOS = [
+    { src: alondra1, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
+    { src: alondra2, alt: 'Alondra posing gracefully against a tropical backdrop.' },
+    { src: alondra3, alt: 'Alondra taking in the coastal sunset before her celebration.' }
+];
+
+const MEMORY_PHOTOS = [
+    { src: alondra4, alt: 'Alondra holding her bouquet during a quiet moment.' },
+    { src: alondra5, alt: 'Alondra glancing over her shoulder with a playful grin.' },
+    { src: alondra6, alt: 'Alondra adjusting her tiara before the festivities.' }
+];
+
+const GALLERY_PHOTOS = [
+    { src: alondra7, alt: 'Alondra laughing with loved ones.' },
+    { src: alondra8, alt: 'Alondra dancing beneath twinkling lights.' },
+    { src: alondra9, alt: 'Alondra sharing a toast with her family.' },
+    { src: alondra10, alt: 'Alondra posing along the shoreline in Puerto Rico.' },
+    { src: alondra11, alt: 'Alondra celebrating with an elegant twirl.' },
+    { src: alondra12, alt: 'Alondra framed by tropical greenery.' }
+];
 
 const ITINERARY = [
     {
@@ -123,7 +156,7 @@ function App() {
                     <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-20">
                         <section className="text-center" id="home">
                             <div className="flex justify-center">
-                                <span className="ribbon-tag">Mis XV • June 14, 2025</span>
+                                <span className="ribbon-tag">Mis XV • July 28, 2026</span>
                             </div>
                             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl">
                                 Alondra&apos;s Quinceañera
@@ -132,10 +165,24 @@ function App() {
                                 Join us in celebrating fifteen beautiful years of faith, family, and dreams come true.
                                 Expect joyful traditions, delicious food, and a night of dancing beneath the stars.
                             </p>
+                            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                                {HERO_PHOTOS.map((photo) => (
+                                    <figure
+                                        key={photo.src}
+                                        className="group relative overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-xl"
+                                    >
+                                        <img
+                                            src={photo.src}
+                                            alt={photo.alt}
+                                            className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    </figure>
+                                ))}
+                            </div>
                             <div className="mt-8 grid gap-4 md:grid-cols-3">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">Date</p>
-                                    <p className="mt-2 text-xl font-semibold">Saturday • June 14, 2025</p>
+                                    <p className="mt-2 text-xl font-semibold">Tuesday • July 28, 2026</p>
                                     <p className="text-[rgba(162,126,172,0.7)]">Ceremony begins promptly at 4:30 PM</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
@@ -171,6 +218,9 @@ function App() {
                         <section className="glass-panel rounded-3xl p-8 text-center shadow-xl" id="countdown">
                             <h2 className="font-display text-3xl md:text-4xl">Countdown to the Celebration</h2>
                             <p className="mt-2 text-[rgba(162,126,172,0.7)]">We can&apos;t wait to celebrate with you!</p>
+                            <p className="mt-1 text-sm uppercase tracking-[0.4em] text-[rgba(82,191,232,0.75)]">
+                                July 28, 2026 • 4:30 PM Atlantic Time
+                            </p>
                             {timeLeft.completed ? (
                                 <p className="mt-6 text-2xl font-semibold text-[rgba(201,148,158,1)]">It&apos;s party time! 💃🏽</p>
                             ) : (
@@ -196,6 +246,20 @@ function App() {
                                     family and friends in mind. Take a peek at the evening&apos;s highlights and make sure you
                                     arrive in time for the ceremonies that matter most to Alondra and her parents.
                                 </p>
+                                <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                                    {MEMORY_PHOTOS.map((photo) => (
+                                        <figure
+                                            key={photo.src}
+                                            className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(211,214,247,0.35)] shadow-md"
+                                        >
+                                            <img
+                                                src={photo.src}
+                                                alt={photo.alt}
+                                                className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        </figure>
+                                    ))}
+                                </div>
                                 <ul className="mt-6 space-y-4 text-left">
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(201,148,158,0.95)]"></span>
@@ -229,7 +293,14 @@ function App() {
                                     </li>
                                 </ul>
                             </div>
-                            <aside className="glass-panel flex flex-col justify-between rounded-3xl p-8 text-center shadow-xl">
+                            <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 text-center shadow-xl">
+                                <figure className="overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] shadow-md">
+                                    <img
+                                        src={GALLERY_PHOTOS[0].src}
+                                        alt={GALLERY_PHOTOS[0].alt}
+                                        className="h-48 w-full object-cover"
+                                    />
+                                </figure>
                                 <div>
                                     <p className="font-script text-3xl text-[rgba(201,148,158,1)]">Con mucho amor</p>
                                     <p className="mt-2 text-[rgba(162,126,172,0.7)]">
@@ -237,7 +308,7 @@ function App() {
                                         Madrina: Sofia Ruiz • Padrino: Alejandro Torres
                                     </p>
                                 </div>
-                                <div className="mt-8 space-y-3 text-[rgba(162,126,172,0.7)]">
+                                <div className="space-y-3 text-[rgba(162,126,172,0.7)]">
                                     <p>Need to update your RSVP or have dietary restrictions?</p>
                                     <a
                                         href="mailto:celebrate@alondrasxv.com"
@@ -275,6 +346,27 @@ function App() {
                                         <h3 className="mt-2 text-xl font-semibold text-[rgba(162,126,172,0.9)]">{event.title}</h3>
                                         <p className="mt-2 text-[rgba(162,126,172,0.7)]">{event.description}</p>
                                     </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section id="gallery" className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <h2 className="font-display text-3xl text-center">Moments with Alondra</h2>
+                            <p className="mt-3 text-center text-[rgba(162,126,172,0.75)]">
+                                From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra&apos;s journey leading up to the big day.
+                            </p>
+                            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                {GALLERY_PHOTOS.map((photo) => (
+                                    <figure
+                                        key={photo.src}
+                                        className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
+                                    >
+                                        <img
+                                            src={photo.src}
+                                            alt={photo.alt}
+                                            className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    </figure>
                                 ))}
                             </div>
                         </section>
@@ -377,7 +469,7 @@ function App() {
                         <section id="rsvp" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="grid gap-8 md:grid-cols-2">
                                 <div>
-                                    <h2 className="font-display text-3xl">RSVP by May 20</h2>
+                                    <h2 className="font-display text-3xl">RSVP by July 1, 2026</h2>
                                     <p className="mt-3 text-[rgba(162,126,172,0.75)]">
                                         We can&apos;t wait to celebrate with you! Let us know who&apos;s coming so we can reserve your seats,
                                         accommodate special requests, and prepare your welcome favors.
