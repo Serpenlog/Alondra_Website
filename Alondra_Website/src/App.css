@@ -1,27 +1,30 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
 }
+
 .envelope-overlay {
   position: fixed;
   inset: 0;
-  background-color: #fff;
+  background: radial-gradient(circle at top, #fde6ef 0%, #fff 45%, #f8d3ea 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 50;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .envelope-bottom {
   width: 80vw;
-  max-width: 400px;
+  max-width: 420px;
+  filter: drop-shadow(0 25px 45px rgba(92, 31, 51, 0.18));
 }
 
 .envelope-top {
   position: absolute;
   width: 80vw;
-  max-width: 400px;
+  max-width: 420px;
   top: 50%;
   transform: translateY(-100%);
   transform-origin: bottom center;
@@ -30,13 +33,43 @@ body {
 
 .envelope-stamp {
   position: absolute;
-  width: 100px;
+  width: 110px;
   cursor: pointer;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  filter: drop-shadow(0 10px 25px rgba(128, 60, 85, 0.25));
 }
 
 .envelope-overlay.opened .envelope-top {
   transform: translateY(-100%) rotateX(-180deg);
+}
+
+.font-display {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', 'Brush Script MT', cursive;
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 244, 250, 0.55));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.ribbon-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.18), rgba(125, 63, 152, 0.2));
+  color: #a31664;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
 }
