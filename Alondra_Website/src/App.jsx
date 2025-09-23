@@ -140,8 +140,8 @@ function App() {
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-rose-400">Venue</p>
-                                    <p className="mt-2 text-xl font-semibold">The Pearl Stable</p>
-                                    <p className="text-rose-900/70">307 Pearl Pkwy • San Antonio, TX 78215</p>
+                                    <p className="mt-2 text-xl font-semibold">Rincón of the Seas Grand Caribbean Hotel &amp; Villa</p>
+                                    <p className="text-rose-900/70">Road 115 KM 12.2 • Rincón, Puerto Rico</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-rose-400">Attire</p>
@@ -279,27 +279,39 @@ function App() {
                             <div className="glass-panel rounded-3xl p-8 shadow-xl">
                                 <h2 className="font-display text-3xl">Getting There</h2>
                                 <p className="mt-2 text-rose-900/75">
-                                    The Pearl Stable sits in the heart of San Antonio&apos;s Pearl District. Complimentary valet begins at
-                                    3:45 PM, and self-parking is available in the Koehler Garage across the street.
+                                    Rincón of the Seas Grand Caribbean Hotel &amp; Villa is nestled along Puerto Rico&apos;s west coast. Guests
+                                    staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay
+                                    just steps from the oceanfront ballroom.
                                 </p>
                                 <ul className="mt-6 space-y-3 text-rose-900/70">
                                     <li>
-                                        <span className="font-semibold text-rose-600">Hotel Block:</span> Reserve under &ldquo;Alondra&apos;s
-                                        Mis XV&rdquo; at Hotel Emma or the Pearl Canopy by May 20.
-                                    </li>
-                                    <li>
-                                        <span className="font-semibold text-rose-600">Travel Tip:</span> Fly into SAT (15 minutes away) or
-                                        Austin-Bergstrom (75 minutes) and head straight to the Pearl for welcome cafecito.
-                                    </li>
-                                    <li>
-                                        <span className="font-semibold text-rose-600">Need a ride?</span> Contact our transportation team at
+                                        <span className="font-semibold text-rose-600">Hotel Block:</span> Reference &ldquo;Quinceañera Alondra&rdquo;
+                                        with reservation code 334 when booking directly with the hotel. Call
                                         <a
-                                            href="tel:2105550199"
+                                            href="tel:7878237500"
                                             className="ml-1 font-semibold text-rose-500 underline-offset-4 hover:underline"
                                         >
-                                            (210) 555-0199
+                                            (787) 823-7500
                                         </a>
-                                        .
+                                        or contact Lisandra Ayala at
+                                        <a
+                                            href="tel:7878238114"
+                                            className="ml-1 font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                        >
+                                            (787) 823-8114
+                                        </a>
+                                        for assistance. A one-night deposit is required.
+                                    </li>
+                                    <li>
+                                        <span className="font-semibold text-rose-600">Travel Tip:</span> Aguadilla Airport (BQN) is roughly
+                                        40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes,
+                                        subject to traffic.
+                                    </li>
+                                    <li>
+                                        <span className="font-semibold text-rose-600">Need a ride?</span> From SJU call Wilbert Taxis
+                                        (787-479-9767), Puerto Rico Taxi (787-685-9666), or Taxi PR Carolina (787-513-5916). From BQN reach
+                                        Aguadilla Taxi (787-318-9546), Aguadilla Borinquen Taxis (787-431-8179), or Manny&apos;s Taxis
+                                        (939-366-2214). Uber is also available throughout Puerto Rico.
                                     </li>
                                 </ul>
                                 <div className="mt-6">
@@ -314,8 +326,8 @@ function App() {
                             </div>
                             <div className="overflow-hidden rounded-3xl shadow-xl">
                                 <iframe
-                                    title="The Pearl Stable Map"
-                                    src="https://maps.google.com/maps?q=307%20Pearl%20Pkwy%2C%20San%20Antonio%2C%20TX%2078215&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    title="Rincón of the Seas Grand Caribbean Hotel &amp; Villa Map"
+                                    src="https://maps.google.com/maps?q=Rinc%C3%B3n%20of%20the%20Seas%20Grand%20Caribbean%20Hotel%20%26%20Villa&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                     className="h-full min-h-[320px] w-full border-0"
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"

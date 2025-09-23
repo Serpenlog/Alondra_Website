@@ -1,49 +1,62 @@
 import './App.css';
 
-const VENUE_ADDRESS = '307 Pearl Pkwy, San Antonio, TX 78215';
+const VENUE_NAME = 'Rincón of the Seas Grand Caribbean Hotel & Villa';
+const VENUE_ADDRESS = 'Road 115 KM 12.2, Rincón, Puerto Rico';
 
 const HOTELS = [
     {
-        name: 'Hotel Emma',
-        distance: 'On-site at Pearl District',
+        name: VENUE_NAME,
+        distance: 'On-site accommodations at the venue',
         description:
-            'Luxury accommodations with historic charm. Request the “Alondra Mis XV” rate for welcome bag delivery and late checkout.',
-        perks: ['Complimentary welcome paletas', 'Access to rooftop pool', '2-minute walk to The Pearl Stable']
-    },
-    {
-        name: 'Canopy by Hilton San Antonio Riverwalk',
-        distance: '0.6 miles from venue',
-        description:
-            'Trendy riverside stay with easy access to the River Walk. Mention the quinceañera room block for discounted valet parking.',
-        perks: ['Breakfast vouchers included', 'River Walk views', 'Shuttle to the venue at 3:45 PM']
+            'Stay where the celebration takes place and enjoy ocean views, resort amenities, and effortless access to every event.',
+        perks: [
+            'Reference reservation code 334 and “Quinceañera Alondra” when booking',
+            'One-night deposit required to confirm your stay',
+            'Book directly with the hotel team — online reservations are not yet available'
+        ]
     }
 ];
 
 const AIRPORTS = [
     {
-        code: 'SAT',
-        name: 'San Antonio International Airport',
-        details: 'Closest airport with nonstop flights nationwide. 15-minute rideshare to the Pearl District.'
+        code: 'BQN',
+        name: 'Aguadilla, PR (BQN)',
+        details:
+            'Closest airport to the venue with regional flights. Approximate travel time to Rincón of the Seas: ~40 minutes (subject to traffic).'
     },
     {
-        code: 'AUS',
-        name: 'Austin-Bergstrom International Airport',
-        details: 'A scenic 75-minute drive south. Perfect for guests extending their Texas getaway.'
+        code: 'SJU',
+        name: 'San Juan, PR (SJU)',
+        details:
+            'Major international hub with plentiful flight options. Approximate travel time to the hotel: ~2 hours 20 minutes (subject to traffic).'
     }
 ];
 
+const TAXI_SERVICES = {
+    sju: [
+        { name: 'Wilbert Taxis', phone: '787-479-9767' },
+        { name: 'Puerto Rico Taxi', phone: '787-685-9666' },
+        { name: 'Taxi PR Carolina', phone: '787-513-5916' }
+    ],
+    bqn: [
+        { name: 'Aguadilla Taxi', phone: '787-318-9546' },
+        { name: 'Aguadilla Borinquen Taxis', phone: '787-431-8179' },
+        { name: "Manny's Taxis", phone: '939-366-2214' }
+    ]
+};
+
 const LOCAL_TIPS = [
     {
-        title: 'Parking & Arrival',
-        body: 'Complimentary valet begins at 3:45 PM at The Pearl Stable porte-cochère. Self-parking is available in the Koehler Garage (map pins provided below).'
+        title: 'Check-In Details',
+        body: 'Call the reservations team ahead of arrival to confirm your deposit and room assignment. Early check-in is based on availability.'
     },
     {
-        title: 'Welcome Gatherings',
-        body: 'Join us Friday evening at Larder inside Hotel Emma for cafecito and conchas from 7:00 – 9:00 PM.'
+        title: 'Beach Time',
+        body: 'Pack beachwear for downtime—Steps Beach and Balneario de Rincón are minutes from the hotel.'
     },
     {
-        title: 'Sunday Brunch',
-        body: 'Meet the family at Bakery Lorraine Pearl for a casual send-off brunch beginning at 10:30 AM.'
+        title: 'Sunset Tradition',
+        body: 'Gather with family on the hotel grounds for a sunset photo session overlooking the Caribbean Sea.'
     }
 ];
 
@@ -52,29 +65,63 @@ export default function Travel() {
         <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-14">
             <section className="glass-panel rounded-3xl p-8 shadow-xl">
                 <span className="ribbon-tag">Travel Guide</span>
-                <h1 className="mt-4 font-display text-4xl">Plan Your Stay in San Antonio</h1>
+                <h1 className="mt-4 font-display text-4xl">Plan Your Stay in Rincón, Puerto Rico</h1>
                 <p className="mt-3 max-w-3xl text-rose-900/75">
-                    The celebration takes place at <strong>The Pearl Stable</strong>, located at {VENUE_ADDRESS}. Arrive by 4:00 PM to
-                    enjoy welcome refreshments and snap photos around the iconic Pearl grounds before the mass begins.
+                    The celebration takes place at <strong>{VENUE_NAME}</strong>, located at {VENUE_ADDRESS}. Please arrive with enough
+                    time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.
                 </p>
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
                     <div className="rounded-3xl border border-rose-100 bg-white/80 p-6 shadow-md">
-                        <h2 className="text-lg font-semibold text-rose-600">Venue Address</h2>
-                        <p className="mt-2 text-rose-900/75">The Pearl Stable</p>
+                        <h2 className="text-lg font-semibold text-rose-600">Venue Details</h2>
+                        <p className="mt-2 text-rose-900/75">{VENUE_NAME}</p>
                         <p className="text-rose-900/60">{VENUE_ADDRESS}</p>
-                        <p className="mt-4 text-sm text-rose-900/60">
-                            Doors open at 3:45 PM for guest seating. Ceremony begins promptly at 4:30 PM with reception to follow.
-                        </p>
+                        <ul className="mt-4 space-y-2 text-sm text-rose-900/60">
+                            <li>
+                                <strong>Reservation Code:</strong> 334 (reference “Quinceañera Alondra”)
+                            </li>
+                            <li>
+                                <strong>Front Desk:</strong>{' '}
+                                <a className="font-semibold text-rose-500 underline-offset-4 hover:underline" href="tel:7878237500">
+                                    (787) 823-7500
+                                </a>
+                            </li>
+                            <li>
+                                <strong>Contact:</strong>{' '}
+                                <a className="font-semibold text-rose-500 underline-offset-4 hover:underline" href="tel:7878238114">
+                                    Lisandra Ayala (787) 823-8114
+                                </a>
+                            </li>
+                            <li>
+                                <strong>Email:</strong>{' '}
+                                <a className="font-semibold text-rose-500 underline-offset-4 hover:underline" href="mailto:LA@RINCONOFTHESEAS.COM">
+                                    LA@RINCONOFTHESEAS.COM
+                                </a>
+                            </li>
+                            <li>Online reservations are not yet available; please book directly. A one-night deposit is required.</li>
+                        </ul>
                     </div>
                     <div className="rounded-3xl border border-rose-100 bg-white/80 p-6 shadow-md">
                         <h2 className="text-lg font-semibold text-rose-600">Weekend Snapshot</h2>
                         <ul className="mt-3 space-y-2 text-sm text-rose-900/70">
-                            <li><strong>Friday:</strong> Welcome cafecito at Larder (7:00 PM)</li>
-                            <li><strong>Saturday:</strong> Ceremony & reception at The Pearl Stable (4:30 PM)</li>
-                            <li><strong>Sunday:</strong> Farewell brunch at Bakery Lorraine (10:30 AM)</li>
+                            <li>
+                                <strong>Friday:</strong> Arrivals and casual meet-up at the hotel lobby lounge (from 7:00 PM)
+                            </li>
+                            <li>
+                                <strong>Saturday:</strong> Ceremony & reception at {VENUE_NAME} (doors open 3:45 PM)
+                            </li>
+                            <li>
+                                <strong>Sunday:</strong> Beachside farewell breakfast on property (10:30 AM)
+                            </li>
                         </ul>
                         <p className="mt-4 text-sm text-rose-900/60">
-                            Need assistance during the weekend? Text our hostess team at <a className="font-semibold text-rose-500 underline-offset-4 hover:underline" href="tel:2105550199">(210) 555-0199</a>.
+                            Need assistance during the weekend? Email
+                            <a
+                                className="ml-1 font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                href="mailto:LA@RINCONOFTHESEAS.COM"
+                            >
+                                LA@RINCONOFTHESEAS.COM
+                            </a>
+                            or call the hotel team directly.
                         </p>
                     </div>
                 </div>
@@ -84,8 +131,8 @@ export default function Travel() {
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
                     <h2 className="font-display text-3xl">Where to Stay</h2>
                     <p className="mt-3 text-rose-900/75">
-                        We have secured special rates at our favorite Pearl District hotels. Mention “Alondra Mis XV” when booking to
-                        be added to the welcome list.
+                        Stay right on property to enjoy the ocean breeze and effortless access to every event. Mention “Quinceañera
+                        Alondra” and reservation code 334 to be added to our welcome list and receive the group rate.
                     </p>
                     <div className="mt-6 space-y-6">
                         {HOTELS.map((hotel) => (
@@ -122,7 +169,8 @@ export default function Travel() {
                     <div>
                         <h2 className="font-display text-3xl">Flying In</h2>
                         <p className="mt-3 text-rose-900/75">
-                            Both airports offer nonstop routes and easy transportation options. Rideshare pick-up zones are well marked.
+                            Choose between Aguadilla (BQN) about 40 minutes away or San Juan (SJU) at roughly 2 hours 20 minutes. Both
+                            offer reliable ground transportation to Rincón.
                         </p>
                     </div>
                     <div className="space-y-4">
@@ -136,11 +184,41 @@ export default function Travel() {
                     </div>
                     <div className="rounded-3xl border border-rose-100 bg-white/85 p-5 shadow">
                         <h3 className="text-lg font-semibold text-rose-600">Ground Transportation</h3>
-                        <ul className="mt-3 space-y-2 text-sm text-rose-900/70">
-                            <li><strong>Rideshare:</strong> Use “Pearl Stable” as your drop-off pin.</li>
-                            <li><strong>Shuttle:</strong> Hotel Emma & Canopy shuttles depart at 3:45 PM and 4:00 PM.</li>
-                            <li><strong>Parking:</strong> Validation provided for the Koehler Garage (levels 2–4).</li>
-                        </ul>
+                        <p className="mt-2 text-sm text-rose-900/70">Uber operates throughout Puerto Rico, and the following taxi teams are happy to help:</p>
+                        <div className="mt-4 space-y-4 text-sm text-rose-900/70">
+                            <div>
+                                <p className="font-semibold text-rose-600">From San Juan Airport (SJU)</p>
+                                <ul className="mt-2 space-y-1">
+                                    {TAXI_SERVICES.sju.map((service) => (
+                                        <li key={service.name}>
+                                            {service.name}{' '}
+                                            <a
+                                                href={`tel:${service.phone.replace(/[^0-9]/g, '')}`}
+                                                className="font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                            >
+                                                {service.phone}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div>
+                                <p className="font-semibold text-rose-600">From Aguadilla Airport (BQN)</p>
+                                <ul className="mt-2 space-y-1">
+                                    {TAXI_SERVICES.bqn.map((service) => (
+                                        <li key={service.name}>
+                                            {service.name}{' '}
+                                            <a
+                                                href={`tel:${service.phone.replace(/[^0-9]/g, '')}`}
+                                                className="font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                            >
+                                                {service.phone}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </aside>
             </section>
@@ -149,8 +227,8 @@ export default function Travel() {
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
                     <h2 className="font-display text-3xl">Weekend Highlights</h2>
                     <p className="mt-3 text-rose-900/75">
-                        Make the most of your time in San Antonio. Here are a few of Alondra’s favorite spots within walking distance of
-                        the Pearl.
+                        Make the most of your time in Rincón. These moments capture the relaxed coastal vibe Alondra loves sharing with
+                        family and friends.
                     </p>
                     <ul className="mt-6 space-y-4 text-rose-900/70">
                         {LOCAL_TIPS.map((tip) => (
@@ -163,8 +241,8 @@ export default function Travel() {
                 </div>
                 <div className="glass-panel rounded-3xl p-0 shadow-xl">
                     <iframe
-                        title="The Pearl Stable Directions"
-                        src="https://maps.google.com/maps?q=307%20Pearl%20Pkwy%2C%20San%20Antonio%2C%20TX%2078215&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        title="Rincón of the Seas Grand Caribbean Hotel &amp; Villa Directions"
+                        src="https://maps.google.com/maps?q=Rinc%C3%B3n%20of%20the%20Seas%20Grand%20Caribbean%20Hotel%20%26%20Villa&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         className="h-full min-h-[360px] w-full rounded-3xl"
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
