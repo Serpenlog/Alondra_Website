@@ -1,9 +1,4 @@
 import './App.css';
-import alondra10 from './alondra_images/alondra10.JPG';
-import alondra11 from './alondra_images/alondra11.JPG';
-import alondra12 from './alondra_images/alondra12.JPG';
-import alondra13 from './alondra_images/alondra13.JPG';
-import alondra14 from './alondra_images/alondra14.JPG';
 
 const VENUE_NAME = 'Rincón of the Seas Grand Caribbean Hotel & Villa';
 const VENUE_ADDRESS = 'Road 115 KM 12.2, Rincón, Puerto Rico';
@@ -65,17 +60,22 @@ const LOCAL_TIPS = [
     }
 ];
 
-const TRAVEL_PHOTOS = [
-    { src: alondra10, alt: 'Alondra walking the shoreline in Rincón, Puerto Rico.' },
-    { src: alondra11, alt: 'Alondra smiling during a sunset stroll by the ocean.' },
-    { src: alondra12, alt: 'Alondra posing beneath swaying palm trees.' },
-    { src: alondra13, alt: 'Alondra sharing a laugh while exploring the resort grounds.' },
-    { src: alondra14, alt: 'Alondra framed by tropical blooms near the venue.' }
+const TRAVEL_HIGHLIGHTS = [
+    {
+        title: 'Arrival Window',
+        body: 'Plan to reach the venue by 3:45 PM to enjoy welcome refreshments and settle in before the ceremony.'
+    },
+    {
+        title: 'Check-In Support',
+        body: 'Call ahead with reservation code 334 so the team can confirm your room and greet you upon arrival.'
+    },
+    {
+        title: 'Golden Hour Moments',
+        body: 'Sunset is around 7:00 PM in July—perfect for a quick family photo session before the reception begins.'
+    }
 ];
 
 export default function Travel() {
-    const featurePhotos = TRAVEL_PHOTOS.slice(0, 3);
-
     return (
         <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-14">
             <section className="glass-panel rounded-3xl p-8 shadow-xl">
@@ -86,17 +86,14 @@ export default function Travel() {
                     time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.
                 </p>
                 <div className="mt-8 grid gap-4 md:grid-cols-3">
-                    {featurePhotos.map((photo) => (
-                        <figure
-                            key={photo.src}
-                            className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
+                    {TRAVEL_HIGHLIGHTS.map((highlight) => (
+                        <div
+                            key={highlight.title}
+                            className="rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] p-6 shadow-lg"
                         >
-                            <img
-                                src={photo.src}
-                                alt={photo.alt}
-                                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </figure>
+                            <h3 className="text-lg font-semibold text-[rgba(162,126,172,0.9)]">{highlight.title}</h3>
+                            <p className="mt-2 text-sm text-[rgba(162,126,172,0.7)]">{highlight.body}</p>
+                        </div>
                     ))}
                 </div>
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -198,14 +195,7 @@ export default function Travel() {
                 </div>
 
                 <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 shadow-xl">
-                    <figure className="overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] shadow-md">
-                        <img
-                            src={TRAVEL_PHOTOS[3].src}
-                            alt={TRAVEL_PHOTOS[3].alt}
-                            className="h-48 w-full object-cover"
-                        />
-                    </figure>
-                    <div>
+                    <div className="rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] p-6 shadow-md">
                         <h2 className="font-display text-3xl">Flying In</h2>
                         <p className="mt-3 text-[rgba(162,126,172,0.75)]">
                             Choose between Aguadilla (BQN) about 40 minutes away or San Juan (SJU) at roughly 2 hours 20 minutes. Both
@@ -290,26 +280,6 @@ export default function Travel() {
                 </div>
             </section>
 
-            <section className="glass-panel rounded-3xl p-8 shadow-xl">
-                <h2 className="font-display text-3xl text-center">Alondra&apos;s Travel Postcards</h2>
-                <p className="mt-3 text-center text-[rgba(162,126,172,0.75)]">
-                    Picture yourself celebrating alongside Alondra—these snapshots showcase the vibrant energy of her Puerto Rico adventure.
-                </p>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {TRAVEL_PHOTOS.map((photo) => (
-                        <figure
-                            key={photo.src}
-                            className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
-                        >
-                            <img
-                                src={photo.src}
-                                alt={photo.alt}
-                                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </figure>
-                    ))}
-                </div>
-            </section>
         </main>
     );
 }
