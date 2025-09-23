@@ -91,14 +91,14 @@ function App() {
                 />
             )}
             <div
-                className={`min-h-screen w-full bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 px-6 py-12 text-rose-900 transition-opacity duration-500 ease-out md:px-10 ${open ? 'opacity-100' : 'opacity-0'}`}
+                className={`min-h-screen w-full bg-gradient-to-br from-[rgba(185,245,255,0.85)] via-[rgba(251,208,235,0.85)] to-[rgba(211,214,247,0.9)] px-6 py-12 text-[rgba(162,126,172,0.95)] transition-opacity duration-500 ease-out md:px-10 ${open ? 'opacity-100' : 'opacity-0'}`}
             >
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
-                        <p className="text-xs uppercase tracking-[0.5em] text-rose-400">Alondra Hernandez</p>
-                        <p className="font-display text-2xl text-rose-700">Mis XV Celebration</p>
+                        <p className="text-xs uppercase tracking-[0.5em] text-[rgba(82,191,232,0.75)]">Alondra Hernandez</p>
+                        <p className="font-display text-2xl text-[rgba(162,126,172,0.95)]">Mis XV Celebration</p>
                     </div>
-                    <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-rose-200/60 bg-white/70 p-1 shadow-lg sm:mx-0">
+                    <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(211,214,247,0.6)] bg-[rgba(185,245,255,0.4)] p-1 shadow-lg sm:mx-0">
                         {[
                             { key: 'home', label: 'Home' },
                             { key: 'travel', label: 'Travel Info' }
@@ -107,10 +107,10 @@ function App() {
                                 key={key}
                                 type="button"
                                 onClick={() => setCurrentPage(key)}
-                                className={`flex-1 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-[0.3em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400 ${
+                                className={`flex-1 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-[0.3em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(82,191,232,0.6)] ${
                                     currentPage === key
-                                        ? 'bg-rose-500 text-white shadow'
-                                        : 'text-rose-500 hover:bg-rose-50'
+                                        ? 'bg-[rgba(162,126,172,0.95)] text-white shadow'
+                                        : 'text-[rgba(162,126,172,0.9)] hover:bg-[rgba(251,208,235,0.5)]'
                                 }`}
                                 aria-pressed={currentPage === key}
                             >
@@ -128,37 +128,40 @@ function App() {
                             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl">
                                 Alondra&apos;s Quinceañera
                             </h1>
-                            <p className="mt-4 text-lg text-rose-900/80 md:text-xl">
+                            <p className="mt-4 text-lg text-[rgba(162,126,172,0.8)] md:text-xl">
                                 Join us in celebrating fifteen beautiful years of faith, family, and dreams come true.
                                 Expect joyful traditions, delicious food, and a night of dancing beneath the stars.
                             </p>
                             <div className="mt-8 grid gap-4 md:grid-cols-3">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
-                                    <p className="text-sm uppercase tracking-[0.3em] text-rose-400">Date</p>
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">Date</p>
                                     <p className="mt-2 text-xl font-semibold">Saturday • June 14, 2025</p>
-                                    <p className="text-rose-900/70">Ceremony begins promptly at 4:30 PM</p>
+                                    <p className="text-[rgba(162,126,172,0.7)]">Ceremony begins promptly at 4:30 PM</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
-                                    <p className="text-sm uppercase tracking-[0.3em] text-rose-400">Venue</p>
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">Venue</p>
                                     <p className="mt-2 text-xl font-semibold">Rincón of the Seas Grand Caribbean Hotel &amp; Villa</p>
-                                    <p className="text-rose-900/70">Road 115 KM 12.2 • Rincón, Puerto Rico</p>
+                                    <p className="text-[rgba(162,126,172,0.7)]">Road 115 KM 12.2 • Rincón, Puerto Rico</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
-                                    <p className="text-sm uppercase tracking-[0.3em] text-rose-400">Attire</p>
-                                    <p className="mt-2 text-xl font-semibold">Evening Chic</p>
-                                    <p className="text-rose-900/70">Dress in soft blush, champagne, or ivory accents.</p>
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">Attire</p>
+                                    <p className="mt-2 text-xl font-semibold">Formal Attire</p>
+                                    <p className="text-[rgba(162,126,172,0.7)]">
+                                        Elegant evening wear, please. Gold and white ensembles are reserved exclusively for
+                                        Alondra.
+                                    </p>
                                 </div>
                             </div>
                             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                                 <a
                                     href="#rsvp"
-                                    className="rounded-full bg-rose-500 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-rose-600"
+                                    className="rounded-full bg-[rgba(162,126,172,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(162,126,172,0.85)]"
                                 >
                                     RSVP Now
                                 </a>
                                 <a
                                     href="#itinerary"
-                                    className="rounded-full border border-rose-300/80 bg-white/80 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-rose-500 shadow-lg transition hover:border-rose-400 hover:text-rose-600"
+                                    className="rounded-full border border-[rgba(211,214,247,0.8)] bg-[rgba(251,208,235,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(201,148,158,1)] shadow-lg transition hover:border-[rgba(82,191,232,0.55)] hover:text-[rgba(162,126,172,0.9)]"
                                 >
                                     View Itinerary
                                 </a>
@@ -167,18 +170,18 @@ function App() {
 
                         <section className="glass-panel rounded-3xl p-8 text-center shadow-xl" id="countdown">
                             <h2 className="font-display text-3xl md:text-4xl">Countdown to the Celebration</h2>
-                            <p className="mt-2 text-rose-900/70">We can&apos;t wait to celebrate with you!</p>
+                            <p className="mt-2 text-[rgba(162,126,172,0.7)]">We can&apos;t wait to celebrate with you!</p>
                             {timeLeft.completed ? (
-                                <p className="mt-6 text-2xl font-semibold text-rose-500">It&apos;s party time! 💃🏽</p>
+                                <p className="mt-6 text-2xl font-semibold text-[rgba(201,148,158,1)]">It&apos;s party time! 💃🏽</p>
                             ) : (
                                 <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
                                     {countdownUnits.map(({ label, value }) => (
                                         <div
                                             key={label}
-                                            className="rounded-2xl border border-rose-200 bg-white/70 px-6 py-6 shadow-md"
+                                            className="rounded-2xl border border-[rgba(211,214,247,0.6)] bg-[rgba(211,214,247,0.6)] px-6 py-6 shadow-md"
                                         >
-                                            <p className="text-4xl font-bold text-rose-500 md:text-5xl">{String(value).padStart(2, '0')}</p>
-                                            <p className="mt-2 text-xs uppercase tracking-[0.4em] text-rose-400">{label}</p>
+                                            <p className="text-4xl font-bold text-[rgba(201,148,158,1)] md:text-5xl">{String(value).padStart(2, '0')}</p>
+                                            <p className="mt-2 text-xs uppercase tracking-[0.4em] text-[rgba(82,191,232,0.75)]">{label}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -188,37 +191,37 @@ function App() {
                         <section id="details" className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
                             <div className="glass-panel rounded-3xl p-8 shadow-xl">
                                 <h2 className="font-display text-3xl">Event Highlights</h2>
-                                <p className="mt-3 text-rose-900/80">
+                                <p className="mt-3 text-[rgba(162,126,172,0.8)]">
                                     From the traditional mass to a sparkling reception, every detail has been planned with
                                     family and friends in mind. Take a peek at the evening&apos;s highlights and make sure you
                                     arrive in time for the ceremonies that matter most to Alondra and her parents.
                                 </p>
                                 <ul className="mt-6 space-y-4 text-left">
                                     <li className="flex items-start gap-3">
-                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-rose-400"></span>
+                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(201,148,158,0.95)]"></span>
                                         <div>
                                             <h3 className="text-lg font-semibold">Courtside Moments</h3>
-                                            <p className="text-rose-900/70">
+                                            <p className="text-[rgba(162,126,172,0.7)]">
                                                 Celebrate with Alondra&apos;s court of damas and chambelanes during the surprise dance and
                                                 a special toast from her padrinos.
                                             </p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-rose-400"></span>
+                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(201,148,158,0.95)]"></span>
                                         <div>
                                             <h3 className="text-lg font-semibold">Sweet Indulgences</h3>
-                                            <p className="text-rose-900/70">
+                                            <p className="text-[rgba(162,126,172,0.7)]">
                                                 Enjoy a dessert bar inspired by Alondra&apos;s favorite flavors plus a late-night churro cart for
                                                 guests who stay on the dance floor.
                                             </p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-rose-400"></span>
+                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(201,148,158,0.95)]"></span>
                                         <div>
                                             <h3 className="text-lg font-semibold">Music & Memories</h3>
-                                            <p className="text-rose-900/70">
+                                            <p className="text-[rgba(162,126,172,0.7)]">
                                                 Our curated Spotify playlist sets the mood—be sure to hit play when you arrive and share your
                                                 song requests with the DJ booth.
                                             </p>
@@ -228,16 +231,17 @@ function App() {
                             </div>
                             <aside className="glass-panel flex flex-col justify-between rounded-3xl p-8 text-center shadow-xl">
                                 <div>
-                                    <p className="font-script text-3xl text-rose-500">Con mucho amor</p>
-                                    <p className="mt-2 text-rose-900/70">
-                                        Hosted by the Hernandez family • Madrina: Sofia Ruiz • Padrino: Alejandro Torres
+                                    <p className="font-script text-3xl text-[rgba(201,148,158,1)]">Con mucho amor</p>
+                                    <p className="mt-2 text-[rgba(162,126,172,0.7)]">
+                                        Hosted with love by her parents, Marisol Flores &amp; Jesus Lopez, for the Lopez family.
+                                        Madrina: Sofia Ruiz • Padrino: Alejandro Torres
                                     </p>
                                 </div>
-                                <div className="mt-8 space-y-3 text-rose-900/70">
+                                <div className="mt-8 space-y-3 text-[rgba(162,126,172,0.7)]">
                                     <p>Need to update your RSVP or have dietary restrictions?</p>
                                     <a
                                         href="mailto:celebrate@alondrasxv.com"
-                                        className="font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                        className="font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                     >
                                         celebrate@alondrasxv.com
                                     </a>
@@ -250,7 +254,7 @@ function App() {
                             <div className="flex flex-col items-start justify-between gap-6 md:flex-row">
                                 <div>
                                     <h2 className="font-display text-3xl">Evening Schedule</h2>
-                                    <p className="mt-2 max-w-2xl text-rose-900/75">
+                                    <p className="mt-2 max-w-2xl text-[rgba(162,126,172,0.75)]">
                                         We&apos;ve curated the night so you won&apos;t miss a single tradition. Arrive a little early to snap
                                         photos by the floral wall and sign Alondra&apos;s guestbook.
                                     </p>
@@ -259,17 +263,17 @@ function App() {
                                     href="https://calendar.google.com"
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="rounded-full border border-rose-300 bg-white/80 px-6 py-2 text-sm font-semibold uppercase tracking-widest text-rose-500 shadow transition hover:border-rose-400 hover:text-rose-600"
+                                    className="rounded-full border border-[rgba(211,214,247,0.7)] bg-[rgba(251,208,235,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(201,148,158,1)] shadow transition hover:border-[rgba(82,191,232,0.55)] hover:text-[rgba(162,126,172,0.9)]"
                                 >
                                     Save to Calendar
                                 </a>
                             </div>
                             <div className="mt-8 grid gap-6 md:grid-cols-2">
                                 {ITINERARY.map((event) => (
-                                    <div key={event.title} className="rounded-3xl border border-rose-100 bg-white/80 p-6 shadow-md">
-                                        <p className="text-sm uppercase tracking-[0.3em] text-rose-400">{event.time}</p>
-                                        <h3 className="mt-2 text-xl font-semibold text-rose-600">{event.title}</h3>
-                                        <p className="mt-2 text-rose-900/70">{event.description}</p>
+                                    <div key={event.title} className="rounded-3xl border border-[rgba(251,208,235,0.6)] bg-[rgba(251,208,235,0.75)] p-6 shadow-md">
+                                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">{event.time}</p>
+                                        <h3 className="mt-2 text-xl font-semibold text-[rgba(162,126,172,0.9)]">{event.title}</h3>
+                                        <p className="mt-2 text-[rgba(162,126,172,0.7)]">{event.description}</p>
                                     </div>
                                 ))}
                             </div>
@@ -278,37 +282,37 @@ function App() {
                         <section id="location" className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                             <div className="glass-panel rounded-3xl p-8 shadow-xl">
                                 <h2 className="font-display text-3xl">Getting There</h2>
-                                <p className="mt-2 text-rose-900/75">
+                                <p className="mt-2 text-[rgba(162,126,172,0.75)]">
                                     Rincón of the Seas Grand Caribbean Hotel &amp; Villa is nestled along Puerto Rico&apos;s west coast. Guests
                                     staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay
                                     just steps from the oceanfront ballroom.
                                 </p>
-                                <ul className="mt-6 space-y-3 text-rose-900/70">
+                                <ul className="mt-6 space-y-3 text-[rgba(162,126,172,0.7)]">
                                     <li>
-                                        <span className="font-semibold text-rose-600">Hotel Block:</span> Reference &ldquo;Quinceañera Alondra&rdquo;
+                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Hotel Block:</span> Reference &ldquo;Quinceañera Alondra&rdquo;
                                         with reservation code 334 when booking directly with the hotel. Call
                                         <a
                                             href="tel:7878237500"
-                                            className="ml-1 font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                            className="ml-1 font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                         >
                                             (787) 823-7500
                                         </a>
                                         or contact Lisandra Ayala at
                                         <a
                                             href="tel:7878238114"
-                                            className="ml-1 font-semibold text-rose-500 underline-offset-4 hover:underline"
+                                            className="ml-1 font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                         >
                                             (787) 823-8114
                                         </a>
                                         for assistance. A one-night deposit is required.
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-rose-600">Travel Tip:</span> Aguadilla Airport (BQN) is roughly
+                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Travel Tip:</span> Aguadilla Airport (BQN) is roughly
                                         40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes,
                                         subject to traffic.
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-rose-600">Need a ride?</span> From SJU call Wilbert Taxis
+                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Need a ride?</span> From SJU call Wilbert Taxis
                                         (787-479-9767), Puerto Rico Taxi (787-685-9666), or Taxi PR Carolina (787-513-5916). From BQN reach
                                         Aguadilla Taxi (787-318-9546), Aguadilla Borinquen Taxis (787-431-8179), or Manny&apos;s Taxis
                                         (939-366-2214). Uber is also available throughout Puerto Rico.
@@ -318,7 +322,7 @@ function App() {
                                     <button
                                         type="button"
                                         onClick={() => setCurrentPage('travel')}
-                                        className="rounded-full border border-rose-300 bg-white/80 px-6 py-2 text-sm font-semibold uppercase tracking-widest text-rose-500 shadow transition hover:border-rose-400 hover:text-rose-600"
+                                        className="rounded-full border border-[rgba(211,214,247,0.7)] bg-[rgba(251,208,235,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(201,148,158,1)] shadow transition hover:border-[rgba(82,191,232,0.55)] hover:text-[rgba(162,126,172,0.9)]"
                                     >
                                         View Full Travel Guide
                                     </button>
@@ -338,7 +342,7 @@ function App() {
 
                         <section id="registry" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <h2 className="font-display text-3xl text-center">Gifts & Blessings</h2>
-                            <p className="mt-3 text-center text-rose-900/75">
+                            <p className="mt-3 text-center text-[rgba(162,126,172,0.75)]">
                                 Your presence is the greatest gift! If you&apos;d like to contribute to Alondra&apos;s college dreams or
                                 share a keepsake, explore the options below.
                             </p>
@@ -347,7 +351,7 @@ function App() {
                                     href="https://www.paypal.com/"
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="rounded-full bg-rose-500 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-rose-600"
+                                    className="rounded-full bg-[rgba(162,126,172,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(162,126,172,0.85)]"
                                 >
                                     Contribute via PayPal
                                 </a>
@@ -355,7 +359,7 @@ function App() {
                                     href="https://www.amazon.com/wedding"
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="rounded-full border border-rose-300/80 bg-white/80 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-rose-500 shadow-lg transition hover:border-rose-400 hover:text-rose-600"
+                                    className="rounded-full border border-[rgba(211,214,247,0.8)] bg-[rgba(251,208,235,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(201,148,158,1)] shadow-lg transition hover:border-[rgba(82,191,232,0.55)] hover:text-[rgba(162,126,172,0.9)]"
                                 >
                                     View Amazon Registry
                                 </a>
@@ -363,7 +367,7 @@ function App() {
                                     href="https://www.honeyfund.com/"
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="rounded-full border border-rose-300/80 bg-white/80 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-rose-500 shadow-lg transition hover:border-rose-400 hover:text-rose-600"
+                                    className="rounded-full border border-[rgba(211,214,247,0.8)] bg-[rgba(251,208,235,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(201,148,158,1)] shadow-lg transition hover:border-[rgba(82,191,232,0.55)] hover:text-[rgba(162,126,172,0.9)]"
                                 >
                                     Honeyfund Experiences
                                 </a>
@@ -374,18 +378,18 @@ function App() {
                             <div className="grid gap-8 md:grid-cols-2">
                                 <div>
                                     <h2 className="font-display text-3xl">RSVP by May 20</h2>
-                                    <p className="mt-3 text-rose-900/75">
+                                    <p className="mt-3 text-[rgba(162,126,172,0.75)]">
                                         We can&apos;t wait to celebrate with you! Let us know who&apos;s coming so we can reserve your seats,
                                         accommodate special requests, and prepare your welcome favors.
                                     </p>
-                                    <ul className="mt-4 space-y-2 text-rose-900/70">
+                                    <ul className="mt-4 space-y-2 text-[rgba(162,126,172,0.7)]">
                                         <li>✨ Kindly respond for each guest in your party.</li>
                                         <li>🥗 Vegetarian or gluten-free meals available upon request.</li>
                                         <li>🎶 Add your favorite song—our DJ is taking requests!</li>
                                     </ul>
                                 </div>
                                 <form
-                                    className="rounded-3xl border border-rose-100 bg-white/80 p-6 shadow-md"
+                                    className="rounded-3xl border border-[rgba(251,208,235,0.6)] bg-[rgba(251,208,235,0.75)] p-6 shadow-md"
                                     action="https://forms.gle/"
                                     method="post"
                                     target="_blank"
@@ -396,25 +400,25 @@ function App() {
                                             name="name"
                                             placeholder="Your Full Name"
                                             required
-                                            className="rounded-full border border-rose-200 bg-white/90 px-4 py-3 text-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                            className="rounded-full border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.85)] px-4 py-3 text-sm focus:border-[rgba(82,191,232,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(211,214,247,0.7)]"
                                         />
                                         <input
                                             type="email"
                                             name="email"
                                             placeholder="Email Address"
                                             required
-                                            className="rounded-full border border-rose-200 bg-white/90 px-4 py-3 text-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                            className="rounded-full border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.85)] px-4 py-3 text-sm focus:border-[rgba(82,191,232,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(211,214,247,0.7)]"
                                         />
                                         <input
                                             type="tel"
                                             name="phone"
                                             placeholder="Phone Number"
-                                            className="rounded-full border border-rose-200 bg-white/90 px-4 py-3 text-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                            className="rounded-full border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.85)] px-4 py-3 text-sm focus:border-[rgba(82,191,232,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(211,214,247,0.7)]"
                                         />
                                         <select
                                             name="attendance"
                                             required
-                                            className="rounded-full border border-rose-200 bg-white/90 px-4 py-3 text-sm text-rose-900 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                            className="rounded-full border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.85)] px-4 py-3 text-sm text-[rgba(162,126,172,0.95)] focus:border-[rgba(82,191,232,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(211,214,247,0.7)]"
                                         >
                                             <option value="">Will you celebrate with us?</option>
                                             <option value="yes">Sí, can&apos;t wait!</option>
@@ -424,16 +428,16 @@ function App() {
                                             name="message"
                                             rows="3"
                                             placeholder="Share a note or song request"
-                                            className="rounded-3xl border border-rose-200 bg-white/90 px-4 py-3 text-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                            className="rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.85)] px-4 py-3 text-sm focus:border-[rgba(82,191,232,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(211,214,247,0.7)]"
                                         ></textarea>
                                         <button
                                             type="submit"
-                                            className="rounded-full bg-rose-500 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-rose-600"
+                                            className="rounded-full bg-[rgba(162,126,172,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(162,126,172,0.85)]"
                                         >
                                             Submit RSVP
                                         </button>
                                     </div>
-                                    <p className="mt-4 text-xs text-rose-400">
+                                    <p className="mt-4 text-xs text-[rgba(82,191,232,0.75)]">
                                         This form opens a secure RSVP in a new tab so you can attach additional guests or messages.
                                     </p>
                                 </form>
@@ -444,7 +448,7 @@ function App() {
                     <Travel />
                 )}
 
-                <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-rose-200/60 pt-6 text-center text-sm text-rose-900/60">
+                <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(211,214,247,0.6)] pt-6 text-center text-sm text-[rgba(162,126,172,0.6)]">
                     <p>Made with ♥ for Alondra&apos;s quinceañera. See you on the dance floor!</p>
                 </footer>
             </div>
