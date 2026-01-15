@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import Envelope from './Envelope.jsx';
 import Travel from './Travel.jsx';
+import { guestList } from './data/guestList.js';
 import alondra1 from './alondra_images/alondra1.JPG';
 import alondra2 from './alondra_images/alondra2.JPG';
 import alondra3 from './alondra_images/alondra3.JPG';
@@ -89,9 +90,32 @@ function getTimeRemaining() {
 }
 
 function App() {
-    const [open, setOpen] = useState(false);
+    const [accessStage, setAccessStage] = useState('sealed');
     const [currentPage, setCurrentPage] = useState('home');
     const [timeLeft, setTimeLeft] = useState(() => getTimeRemaining());
+    const [phoneInput, setPhoneInput] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [guestInfo, setGuestInfo] = useState(null);
+
+    const isOpen = accessStage === 'open';
+
+    const normalizePhone = (value) => value.replace(/\D/g, '');
+
+    const handlePasswordSubmit = (event) => {
+        event.preventDefault();
+        const normalized = normalizePhone(phoneInput);
+        const match = guestList.find((entry) => entry.phone === normalized);
+
+        if (match) {
+            setGuestInfo(match);
+            setPasswordError('');
+            setAccessStage('open');
+            setCurrentPage('home');
+            return;
+        }
+
+        setPasswordError('That phone number is not on the guest list. Please try again.');
+    };
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -115,16 +139,40 @@ function App() {
 
     return (
         <>
-            {!open && (
-                <Envelope
-                    onOpen={() => {
-                        setOpen(true);
-                        setCurrentPage('home');
-                    }}
-                />
+            {accessStage === 'sealed' && (
+                <Envelope onStampClick={() => setAccessStage('password')} />
+            )}
+            {accessStage === 'password' && (
+                <div className="password-overlay">
+                    <form className="password-card" onSubmit={handlePasswordSubmit}>
+                        <p className="password-title">Enter your phone number to continue</p>
+                        <label className="password-label" htmlFor="phone-number">
+                            Phone number
+                        </label>
+                        <input
+                            id="phone-number"
+                            name="phone-number"
+                            type="tel"
+                            autoComplete="tel"
+                            placeholder="(555) 123-4567"
+                            value={phoneInput}
+                            onChange={(event) => {
+                                setPhoneInput(event.target.value);
+                                if (passwordError) {
+                                    setPasswordError('');
+                                }
+                            }}
+                            className="password-input"
+                        />
+                        {passwordError && <p className="password-error">{passwordError}</p>}
+                        <button type="submit" className="password-button">
+                            Unlock Invitation
+                        </button>
+                    </form>
+                </div>
             )}
             <div
-                className={`min-h-screen w-full bg-gradient-to-br from-[rgba(185,245,255,0.85)] via-[rgba(251,208,235,0.85)] to-[rgba(211,214,247,0.9)] px-6 py-12 text-[rgba(162,126,172,0.95)] transition-opacity duration-500 ease-out md:px-10 ${open ? 'opacity-100' : 'opacity-0'}`}
+                className={`min-h-screen w-full bg-gradient-to-br from-[rgba(185,245,255,0.85)] via-[rgba(251,208,235,0.85)] to-[rgba(211,214,247,0.9)] px-6 py-12 text-[rgba(162,126,172,0.95)] transition-opacity duration-500 ease-out md:px-10 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
             >
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
@@ -154,6 +202,19 @@ function App() {
                 </header>
                 {currentPage === 'home' ? (
                     <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-20">
+                        {guestInfo && (
+                            <section className="glass-panel rounded-3xl p-6 text-center shadow-lg">
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">
+                                    Invitation Access Confirmed
+                                </p>
+                                <p className="mt-2 text-xl font-semibold">
+                                    Phone: {guestInfo.phone}
+                                </p>
+                                <p className="text-[rgba(162,126,172,0.75)]">
+                                    Tickets reserved: {guestInfo.tickets}
+                                </p>
+                            </section>
+                        )}
                         <section className="text-center" id="home">
                             <div className="flex justify-center">
                                 <span className="ribbon-tag">Mis XV • July 28, 2026</span>
