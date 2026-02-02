@@ -4,39 +4,51 @@ import Envelope from './Envelope.jsx';
 import Travel from './Travel.jsx';
 import { guestList } from './data/guestList.js';
 import alondra1 from './alondra_images/alondra1.JPG';
+import alondra1Blur from './alondra_images/alondra1_blur.png';
 import alondra2 from './alondra_images/alondra2.JPG';
+import alondra2Blur from './alondra_images/alondra2_blur.png';
 import alondra3 from './alondra_images/alondra3.JPG';
+import alondra3Blur from './alondra_images/alondra3_blur.png';
 import alondra4 from './alondra_images/alondra4.JPG';
+import alondra4Blur from './alondra_images/alondra4_blur.png';
 import alondra5 from './alondra_images/alondra5.JPG';
+import alondra5Blur from './alondra_images/alondra5_blur.png';
 import alondra6 from './alondra_images/alondra6.JPG';
+import alondra6Blur from './alondra_images/alondra6_blur.png';
 import alondra7 from './alondra_images/alondra7.JPG';
+import alondra7Blur from './alondra_images/alondra7_blur.png';
 import alondra8 from './alondra_images/alondra8.JPG';
+import alondra8Blur from './alondra_images/alondra8_blur.png';
 import alondra9 from './alondra_images/alondra9.JPG';
+import alondra9Blur from './alondra_images/alondra9_blur.png';
 import alondra10 from './alondra_images/alondra10.JPG';
+import alondra10Blur from './alondra_images/alondra10_blur.png';
 import alondra11 from './alondra_images/alondra11.JPG';
+import alondra11Blur from './alondra_images/alondra11_blur.png';
 import alondra12 from './alondra_images/alondra12.JPG';
+import alondra12Blur from './alondra_images/alondra12_blur.png';
 
 const EVENT_DATE = new Date('2026-07-28T17:00:00-04:00');
 
 const HERO_PHOTOS = [
-    { src: alondra1, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
-    { src: alondra2, alt: 'Alondra posing gracefully against a tropical backdrop.' },
-    { src: alondra3, alt: 'Alondra taking in the coastal sunset before her celebration.' }
+    { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
+    { src: alondra2, blurSrc: alondra2Blur, alt: 'Alondra posing gracefully against a tropical backdrop.' },
+    { src: alondra3, blurSrc: alondra3Blur, alt: 'Alondra taking in the coastal sunset before her celebration.' }
 ];
 
 const MEMORY_PHOTOS = [
-    { src: alondra4, alt: 'Alondra holding her bouquet during a quiet moment.' },
-    { src: alondra5, alt: 'Alondra glancing over her shoulder with a playful grin.' },
-    { src: alondra6, alt: 'Alondra adjusting her tiara before the festivities.' }
+    { src: alondra4, blurSrc: alondra4Blur, alt: 'Alondra holding her bouquet during a quiet moment.' },
+    { src: alondra5, blurSrc: alondra5Blur, alt: 'Alondra glancing over her shoulder with a playful grin.' },
+    { src: alondra6, blurSrc: alondra6Blur, alt: 'Alondra adjusting her tiara before the festivities.' }
 ];
 
 const GALLERY_PHOTOS = [
-    { src: alondra7, alt: 'Alondra laughing with loved ones.' },
-    { src: alondra8, alt: 'Alondra dancing beneath twinkling lights.' },
-    { src: alondra9, alt: 'Alondra sharing a toast with her family.' },
-    { src: alondra10, alt: 'Alondra posing along the shoreline in Puerto Rico.' },
-    { src: alondra11, alt: 'Alondra celebrating with an elegant twirl.' },
-    { src: alondra12, alt: 'Alondra framed by tropical greenery.' }
+    { src: alondra7, blurSrc: alondra7Blur, alt: 'Alondra laughing with loved ones.' },
+    { src: alondra8, blurSrc: alondra8Blur, alt: 'Alondra dancing beneath twinkling lights.' },
+    { src: alondra9, blurSrc: alondra9Blur, alt: 'Alondra sharing a toast with her family.' },
+    { src: alondra10, blurSrc: alondra10Blur, alt: 'Alondra posing along the shoreline in Puerto Rico.' },
+    { src: alondra11, blurSrc: alondra11Blur, alt: 'Alondra celebrating with an elegant twirl.' },
+    { src: alondra12, blurSrc: alondra12Blur, alt: 'Alondra framed by tropical greenery.' }
 ];
 
 const ITINERARY = [
@@ -61,6 +73,105 @@ const ITINERARY = [
         description: 'From the father-daughter dance to La Última Muñeca, dance the night away with DJ Solstice.'
     }
 ];
+
+const REAL_TAXI_SERVICES = {
+    sju: [
+        { name: 'Wilbert Taxis', phone: '787-479-9767' },
+        { name: 'Puerto Rico Taxi', phone: '787-685-9666' },
+        { name: 'Taxi PR Carolina', phone: '787-513-5916' }
+    ],
+    bqn: [
+        { name: 'Aguadilla Taxi', phone: '787-318-9546' },
+        { name: 'Aguadilla Borinquen Taxis', phone: '787-431-8179' },
+        { name: "Manny's Taxis", phone: '939-366-2214' }
+    ]
+};
+
+const DEMO_TAXI_SERVICES = {
+    sju: [
+        { name: 'Harborline Rides', phone: '415-555-0129' },
+        { name: 'Coastal City Taxi', phone: '415-555-0184' },
+        { name: 'Sunset Shuttle', phone: '415-555-0146' }
+    ],
+    bqn: [
+        { name: 'Laguna Cab Co.', phone: '415-555-0192' },
+        { name: 'Vista Taxi Group', phone: '415-555-0163' },
+        { name: 'Boardwalk Cars', phone: '415-555-0171' }
+    ]
+};
+
+const REAL_DETAILS = {
+    venueName: 'Rincón of the Seas Grand Caribbean Hotel & Villa',
+    venueAddress: 'Road 115 KM 12.2 • Rincón, Puerto Rico',
+    venueAddressLong: 'Road 115 KM 12.2, Rincón, Puerto Rico',
+    hostNames: 'Marisol Flores & Jesus Lopez',
+    hostFamily: 'the Lopez family',
+    contactEmail: 'celebrate@alondrasxv.com',
+    hotelBlockName: 'Quinceañera Alondra',
+    reservationCode: '334',
+    hotelPhone: { display: '(787) 823-7500', raw: '7878237500' },
+    hotelContact: { name: 'Lisandra Ayala', display: '(787) 823-8114', raw: '7878238114' },
+    hotelEmail: 'LA@RINCONOFTHESEAS.COM',
+    taxiServices: REAL_TAXI_SERVICES,
+    airports: [
+        {
+            code: 'BQN',
+            name: 'Aguadilla, PR (BQN)',
+            details:
+                'Closest airport to the venue with regional flights. Approximate travel time to Rincón of the Seas: ~40 minutes (subject to traffic).'
+        },
+        {
+            code: 'SJU',
+            name: 'San Juan, PR (SJU)',
+            details:
+                'Major international hub with plentiful flight options. Approximate travel time to the hotel: ~2 hours 20 minutes (subject to traffic).'
+        }
+    ],
+    travelTip:
+        'Aguadilla Airport (BQN) is roughly 40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes, subject to traffic.',
+    rideshareNote: 'Uber operates throughout Puerto Rico',
+    mapTitle: 'Rincón of the Seas Grand Caribbean Hotel & Villa Map',
+    mapUrl:
+        'https://maps.google.com/maps?q=Rinc%C3%B3n%20of%20the%20Seas%20Grand%20Caribbean%20Hotel%20%26%20Villa&t=&z=15&ie=UTF8&iwloc=&output=embed'
+};
+
+const DEMO_DETAILS = {
+    venueName: 'Seaside Palms Event Hall',
+    venueAddress: 'Oceanview Blvd 12 • Vista del Mar, CA',
+    venueAddressLong: 'Oceanview Blvd 12, Vista del Mar, CA',
+    hostNames: 'Lucia Perez & Mateo Rivera',
+    hostFamily: 'the Rivera family',
+    contactEmail: 'hello@democelebration.com',
+    hotelBlockName: 'Demo Celebration',
+    reservationCode: '781',
+    hotelPhone: { display: '(415) 555-0198', raw: '4155550198' },
+    hotelContact: { name: 'Jordan Lee', display: '(415) 555-0175', raw: '4155550175' },
+    hotelEmail: 'EVENTS@SEASIDEPALMS.COM',
+    taxiServices: DEMO_TAXI_SERVICES,
+    airports: [
+        {
+            code: 'HPX',
+            name: 'Harbor Point, CA (HPX)',
+            details:
+                'Closest regional airport to Vista del Mar with direct coastal shuttle service. Approximate travel time: ~35 minutes.'
+        },
+        {
+            code: 'CWT',
+            name: 'Cedarwood, CA (CWT)',
+            details:
+                'Major coastal hub with daily arrivals. Approximate travel time to Seaside Palms: ~1 hour 50 minutes, depending on traffic.'
+        }
+    ],
+    travelTip:
+        'Harbor Point Airport (HPX) is about 35 minutes away, while Cedarwood Airport (CWT) is roughly 1 hour and 50 minutes, depending on traffic.',
+    rideshareNote: 'Rideshare apps operate throughout Vista del Mar',
+    mapTitle: 'Seaside Palms Event Hall Map',
+    mapUrl:
+        'https://maps.google.com/maps?q=Seaside%20Palms%20Event%20Hall%20Vista%20del%20Mar&t=&z=14&ie=UTF8&iwloc=&output=embed'
+};
+
+const formatTaxiList = (services) =>
+    services.map((service) => `${service.name} (${service.phone})`).join(', ');
 
 function getTimeRemaining() {
     const total = EVENT_DATE.getTime() - Date.now();
@@ -98,6 +209,9 @@ function App() {
     const [guestInfo, setGuestInfo] = useState(null);
 
     const isOpen = accessStage === 'open';
+    const isDemo = guestInfo?.isDemo ?? false;
+    const eventDetails = isDemo ? DEMO_DETAILS : REAL_DETAILS;
+    const [regionalAirport, majorAirport] = eventDetails.airports;
 
     const normalizePhone = (value) => value.replace(/\D/g, '');
 
@@ -107,7 +221,13 @@ function App() {
         const match = guestList.find((entry) => entry.phone === normalized);
 
         if (match) {
-            setGuestInfo(match);
+            const isDemoAccess = Boolean(match.demo);
+            const demoTickets = Math.floor(Math.random() * 4) + 1;
+            setGuestInfo({
+                ...match,
+                tickets: isDemoAccess ? demoTickets : match.tickets,
+                isDemo: isDemoAccess
+            });
             setPasswordError('');
             setAccessStage('open');
             setCurrentPage('home');
@@ -209,9 +329,19 @@ function App() {
                                 </p>
                                 <p className="mt-2 text-xl font-semibold">
                                     Phone: {guestInfo.phone}
+                                    {isDemo && (
+                                        <span className="ml-3 rounded-full bg-[rgba(201,148,158,0.2)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(201,148,158,0.95)]">
+                                            Demo
+                                        </span>
+                                    )}
                                 </p>
                                 <p className="text-[rgba(162,126,172,0.75)]">
                                     Tickets reserved: {guestInfo.tickets}
+                                    {isDemo && (
+                                        <span className="ml-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(201,148,158,0.85)]">
+                                            Demo
+                                        </span>
+                                    )}
                                 </p>
                             </section>
                         )}
@@ -233,7 +363,7 @@ function App() {
                                         className="group relative overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-xl"
                                     >
                                         <img
-                                            src={photo.src}
+                                            src={isDemo ? photo.blurSrc : photo.src}
                                             alt={photo.alt}
                                             className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
@@ -248,8 +378,8 @@ function App() {
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">Venue</p>
-                                    <p className="mt-2 text-xl font-semibold">Rincón of the Seas Grand Caribbean Hotel &amp; Villa</p>
-                                    <p className="text-[rgba(162,126,172,0.7)]">Road 115 KM 12.2 • Rincón, Puerto Rico</p>
+                                    <p className="mt-2 text-xl font-semibold">{eventDetails.venueName}</p>
+                                    <p className="text-[rgba(162,126,172,0.7)]">{eventDetails.venueAddress}</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(82,191,232,0.75)]">Attire</p>
@@ -314,7 +444,7 @@ function App() {
                                             className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(211,214,247,0.35)] shadow-md"
                                         >
                                             <img
-                                                src={photo.src}
+                                                src={isDemo ? photo.blurSrc : photo.src}
                                                 alt={photo.alt}
                                                 className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                             />
@@ -357,7 +487,7 @@ function App() {
                             <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 text-center shadow-xl">
                                 <figure className="overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] shadow-md">
                                     <img
-                                        src={GALLERY_PHOTOS[1].src}
+                                        src={isDemo ? GALLERY_PHOTOS[1].blurSrc : GALLERY_PHOTOS[1].src}
                                         alt={GALLERY_PHOTOS[1].alt}
                                         className="h-48 w-full object-cover"
                                     />
@@ -365,16 +495,16 @@ function App() {
                                 <div>
                                     <p className="font-script text-3xl text-[rgba(201,148,158,1)]">Con mucho amor</p>
                                     <p className="mt-2 text-[rgba(162,126,172,0.7)]">
-                                        Hosted with love by her parents, Marisol Flores &amp; Jesus Lopez, for the Lopez family.
+                                        Hosted with love by her parents, {eventDetails.hostNames}, for {eventDetails.hostFamily}.
                                     </p>
                                 </div>
                                 <div className="space-y-3 text-[rgba(162,126,172,0.7)]">
                                     <p>Need to update your RSVP or have dietary restrictions?</p>
                                     <a
-                                        href="mailto:celebrate@alondrasxv.com"
+                                        href={`mailto:${eventDetails.contactEmail}`}
                                         className="font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                     >
-                                        celebrate@alondrasxv.com
+                                        {eventDetails.contactEmail}
                                     </a>
                                     <p className="text-sm">We&apos;re happy to help you plan your perfect evening.</p>
                                 </div>
@@ -416,58 +546,55 @@ function App() {
                                 From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra&apos;s journey leading up to the big day.
                             </p>
                             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                {GALLERY_PHOTOS.map((photo) => (
-                                    <figure
-                                        key={photo.src}
-                                        className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
-                                    >
-                                        <img
-                                            src={photo.src}
-                                            alt={photo.alt}
-                                            className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    </figure>
-                                ))}
+                                    {GALLERY_PHOTOS.map((photo) => (
+                                        <figure
+                                            key={photo.src}
+                                            className="group overflow-hidden rounded-3xl border border-[rgba(211,214,247,0.6)] bg-[rgba(251,208,235,0.6)] shadow-lg"
+                                        >
+                                            <img
+                                                src={isDemo ? photo.blurSrc : photo.src}
+                                                alt={photo.alt}
+                                                className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        </figure>
+                                    ))}
                             </div>
                         </section>
 
                         <section id="location" className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                             <div className="glass-panel rounded-3xl p-8 shadow-xl">
                                 <h2 className="font-display text-3xl">Getting There</h2>
-                                <p className="mt-2 text-[rgba(162,126,172,0.75)]">
-                                    Rincón of the Seas Grand Caribbean Hotel &amp; Villa is nestled along Puerto Rico&apos;s west coast. Guests
+                                    <p className="mt-2 text-[rgba(162,126,172,0.75)]">
+                                    {eventDetails.venueName} is nestled along a stunning coastline. Guests
                                     staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay
                                     just steps from the oceanfront ballroom.
-                                </p>
-                                <ul className="mt-6 space-y-3 text-[rgba(162,126,172,0.7)]">
+                                    </p>
+                                    <ul className="mt-6 space-y-3 text-[rgba(162,126,172,0.7)]">
                                     <li>
-                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Hotel Block:</span> Reference &ldquo;Quinceañera Alondra&rdquo;
-                                        with reservation code 334 when booking directly with the hotel. Call
+                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Hotel Block:</span> Reference &ldquo;{eventDetails.hotelBlockName}&rdquo;
+                                        with reservation code {eventDetails.reservationCode} when booking directly with the hotel. Call
                                         <a
-                                            href="tel:7878237500"
+                                            href={`tel:${eventDetails.hotelPhone.raw}`}
                                             className="ml-1 font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                         >
-                                            (787) 823-7500
+                                            {eventDetails.hotelPhone.display}
                                         </a>
-                                        or contact Lisandra Ayala at
+                                        or contact {eventDetails.hotelContact.name} at
                                         <a
-                                            href="tel:7878238114"
+                                            href={`tel:${eventDetails.hotelContact.raw}`}
                                             className="ml-1 font-semibold text-[rgba(201,148,158,1)] underline-offset-4 hover:underline"
                                         >
-                                            (787) 823-8114
+                                            {eventDetails.hotelContact.display}
                                         </a>
                                         for assistance. A one-night deposit is required.
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Travel Tip:</span> Aguadilla Airport (BQN) is roughly
-                                        40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes,
-                                        subject to traffic.
+                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Travel Tip:</span> {eventDetails.travelTip}
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Need a ride?</span> From SJU call Wilbert Taxis
-                                        (787-479-9767), Puerto Rico Taxi (787-685-9666), or Taxi PR Carolina (787-513-5916). From BQN reach
-                                        Aguadilla Taxi (787-318-9546), Aguadilla Borinquen Taxis (787-431-8179), or Manny&apos;s Taxis
-                                        (939-366-2214). Uber is also available throughout Puerto Rico.
+                                        <span className="font-semibold text-[rgba(162,126,172,0.9)]">Need a ride?</span> From {majorAirport.code} call{' '}
+                                        {formatTaxiList(eventDetails.taxiServices.sju)}. From {regionalAirport.code} reach{' '}
+                                        {formatTaxiList(eventDetails.taxiServices.bqn)}. Uber is also available throughout Puerto Rico.
                                     </li>
                                 </ul>
                                 <div className="mt-6">
@@ -482,8 +609,8 @@ function App() {
                             </div>
                             <div className="overflow-hidden rounded-3xl shadow-xl">
                                 <iframe
-                                    title="Rincón of the Seas Grand Caribbean Hotel &amp; Villa Map"
-                                    src="https://maps.google.com/maps?q=Rinc%C3%B3n%20of%20the%20Seas%20Grand%20Caribbean%20Hotel%20%26%20Villa&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    title={eventDetails.mapTitle}
+                                    src={eventDetails.mapUrl}
                                     className="h-full min-h-[320px] w-full border-0"
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
@@ -596,7 +723,7 @@ function App() {
                         </section>
                 </main>
                 ) : (
-                    <Travel />
+                    <Travel details={eventDetails} />
                 )}
 
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(211,214,247,0.6)] pt-6 text-center text-sm text-[rgba(162,126,172,0.6)]">
