@@ -29,7 +29,7 @@ import alondra12 from './alondra_images/alondra12.JPG';
 import alondra12Blur from './alondra_images/alondra12_blur.png';
 import alondra13 from './alondra_images/alondra13.JPG';
 
-const EVENT_DATE = new Date('2026-07-28T17:00:00-04:00');
+const EVENT_DATE = new Date('2026-07-18T17:00:00-04:00');
 
 const HERO_PHOTOS = [
     { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
@@ -354,7 +354,7 @@ function App() {
                         )}
                         <section className="text-center" id="home">
                             <div className="flex justify-center">
-                                <span className="ribbon-tag">Mis XV • July 28, 2026</span>
+                                <span className="ribbon-tag">Mis XV • July 18, 2026</span>
                             </div>
                             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl">
                                 Alondra&apos;s Quinceañera
@@ -380,7 +380,7 @@ function App() {
                             <div className="mt-8 grid gap-4 md:grid-cols-3">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Date</p>
-                                    <p className="mt-2 text-xl font-semibold">Tuesday • July 28, 2026</p>
+                                    <p className="mt-2 text-xl font-semibold">Tuesday • July 18, 2026</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">Ceremony begins promptly at 4:30 PM</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
@@ -417,7 +417,7 @@ function App() {
                             <h2 className="font-display text-3xl md:text-4xl">Countdown to the Celebration</h2>
                             <p className="mt-2 text-[rgba(44,96,130,0.7)]">We can&apos;t wait to celebrate with you!</p>
                             <p className="mt-1 text-sm uppercase tracking-[0.4em] text-[rgba(47,156,194,0.75)]">
-                                July 28, 2026 • 4:30 PM Atlantic Time
+                                July 18, 2026 • 4:30 PM Atlantic Time
                             </p>
                             {timeLeft.completed ? (
                                 <p className="mt-6 text-2xl font-semibold text-[rgba(240,132,112,1)]">It&apos;s party time! 💃🏽</p>
