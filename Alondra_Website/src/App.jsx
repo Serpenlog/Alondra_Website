@@ -630,7 +630,7 @@ function App() {
                             <h2 className="font-display text-3xl text-center">Gifts & Blessings</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 Your presence is the greatest gift! If you&apos;d like to contribute to Alondra&apos;s college dreams or
-                                share a keepsake, explore the options below.
+                                share a keepsake, explore the options below or leave us an envelope.
                             </p>
                             <div className="mt-8 flex flex-wrap justify-center gap-4">
                                 <a
