@@ -139,3 +139,207 @@ body {
   text-transform: uppercase;
   font-size: 0.72rem;
 }
+
+ .ocean-page {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(123, 198, 228, 0.78) 0%, rgba(149, 217, 239, 0.76) 48%, rgba(207, 241, 248, 0.72) 100%);
+}
+
+.ocean-page--video {
+  background: rgba(19, 52, 73, 0.82);
+}
+
+.ocean-content {
+  position: relative;
+  z-index: 3;
+}
+
+.ocean-background,
+.ocean-video-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ocean-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ocean-video-mobile {
+  display: none;
+}
+
+.ocean-video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(223, 245, 255, 0.32), transparent 40%),
+    linear-gradient(180deg, rgba(8, 48, 69, 0.32), rgba(9, 81, 109, 0.28) 48%, rgba(44, 94, 104, 0.34));
+}
+
+.ocean-depth {
+  position: absolute;
+  inset: -12% -4% -8% -8%;
+  background:
+    radial-gradient(circle at 24% 12%, rgba(220, 247, 255, 0.42), transparent 43%),
+    radial-gradient(circle at 64% 52%, rgba(169, 232, 250, 0.24), transparent 48%),
+    linear-gradient(165deg, rgba(70, 165, 202, 0.55) 0%, rgba(104, 191, 225, 0.48) 34%, rgba(124, 209, 233, 0.36) 70%, rgba(171, 224, 236, 0.22) 100%);
+}
+
+.ocean-current {
+  position: absolute;
+  inset: -8% 9% -8% -14%;
+  opacity: 0.38;
+  background-size: 280px 280px;
+  mix-blend-mode: screen;
+  border-radius: 30%;
+}
+
+.ocean-current-one {
+  background-image:
+    radial-gradient(circle at 24% 42%, rgba(236, 253, 255, 0.58) 0 18%, transparent 20%),
+    radial-gradient(circle at 52% 60%, rgba(241, 254, 255, 0.42) 0 14%, transparent 18%),
+    radial-gradient(circle at 72% 28%, rgba(236, 250, 255, 0.3) 0 12%, transparent 16%);
+  animation: tideFlowA 20s linear infinite;
+}
+
+.ocean-current-two {
+  inset: -14% 14% -10% -16%;
+  opacity: 0.3;
+  background-image:
+    radial-gradient(circle at 32% 24%, rgba(242, 252, 255, 0.54) 0 14%, transparent 17%),
+    radial-gradient(circle at 66% 48%, rgba(242, 252, 255, 0.46) 0 16%, transparent 19%),
+    radial-gradient(circle at 86% 78%, rgba(238, 248, 255, 0.34) 0 10%, transparent 14%);
+  animation: tideFlowB 28s linear infinite;
+}
+
+.ocean-current-three {
+  inset: -6% 18% -6% -8%;
+  opacity: 0.25;
+  background-image:
+    radial-gradient(circle at 20% 72%, rgba(245, 254, 255, 0.38) 0 12%, transparent 17%),
+    radial-gradient(circle at 46% 32%, rgba(245, 254, 255, 0.28) 0 10%, transparent 14%),
+    radial-gradient(circle at 76% 62%, rgba(240, 250, 255, 0.22) 0 8%, transparent 12%);
+  animation: tideFlowA 32s linear infinite reverse;
+}
+
+.shoreline-strip {
+  position: absolute;
+  top: -6%;
+  bottom: -6%;
+  right: -1px;
+  width: clamp(76px, 14vw, 192px);
+  background:
+    radial-gradient(circle at 35% 10%, rgba(255, 245, 214, 0.92), transparent 46%),
+    radial-gradient(circle at 65% 36%, rgba(255, 236, 187, 0.95), transparent 52%),
+    linear-gradient(180deg, rgba(251, 228, 177, 0.97), rgba(240, 212, 160, 0.94) 58%, rgba(229, 195, 148, 0.92));
+  box-shadow: -14px 0 40px rgba(43, 117, 144, 0.2);
+}
+
+.shoreline-foam {
+  position: absolute;
+  left: -28%;
+  width: 44%;
+  height: 42%;
+  border-radius: 55% 45% 50% 50%;
+  background: radial-gradient(circle at 35% 50%, rgba(255, 255, 255, 0.95), rgba(227, 248, 255, 0.2) 70%, transparent 76%);
+  filter: blur(0.5px);
+}
+
+.shoreline-foam-one {
+  top: 4%;
+  animation: foamWash 7.5s ease-in-out infinite;
+}
+
+.shoreline-foam-two {
+  top: 32%;
+  height: 46%;
+  animation: foamWash 9s ease-in-out infinite reverse;
+}
+
+.shoreline-foam-three {
+  top: 66%;
+  height: 40%;
+  animation: foamWash 8.5s ease-in-out infinite;
+}
+
+.shoreline-shell {
+  position: absolute;
+  right: 16%;
+  width: 18px;
+  height: 12px;
+  border-radius: 999px 999px 40% 40%;
+  background: rgba(230, 164, 129, 0.48);
+  box-shadow: inset 0 -2px 0 rgba(173, 113, 85, 0.35);
+}
+
+.shoreline-shell-one {
+  bottom: 20%;
+  transform: rotate(-16deg);
+}
+
+.shoreline-shell-two {
+  bottom: 35%;
+  right: 45%;
+  width: 12px;
+  height: 8px;
+  transform: rotate(12deg);
+}
+
+@keyframes tideFlowA {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-18px, 14px, 0) scale(1.03); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes tideFlowB {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(15px, -12px, 0) scale(1.04); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes foamWash {
+  0%, 100% { transform: translateX(0) scale(0.98); opacity: 0.82; }
+  50% { transform: translateX(-10px) scale(1.05); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .shoreline-strip {
+    width: clamp(62px, 20vw, 110px);
+  }
+
+  .shoreline-shell {
+    opacity: 0.6;
+  }
+
+  .ocean-video-mobile {
+    display: block;
+  }
+
+  .ocean-video-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .ocean-video-mobile {
+    display: none;
+  }
+
+  .ocean-video-desktop {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-current,
+  .shoreline-foam {
+    animation: none !important;
+  }
+}

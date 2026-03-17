@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import Envelope from './Envelope.jsx';
+import OceanBackground from './OceanBackground.jsx';
 import Travel from './Travel.jsx';
 import { guestList } from './data/guestList.js';
 import alondra1 from './alondra_images/alondra1.JPG';
@@ -30,6 +31,7 @@ import alondra12Blur from './alondra_images/alondra12_blur.png';
 import alondra13 from './alondra_images/alondra13.JPG';
 
 const EVENT_DATE = new Date('2026-07-18T17:00:00-04:00');
+const BACKGROUND_MODE = import.meta.env.VITE_BACKGROUND_STYLE === 'video' ? 'video' : 'art';
 
 const HERO_PHOTOS = [
     { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
@@ -299,8 +301,10 @@ function App() {
                 </div>
             )}
             <div
-                className={`min-h-screen w-full bg-gradient-to-br from-[rgba(203,244,250,0.85)] via-[rgba(255,214,201,0.85)] to-[rgba(178,226,236,0.9)] px-6 py-12 text-[rgba(44,96,130,0.95)] transition-opacity duration-500 ease-out md:px-10 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+                className={`ocean-page ${BACKGROUND_MODE === 'video' ? 'ocean-page--video' : ''} min-h-screen w-full px-6 py-12 text-[rgba(44,96,130,0.95)] transition-opacity duration-500 ease-out md:px-10 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
             >
+                <OceanBackground mode={BACKGROUND_MODE} />
+                <div className="ocean-content">
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
                         <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Lopez Flores</p>
@@ -736,6 +740,7 @@ function App() {
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(178,226,236,0.6)] pt-6 text-center text-sm text-[rgba(44,96,130,0.6)]">
                     <p>Made with ♥ for Alondra&apos;s quinceañera. See you on the dance floor!</p>
                 </footer>
+                </div>
             </div>
         </>
     );
