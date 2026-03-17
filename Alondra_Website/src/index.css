@@ -4,18 +4,18 @@
 
 @layer base {
   :root {
-    --color-sky: rgba(82, 191, 232, 1);
-    --color-sky-light: rgba(185, 245, 255, 1);
-    --color-blush: rgba(247, 202, 196, 1);
-    --color-mauve: rgba(201, 148, 158, 1);
-    --color-rosewater: rgba(251, 208, 235, 1);
-    --color-lavender: rgba(211, 214, 247, 1);
-    --color-plum: rgba(162, 126, 172, 1);
+    --color-sky: rgba(47, 156, 194, 1);
+    --color-sky-light: rgba(203, 244, 250, 1);
+    --color-blush: rgba(255, 179, 160, 1);
+    --color-mauve: rgba(240, 132, 112, 1);
+    --color-rosewater: rgba(255, 214, 201, 1);
+    --color-lavender: rgba(178, 226, 236, 1);
+    --color-plum: rgba(44, 96, 130, 1);
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.5;
     font-weight: 400;
     color: var(--color-plum);
-    background-color: rgba(185, 245, 255, 0.3);
+    background-color: rgba(203, 244, 250, 0.3);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;

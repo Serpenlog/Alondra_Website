@@ -8,9 +8,9 @@ body {
   inset: 0;
   background: radial-gradient(
     circle at top,
-    rgba(185, 245, 255, 0.9) 0%,
-    rgba(251, 208, 235, 0.88) 45%,
-    rgba(211, 214, 247, 0.95) 100%
+    rgba(203, 244, 250, 0.9) 0%,
+    rgba(255, 214, 201, 0.88) 45%,
+    rgba(178, 226, 236, 0.95) 100%
   );
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ body {
 .envelope-stamp {
   width: 130px;
   cursor: pointer;
-  filter: drop-shadow(0 10px 25px rgba(162, 126, 172, 0.3));
+  filter: drop-shadow(0 10px 25px rgba(44, 96, 130, 0.3));
 }
 
 .password-overlay {
@@ -52,8 +52,8 @@ body {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 24px;
   padding: 2rem;
-  box-shadow: 0 30px 60px rgba(82, 191, 232, 0.2);
-  border: 1px solid rgba(211, 214, 247, 0.6);
+  box-shadow: 0 30px 60px rgba(47, 156, 194, 0.2);
+  border: 1px solid rgba(178, 226, 236, 0.6);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -63,19 +63,19 @@ body {
 .password-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: rgba(162, 126, 172, 0.95);
+  color: rgba(44, 96, 130, 0.95);
 }
 
 .password-label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: rgba(82, 191, 232, 0.8);
+  color: rgba(47, 156, 194, 0.8);
 }
 
 .password-input {
   border-radius: 999px;
-  border: 1px solid rgba(211, 214, 247, 0.8);
+  border: 1px solid rgba(178, 226, 236, 0.8);
   padding: 0.75rem 1rem;
   text-align: center;
   font-size: 1rem;
@@ -84,15 +84,15 @@ body {
 }
 
 .password-input:focus {
-  border-color: rgba(162, 126, 172, 0.7);
-  box-shadow: 0 0 0 3px rgba(185, 245, 255, 0.4);
+  border-color: rgba(44, 96, 130, 0.7);
+  box-shadow: 0 0 0 3px rgba(203, 244, 250, 0.4);
 }
 
 .password-button {
   border: none;
   border-radius: 999px;
   padding: 0.75rem 1.5rem;
-  background: rgba(162, 126, 172, 0.95);
+  background: rgba(44, 96, 130, 0.95);
   color: #fff;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -102,7 +102,7 @@ body {
 }
 
 .password-button:hover {
-  background: rgba(162, 126, 172, 0.85);
+  background: rgba(44, 96, 130, 0.85);
   transform: translateY(-1px);
 }
 
@@ -120,9 +120,9 @@ body {
 }
 
 .glass-panel {
-  background: linear-gradient(135deg, rgba(185, 245, 255, 0.55), rgba(251, 208, 235, 0.45));
+  background: linear-gradient(135deg, rgba(203, 244, 250, 0.55), rgba(255, 214, 201, 0.45));
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(211, 214, 247, 0.6);
+  border: 1px solid rgba(178, 226, 236, 0.6);
 }
 
 .ribbon-tag {
@@ -132,10 +132,262 @@ body {
   gap: 0.5rem;
   padding: 0.4rem 1.1rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(82, 191, 232, 0.2), rgba(162, 126, 172, 0.25));
+  background: linear-gradient(90deg, rgba(47, 156, 194, 0.2), rgba(44, 96, 130, 0.25));
   color: var(--color-plum);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 0.72rem;
+}
+
+.ocean-page {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(175, 225, 244, 0.75) 0%, rgba(201, 241, 248, 0.8) 38%, rgba(245, 214, 184, 0.55) 100%);
+}
+
+.ocean-content {
+  position: relative;
+  z-index: 3;
+}
+
+.ocean-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ocean-gradient {
+  position: absolute;
+  inset: -15% -10% -5%;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(235, 253, 255, 0.85), transparent 45%),
+    radial-gradient(ellipse at 80% 22%, rgba(176, 230, 245, 0.65), transparent 52%),
+    linear-gradient(180deg, rgba(129, 203, 232, 0.45), rgba(116, 194, 221, 0.22) 45%, rgba(238, 209, 180, 0.4) 100%);
+  animation: oceanShift 24s ease-in-out infinite alternate;
+}
+
+.ocean-light-ray {
+  position: absolute;
+  width: 38vmax;
+  height: 110%;
+  top: -12%;
+  opacity: 0.26;
+  filter: blur(1px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+  transform: rotate(8deg);
+}
+
+.ocean-light-ray-one {
+  left: 8%;
+  animation: raySway 14s ease-in-out infinite;
+}
+
+.ocean-light-ray-two {
+  right: -5%;
+  opacity: 0.18;
+  transform: rotate(-6deg);
+  animation: raySway 17s ease-in-out infinite reverse;
+}
+
+.ocean-wave {
+  position: absolute;
+  left: -12%;
+  width: 124%;
+  border-radius: 43% 57% 0 0;
+}
+
+.ocean-wave-back {
+  bottom: -16%;
+  height: 29%;
+  background: linear-gradient(180deg, rgba(85, 173, 209, 0.38), rgba(79, 165, 198, 0.5));
+  animation: waveDrift 19s linear infinite;
+}
+
+.ocean-wave-mid {
+  bottom: -11%;
+  height: 23%;
+  background: linear-gradient(180deg, rgba(107, 199, 228, 0.46), rgba(92, 178, 207, 0.58));
+  animation: waveDrift 14s linear infinite reverse;
+}
+
+.ocean-wave-front {
+  bottom: -8%;
+  height: 20%;
+  background: linear-gradient(180deg, rgba(152, 220, 239, 0.53), rgba(100, 186, 212, 0.55));
+  box-shadow: 0 -8px 24px rgba(220, 248, 255, 0.35);
+  animation: waveDrift 10s linear infinite;
+}
+
+.shell {
+  position: absolute;
+  width: clamp(92px, 12vw, 150px);
+  bottom: 0.85rem;
+  opacity: 0.95;
+  filter: drop-shadow(0 12px 16px rgba(56, 95, 116, 0.2));
+}
+
+.shell-left {
+  left: clamp(0.5rem, 2vw, 1.6rem);
+  animation: shellBob 6.8s ease-in-out infinite;
+}
+
+.shell-right {
+  right: clamp(0.6rem, 2.5vw, 2.2rem);
+  width: clamp(104px, 14vw, 160px);
+  animation: shellBob 7.8s ease-in-out infinite reverse;
+}
+
+.ocean-starfish {
+  position: absolute;
+  right: clamp(4.8rem, 18vw, 15rem);
+  bottom: clamp(0.65rem, 2.2vh, 1.6rem);
+  width: clamp(36px, 5vw, 54px);
+  aspect-ratio: 1;
+  background: rgba(244, 153, 125, 0.82);
+  clip-path: polygon(50% 0, 61% 34%, 98% 34%, 69% 55%, 80% 90%, 50% 68%, 20% 90%, 31% 55%, 2% 34%, 39% 34%);
+  opacity: 0.82;
+  filter: drop-shadow(0 6px 8px rgba(104, 64, 52, 0.22));
+  animation: shellBob 8.5s ease-in-out infinite;
+}
+
+.ocean-bubbles {
+  position: absolute;
+  inset: 0;
+}
+
+.ocean-bubbles span {
+  position: absolute;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(236, 250, 255, 0.2);
+  animation: bubbleRise linear infinite;
+}
+
+.ocean-bubbles span:nth-child(1) {
+  left: 18%;
+  bottom: -24px;
+  width: 11px;
+  height: 11px;
+  animation-duration: 9s;
+}
+
+.ocean-bubbles span:nth-child(2) {
+  left: 73%;
+  bottom: -18px;
+  width: 8px;
+  height: 8px;
+  animation-delay: 2.2s;
+  animation-duration: 12s;
+}
+
+.ocean-bubbles span:nth-child(3) {
+  left: 88%;
+  bottom: -22px;
+  width: 15px;
+  height: 15px;
+  animation-delay: 1s;
+  animation-duration: 10s;
+}
+
+.ocean-bubbles span:nth-child(4) {
+  left: 32%;
+  bottom: -22px;
+  width: 9px;
+  height: 9px;
+  animation-delay: 4s;
+  animation-duration: 11s;
+}
+
+@keyframes waveDrift {
+  0% {
+    transform: translateX(-2.8%) translateY(0);
+  }
+  50% {
+    transform: translateX(1.8%) translateY(-1.4%);
+  }
+  100% {
+    transform: translateX(-2.8%) translateY(0);
+  }
+}
+
+@keyframes oceanShift {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.03) translateY(-1.5%);
+  }
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(-96vh) translateX(-10px) scale(1.28);
+    opacity: 0;
+  }
+}
+
+@keyframes shellBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+}
+
+@keyframes raySway {
+  0%,
+  100% {
+    transform: translateX(0) rotate(8deg);
+  }
+  50% {
+    transform: translateX(-10px) rotate(10deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .ocean-wave-back {
+    height: 24%;
+  }
+
+  .ocean-wave-mid {
+    height: 20%;
+  }
+
+  .ocean-wave-front {
+    height: 18%;
+  }
+
+  .ocean-bubbles span:nth-child(3),
+  .ocean-bubbles span:nth-child(4) {
+    display: none;
+  }
+
+  .ocean-starfish {
+    right: 4.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-gradient,
+  .ocean-wave,
+  .ocean-bubbles span,
+  .shell,
+  .ocean-starfish,
+  .ocean-light-ray {
+    animation: none !important;
+  }
 }
