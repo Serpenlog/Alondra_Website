@@ -277,6 +277,11 @@ body {
 }
 
 @media (max-width: 768px) {
+  .ocean-video {
+    object-fit: contain;
+    object-position: center top;
+  }
+
   .ocean-wave-back {
     height: 24%;
   }
