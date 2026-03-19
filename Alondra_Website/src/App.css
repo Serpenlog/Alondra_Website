@@ -143,7 +143,7 @@ body {
 .ocean-page {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(175, 225, 244, 0.75) 0%, rgba(201, 241, 248, 0.8) 38%, rgba(245, 214, 184, 0.55) 100%);
+  background: #d9eef4;
 }
 
 .ocean-content {
@@ -158,103 +158,21 @@ body {
   pointer-events: none;
 }
 
-.ocean-gradient {
-  position: absolute;
-  inset: -15% -10% -5%;
-  background:
-    radial-gradient(ellipse at 18% 18%, rgba(235, 253, 255, 0.85), transparent 45%),
-    radial-gradient(ellipse at 80% 22%, rgba(176, 230, 245, 0.65), transparent 52%),
-    linear-gradient(180deg, rgba(129, 203, 232, 0.45), rgba(116, 194, 221, 0.22) 45%, rgba(238, 209, 180, 0.4) 100%);
-  animation: oceanShift 24s ease-in-out infinite alternate;
+.ocean-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.ocean-light-ray {
-  position: absolute;
-  width: 38vmax;
-  height: 110%;
-  top: -12%;
-  opacity: 0.26;
-  filter: blur(1px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
-  transform: rotate(8deg);
-}
-
-.ocean-light-ray-one {
-  left: 8%;
-  animation: raySway 14s ease-in-out infinite;
-}
-
-.ocean-light-ray-two {
-  right: -5%;
-  opacity: 0.18;
-  transform: rotate(-6deg);
-  animation: raySway 17s ease-in-out infinite reverse;
-}
-
-.ocean-wave {
-  position: absolute;
-  left: -12%;
-  width: 124%;
-  border-radius: 43% 57% 0 0;
-}
-
-.ocean-wave-back {
-  bottom: -16%;
-  height: 29%;
-  background: linear-gradient(180deg, rgba(85, 173, 209, 0.38), rgba(79, 165, 198, 0.5));
-  animation: waveDrift 19s linear infinite;
-}
-
-.ocean-wave-mid {
-  bottom: -11%;
-  height: 23%;
-  background: linear-gradient(180deg, rgba(107, 199, 228, 0.46), rgba(92, 178, 207, 0.58));
-  animation: waveDrift 14s linear infinite reverse;
-}
-
-.ocean-wave-front {
-  bottom: -8%;
-  height: 20%;
-  background: linear-gradient(180deg, rgba(152, 220, 239, 0.53), rgba(100, 186, 212, 0.55));
-  box-shadow: 0 -8px 24px rgba(220, 248, 255, 0.35);
-  animation: waveDrift 10s linear infinite;
-}
-
-.shell {
-  position: absolute;
-  width: clamp(92px, 12vw, 150px);
-  bottom: 0.85rem;
-  opacity: 0.95;
-  filter: drop-shadow(0 12px 16px rgba(56, 95, 116, 0.2));
-}
-
-.shell-left {
-  left: clamp(0.5rem, 2vw, 1.6rem);
-  animation: shellBob 6.8s ease-in-out infinite;
-}
-
-.shell-right {
-  right: clamp(0.6rem, 2.5vw, 2.2rem);
-  width: clamp(104px, 14vw, 160px);
-  animation: shellBob 7.8s ease-in-out infinite reverse;
-}
-
-.ocean-starfish {
-  position: absolute;
-  right: clamp(4.8rem, 18vw, 15rem);
-  bottom: clamp(0.65rem, 2.2vh, 1.6rem);
-  width: clamp(36px, 5vw, 54px);
-  aspect-ratio: 1;
-  background: rgba(244, 153, 125, 0.82);
-  clip-path: polygon(50% 0, 61% 34%, 98% 34%, 69% 55%, 80% 90%, 50% 68%, 20% 90%, 31% 55%, 2% 34%, 39% 34%);
-  opacity: 0.82;
-  filter: drop-shadow(0 6px 8px rgba(104, 64, 52, 0.22));
-  animation: shellBob 8.5s ease-in-out infinite;
-}
-
-.ocean-bubbles {
+.ocean-video-overlay {
   position: absolute;
   inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(217, 238, 244, 0.2) 0%,
+    rgba(217, 238, 244, 0.28) 35%,
+    rgba(255, 244, 234, 0.34) 100%
+  );
 }
 
 .ocean-bubbles span {
