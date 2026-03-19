@@ -1,4 +1,4 @@
-import beachVideo from './alondra_images/beach_video.mp4';
+const beachVideoUrl = 'https://przqxcnsd1c3dswu.public.blob.vercel-storage.com/beach_video.mp4';
 
 function OceanBackground() {
     return (
@@ -11,7 +11,7 @@ function OceanBackground() {
                 playsInline
                 preload="auto"
             >
-                <source src={beachVideo} type="video/mp4" />
+                <source src={beachVideoUrl} type="video/mp4" />
             </video>
             <div className="ocean-video-overlay" />
         </div>
