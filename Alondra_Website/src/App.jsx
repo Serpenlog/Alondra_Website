@@ -383,7 +383,7 @@ function App() {
                             <div className="mt-8 grid gap-4 md:grid-cols-3">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Date</p>
-                                    <p className="mt-2 text-xl font-semibold">Tuesday • July 18, 2026</p>
+                                    <p className="mt-2 text-xl font-semibold">Saturday • July 18, 2026</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">Ceremony begins promptly at 4:30 PM</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
