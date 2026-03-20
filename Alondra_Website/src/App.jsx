@@ -360,7 +360,7 @@ function App() {
                                 <span className="ribbon-tag">Mis XV • July 18, 2026</span>
                             </div>
                             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl">
-                                Alondra&apos;s Quinceañera
+                                The celebration of Alondra Del Mar&apos;s Quinceañera
                             </h1>
                             <p className="mt-4 text-lg text-[rgba(44,96,130,0.8)] md:text-xl">
                                 Join us in celebrating fifteen beautiful years of faith, family, and dreams come true.
