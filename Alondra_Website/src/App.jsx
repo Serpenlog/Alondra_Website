@@ -637,12 +637,12 @@ function App() {
                             </p>
                             <div className="mt-8 flex flex-wrap justify-center gap-4">
                                 <a
-                                    href="https://www.paypal.com/"
+                                    href="https://cash.app/$alondradmar"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    Contribute via PayPal
+                                    Donate via Cash App
                                 </a>
                                 <a
                                     href="https://www.amazon.com/wedding"
