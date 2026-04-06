@@ -384,7 +384,7 @@ function App() {
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Date</p>
                                     <p className="mt-2 text-xl font-semibold">Saturday • July 18, 2026</p>
-                                    <p className="text-[rgba(44,96,130,0.7)]">Ceremony begins promptly at 4:30 PM</p>
+                                    <p className="text-[rgba(44,96,130,0.7)]">Ceremony begins promptly at 6:00 PM</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Venue</p>
@@ -395,7 +395,7 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Attire</p>
                                     <p className="mt-2 text-xl font-semibold">Formal Attire</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        Elegant evening wear, please. Gold and white ensembles are reserved exclusively for
+                                        Elegant evening wear, please. Ocean blue, gold and white ensembles are reserved exclusively for
                                         Alondra.
                                     </p>
                                 </div>
@@ -420,7 +420,7 @@ function App() {
                             <h2 className="font-display text-3xl md:text-4xl">Countdown to the Celebration</h2>
                             <p className="mt-2 text-[rgba(44,96,130,0.7)]">We can&apos;t wait to celebrate with you!</p>
                             <p className="mt-1 text-sm uppercase tracking-[0.4em] text-[rgba(47,156,194,0.75)]">
-                                July 18, 2026 • 4:30 PM Atlantic Time
+                                July 18, 2026 • 6:00 PM Atlantic Time
                             </p>
                             {timeLeft.completed ? (
                                 <p className="mt-6 text-2xl font-semibold text-[rgba(240,132,112,1)]">It&apos;s party time! 💃🏽</p>
