@@ -29,6 +29,7 @@ import alondra11Blur from './alondra_images/alondra11_blur.png';
 import alondra12 from './alondra_images/alondra12.JPG';
 import alondra12Blur from './alondra_images/alondra12_blur.png';
 import alondra13 from './alondra_images/alondra13.JPG';
+import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
 
@@ -51,6 +52,24 @@ const GALLERY_PHOTOS = [
     { src: alondra10, blurSrc: alondra10Blur, alt: 'Alondra posing along the shoreline in Puerto Rico.' },
     { src: alondra11, blurSrc: alondra11Blur, alt: 'Alondra celebrating with an elegant twirl.' },
     { src: alondra12, blurSrc: alondra12Blur, alt: 'Alondra framed by tropical greenery.' }
+];
+
+const INTRO_MESSAGE = [
+    'In the depths of the sea, where light dances among the waves and pearls hold their secrets, God writes stories filled with love and purpose…',
+    'Today, one of those stories blossoms into a young lady full of light, beauty, and dreams.',
+    'With great joy, we invite you to be part of this special moment and celebrate the 15th birthday of Alondra Del Mar ',
+    'A magical evening where the glow of the ocean, the delicacy of pearls, and God’s blessing will come together to create unforgettable memories.',
+    'Your presence will be the most precious jewel of this celebration.',
+    'With love,',
+    'López Flores Family'
+];
+
+const GIFT_MESSAGE = [
+    'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
+    'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
+    'If you wish to give an additional gift, it will be received with deep gratitude and much love, as a beautiful memory of this meaningful moment in my life.',
+    'For your convenience, we will have a money gift option (envelope gifts) and bank transfer available. ',
+    'Thank you for being part of this dream come true.'
 ];
 
 
@@ -380,6 +399,16 @@ function App() {
                                 Join us in celebrating fifteen beautiful years of faith, family, and dreams come true.
                                 Expect joyful traditions, delicious food, and a night of dancing beneath the stars.
                             </p>
+                            <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Introduction</p>
+                                <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                    {INTRO_MESSAGE.map((line) => (
+                                        <p key={line} className="font-script text-2xl leading-relaxed">
+                                            {line}
+                                        </p>
+                                    ))}
+                                </div>
+                            </div>
                             <div className="mt-10 grid gap-4 sm:grid-cols-3">
                                 {HERO_PHOTOS.map((photo) => (
                                     <figure
@@ -409,8 +438,16 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Attire</p>
                                     <p className="mt-2 text-xl font-semibold">Formal Attire</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        Please come in beige or nude colored formal wear. Ocean blue, gold and white ensembles are reserved exclusively for
-                                        Alondra.
+                                        Please come in{' '}
+                                        <a
+                                            href={dressCodeImage}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="font-semibold text-[rgba(240,132,112,1)] underline underline-offset-4 hover:text-[rgba(44,96,130,0.9)]"
+                                        >
+                                            beige or nude colored formal wear.
+                                        </a>{' '}
+                                        Ocean blue, gold and white ensembles are reserved exclusively for Alondra.
                                     </p>
                                 </div>
                             </div>
@@ -603,14 +640,14 @@ function App() {
                                         >
                                             {eventDetails.hotelPhone.display}
                                         </a>
-                                        or contact {eventDetails.hotelContact.name} at
+                                        {' '}or contact {eventDetails.hotelContact.name} at
                                         <a
                                             href={`tel:${eventDetails.hotelContact.raw}`}
                                             className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                         >
                                             {eventDetails.hotelContact.display}
                                         </a>
-                                        for assistance. A one-night deposit is required.
+                                        {' '}for assistance. A one-night deposit is required.
                                     </li>
                                     <li>
                                         <span className="font-semibold text-[rgba(44,96,130,0.9)]">Travel Tip:</span> {eventDetails.travelTip}
@@ -649,6 +686,16 @@ function App() {
                                 Your presence is the greatest gift! If you&apos;d like to contribute to Alondra&apos;s college dreams or
                                 share a keepsake, explore the options below or leave us an envelope.
                             </p>
+                            <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Message</p>
+                                <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                    {GIFT_MESSAGE.map((line) => (
+                                        <p key={line} className="font-script text-2xl leading-relaxed">
+                                            {line}
+                                        </p>
+                                    ))}
+                                </div>
+                            </div>
                             <div className="mt-8 flex flex-wrap justify-center gap-4">
                                 <a
                                     href={PAYMENT_LINKS.cashApp}

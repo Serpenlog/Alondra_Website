@@ -190,7 +190,7 @@ export default function Travel({ details }) {
                             >
                                 {details.hotelEmail}
                             </a>
-                            or call the hotel team directly.
+                            {' '}or call the hotel team directly.
                         </p>
                     </div>
                 </div>
@@ -212,7 +212,7 @@ export default function Travel({ details }) {
                                         <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{hotel.distance}</p>
                                     </div>
                                     <a
-                                        href="https://www.google.com/travel/hotels"
+                                        href="https://www.rinconoftheseas.com/en/hotel.html?clock-pms-wbe="
                                         target="_blank"
                                         rel="noreferrer"
                                         className="inline-flex items-center justify-center rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,1)] transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
