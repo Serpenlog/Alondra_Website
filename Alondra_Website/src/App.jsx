@@ -30,7 +30,7 @@ import alondra12 from './alondra_images/alondra12.JPG';
 import alondra12Blur from './alondra_images/alondra12_blur.png';
 import alondra13 from './alondra_images/alondra13.JPG';
 
-const EVENT_DATE = new Date('2026-07-18T17:00:00-04:00');
+const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
 
 const HERO_PHOTOS = [
     { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
@@ -53,7 +53,21 @@ const GALLERY_PHOTOS = [
     { src: alondra12, blurSrc: alondra12Blur, alt: 'Alondra framed by tropical greenery.' }
 ];
 
-const FEATURE_PHOTO = {
+
+const PAYMENT_LINKS = {
+    cashApp: 'https://cash.app/$alondradmar',
+    zelle: 'https://cash.app/$alondradmar',
+    venmo: 'https://cash.app/$alondradmar',
+    athMovil: 'https://cash.app/$alondradmar'
+};
+
+const RSVP_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
+const SONG_REQUEST_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
+const BLESSING_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
+const BLESSING_EMAIL = 'xv@alondradelmar.com';
+const FALLBACK_BLESSING_EMAIL = 'alondra.honey0629@gmail.com';
+
+const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Alondra's Quinceañera")}&dates=20260718T220000Z/20260719T030000Z&ctz=America/Puerto_Rico&details=${encodeURIComponent("Join us to celebrate Alondra's Quinceañera!")}&location=${encodeURIComponent("Road 115, Km 12.2, 26 Sea Bch Dr, Rincón, 00677, Puerto Rico")}`;const FEATURE_PHOTO = {
     src: alondra13,
     blurSrc: alondra9Blur,
     alt: "alondra family pic"
@@ -114,7 +128,7 @@ const REAL_DETAILS = {
     venueAddressLong: 'Road 115 KM 12.2, Rincón, Puerto Rico',
     hostNames: 'Marisol Flores & Jesus Lopez',
     hostFamily: 'the Lopez family',
-    contactEmail: 'celebrate@alondrasxv.com',
+    contactEmail: 'xv@alondradelmar.com',
     hotelBlockName: 'Quinceañera Alondra',
     reservationCode: '334',
     hotelPhone: { display: '(787) 823-7500', raw: '7878237500' },
@@ -531,7 +545,7 @@ function App() {
                                     </p>
                                 </div>
                                 <a
-                                    href="https://calendar.google.com"
+                                    href={CALENDAR_EVENT_URL}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
@@ -637,7 +651,7 @@ function App() {
                             </p>
                             <div className="mt-8 flex flex-wrap justify-center gap-4">
                                 <a
-                                    href="https://cash.app/$alondradmar"
+                                    href={PAYMENT_LINKS.cashApp}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
@@ -645,20 +659,28 @@ function App() {
                                     Donate via Cash App
                                 </a>
                                 <a
-                                    href="https://www.amazon.com/wedding"
+                                    href={PAYMENT_LINKS.zelle}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    View Amazon Registry
+                                    Send with Zelle
                                 </a>
                                 <a
-                                    href="https://www.honeyfund.com/"
+                                    href={PAYMENT_LINKS.venmo}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    Honeyfund Experiences
+                                    Send with Venmo
+                                </a>
+                                <a
+                                    href={PAYMENT_LINKS.athMovil}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                >
+                                    Send with ATH Móvil
                                 </a>
                             </div>
                         </section>
@@ -672,16 +694,17 @@ function App() {
                                         accommodate special requests, and prepare your welcome favors.
                                     </p>
                                     <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.7)]">
-                                        <li>✨ Kindly respond for each guest in your party.</li>
-                                        <li>🎶 Add your favorite song—our DJ is taking requests!</li>
                                     </ul>
                                 </div>
                                 <form
                                     className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md"
-                                    action="https://forms.gle/"
+                                    action={RSVP_FORM_ENDPOINT}
                                     method="post"
                                     target="_blank"
                                 >
+                                    <input type="hidden" name="_subject" value="New RSVP - Alondra's Quinceañera" />
+                                    <input type="hidden" name="_captcha" value="false" />
+                                    <input type="hidden" name="_template" value="table" />
                                     <div className="grid gap-4">
                                         <input
                                             type="text"
@@ -731,6 +754,124 @@ function App() {
                                 </form>
                             </div>
                         </section>
+
+                        <section id="song-requests" className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <div className="grid gap-8 lg:grid-cols-2">
+                                <div>
+                                    <h2 className="font-display text-3xl">Song Requests & Blessings</h2>
+                                    <p className="mt-3 text-[rgba(44,96,130,0.75)]">
+                                        Share your favorite songs and send Alondra your heartfelt blessings below. Both forms are configured
+                                        to deliver to {BLESSING_EMAIL}.
+                                    </p>
+                                </div>
+                                <div className="grid gap-6">
+                                    <form
+                                        className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 shadow-md"
+                                        action={SONG_REQUEST_FORM_ENDPOINT}
+                                        method="post"
+                                        target="_blank"
+                                    >
+                                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
+                                            Song Request Form
+                                        </p>
+                                        <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
+                                        <input type="hidden" name="_captcha" value="false" />
+                                        <input type="hidden" name="_template" value="table" />
+                                        <div className="grid gap-3">
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                placeholder="Your Name"
+                                                required
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                placeholder="Email Address"
+                                                required
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                placeholder="Phone Number"
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <input
+                                                type="text"
+                                                name="song"
+                                                placeholder="Song title + artist"
+                                                required
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <textarea
+                                                name="note"
+                                                rows="3"
+                                                placeholder="Optional message for the DJ or Alondra"
+                                                className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            ></textarea>
+                                            <button
+                                                type="submit"
+                                                className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                            >
+                                                Submit Song Request
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <form
+                                        className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md"
+                                        action={BLESSING_FORM_ENDPOINT}
+                                        method="post"
+                                        target="_blank"
+                                    >
+                                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
+                                            Blessings Form
+                                        </p>
+                                        <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
+                                        <input type="hidden" name="_captcha" value="false" />
+                                        <input type="hidden" name="_template" value="table" />
+                                        <div className="grid gap-3">
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                placeholder="Your Name"
+                                                required
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                placeholder="Email Address"
+                                                required
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                placeholder="Phone Number"
+                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            />
+                                            <textarea
+                                                name="message"
+                                                rows="4"
+                                                placeholder="Write your blessing for Alondra"
+                                                required
+                                                className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                            ></textarea>
+                                            <button
+                                                type="submit"
+                                                className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                            >
+                                                Send Your Blessing
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+
                 </main>
                 ) : (
                     <Travel details={eventDetails} />
