@@ -395,7 +395,7 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Attire</p>
                                     <p className="mt-2 text-xl font-semibold">Formal Attire</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        Elegant evening wear, please. Ocean blue, gold and white ensembles are reserved exclusively for
+                                        Please come in beige or nude colored formal wear. Ocean blue, gold and white ensembles are reserved exclusively for
                                         Alondra.
                                     </p>
                                 </div>
