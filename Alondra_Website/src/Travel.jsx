@@ -35,6 +35,11 @@ const CAR_RENTALS = [
     { name: 'Avis', url: 'https://www.avis.com' }
 ];
 
+const STAY_RENTALS = [
+    { name: 'Airbnb in Rincón', url: 'https://www.airbnb.com/s/Rincon--Puerto-Rico/homes' },
+    { name: 'Guesthouses in Rincón', url: 'https://www.booking.com/searchresults.html?ss=Rincon%2C+Puerto+Rico&nflt=ht_id%3D216' }
+];
+
 const DINING_OPTIONS = [
     { name: 'The Beach House', url: 'https://www.beachhouserincon.com', clickable: true },
     { name: 'Tamboo Restaurant' },
@@ -88,7 +93,7 @@ const LOCAL_TIPS = {
     en: [
         {
             title: 'Check-In Details',
-            body: 'Call the reservations team ahead of arrival to confirm your deposit and room assignment. Early check-in is based on availability.'
+            body: 'Call the reservations team ahead of arrival to confirm your room assignment. Early check-in is based on availability.'
         },
         {
             title: 'Beach Time',
@@ -161,18 +166,6 @@ const getText = (lang) =>
               contact: 'Contacto:',
               email: 'Correo:',
               bookingNote: 'Las reservaciones en línea aún no están disponibles; por favor reserva directamente.',
-              weekSnapshot: 'Resumen de la Semana de Celebración',
-              sunday: 'Domingo:',
-              sundayBody: 'Llegadas tempranas y tarde relajada de playa con la familia',
-              monday: 'Lunes:',
-              mondayBody: 'Recorrido de ensayo al atardecer y degustación de postres (6:30 PM)',
-              tuesday: 'Martes:',
-              tuesdayBody: 'Ceremonia y recepción en',
-              doorsOpen: 'apertura de puertas a las 3:45 PM',
-              wednesday: 'Miércoles:',
-              wednesdayBody: 'Brunch de despedida con vista al Caribe (10:30 AM)',
-              needHelp: '¿Necesitas ayuda durante la semana? Escribe a',
-              needHelpTail: 'o llama directamente al equipo del hotel.',
               whereToStay: 'Dónde Hospedarte',
               whereStayTextStart: 'Hospédate en la propiedad para disfrutar la brisa del océano y acceso fácil a cada evento. Menciona',
               whereStayTextMid: 'y el código de reservación',
@@ -186,10 +179,12 @@ const getText = (lang) =>
               referenceLabel: 'menciona',
               from: 'Desde',
               highlights: 'Destacados',
-              highlightsTextStart: 'Aprovecha al máximo tu tiempo en',
-              highlightsTextEnd: 'Estos momentos capturan el ambiente costero relajado que Alondra ama compartir con familia y amistades.',
+              highlightsTextStart: '',
+              highlightsTextEnd: '. . un lugar donde el mar susurra calma y los atardeceres pintan el cielo con tonos inolvidables. Este rincón del Caribe, uno de los lugares preferidos de Alondra Del Mar se distingue por sus playas doradas, su ambiente relajado y la belleza natural que lo envuelve. Frente a este escenario único, el Rincón of the Seas Grand Caribbean Hotel & Villas, ubicado justo a orillas del mar, será el lugar donde celebraremos este momento especial. Entre brisas suaves, olas y cielos de ensueño, te invitamos a disfrutar de la magia de Rincón y ser parte de una celebración inolvidable.',
               arrivalTransportation: 'Llegada y Transporte',
+              rentals: 'Rentas',
               carRentals: 'Alquiler de Autos',
+              placesToStay: 'Lugares para Hospedarte',
               carTip: '✨ Rentar auto es altamente recomendado para una experiencia sin contratiempos.',
               weather: 'Puerto Rico en Julio',
               climateTags: 'Cálido · Tropical · Radiante',
@@ -220,19 +215,7 @@ const getText = (lang) =>
               frontDesk: 'Front Desk:',
               contact: 'Contact:',
               email: 'Email:',
-              bookingNote: 'Online reservations are not yet available; please book directly. A one-night deposit is required.',
-              weekSnapshot: 'Celebration Week Snapshot',
-              sunday: 'Sunday:',
-              sundayBody: 'Early arrivals and relaxed beach afternoon with family',
-              monday: 'Monday:',
-              mondayBody: 'Sunset rehearsal walk-through and dessert tasting (6:30 PM)',
-              tuesday: 'Tuesday:',
-              tuesdayBody: 'Ceremony & reception at',
-              doorsOpen: 'doors open 3:45 PM',
-              wednesday: 'Wednesday:',
-              wednesdayBody: 'Farewell brunch overlooking the Caribbean (10:30 AM)',
-              needHelp: 'Need assistance during the week? Email',
-              needHelpTail: 'or call the hotel team directly.',
+              bookingNote: 'Online reservations are not yet available; please book directly.',
               whereToStay: 'Where to Stay',
               whereStayTextStart: 'Stay right on property to enjoy the ocean breeze and effortless access to every event. Mention',
               whereStayTextMid: 'and reservation code',
@@ -246,10 +229,12 @@ const getText = (lang) =>
               referenceLabel: 'reference',
               from: 'From',
               highlights: 'Highlights',
-              highlightsTextStart: 'Make the most of your time in',
+              highlightsTextStart: '',
               highlightsTextEnd: 'These moments capture the relaxed coastal vibe Alondra loves sharing with family and friends.',
               arrivalTransportation: 'Arrival & Transportation',
+              rentals: 'Rentals',
               carRentals: 'Car Rentals',
+              placesToStay: 'Places to Stay',
               carTip: '✨ Renting a car is highly recommended for a seamless experience.',
               weather: 'Puerto Rico in July',
               climateTags: 'Warm · Tropical · Radiant',
@@ -274,6 +259,7 @@ export default function Travel({ details, lang = 'en' }) {
     const travelHighlights = getTravelHighlights(details.reservationCode, lang);
     const locationLabel = details.venueAddressLong.split(',').slice(1).join(',').trim() || (lang === 'es' ? 'el área' : 'the area');
     const [regionalAirport, majorAirport] = details.airports;
+    const airportNameList = details.airports.map((airport) => airport.name).join(', ');
     const hotels = [
         {
             name: details.venueName,
@@ -364,33 +350,7 @@ export default function Travel({ details, lang = 'en' }) {
                             <li>{t.bookingNote}</li>
                         </ul>
                     </div>
-                    <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
-                        <h2 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.weekSnapshot}</h2>
-                        <ul className="mt-3 space-y-2 text-sm text-[rgba(44,96,130,0.7)]">
-                            <li>
-                                <strong>{t.sunday}</strong> {t.sundayBody}
-                            </li>
-                            <li>
-                                <strong>{t.monday}</strong> {t.mondayBody}
-                            </li>
-                            <li>
-                                <strong>{t.tuesday}</strong> {t.tuesdayBody} {details.venueName} ({t.doorsOpen})
-                            </li>
-                            <li>
-                                <strong>{t.wednesday}</strong> {t.wednesdayBody}
-                            </li>
-                        </ul>
-                        <p className="mt-4 text-sm text-[rgba(44,96,130,0.6)]">
-                            {t.needHelp}
-                            <a
-                                className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                href={`mailto:${details.hotelEmail}`}
-                            >
-                                {details.hotelEmail}
-                            </a>
-                            {' '}{t.needHelpTail}
-                        </p>
-                    </div>
+
                 </div>
             </section>
 
@@ -435,7 +395,7 @@ export default function Travel({ details, lang = 'en' }) {
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] p-6 shadow-md">
                         <h2 className="font-display text-3xl">{t.flyingIn}</h2>
                         <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                            {t.flyingText} {regionalAirport.name} or {majorAirport.name}.
+                            {t.flyingText} {airportNameList}.
                         </p>
                     </div>
                     <div className="space-y-4">
@@ -543,9 +503,26 @@ export default function Travel({ details, lang = 'en' }) {
                     <p className="mt-6 text-sm text-[rgba(44,96,130,0.7)]">{t.carTip}</p>
                 </div>
                 <aside className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">{t.carRentals}</h2>
-                    <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
+                    <h2 className="font-display text-3xl">{t.rentals}</h2>
+                    <h3 className="mt-6 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.carRentals}</h3>
+                    <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
                         {CAR_RENTALS.map((rental) => (
+                            <li key={rental.name}>
+                                <a
+                                    href={rental.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
+                                >
+                                    {rental.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <h3 className="mt-8 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.placesToStay}</h3>
+                    <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
+                        {STAY_RENTALS.map((rental) => (
                             <li key={rental.name}>
                                 <a
                                     href={rental.url}

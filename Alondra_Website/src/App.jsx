@@ -183,6 +183,12 @@ const REAL_DETAILS = {
             name: 'San Juan, PR (SJU)',
             details:
                 'Major international hub with plentiful flight options. Approximate travel time to the hotel: ~2 hours 20 minutes (subject to traffic).'
+        },
+        {
+            code: 'PSE',
+            name: 'Ponce, PR (PSE)',
+            details:
+                'Alternative regional airport south of Rincón. Approximate travel time to the hotel: ~1 hour 35 minutes (subject to traffic).'
         }
     ],
     travelTip:
