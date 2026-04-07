@@ -118,8 +118,8 @@ const ITINERARY = {
     en: [
         {
             time: '6:00 PM',
-            title: 'Guest Arrival & Welcome',
-            description: 'PLACEHOLDER. FILL IN ONCE YOU HAVE THE INFORMATION.'
+            title: 'Welcome',
+            description: 'Between the whisper of the waves and the light of sunset, we will experience a moment full of blessing at 6:00 PM. We recommend arriving 20 minutes early so you do not miss any details. We will share more information soon.'
         }
     ],
     es: [
@@ -486,7 +486,7 @@ function App() {
                             <p className="mt-4 text-lg text-[rgba(44,96,130,0.8)] md:text-xl">
                                 {lang === 'es'
                                     ? 'Entre el susurro de las olas y la luz de las estrellas y con la bendición de Dios, te invitamos a celebrar los XV años de Alondra de Mar.'
-                                    : 'Join us in celebrating fifteen beautiful years of faith, family, and dreams come true. Expect joyful traditions, delicious food, and a night of dancing beneath the stars.'}
+                                    : 'Between the whisper of the waves, the light of the stars, and God’s blessing, we invite you to celebrate Alondra Del Mar’s fifteenth birthday.'}
                             </p>
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Introducción' : 'Introduction'}</p>
@@ -538,7 +538,7 @@ function App() {
                                         </a>{' '}
                                         {lang === 'es'
                                             ? 'Los tonos blanco, dorado y azul están reservados para la quinceañera.'
-                                            : 'Ocean blue, gold and white ensembles are reserved exclusively for Alondra.'}
+                                            : 'White, gold, and blue tones are reserved for the quinceañera.'}
                                     </p>
                                 </div>
                             </div>
@@ -587,7 +587,7 @@ function App() {
                                 <p className="mt-3 text-[rgba(44,96,130,0.8)]">
                                         {lang === 'es'
                                             ? 'Desde la misa tradicional hasta una recepción brillante, cada detalle se planificó pensando en la familia y amistades. Mira los momentos destacados de la noche y llega a tiempo para las ceremonias más importantes para Alondra y sus padres.'
-                                            : 'From the traditional mass to a sparkling reception, every detail has been planned with family and friends in mind. Take a peek at the evening\'s highlights and make sure you arrive in time for the ceremonies that matter most to Alondra and her parents.'}
+                                            : 'From the traditional mass to a radiant reception, every detail was planned with family and friends in mind. See the evening’s highlights and arrive on time for the ceremonies that matter most to Alondra and her parents.'}
                                 </p>
                                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                                     {MEMORY_PHOTOS.map((photo) => (
@@ -607,7 +607,7 @@ function App() {
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
                                         <div>
-                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Momentos de la corte' : 'Courtside Moments'}</h3>
+                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Momentos de la corte' : 'Court Moments'}</h3>
                                             <p className="text-[rgba(44,96,130,0.7)]">
                                                 {lang === 'es'
                                                     ? 'Celebra con la corte de damas y chambelanes de Alondra durante el baile sorpresa y un brindis especial de sus padrinos.'
@@ -653,7 +653,7 @@ function App() {
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
                                             ? 'Hemos preparado esta noche con especial cuidado para que no te pierdas ninguna tradición. Te invitamos a llegar un poco antes para dejar un mensaje en el libro de recuerdos de Alondra.'
-                                            : 'We\'ve curated the night so you won\'t miss a single tradition. Arrive a little early to snap photos by the floral wall and sign Alondra\'s guestbook.'}
+                                            : 'We prepared this evening with special care so you do not miss any tradition. We invite you to arrive a little early to leave a message in Alondra’s memory book.'}
                                     </p>
                                 </div>
                                 <a
@@ -681,7 +681,7 @@ function App() {
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
                                     ? 'Desde sus primeros sueños hasta los momentos que la han hecho brillar, descubre un vistazo al camino de Alondra Del Mar antes de su gran día.'
-                                    : 'From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra\'s journey leading up to the big day.'}
+                                    : 'From her earliest dreams to the moments that have made her shine, discover a glimpse of Alondra Del Mar’s journey before her big day.'}
                             </p>
                             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                     {GALLERY_PHOTOS.map((photo) => (
@@ -705,7 +705,7 @@ function App() {
                                     <p className="mt-2 text-[rgba(44,96,130,0.75)]">
                                     {lang === 'es'
                                         ? `La celebración de los XV años de Alondra del Mar tendrá lugar en el hermoso ${eventDetails.venueName}, ubicado frente a una costa espectacular en Rincón, Puerto Rico. Para una experiencia aún más especial, los invitados que deseen hospedarse en la propiedad pueden coordinar su estadía a pasos del salón frente al mar.`
-                                        : `${eventDetails.venueName} is nestled along a stunning coastline. Guests staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay just steps from the oceanfront ballroom.`}
+                                        : `Alondra Del Mar’s quinceañera celebration will take place at the beautiful ${eventDetails.venueName}, located along a spectacular coastline in Rincón, Puerto Rico. For an even more special experience, guests who wish to stay on the property can coordinate their stay just steps from the oceanfront ballroom.`}
                                     </p>
                                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.7)]">
                                     <li>
@@ -759,7 +759,7 @@ function App() {
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
                                     ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra o compartir un detalle, explora las opciones de abajo o déjanos un sobre.'
-                                    : 'Your presence is the greatest gift! If you\'d like to contribute to Alondra\'s college dreams or share a keepsake, explore the options below or leave us an envelope.'}
+                                    : 'Your presence is the best gift! If you would like to support Alondra’s college dreams or share a gift, explore the options below or leave us an envelope.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Mensaje' : 'Message'}</p>
@@ -814,7 +814,7 @@ function App() {
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
                                             ? '¡Estamos emocionados de celebrar contigo! Avísanos quiénes asistirán para reservar sus asientos, atender solicitudes especiales y preparar sus detalles de bienvenida.'
-                                            : 'We can\'t wait to celebrate with you! Let us know who\'s coming so we can reserve your seats, accommodate special requests, and prepare your welcome favors.'}
+                                            : 'We are excited to celebrate with you! Let us know who will attend so we can reserve your seats, accommodate special requests, and prepare your welcome details.'}
                                     </p>
                                     <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.7)]">
                                     </ul>

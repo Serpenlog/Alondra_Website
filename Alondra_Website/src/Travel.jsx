@@ -92,12 +92,16 @@ const RINCON_HIGHLIGHTS = {
 const LOCAL_TIPS = {
     en: [
         {
-            title: 'Beach Time',
-            body: 'Pack beachwear for downtime—Steps Beach and Balneario de Rincón are minutes from the hotel.'
+            title: 'Check-In Details',
+            body: 'Call the reservations team before you arrive to confirm your room. Early check-in depends on availability.'
+        },
+        {
+            title: 'Free Time During Your Stay',
+            body: 'Enjoy the charm of the sea during your free time. We recommend bringing comfortable beachwear to explore the beautiful coasts of Rincón and spend time at the pool.'
         },
         {
             title: 'Sunset Tradition',
-            body: 'Gather with family on the hotel grounds for a sunset photo session overlooking the Caribbean Sea.'
+            body: 'Gather with family at the hotel for a sunset photo session with a view of the Caribbean Sea.'
         }
     ],
     es: [
@@ -155,7 +159,7 @@ const getText = (lang) =>
               intro: 'La celebración será en',
               locatedAt: 'ubicado en',
               introTail:
-                  'Por favor llega con suficiente tiempo para disfrutar la vista costera, tomar un refrigerio de bienvenida y prepararte para que la ceremonia comience a las 4:30 PM.',
+                  'Por favor llega con suficiente tiempo para disfrutar la vista costera, tomar un refrigerio de bienvenida y prepararte para que la ceremonia comience a las 6:00 PM.',
               venueDetails: 'Detalles del Lugar',
               reservationCode: 'Código de Reservación:',
               frontDesk: 'Recepción:',
@@ -205,7 +209,7 @@ const getText = (lang) =>
               intro: 'The celebration takes place at',
               locatedAt: 'located at',
               introTail:
-                  'Please arrive with enough time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.',
+                  'Please arrive with enough time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 6:00 PM.',
               venueDetails: 'Venue Details',
               reservationCode: 'Reservation Code:',
               frontDesk: 'Front Desk:',
@@ -221,12 +225,12 @@ const getText = (lang) =>
               flyingText: 'Choose between',
               flyingTextTail: 'Both offer reliable ground transportation to',
               groundTransportation: 'Ground Transportation',
-              groundText: 'and the following taxi teams are happy to help:',
+              groundText: 'among the many taxi lines, here are a few that will gladly help you:',
               referenceLabel: 'reference',
               from: 'From',
               highlights: 'Highlights',
               highlightsTextStart: '',
-              highlightsTextEnd: 'These moments capture the relaxed coastal vibe Alondra loves sharing with family and friends.',
+              highlightsTextEnd: 'a place where the sea whispers calm and sunsets paint the sky with unforgettable tones. This corner of the Caribbean—one of Alondra Del Mar’s favorite places—stands out for its golden beaches, relaxed atmosphere, and the natural beauty that surrounds it. In front of this unique setting, the Rincón of the Seas Grand Caribbean Hotel & Villas, located right by the sea, will be where we celebrate this special moment. Between soft breezes, waves, and dreamy skies, we invite you to enjoy the magic of Rincón and be part of an unforgettable celebration.',
               arrivalTransportation: 'Arrival & Transportation',
               rentals: 'Rentals',
               carRentals: 'Car Rentals',
