@@ -115,46 +115,16 @@ const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=T
 const ITINERARY = {
     en: [
         {
-            time: '4:00 PM',
-            title: 'Guest Arrival & Welcome',
-            description: 'Sip a sparkling agua fresca, drop off gifts, and settle in before the festivities begin.'
-        },
-        {
-            time: '4:30 PM',
-            title: 'Mass of Thanksgiving',
-            description: 'Join us as we give thanks for Alondra\'s journey with a heartfelt ceremony led by Father Miguel.'
-        },
-        {
             time: '6:00 PM',
-            title: 'Reception Grand Entrance',
-            description: 'Alondra makes her debut! Enjoy a gourmet dinner, signature mocktails, and plenty of photo moments.'
-        },
-        {
-            time: '8:00 PM',
-            title: 'Traditional Dances & Fiesta',
-            description: 'From the father-daughter dance to La Última Muñeca, dance the night away with DJ Solstice.'
+            title: 'Guest Arrival & Welcome',
+            description: 'PLACEHOLDER. FILL IN ONCE YOU HAVE THE INFORMATION.'
         }
     ],
     es: [
         {
-            time: '4:00 PM',
-            title: 'Llegada y bienvenida',
-            description: 'Disfruta una refrescante agua fresca, deja tus regalos y acomódate antes de que comience la celebración.'
-        },
-        {
-            time: '4:30 PM',
-            title: 'Misa de acción de gracias',
-            description: 'Acompáñanos a dar gracias por la vida de Alondra en una ceremonia emotiva dirigida por el Padre Miguel.'
-        },
-        {
             time: '6:00 PM',
-            title: 'Gran entrada a la recepción',
-            description: '¡Alondra hace su gran entrada! Disfruta una cena especial, mocktails de la casa y muchos momentos para fotos.'
-        },
-        {
-            time: '8:00 PM',
-            title: 'Bailes tradicionales y fiesta',
-            description: 'Desde el baile de padre e hija hasta La Última Muñeca, baila toda la noche con DJ Solstice.'
+            title: 'Bienvenida',
+            description: 'Entre el susurro de las olas y la luz del atardecer, viviremos un momento lleno de bendición a las 6:00 PM. Te recomendamos llegar 20 minutos antes para no perder ningún detalle. Pronto compartiremos más información.'
         }
     ]
 };
@@ -701,7 +671,7 @@ function App() {
                             <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Momentos con Alondra' : 'Moments with Alondra'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
-                                    ? 'Desde los ensayos hasta aventuras bajo el sol, disfruta un vistazo al camino de Alondra antes de su gran día.'
+                                    ? 'Desde sus primeros sueños hasta los momentos que la han hecho brillar, descubre un vistazo al camino de Alondra Del Mar antes de su gran día.'
                                     : 'From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra\'s journey leading up to the big day.'}
                             </p>
                             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
