@@ -188,7 +188,7 @@ const REAL_DETAILS = {
     travelTip:
         'Aguadilla Airport (BQN) is roughly 40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes, subject to traffic.',
     travelTipEs:
-        'El aeropuerto de Aguadilla (BQN) está a unos 40 minutos del hotel, mientras que desde San Juan (SJU) el trayecto promedio es de 2 horas y 20 minutos, según el tránsito.',
+        'El aeropuerto de Aguadilla (BQN) se encuentra a aproximadamente 40 minutos del hotel. Desde el aeropuerto de San Juan (SJU) el trayecto es de alrededor es de 2 horas y 20 minutos, dependiendo del tránsito.',
     rideshareNote: 'Uber operates throughout Puerto Rico',
     rideshareNoteEs: 'Uber opera en todo Puerto Rico',
     mapTitle: 'Rincón of the Seas Grand Caribbean Hotel & Villa Map',
@@ -721,12 +721,9 @@ function App() {
                                         {' '}{lang === 'es' ? 'para asistencia.' : 'for assistance.'}
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Consejo de viaje:' : 'Travel Tip:'}</span> {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
+                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Recomendaciones de viaje:' : 'Travel Tip:'}</span> {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? '¿Necesitas transporte?' : 'Need a ride?'}</span> {lang === 'es' ? `Desde ${majorAirport.code} llama a ` : `From ${majorAirport.code} call `}{' '}
-                                        {formatTaxiList(eventDetails.taxiServices.sju)}. {lang === 'es' ? `Desde ${regionalAirport.code} comunícate con ` : `From ${regionalAirport.code} reach `}{' '}
-                                        {formatTaxiList(eventDetails.taxiServices.bqn)}. {lang === 'es' ? 'Uber también está disponible en todo Puerto Rico.' : 'Uber is also available throughout Puerto Rico.'}
                                     </li>
                                 </ul>
                                 <div className="mt-6">

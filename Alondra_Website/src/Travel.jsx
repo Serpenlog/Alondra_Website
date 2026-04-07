@@ -182,7 +182,7 @@ const getText = (lang) =>
               flyingText: 'Elige entre',
               flyingTextTail: 'Ambos ofrecen transporte terrestre confiable hacia',
               groundTransportation: 'Transporte Terrestre',
-              groundText: 'y los siguientes equipos de taxi con gusto te ayudarán:',
+              groundText: 'entre las muchas líneas de taxis aquí te brindamos algunas que con gusto te ayudarán:',
               referenceLabel: 'menciona',
               from: 'Desde',
               highlights: 'Destacados',
@@ -435,7 +435,7 @@ export default function Travel({ details, lang = 'en' }) {
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] p-6 shadow-md">
                         <h2 className="font-display text-3xl">{t.flyingIn}</h2>
                         <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                            {t.flyingText} {regionalAirport.name} or {majorAirport.name}. {t.flyingTextTail} {locationLabel}.
+                            {t.flyingText} {regionalAirport.name} or {majorAirport.name}.
                         </p>
                     </div>
                     <div className="space-y-4">
