@@ -750,7 +750,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    {lang === 'es' ? 'Enviar Cash App' : 'Send with Cash App'}
+                                    {lang === 'es' ? 'Enviar con Cash App' : 'Send with Cash App'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.zelle}
@@ -772,7 +772,7 @@ function App() {
                                     href={PAYMENT_LINKS.athMovil}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                    className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
                                     {lang === 'es' ? 'Enviar con ATH Móvil' : 'Send with ATH Móvil'}
                                 </a>
