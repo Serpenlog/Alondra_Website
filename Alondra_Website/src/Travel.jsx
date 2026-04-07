@@ -103,7 +103,7 @@ const LOCAL_TIPS = {
     es: [
         {
             title: 'Tiempo Libre Durante tu Estadía',
-            body: 'Disfruta del encanto del mar en tu tiempo libre. Te recomendamos llevar tu ropa de playa, cómoda para explorar las hermosas costas de Rincón y pasar tiempo en la piscina.'
+            body: 'Disfruta del encanto del mar en tu tiempo libre. Te recomendamos llevar ropa de playa, cómoda para explorar las hermosas costas de Rincón y pasar tiempo en la piscina y la playa.'
         },
         {
             title: 'Tradición del Atardecer',
@@ -167,7 +167,7 @@ const getText = (lang) =>
               arrivalTransportation: 'Llegada y Transporte',
               rentals: 'Rentas',
               carRentals: 'Alquiler de Autos',
-              placesToStay: 'Lugares para Hospedarte',
+              placesToStay: 'Lugares Adicionales donde puedes Hospedarte',
               carTip: '✨ Rentar auto es altamente recomendado para una experiencia sin contratiempos.',
               weather: 'Puerto Rico en Julio',
               climateTags: 'Cálido · Tropical · Radiante',
@@ -250,7 +250,7 @@ export default function Travel({ details, lang = 'en' }) {
             distance: lang === 'es' ? 'Hospedaje en el mismo lugar del evento' : 'On-site accommodations at the venue',
             description:
                 lang === 'es'
-                    ? 'Hospédate donde ocurre la celebración y disfruta vistas al mar, amenidades tipo resort y acceso sencillo a cada evento.'
+                    ? 'Hospédate donde ocurre la celebración de los XV años de Alondra Del Mar y disfruta de la belleza y comodidad del resort, el hermoso atardecer frente al mar.'
                     : 'Stay where the celebration takes place and enjoy ocean views, resort amenities, and effortless access to every event.',
             perks:
                 lang === 'es'
