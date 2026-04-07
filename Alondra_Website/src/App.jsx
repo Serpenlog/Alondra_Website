@@ -54,23 +54,43 @@ const GALLERY_PHOTOS = [
     { src: alondra12, blurSrc: alondra12Blur, alt: 'Alondra framed by tropical greenery.' }
 ];
 
-const INTRO_MESSAGE = [
-    'In the depths of the sea, where light dances among the waves and pearls hold their secrets, God writes stories filled with love and purpose…',
-    'Today, one of those stories blossoms into a young lady full of light, beauty, and dreams.',
-    'With great joy, we invite you to be part of this special moment and celebrate the 15th birthday of Alondra Del Mar ',
-    'A magical evening where the glow of the ocean, the delicacy of pearls, and God’s blessing will come together to create unforgettable memories.',
-    'Your presence will be the most precious jewel of this celebration.',
-    'With love,',
-    'López Flores Family'
-];
+const INTRO_MESSAGE = {
+    en: [
+        'In the depths of the sea, where light dances among the waves and pearls hold their secrets, God writes stories filled with love and purpose…',
+        'Today, one of those stories blossoms into a young lady full of light, beauty, and dreams.',
+        'With great joy, we invite you to be part of this special moment and celebrate the 15th birthday of Alondra Del Mar ',
+        'A magical evening where the glow of the ocean, the delicacy of pearls, and God’s blessing will come together to create unforgettable memories.',
+        'Your presence will be the most precious jewel of this celebration.',
+        'With love,',
+        'López Flores Family'
+    ],
+    es: [
+        'En las profundidades del mar, donde la luz danza entre las olas y las perlas guardan sus secretos, Dios escribe historias llenas de amor y propósito…',
+        'Hoy, una de esas historias florece en una joven llena de luz, belleza y sueños.',
+        'Con gran alegría, te invitamos a ser parte de este momento tan especial y celebrar los 15 años de Alondra Del Mar.',
+        'Una noche mágica donde el brillo del océano, la delicadeza de las perlas y la bendición de Dios se unirán para crear recuerdos inolvidables.',
+        'Tu presencia será la joya más valiosa de esta celebración.',
+        'Con amor,',
+        'Familia López Flores'
+    ]
+};
 
-const GIFT_MESSAGE = [
-    'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
-    'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
-    'If you wish to give an additional gift, it will be received with deep gratitude and much love, as a beautiful memory of this meaningful moment in my life.',
-    'For your convenience, we will have a money gift option (envelope gifts) and bank transfer available. ',
-    'Thank you for being part of this dream come true.'
-];
+const GIFT_MESSAGE = {
+    en: [
+        'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
+        'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
+        'If you wish to give an additional gift, it will be received with deep gratitude and much love, as a beautiful memory of this meaningful moment in my life.',
+        'For your convenience, we will have a money gift option (envelope gifts) and bank transfer available. ',
+        'Thank you for being part of this dream come true.'
+    ],
+    es: [
+        'Como las perlas escondidas en lo profundo del mar, cada regalo es un gesto lleno de amor y cariño.',
+        'Tu presencia siempre será el regalo más valioso para mí, y tenerte a mi lado en este día especial llenará mi corazón de alegría.',
+        'Si deseas dar un regalo adicional, lo recibiré con profunda gratitud y mucho amor, como un hermoso recuerdo de este momento tan importante en mi vida.',
+        'Para tu conveniencia, tendremos opción de regalo en efectivo (sobre) y transferencia bancaria.',
+        'Gracias por ser parte de este sueño hecho realidad.'
+    ]
+};
 
 
 const PAYMENT_LINKS = {
@@ -214,6 +234,27 @@ const DEMO_DETAILS = {
 const formatTaxiList = (services) =>
     services.map((service) => `${service.name} (${service.phone})`).join(', ');
 
+const UI_TEXT = {
+    en: {
+        navHome: 'Home',
+        navTravel: 'Travel Info',
+        langButton: 'Español',
+        unlockTitle: 'Enter your phone number to continue',
+        phoneLabel: 'Phone number',
+        unlockButton: 'Unlock Invitation',
+        invalidPhone: 'That phone number is not on the guest list. Please try again.'
+    },
+    es: {
+        navHome: 'Inicio',
+        navTravel: 'Viaje',
+        langButton: 'English',
+        unlockTitle: 'Ingresa tu número de teléfono para continuar',
+        phoneLabel: 'Número de teléfono',
+        unlockButton: 'Abrir invitación',
+        invalidPhone: 'Ese número no está en la lista de invitados. Inténtalo nuevamente.'
+    }
+};
+
 function getTimeRemaining() {
     const total = EVENT_DATE.getTime() - Date.now();
 
@@ -242,6 +283,7 @@ function getTimeRemaining() {
 }
 
 function App() {
+    const [lang, setLang] = useState('en');
     const [accessStage, setAccessStage] = useState('sealed');
     const [currentPage, setCurrentPage] = useState('home');
     const [timeLeft, setTimeLeft] = useState(() => getTimeRemaining());
@@ -251,6 +293,7 @@ function App() {
 
     const isOpen = accessStage === 'open';
     const isDemo = guestInfo?.isDemo ?? false;
+    const t = UI_TEXT[lang];
     const eventDetails = isDemo ? DEMO_DETAILS : REAL_DETAILS;
     const [regionalAirport, majorAirport] = eventDetails.airports;
 
@@ -275,7 +318,7 @@ function App() {
             return;
         }
 
-        setPasswordError('That phone number is not on the guest list. Please try again.');
+        setPasswordError(t.invalidPhone);
     };
 
     useEffect(() => {
@@ -300,15 +343,25 @@ function App() {
 
     return (
         <>
+            <button
+                type="button"
+                onClick={() => setLang((prev) => (prev === 'en' ? 'es' : 'en'))}
+                className="fixed right-5 top-5 z-[80] rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.88)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[rgba(44,96,130,0.9)] shadow-md transition hover:bg-[rgba(203,244,250,0.85)]"
+            >
+                {t.langButton}
+            </button>
             {accessStage === 'sealed' && (
-                <Envelope onStampClick={() => setAccessStage('password')} />
+                <Envelope
+                    onStampClick={() => setAccessStage('password')}
+                    openInvitationLabel={lang === 'es' ? 'Abrir invitación' : 'Open invitation'}
+                />
             )}
             {accessStage === 'password' && (
                 <div className="password-overlay">
                     <form className="password-card" onSubmit={handlePasswordSubmit}>
-                        <p className="password-title">Enter your phone number to continue</p>
+                        <p className="password-title">{t.unlockTitle}</p>
                         <label className="password-label" htmlFor="phone-number">
-                            Phone number
+                            {t.phoneLabel}
                         </label>
                         <input
                             id="phone-number"
@@ -327,7 +380,7 @@ function App() {
                         />
                         {passwordError && <p className="password-error">{passwordError}</p>}
                         <button type="submit" className="password-button">
-                            Unlock Invitation
+                            {t.unlockButton}
                         </button>
                     </form>
                 </div>
@@ -344,8 +397,8 @@ function App() {
                     </div>
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(203,244,250,0.4)] p-1 shadow-lg sm:mx-0">
                         {[
-                            { key: 'home', label: 'Home' },
-                            { key: 'travel', label: 'Travel Info' }
+                            { key: 'home', label: t.navHome },
+                            { key: 'travel', label: t.navTravel }
                         ].map(({ key, label }) => (
                             <button
                                 key={key}
@@ -402,7 +455,7 @@ function App() {
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Introduction</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
-                                    {INTRO_MESSAGE.map((line) => (
+                                    {(INTRO_MESSAGE[lang] ?? INTRO_MESSAGE.en).map((line) => (
                                         <p key={line} className="font-script text-2xl leading-relaxed">
                                             {line}
                                         </p>
@@ -689,7 +742,7 @@ function App() {
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Message</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
-                                    {GIFT_MESSAGE.map((line) => (
+                                    {(GIFT_MESSAGE[lang] ?? GIFT_MESSAGE.en).map((line) => (
                                         <p key={line} className="font-script text-2xl leading-relaxed">
                                             {line}
                                         </p>
@@ -921,7 +974,7 @@ function App() {
 
                 </main>
                 ) : (
-                    <Travel details={eventDetails} />
+                    <Travel details={eventDetails} lang={lang} />
                 )}
 
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(178,226,236,0.6)] pt-6 text-center text-sm text-[rgba(44,96,130,0.6)]">

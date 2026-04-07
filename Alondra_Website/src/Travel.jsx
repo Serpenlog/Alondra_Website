@@ -1,32 +1,32 @@
 import './App.css';
 
-const LOCAL_TIPS = [
-    {
-        title: 'Check-In Details',
-        body: 'Call the reservations team ahead of arrival to confirm your deposit and room assignment. Early check-in is based on availability.'
-    },
-    {
-        title: 'Beach Time',
-        body: 'Pack beachwear for downtime—Steps Beach and Balneario de Rincón are minutes from the hotel.'
-    },
-    {
-        title: 'Sunset Tradition',
-        body: 'Gather with family on the hotel grounds for a sunset photo session overlooking the Caribbean Sea.'
-    }
-];
+const QUICK_LINKS = {
+    en: [
+        { label: '✧ Plan Your Trip', href: '#added-plan-your-trip' },
+        { label: '✧ Explore Puerto Rico', href: '#explore-puerto-rico' },
+        { label: '✧ Dining Guide', href: '#dining-guide' },
+        { label: '✧ Travel Details', href: '#added-travel-details' }
+    ],
+    es: [
+        { label: '✧ Planifica Tu Viaje', href: '#added-plan-your-trip' },
+        { label: '✧ Explora Puerto Rico', href: '#explore-puerto-rico' },
+        { label: '✧ Guía Gastronómica', href: '#dining-guide' },
+        { label: '✧ Detalles de Viaje', href: '#added-travel-details' }
+    ]
+};
 
-const QUICK_LINKS = [
-    { label: '✧ Plan Your Trip', href: '#added-plan-your-trip' },
-    { label: '✧ Explore Puerto Rico', href: '#explore-puerto-rico' },
-    { label: '✧ Dining Guide', href: '#dining-guide' },
-    { label: '✧ Travel Details', href: '#added-travel-details' }
-];
-
-const AIRPORT_OPTIONS = [
-    { code: 'SJU', name: 'San Juan (SJU)', url: 'https://aeropuertosju.com', clickable: true },
-    { code: 'BQN', name: 'Aguadilla (BQN) — Closest to Rincón'},
-    { code: 'PSE', name: 'Ponce (PSE)'}
-];
+const AIRPORT_OPTIONS = {
+    en: [
+        { code: 'SJU', name: 'San Juan (SJU)', url: 'https://aeropuertosju.com', clickable: true },
+        { code: 'BQN', name: 'Aguadilla (BQN) — Closest to Rincón' },
+        { code: 'PSE', name: 'Ponce (PSE)' }
+    ],
+    es: [
+        { code: 'SJU', name: 'San Juan (SJU)', url: 'https://aeropuertosju.com', clickable: true },
+        { code: 'BQN', name: 'Aguadilla (BQN) — El más cercano a Rincón' },
+        { code: 'PSE', name: 'Ponce (PSE)' }
+    ]
+};
 
 const CAR_RENTALS = [
     { name: 'Enterprise', url: 'https://www.enterprise.com' },
@@ -37,76 +37,270 @@ const CAR_RENTALS = [
 
 const DINING_OPTIONS = [
     { name: 'The Beach House', url: 'https://www.beachhouserincon.com', clickable: true },
-    { name: 'Tamboo Restaurant'},
-    { name: 'La Copa Llena'},
+    { name: 'Tamboo Restaurant' },
+    { name: 'La Copa Llena' },
     { name: 'La Cambija' },
     { name: 'Café 413' }
 ];
 
 const MUST_TRY_DISHES = ['Mofongo', 'Lechón', 'Arroz con Gandules', 'Fresh Seafood', 'Piña Colada'];
 
-const ISLAND_EXPERIENCES = [
-    { title: 'El Yunque Rainforest', details: 'Waterfalls · Rivers · Lush Nature' },
-    { title: 'Culebra · Flamenco Beach', details: 'Crystal-clear waters & white sand' },
-    { title: 'Palomino Island', details: 'Exclusive coastal escape' },
-    { title: 'Bioluminescent Bay', details: 'Glowing waters at night' },
-    { title: 'Old San Juan', details: 'Colorful streets & historic beauty' }
-];
+const ISLAND_EXPERIENCES = {
+    en: [
+        { title: 'El Yunque Rainforest', details: 'Waterfalls · Rivers · Lush Nature' },
+        { title: 'Culebra · Flamenco Beach', details: 'Crystal-clear waters & white sand' },
+        { title: 'Palomino Island', details: 'Exclusive coastal escape' },
+        { title: 'Bioluminescent Bay', details: 'Glowing waters at night' },
+        { title: 'Old San Juan', details: 'Colorful streets & historic beauty' }
+    ],
+    es: [
+        { title: 'Bosque Lluvioso El Yunque', details: 'Cascadas · Ríos · Naturaleza exuberante' },
+        { title: 'Culebra · Playa Flamenco', details: 'Aguas cristalinas y arena blanca' },
+        { title: 'Isla Palomino', details: 'Escapada costera exclusiva' },
+        { title: 'Bahía Bioluminiscente', details: 'Aguas brillantes por la noche' },
+        { title: 'Viejo San Juan', details: 'Calles coloridas y belleza histórica' }
+    ]
+};
 
-const CULTURAL_SCENIC = [
-    { title: 'Las Salinas · Cabo Rojo', details: 'Pink salt flats' },
-    { title: 'Castillo Serrallés · Ponce', details: 'Historic elegance' },
-    { title: 'Parque de Bombas · Ponce', details: 'Iconic architecture' },
-    { title: 'Cueva del Indio · Arecibo', details: 'Ocean caves & dramatic views' },
-    { title: 'Waterfalls & Rivers', details: 'Hidden tropical escapes' }
-];
+const CULTURAL_SCENIC = {
+    en: [
+        { title: 'Las Salinas · Cabo Rojo', details: 'Pink salt flats' },
+        { title: 'Castillo Serrallés · Ponce', details: 'Historic elegance' },
+        { title: 'Parque de Bombas · Ponce', details: 'Iconic architecture' },
+        { title: 'Cueva del Indio · Arecibo', details: 'Ocean caves & dramatic views' },
+        { title: 'Waterfalls & Rivers', details: 'Hidden tropical escapes' }
+    ],
+    es: [
+        { title: 'Las Salinas · Cabo Rojo', details: 'Salinas rosadas' },
+        { title: 'Castillo Serrallés · Ponce', details: 'Elegancia histórica' },
+        { title: 'Parque de Bombas · Ponce', details: 'Arquitectura icónica' },
+        { title: 'Cueva del Indio · Arecibo', details: 'Cuevas marinas y vistas dramáticas' },
+        { title: 'Cascadas y Ríos', details: 'Escapes tropicales escondidos' }
+    ]
+};
 
-const RINCON_HIGHLIGHTS = ['Sandy Beach', 'Steps Beach', 'Faro de Punta Higueras (Sunset)'];
+const RINCON_HIGHLIGHTS = {
+    en: ['Sandy Beach', 'Steps Beach', 'Faro de Punta Higueras (Sunset)'],
+    es: ['Sandy Beach', 'Steps Beach', 'Faro de Punta Higueras (Atardecer)']
+};
 
-const getTravelHighlights = (reservationCode) => [
-    {
-        title: 'Arrival Window',
-        body: 'Plan to reach the venue by 3:45 PM to enjoy welcome refreshments and settle in before the ceremony.'
-    },
-    {
-        title: 'Check-In Support',
-        body: `Call ahead with reservation code ${reservationCode} so the team can confirm your room and greet you upon arrival.`
-    },
-    {
-        title: 'Golden Hour Moments',
-        body: 'Sunset is around 7:00 PM in July—perfect for a quick family photo session before the reception begins.'
-    }
-];
+const LOCAL_TIPS = {
+    en: [
+        {
+            title: 'Check-In Details',
+            body: 'Call the reservations team ahead of arrival to confirm your deposit and room assignment. Early check-in is based on availability.'
+        },
+        {
+            title: 'Beach Time',
+            body: 'Pack beachwear for downtime—Steps Beach and Balneario de Rincón are minutes from the hotel.'
+        },
+        {
+            title: 'Sunset Tradition',
+            body: 'Gather with family on the hotel grounds for a sunset photo session overlooking the Caribbean Sea.'
+        }
+    ],
+    es: [
+        {
+            title: 'Detalles de Check-In',
+            body: 'Llama al equipo de reservaciones antes de llegar para confirmar depósito y habitación. El check-in temprano depende de disponibilidad.'
+        },
+        {
+            title: 'Tiempo de Playa',
+            body: 'Lleva ropa de playa para tu tiempo libre: Steps Beach y Balneario de Rincón están a minutos del hotel.'
+        },
+        {
+            title: 'Tradición del Atardecer',
+            body: 'Reúnete con la familia en el hotel para una sesión de fotos al atardecer con vista al Mar Caribe.'
+        }
+    ]
+};
 
-export default function Travel({ details }) {
-    const travelHighlights = getTravelHighlights(details.reservationCode);
-    const locationLabel = details.venueAddressLong.split(',').slice(1).join(',').trim() || 'the area';
+const getTravelHighlights = (reservationCode, lang) =>
+    lang === 'es'
+        ? [
+              {
+                  title: 'Horario de Llegada',
+                  body: 'Planea llegar al lugar para las 3:45 PM para disfrutar del recibimiento y acomodarte antes de la ceremonia.'
+              },
+              {
+                  title: 'Apoyo de Check-In',
+                  body: `Llama con anticipación usando el código ${reservationCode} para que el equipo confirme tu habitación y te reciba al llegar.`
+              },
+              {
+                  title: 'Momentos de Golden Hour',
+                  body: 'El atardecer es alrededor de las 7:00 PM en julio: perfecto para una sesión rápida de fotos familiares antes de la recepción.'
+              }
+          ]
+        : [
+              {
+                  title: 'Arrival Window',
+                  body: 'Plan to reach the venue by 3:45 PM to enjoy welcome refreshments and settle in before the ceremony.'
+              },
+              {
+                  title: 'Check-In Support',
+                  body: `Call ahead with reservation code ${reservationCode} so the team can confirm your room and greet you upon arrival.`
+              },
+              {
+                  title: 'Golden Hour Moments',
+                  body: 'Sunset is around 7:00 PM in July—perfect for a quick family photo session before the reception begins.'
+              }
+          ];
+
+const getText = (lang) =>
+    lang === 'es'
+        ? {
+              travelGuide: 'Guía de Viaje',
+              planStay: 'Planifica Tu Estadía en',
+              intro: 'La celebración será en',
+              introTail:
+                  'Por favor llega con suficiente tiempo para disfrutar la vista costera, tomar un refrigerio de bienvenida y prepararte para que la ceremonia comience a las 4:30 PM.',
+              venueDetails: 'Detalles del Lugar',
+              reservationCode: 'Código de Reservación:',
+              frontDesk: 'Recepción:',
+              contact: 'Contacto:',
+              email: 'Correo:',
+              bookingNote: 'Las reservaciones en línea aún no están disponibles; por favor reserva directamente. Se requiere un depósito de una noche.',
+              weekSnapshot: 'Resumen de la Semana de Celebración',
+              sunday: 'Domingo:',
+              sundayBody: 'Llegadas tempranas y tarde relajada de playa con la familia',
+              monday: 'Lunes:',
+              mondayBody: 'Recorrido de ensayo al atardecer y degustación de postres (6:30 PM)',
+              tuesday: 'Martes:',
+              tuesdayBody: 'Ceremonia y recepción en',
+              wednesday: 'Miércoles:',
+              wednesdayBody: 'Brunch de despedida con vista al Caribe (10:30 AM)',
+              needHelp: '¿Necesitas ayuda durante la semana? Escribe a',
+              needHelpTail: 'o llama directamente al equipo del hotel.',
+              whereToStay: 'Dónde Hospedarte',
+              whereStayTextStart: 'Hospédate en la propiedad para disfrutar la brisa del océano y acceso fácil a cada evento. Menciona',
+              whereStayTextMid: 'y el código de reservación',
+              whereStayTextEnd: 'para agregarte a nuestra lista de bienvenida y recibir la tarifa grupal.',
+              checkAvailability: 'Ver Disponibilidad',
+              flyingIn: 'Llegando en Avión',
+              flyingText: 'Elige entre',
+              flyingTextTail: 'Ambos ofrecen transporte terrestre confiable hacia',
+              groundTransportation: 'Transporte Terrestre',
+              groundText: 'y los siguientes equipos de taxi con gusto te ayudarán:',
+              from: 'Desde',
+              highlights: 'Destacados',
+              highlightsTextStart: 'Aprovecha al máximo tu tiempo en',
+              highlightsTextEnd: 'Estos momentos capturan el ambiente costero relajado que Alondra ama compartir con familia y amistades.',
+              arrivalTransportation: 'Llegada y Transporte',
+              carRentals: 'Alquiler de Autos',
+              carTip: '✨ Rentar auto es altamente recomendado para una experiencia sin contratiempos.',
+              weather: 'Puerto Rico en Julio',
+              climateTags: 'Cálido · Tropical · Radiante',
+              avgTemp: 'Temperatura Promedio',
+              weatherFeel: 'Sensación del Clima',
+              weatherFeelBody: 'Brisa ligera del océano · Lluvias refrescantes ocasionales',
+              dressInspo: 'Inspiración de Vestimenta',
+              dressInspoBody: 'Resort elegante · Estilo costero chic · Telas livianas',
+              curatedDining: 'Gastronomía Recomendada',
+              mustTry: 'Imperdibles',
+              tasteSoul: '✨ Un sabor al alma de Puerto Rico',
+              islandExperiences: 'Experiencias en la Isla',
+              culturalScenic: 'Cultural y Escénico',
+              rinconHighlights: 'Destacados de Rincón',
+              honor: 'Nos honra celebrar este momento inolvidable',
+              inHonor: 'En honor de',
+              closing: '✨ Una noche inspirada en el océano, donde la elegancia fluye como olas y los recuerdos brillan como perlas.'
+          }
+        : {
+              travelGuide: 'Travel Guide',
+              planStay: 'Plan Your Stay in',
+              intro: 'The celebration takes place at',
+              introTail:
+                  'Please arrive with enough time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.',
+              venueDetails: 'Venue Details',
+              reservationCode: 'Reservation Code:',
+              frontDesk: 'Front Desk:',
+              contact: 'Contact:',
+              email: 'Email:',
+              bookingNote: 'Online reservations are not yet available; please book directly. A one-night deposit is required.',
+              weekSnapshot: 'Celebration Week Snapshot',
+              sunday: 'Sunday:',
+              sundayBody: 'Early arrivals and relaxed beach afternoon with family',
+              monday: 'Monday:',
+              mondayBody: 'Sunset rehearsal walk-through and dessert tasting (6:30 PM)',
+              tuesday: 'Tuesday:',
+              tuesdayBody: 'Ceremony & reception at',
+              wednesday: 'Wednesday:',
+              wednesdayBody: 'Farewell brunch overlooking the Caribbean (10:30 AM)',
+              needHelp: 'Need assistance during the week? Email',
+              needHelpTail: 'or call the hotel team directly.',
+              whereToStay: 'Where to Stay',
+              whereStayTextStart: 'Stay right on property to enjoy the ocean breeze and effortless access to every event. Mention',
+              whereStayTextMid: 'and reservation code',
+              whereStayTextEnd: 'to be added to our welcome list and receive the group rate.',
+              checkAvailability: 'Check Availability',
+              flyingIn: 'Flying In',
+              flyingText: 'Choose between',
+              flyingTextTail: 'Both offer reliable ground transportation to',
+              groundTransportation: 'Ground Transportation',
+              groundText: 'and the following taxi teams are happy to help:',
+              from: 'From',
+              highlights: 'Highlights',
+              highlightsTextStart: 'Make the most of your time in',
+              highlightsTextEnd: 'These moments capture the relaxed coastal vibe Alondra loves sharing with family and friends.',
+              arrivalTransportation: 'Arrival & Transportation',
+              carRentals: 'Car Rentals',
+              carTip: '✨ Renting a car is highly recommended for a seamless experience.',
+              weather: 'Puerto Rico in July',
+              climateTags: 'Warm · Tropical · Radiant',
+              avgTemp: 'Average Temperature',
+              weatherFeel: 'Weather Feel',
+              weatherFeelBody: 'Light ocean breeze · Occasional refreshing rain',
+              dressInspo: 'Dress Code Inspiration',
+              dressInspoBody: 'Elegant Resort · Coastal Chic · Light Fabrics',
+              curatedDining: 'Curated Dining',
+              mustTry: 'Must Try',
+              tasteSoul: '✨ A taste of Puerto Rico\'s soul',
+              islandExperiences: 'Island Experiences',
+              culturalScenic: 'Cultural & Scenic',
+              rinconHighlights: 'Rincón Highlights',
+              honor: 'We are honored to celebrate this unforgettable moment',
+              inHonor: 'In honor of',
+              closing: '✨ A night inspired by the ocean, where elegance flows like waves and memories shine like pearls.'
+          };
+
+export default function Travel({ details, lang = 'en' }) {
+    const t = getText(lang);
+    const travelHighlights = getTravelHighlights(details.reservationCode, lang);
+    const locationLabel = details.venueAddressLong.split(',').slice(1).join(',').trim() || (lang === 'es' ? 'el área' : 'the area');
     const [regionalAirport, majorAirport] = details.airports;
     const hotels = [
         {
             name: details.venueName,
-            distance: 'On-site accommodations at the venue',
+            distance: lang === 'es' ? 'Hospedaje en el mismo lugar del evento' : 'On-site accommodations at the venue',
             description:
-                'Stay where the celebration takes place and enjoy ocean views, resort amenities, and effortless access to every event.',
-            perks: [
-                `Reference reservation code ${details.reservationCode} and “${details.hotelBlockName}” when booking`,
-                'One-night deposit required to confirm your stay',
-                'Book directly with the hotel team — online reservations are not yet available'
-            ]
+                lang === 'es'
+                    ? 'Hospédate donde ocurre la celebración y disfruta vistas al mar, amenidades tipo resort y acceso sencillo a cada evento.'
+                    : 'Stay where the celebration takes place and enjoy ocean views, resort amenities, and effortless access to every event.',
+            perks:
+                lang === 'es'
+                    ? [
+                          `Menciona el código de reservación ${details.reservationCode} y “${details.hotelBlockName}” al reservar`,
+                          'Se requiere un depósito de una noche para confirmar la estadía',
+                          'Reserva directamente con el equipo del hotel — las reservaciones en línea aún no están disponibles'
+                      ]
+                    : [
+                          `Reference reservation code ${details.reservationCode} and “${details.hotelBlockName}” when booking`,
+                          'One-night deposit required to confirm your stay',
+                          'Book directly with the hotel team — online reservations are not yet available'
+                      ]
         }
     ];
 
     return (
         <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-14">
             <section className="glass-panel rounded-3xl p-8 shadow-xl" id="added-travel-details">
-                <span className="ribbon-tag">Travel Guide</span>
-                <h1 className="mt-4 font-display text-4xl">Plan Your Stay in {locationLabel}</h1>
+                <span className="ribbon-tag">{t.travelGuide}</span>
+                <h1 className="mt-4 font-display text-4xl">{t.planStay} {locationLabel}</h1>
                 <p className="mt-3 max-w-3xl text-[rgba(44,96,130,0.75)]">
-                    The celebration takes place at <strong>{details.venueName}</strong>, located at {details.venueAddressLong}. Please arrive with enough
-                    time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.
+                    {t.intro} <strong>{details.venueName}</strong>, located at {details.venueAddressLong}. {t.introTail}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
-                    {QUICK_LINKS.map((item) => (
+                    {(QUICK_LINKS[lang] ?? QUICK_LINKS.en).map((item) => (
                         <a
                             key={item.label}
                             href={item.href}
@@ -129,15 +323,15 @@ export default function Travel({ details }) {
                 </div>
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
                     <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
-                        <h2 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">Venue Details</h2>
+                        <h2 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.venueDetails}</h2>
                         <p className="mt-2 text-[rgba(44,96,130,0.75)]">{details.venueName}</p>
                         <p className="text-[rgba(44,96,130,0.6)]">{details.venueAddressLong}</p>
                         <ul className="mt-4 space-y-2 text-sm text-[rgba(44,96,130,0.6)]">
                             <li>
-                                <strong>Reservation Code:</strong> {details.reservationCode} (reference “{details.hotelBlockName}”)
+                                <strong>{t.reservationCode}</strong> {details.reservationCode} (reference “{details.hotelBlockName}”)
                             </li>
                             <li>
-                                <strong>Front Desk:</strong>{' '}
+                                <strong>{t.frontDesk}</strong>{' '}
                                 <a
                                     className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                     href={`tel:${details.hotelPhone.raw}`}
@@ -146,7 +340,7 @@ export default function Travel({ details }) {
                                 </a>
                             </li>
                             <li>
-                                <strong>Contact:</strong>{' '}
+                                <strong>{t.contact}</strong>{' '}
                                 <a
                                     className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                     href={`tel:${details.hotelContact.raw}`}
@@ -155,7 +349,7 @@ export default function Travel({ details }) {
                                 </a>
                             </li>
                             <li>
-                                <strong>Email:</strong>{' '}
+                                <strong>{t.email}</strong>{' '}
                                 <a
                                     className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                     href={`mailto:${details.hotelEmail}`}
@@ -163,34 +357,34 @@ export default function Travel({ details }) {
                                     {details.hotelEmail}
                                 </a>
                             </li>
-                            <li>Online reservations are not yet available; please book directly. A one-night deposit is required.</li>
+                            <li>{t.bookingNote}</li>
                         </ul>
                     </div>
                     <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
-                        <h2 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">Celebration Week Snapshot</h2>
+                        <h2 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.weekSnapshot}</h2>
                         <ul className="mt-3 space-y-2 text-sm text-[rgba(44,96,130,0.7)]">
                             <li>
-                                <strong>Sunday:</strong> Early arrivals and relaxed beach afternoon with family
+                                <strong>{t.sunday}</strong> {t.sundayBody}
                             </li>
                             <li>
-                                <strong>Monday:</strong> Sunset rehearsal walk-through and dessert tasting (6:30 PM)
+                                <strong>{t.monday}</strong> {t.mondayBody}
                             </li>
                             <li>
-                                <strong>Tuesday:</strong> Ceremony & reception at {details.venueName} (doors open 3:45 PM)
+                                <strong>{t.tuesday}</strong> {t.tuesdayBody} {details.venueName} (doors open 3:45 PM)
                             </li>
                             <li>
-                                <strong>Wednesday:</strong> Farewell brunch overlooking the Caribbean (10:30 AM)
+                                <strong>{t.wednesday}</strong> {t.wednesdayBody}
                             </li>
                         </ul>
                         <p className="mt-4 text-sm text-[rgba(44,96,130,0.6)]">
-                            Need assistance during the week? Email
+                            {t.needHelp}
                             <a
                                 className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                 href={`mailto:${details.hotelEmail}`}
                             >
                                 {details.hotelEmail}
                             </a>
-                            {' '}or call the hotel team directly.
+                            {' '}{t.needHelpTail}
                         </p>
                     </div>
                 </div>
@@ -198,10 +392,9 @@ export default function Travel({ details }) {
 
             <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">Where to Stay</h2>
+                    <h2 className="font-display text-3xl">{t.whereToStay}</h2>
                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                        Stay right on property to enjoy the ocean breeze and effortless access to every event. Mention “{details.hotelBlockName}” and
-                        reservation code {details.reservationCode} to be added to our welcome list and receive the group rate.
+                        {t.whereStayTextStart} “{details.hotelBlockName}” {t.whereStayTextMid} {details.reservationCode} {t.whereStayTextEnd}
                     </p>
                     <div className="mt-6 space-y-6">
                         {hotels.map((hotel) => (
@@ -217,7 +410,7 @@ export default function Travel({ details }) {
                                         rel="noreferrer"
                                         className="inline-flex items-center justify-center rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,1)] transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                     >
-                                        Check Availability
+                                        {t.checkAvailability}
                                     </a>
                                 </div>
                                 <p className="mt-4 text-[rgba(44,96,130,0.7)]">{hotel.description}</p>
@@ -236,9 +429,9 @@ export default function Travel({ details }) {
 
                 <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 shadow-xl">
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] p-6 shadow-md">
-                        <h2 className="font-display text-3xl">Flying In</h2>
+                        <h2 className="font-display text-3xl">{t.flyingIn}</h2>
                         <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                            Choose between {regionalAirport.name} or {majorAirport.name}. Both offer reliable ground transportation to {locationLabel}.
+                            {t.flyingText} {regionalAirport.name} or {majorAirport.name}. {t.flyingTextTail} {locationLabel}.
                         </p>
                     </div>
                     <div className="space-y-4">
@@ -251,13 +444,13 @@ export default function Travel({ details }) {
                         ))}
                     </div>
                     <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
-                        <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">Ground Transportation</h3>
+                        <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.groundTransportation}</h3>
                         <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">
-                            {details.rideshareNote}, and the following taxi teams are happy to help:
+                            {details.rideshareNote}, {t.groundText}
                         </p>
                         <div className="mt-4 space-y-4 text-sm text-[rgba(44,96,130,0.7)]">
                             <div>
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">From {majorAirport.name}</p>
+                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {majorAirport.name}</p>
                                 <ul className="mt-2 space-y-1">
                                     {details.taxiServices.sju.map((service) => (
                                         <li key={service.name}>
@@ -273,7 +466,7 @@ export default function Travel({ details }) {
                                 </ul>
                             </div>
                             <div>
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">From {regionalAirport.name}</p>
+                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {regionalAirport.name}</p>
                                 <ul className="mt-2 space-y-1">
                                     {details.taxiServices.bqn.map((service) => (
                                         <li key={service.name}>
@@ -295,13 +488,12 @@ export default function Travel({ details }) {
 
             <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">{locationLabel} Highlights</h2>
+                    <h2 className="font-display text-3xl">{locationLabel} {t.highlights}</h2>
                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                        Make the most of your time in {locationLabel}. These moments capture the relaxed coastal vibe Alondra loves sharing with
-                        family and friends.
+                        {t.highlightsTextStart} {locationLabel}. {t.highlightsTextEnd}
                     </p>
                     <ul className="mt-6 space-y-4 text-[rgba(44,96,130,0.7)]">
-                        {LOCAL_TIPS.map((tip) => (
+                        {(LOCAL_TIPS[lang] ?? LOCAL_TIPS.en).map((tip) => (
                             <li key={tip.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-6 shadow">
                                 <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{tip.title}</h3>
                                 <p className="mt-2 text-sm">{tip.body}</p>
@@ -323,9 +515,9 @@ export default function Travel({ details }) {
 
             <section id="added-plan-your-trip" className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">Arrival & Transportation</h2>
+                    <h2 className="font-display text-3xl">{t.arrivalTransportation}</h2>
                     <div className="mt-6 space-y-4">
-                        {AIRPORT_OPTIONS.map((airport) => (
+                        {(AIRPORT_OPTIONS[lang] ?? AIRPORT_OPTIONS.en).map((airport) => (
                             <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
                                 <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{airport.name}</h3>
@@ -344,10 +536,10 @@ export default function Travel({ details }) {
                             </div>
                         ))}
                     </div>
-                    <p className="mt-6 text-sm text-[rgba(44,96,130,0.7)]">✨ Renting a car is highly recommended for a seamless experience.</p>
+                    <p className="mt-6 text-sm text-[rgba(44,96,130,0.7)]">{t.carTip}</p>
                 </div>
                 <aside className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">Car Rentals</h2>
+                    <h2 className="font-display text-3xl">{t.carRentals}</h2>
                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
                         {CAR_RENTALS.map((rental) => (
                             <li key={rental.name}>
@@ -366,26 +558,26 @@ export default function Travel({ details }) {
             </section>
 
             <section className="glass-panel rounded-3xl p-8 shadow-xl" id="climate">
-                <h2 className="font-display text-3xl">Puerto Rico in July</h2>
-                <p className="mt-2 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Warm · Tropical · Radiant</p>
+                <h2 className="font-display text-3xl">{t.weather}</h2>
+                <p className="mt-2 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.climateTags}</p>
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Average Temperature</p>
+                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.avgTemp}</p>
                         <p className="mt-2 text-2xl font-semibold text-[rgba(44,96,130,0.9)]">80°F – 88°F</p>
                     </div>
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Weather Feel</p>
-                        <p className="mt-2 text-[rgba(44,96,130,0.8)]">Light ocean breeze · Occasional refreshing rain</p>
+                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.weatherFeel}</p>
+                        <p className="mt-2 text-[rgba(44,96,130,0.8)]">{t.weatherFeelBody}</p>
                     </div>
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Dress Code Inspiration</p>
-                        <p className="mt-2 text-[rgba(44,96,130,0.8)]">Elegant Resort · Coastal Chic · Light Fabrics</p>
+                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.dressInspo}</p>
+                        <p className="mt-2 text-[rgba(44,96,130,0.8)]">{t.dressInspoBody}</p>
                     </div>
                 </div>
             </section>
 
             <section id="dining-guide" className="glass-panel rounded-3xl p-8 shadow-xl">
-                <h2 className="font-display text-3xl">Curated Dining</h2>
+                <h2 className="font-display text-3xl">{t.curatedDining}</h2>
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
                     {DINING_OPTIONS.map((spot) => (
                         <div key={spot.name} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-5 shadow">
@@ -406,17 +598,17 @@ export default function Travel({ details }) {
                     ))}
                 </div>
                 <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
-                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Must Try</p>
+                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.mustTry}</p>
                     <p className="mt-2 text-[rgba(44,96,130,0.85)]">{MUST_TRY_DISHES.join(' · ')}</p>
-                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">✨ A taste of Puerto Rico&apos;s soul</p>
+                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.tasteSoul}</p>
                 </div>
             </section>
 
             <section id="explore-puerto-rico" className="grid gap-6 lg:grid-cols-2">
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">Island Experiences</h2>
+                    <h2 className="font-display text-3xl">{t.islandExperiences}</h2>
                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {ISLAND_EXPERIENCES.map((item) => (
+                        {(ISLAND_EXPERIENCES[lang] ?? ISLAND_EXPERIENCES.en).map((item) => (
                             <li key={item.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-4 shadow">
                                 <p className="font-semibold text-[rgba(44,96,130,0.9)]">{item.title}</p>
                                 <p className="text-sm">{item.details}</p>
@@ -425,9 +617,9 @@ export default function Travel({ details }) {
                     </ul>
                 </div>
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">Cultural & Scenic</h2>
+                    <h2 className="font-display text-3xl">{t.culturalScenic}</h2>
                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {CULTURAL_SCENIC.map((item) => (
+                        {(CULTURAL_SCENIC[lang] ?? CULTURAL_SCENIC.en).map((item) => (
                             <li key={item.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-4 shadow">
                                 <p className="font-semibold text-[rgba(44,96,130,0.9)]">{item.title}</p>
                                 <p className="text-sm">{item.details}</p>
@@ -435,18 +627,18 @@ export default function Travel({ details }) {
                         ))}
                     </ul>
                     <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Rincón Highlights</p>
-                        <p className="mt-2 text-[rgba(44,96,130,0.85)]">{RINCON_HIGHLIGHTS.join(' · ')}</p>
+                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.rinconHighlights}</p>
+                        <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(RINCON_HIGHLIGHTS[lang] ?? RINCON_HIGHLIGHTS.en).join(' · ')}</p>
                     </div>
                 </div>
             </section>
 
             <section className="glass-panel rounded-3xl p-8 text-center shadow-xl">
-                <p className="text-lg text-[rgba(44,96,130,0.75)]">We are honored to celebrate this unforgettable moment</p>
-                <p className="mt-3 text-sm uppercase tracking-[0.35em] text-[rgba(47,156,194,0.75)]">In honor of</p>
+                <p className="text-lg text-[rgba(44,96,130,0.75)]">{t.honor}</p>
+                <p className="mt-3 text-sm uppercase tracking-[0.35em] text-[rgba(47,156,194,0.75)]">{t.inHonor}</p>
                 <h2 className="mt-2 font-display text-4xl">Alondra del Mar</h2>
                 <p className="mt-6 mx-auto max-w-2xl text-[rgba(44,96,130,0.8)]">
-                    ✨ A night inspired by the ocean, where elegance flows like waves and memories shine like pearls.
+                    {t.closing}
                 </p>
             </section>
         </main>
