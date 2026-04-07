@@ -810,7 +810,7 @@ function App() {
                         <section id="rsvp" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="grid gap-8 md:grid-cols-2">
                                 <div>
-                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Confirma antes del 1 de julio de 2026' : 'RSVP by July 1, 2026'}</h2>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Confirma antes del 10 de mayo de 2026' : 'RSVP by May 10, 2026'}</h2>
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
                                             ? '¡Estamos emocionados de celebrar contigo! Avísanos quiénes asistirán para reservar sus asientos, atender solicitudes especiales y preparar sus detalles de bienvenida.'

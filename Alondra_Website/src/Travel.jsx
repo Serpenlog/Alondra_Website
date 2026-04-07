@@ -110,8 +110,8 @@ const LOCAL_TIPS = {
             body: 'Llama al equipo de reservaciones antes de llegar para confirmar habitación. El check-in temprano depende de disponibilidad.'
         },
         {
-            title: 'Tiempo de Playa',
-            body: 'Lleva ropa de playa para tu tiempo libre: Steps Beach y Balneario de Rincón están a minutos del hotel.'
+            title: 'Tiempo Libre Durante tu Estadía',
+            body: 'Disfruta del encanto del mar en tu tiempo libre. Te recomendamos llevar tu ropa de playa, cómoda para explorar las hermosas costas de Rincón y pasar tiempo en la piscina.'
         },
         {
             title: 'Tradición del Atardecer',
