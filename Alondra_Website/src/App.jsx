@@ -484,7 +484,7 @@ function App() {
                             </h1>
                             <p className="mt-4 text-lg text-[rgba(44,96,130,0.8)] md:text-xl">
                                 {lang === 'es'
-                                    ? 'Acompáñanos a celebrar quince hermosos años de fe, familia y sueños cumplidos. Te esperan tradiciones llenas de alegría, comida deliciosa y una noche para bailar bajo las estrellas.'
+                                    ? 'Entre el susurro de las olas y la luz de las estrellas y bajo de la bendición de Dios, te invitamos a celebrar los XV años de Alondra de Mar.'
                                     : 'Join us in celebrating fifteen beautiful years of faith, family, and dreams come true. Expect joyful traditions, delicious food, and a night of dancing beneath the stars.'}
                             </p>
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
