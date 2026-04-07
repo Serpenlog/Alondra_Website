@@ -92,10 +92,6 @@ const RINCON_HIGHLIGHTS = {
 const LOCAL_TIPS = {
     en: [
         {
-            title: 'Check-In Details',
-            body: 'Call the reservations team ahead of arrival to confirm your room assignment. Early check-in is based on availability.'
-        },
-        {
             title: 'Beach Time',
             body: 'Pack beachwear for downtime—Steps Beach and Balneario de Rincón are minutes from the hotel.'
         },
@@ -311,7 +307,7 @@ export default function Travel({ details, lang = 'en' }) {
                         </div>
                     ))}
                 </div>
-                <div className="mt-8 grid gap-6 md:grid-cols-2">
+                <div className="mt-8">
                     <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
                         <h2 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.venueDetails}</h2>
                         <p className="mt-2 text-[rgba(44,96,130,0.75)]">{details.venueName}</p>
@@ -350,7 +346,6 @@ export default function Travel({ details, lang = 'en' }) {
                             <li>{t.bookingNote}</li>
                         </ul>
                     </div>
-
                 </div>
             </section>
 
