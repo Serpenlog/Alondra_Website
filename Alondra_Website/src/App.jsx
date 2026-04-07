@@ -175,20 +175,29 @@ const REAL_DETAILS = {
         {
             code: 'BQN',
             name: 'Aguadilla, PR (BQN)',
+            nameEs: 'Aguadilla, PR (BQN)',
             details:
-                'Closest airport to the venue with regional flights. Approximate travel time to Rincón of the Seas: ~40 minutes (subject to traffic).'
+                'Closest airport to the venue with regional flights. Approximate travel time to Rincón of the Seas: ~40 minutes (subject to traffic).',
+            detailsEs:
+                'Aeropuerto más cercano al lugar con vuelos regionales. Tiempo aproximado de viaje a Rincón of the Seas: ~40 minutos (sujeto al tránsito).'
         },
         {
             code: 'SJU',
             name: 'San Juan, PR (SJU)',
+            nameEs: 'San Juan, PR (SJU)',
             details:
-                'Major international hub with plentiful flight options. Approximate travel time to the hotel: ~2 hours 20 minutes (subject to traffic).'
+                'Major international hub with plentiful flight options. Approximate travel time to the hotel: ~2 hours 20 minutes (subject to traffic).',
+            detailsEs:
+                'Principal centro internacional con abundantes opciones de vuelos. Tiempo aproximado de viaje al hotel: ~2 horas y 20 minutos (sujeto al tránsito).'
         },
         {
             code: 'PSE',
             name: 'Ponce, PR (PSE)',
             details:
-                'Alternative regional airport south of Rincón. Approximate travel time to the hotel: ~1 hour 35 minutes (subject to traffic).'
+                'Alternative regional airport south of Rincón. Approximate travel time to the hotel: ~1 hour 35 minutes (subject to traffic).',
+            nameEs: 'Ponce, PR (PSE)',
+            detailsEs:
+                'Aeropuerto regional alternativo al sur de Rincón. Tiempo aproximado de viaje al hotel: ~1 hora y 35 minutos (sujeto al tránsito).'
         }
     ],
     travelTip:

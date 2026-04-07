@@ -139,15 +139,15 @@ const getTravelHighlights = (reservationCode, lang) =>
         : [
               {
                   title: 'Arrival Window',
-                  body: 'Plan to reach the venue by 3:45 PM to enjoy welcome refreshments and settle in before the ceremony.'
+                  body: 'Plan to arrive at the venue by 3:45 PM to enjoy the welcome and get settled before the ceremony.'
               },
               {
                   title: 'Check-In Support',
-                  body: `Call ahead with reservation code ${reservationCode} so the team can confirm your room and greet you upon arrival.`
+                  body: `Call in advance using reservation code ${reservationCode} so the team can confirm your room and welcome you upon arrival.`
               },
               {
                   title: 'Golden Hour Moments',
-                  body: 'Sunset is around 7:00 PM in July—perfect for a quick family photo session before the reception begins.'
+                  body: 'Sunset is around 7:00 PM in July: perfect for a quick family photo session before the reception.'
               }
           ];
 
@@ -225,7 +225,7 @@ const getText = (lang) =>
               flyingText: 'Choose between',
               flyingTextTail: 'Both offer reliable ground transportation to',
               groundTransportation: 'Ground Transportation',
-              groundText: 'among the many taxi lines, here are a few that will gladly help you:',
+              groundText: 'among the many taxi services, here are a few that will gladly help you:',
               referenceLabel: 'reference',
               from: 'From',
               highlights: 'Highlights',
@@ -259,7 +259,9 @@ export default function Travel({ details, lang = 'en' }) {
     const travelHighlights = getTravelHighlights(details.reservationCode, lang);
     const locationLabel = details.venueAddressLong.split(',').slice(1).join(',').trim() || (lang === 'es' ? 'el área' : 'the area');
     const [regionalAirport, majorAirport] = details.airports;
-    const airportNameList = details.airports.map((airport) => airport.name).join(', ');
+    const getAirportName = (airport) => (lang === 'es' ? (airport.nameEs ?? airport.name) : airport.name);
+    const getAirportDetails = (airport) => (lang === 'es' ? (airport.detailsEs ?? airport.details) : airport.details);
+    const airportNameList = details.airports.map((airport) => getAirportName(airport)).join(', ');
     const hotels = [
         {
             name: details.venueName,
@@ -401,8 +403,8 @@ export default function Travel({ details, lang = 'en' }) {
                         {details.airports.map((airport) => (
                             <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
-                                <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{airport.name}</h3>
-                                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{airport.details}</p>
+                                <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{getAirportName(airport)}</h3>
+                                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{getAirportDetails(airport)}</p>
                             </div>
                         ))}
                     </div>
@@ -413,7 +415,7 @@ export default function Travel({ details, lang = 'en' }) {
                         </p>
                         <div className="mt-4 space-y-4 text-sm text-[rgba(44,96,130,0.7)]">
                             <div>
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {majorAirport.name}</p>
+                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {getAirportName(majorAirport)}</p>
                                 <ul className="mt-2 space-y-1">
                                     {details.taxiServices.sju.map((service) => (
                                         <li key={service.name}>
@@ -429,7 +431,7 @@ export default function Travel({ details, lang = 'en' }) {
                                 </ul>
                             </div>
                             <div>
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {regionalAirport.name}</p>
+                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {getAirportName(regionalAirport)}</p>
                                 <ul className="mt-2 space-y-1">
                                     {details.taxiServices.bqn.map((service) => (
                                         <li key={service.name}>
