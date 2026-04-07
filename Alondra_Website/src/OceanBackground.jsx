@@ -1,4 +1,4 @@
-import beachVideoUrl from './alondra_images/beach_video.mp4';
+const beachVideoUrl = '/beach_video.mp4';
 function OceanBackground() {
     return (
         <div className="ocean-background" aria-hidden="true">
