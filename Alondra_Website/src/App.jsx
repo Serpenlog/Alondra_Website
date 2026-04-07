@@ -892,118 +892,133 @@ function App() {
                         <section id="song-requests" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="grid gap-8 lg:grid-cols-2">
                                 <div>
-                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Peticiones de canciones y bendiciones' : 'Song Requests & Blessings'}</h2>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Peticiones de canciones' : 'Song Requests'}</h2>
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? `Comparte tus canciones favoritas y envía tus bendiciones para Alondra. Ambos formularios están configurados para enviarse a ${BLESSING_EMAIL}.`
-                                            : `Share your favorite songs and send Alondra your heartfelt blessings below. Both forms are configured to deliver to ${BLESSING_EMAIL}.`}
+                                            ? `¿Tienes una recomendación especial para la pista de baile? Compártenos tus canciones favoritas para celebrar juntos.`
+                                            : `Have a favorite recommendation for the dance floor? Share the songs you would love to hear during the celebration.`}
                                     </p>
                                 </div>
-                                <div className="grid gap-6">
-                                    <form
-                                        className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 shadow-md"
-                                        action={SONG_REQUEST_FORM_ENDPOINT}
-                                        method="post"
-                                        target="_blank"
-                                    >
-                                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
-                                            {lang === 'es' ? 'Formulario de canciones' : 'Song Request Form'}
-                                        </p>
-                                        <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
-                                        <input type="hidden" name="_captcha" value="false" />
-                                        <input type="hidden" name="_template" value="table" />
-                                        <div className="grid gap-3">
-                                            <input
-                                                type="text"
-                                                name="name"
-                                                placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
-                                                required
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
-                                                required
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <input
-                                                type="text"
-                                                name="song"
-                                                placeholder={lang === 'es' ? 'Título de canción + artista' : 'Song title + artist'}
-                                                required
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <textarea
-                                                name="note"
-                                                rows="3"
-                                                placeholder={lang === 'es' ? 'Mensaje opcional para el DJ o para Alondra' : 'Optional message for the DJ or Alondra'}
-                                                className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            ></textarea>
-                                            <button
-                                                type="submit"
-                                                className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
-                                            >
-                                                {lang === 'es' ? 'Enviar canción' : 'Submit Song Request'}
-                                            </button>
-                                        </div>
-                                    </form>
+                                <form
+                                    className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 shadow-md"
+                                    action={SONG_REQUEST_FORM_ENDPOINT}
+                                    method="post"
+                                    target="_blank"
+                                >
+                                    <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
+                                        {lang === 'es' ? 'Formulario de canciones' : 'Song Request Form'}
+                                    </p>
+                                    <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
+                                    <input type="hidden" name="_captcha" value="false" />
+                                    <input type="hidden" name="_template" value="table" />
+                                    <div className="grid gap-3">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
+                                            required
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
+                                            required
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <input
+                                            type="text"
+                                            name="song"
+                                            placeholder={lang === 'es' ? 'Título de canción + artista' : 'Song title + artist'}
+                                            required
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <textarea
+                                            name="note"
+                                            rows="3"
+                                            placeholder={lang === 'es' ? 'Mensaje opcional para el DJ o para Alondra' : 'Optional message for the DJ or Alondra'}
+                                            className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        ></textarea>
+                                        <button
+                                            type="submit"
+                                            className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                        >
+                                            {lang === 'es' ? 'Enviar canción' : 'Submit Song Request'}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
 
-                                    <form
-                                        className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md"
-                                        action={BLESSING_FORM_ENDPOINT}
-                                        method="post"
-                                        target="_blank"
-                                    >
-                                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
-                                            {lang === 'es' ? 'Formulario de bendiciones' : 'Blessings Form'}
-                                        </p>
-                                        <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
-                                        <input type="hidden" name="_captcha" value="false" />
-                                        <input type="hidden" name="_template" value="table" />
-                                        <div className="grid gap-3">
-                                            <input
-                                                type="text"
-                                                name="name"
-                                                placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
-                                                required
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
-                                                required
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
-                                                className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            />
-                                            <textarea
-                                                name="message"
-                                                rows="4"
-                                                placeholder={lang === 'es' ? 'Escribe tu bendición para Alondra' : 'Write your blessing for Alondra'}
-                                                required
-                                                className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                            ></textarea>
-                                            <button
-                                                type="submit"
-                                                className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
-                                            >
-                                                {lang === 'es' ? 'Enviar bendición' : 'Send Your Blessing'}
-                                            </button>
-                                        </div>
-                                    </form>
+                        <section id="blessings" className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <div className="grid gap-8 lg:grid-cols-2">
+                                <div>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Bendiciones' : 'Blessings'}</h2>
+                                    <p className="mt-3 text-[rgba(44,96,130,0.75)]">
+                                        {lang === 'es'
+                                            ? `Tus palabras serán como perlas guardadas en el corazón de Alondra. Déjanos tu bendición para este nuevo capítulo.`
+                                            : `Your words will be like pearls kept close to Alondra’s heart. Leave your blessing for this beautiful new chapter.`}
+                                    </p>
+                                    <p className="mt-3 text-sm text-[rgba(44,96,130,0.7)]">
+                                        {lang === 'es'
+                                            ? `Este formulario está configurado para enviarse a ${BLESSING_EMAIL}.`
+                                            : `This form is configured to deliver to ${BLESSING_EMAIL}.`}
+                                    </p>
                                 </div>
+                                <form
+                                    className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md"
+                                    action={BLESSING_FORM_ENDPOINT}
+                                    method="post"
+                                    target="_blank"
+                                >
+                                    <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
+                                        {lang === 'es' ? 'Formulario de bendiciones' : 'Blessings Form'}
+                                    </p>
+                                    <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
+                                    <input type="hidden" name="_captcha" value="false" />
+                                    <input type="hidden" name="_template" value="table" />
+                                    <div className="grid gap-3">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
+                                            required
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
+                                            required
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
+                                        <textarea
+                                            name="message"
+                                            rows="4"
+                                            placeholder={lang === 'es' ? 'Escribe tu bendición para Alondra' : 'Write your blessing for Alondra'}
+                                            required
+                                            className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        ></textarea>
+                                        <button
+                                            type="submit"
+                                            className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                        >
+                                            {lang === 'es' ? 'Enviar bendición' : 'Send Your Blessing'}
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </section>
 
