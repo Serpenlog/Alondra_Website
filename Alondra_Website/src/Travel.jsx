@@ -92,10 +92,6 @@ const RINCON_HIGHLIGHTS = {
 const LOCAL_TIPS = {
     en: [
         {
-            title: 'Check-In Details',
-            body: 'Call the reservations team before you arrive to confirm your room. Early check-in depends on availability.'
-        },
-        {
             title: 'Free Time During Your Stay',
             body: 'Enjoy the charm of the sea during your free time. We recommend bringing comfortable beachwear to explore the beautiful coasts of Rincón and spend time at the pool.'
         },
@@ -105,10 +101,6 @@ const LOCAL_TIPS = {
         }
     ],
     es: [
-        {
-            title: 'Detalles de Check-In',
-            body: 'Llama al equipo de reservaciones antes de llegar para confirmar habitación. El check-in temprano depende de disponibilidad.'
-        },
         {
             title: 'Tiempo Libre Durante tu Estadía',
             body: 'Disfruta del encanto del mar en tu tiempo libre. Te recomendamos llevar tu ropa de playa, cómoda para explorar las hermosas costas de Rincón y pasar tiempo en la piscina.'
@@ -120,16 +112,12 @@ const LOCAL_TIPS = {
     ]
 };
 
-const getTravelHighlights = (reservationCode, lang) =>
+const getTravelHighlights = (lang) =>
     lang === 'es'
         ? [
               {
                   title: 'Horario de Llegada',
-                  body: 'Planea llegar al lugar para las 3:45 PM para disfrutar del recibimiento y acomodarte antes de la ceremonia.'
-              },
-              {
-                  title: 'Apoyo de Check-In',
-                  body: `Llama con anticipación usando el código ${reservationCode} para que el equipo confirme tu habitación y te reciba al llegar.`
+                  body: 'Planea llegar al lugar para las 5:40 PM para disfrutar del recibimiento y acomodarte antes de la ceremonia.'
               },
               {
                   title: 'Momentos de Golden Hour',
@@ -139,11 +127,7 @@ const getTravelHighlights = (reservationCode, lang) =>
         : [
               {
                   title: 'Arrival Window',
-                  body: 'Plan to arrive at the venue by 3:45 PM to enjoy the welcome and get settled before the ceremony.'
-              },
-              {
-                  title: 'Check-In Support',
-                  body: `Call in advance using reservation code ${reservationCode} so the team can confirm your room and welcome you upon arrival.`
+                  body: 'Plan to arrive at the venue by 5:40 PM to enjoy the welcome and get settled before the ceremony.'
               },
               {
                   title: 'Golden Hour Moments',
@@ -165,7 +149,6 @@ const getText = (lang) =>
               frontDesk: 'Recepción:',
               contact: 'Contacto:',
               email: 'Correo:',
-              bookingNote: 'Las reservaciones en línea aún no están disponibles; por favor reserva directamente.',
               whereToStay: 'Dónde Hospedarte',
               whereStayTextStart: 'Hospédate en la propiedad para disfrutar la brisa del océano y acceso fácil a cada evento. Menciona',
               whereStayTextMid: 'y el código de reservación',
@@ -215,7 +198,6 @@ const getText = (lang) =>
               frontDesk: 'Front Desk:',
               contact: 'Contact:',
               email: 'Email:',
-              bookingNote: 'Online reservations are not yet available; please book directly.',
               whereToStay: 'Where to Stay',
               whereStayTextStart: 'Stay right on property to enjoy the ocean breeze and effortless access to every event. Mention',
               whereStayTextMid: 'and reservation code',
@@ -256,7 +238,7 @@ const getText = (lang) =>
 
 export default function Travel({ details, lang = 'en' }) {
     const t = getText(lang);
-    const travelHighlights = getTravelHighlights(details.reservationCode, lang);
+    const travelHighlights = getTravelHighlights(lang);
     const locationLabel = details.venueAddressLong.split(',').slice(1).join(',').trim() || (lang === 'es' ? 'el área' : 'the area');
     const [regionalAirport, majorAirport] = details.airports;
     const getAirportName = (airport) => (lang === 'es' ? (airport.nameEs ?? airport.name) : airport.name);
@@ -302,7 +284,7 @@ export default function Travel({ details, lang = 'en' }) {
                         </a>
                     ))}
                 </div>
-                <div className="mt-8 grid gap-4 md:grid-cols-3">
+                <div className="mt-8 grid gap-4 md:grid-cols-2">
                     {travelHighlights.map((highlight) => (
                         <div
                             key={highlight.title}
@@ -349,7 +331,6 @@ export default function Travel({ details, lang = 'en' }) {
                                     {details.hotelEmail}
                                 </a>
                             </li>
-                            <li>{t.bookingNote}</li>
                         </ul>
                     </div>
                 </div>
