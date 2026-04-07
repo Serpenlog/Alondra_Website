@@ -480,7 +480,7 @@ function App() {
                                 <span className="ribbon-tag">{lang === 'es' ? 'Mis XV • 18 de julio de 2026' : 'Mis XV • July 18, 2026'}</span>
                             </div>
                             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl">
-                                {lang === 'es' ? 'La celebración de los XV años de Alondra Del Mar' : 'The celebration of Alondra Del Mar&apos;s Quinceañera'}
+                                {lang === 'es' ? 'La celebración de los XV años de Alondra Del Mar' : 'The celebration of Alondra Del Mar\'s Quinceañera'}
                             </h1>
                             <p className="mt-4 text-lg text-[rgba(44,96,130,0.8)] md:text-xl">
                                 {lang === 'es'
@@ -559,12 +559,12 @@ function App() {
 
                         <section className="glass-panel rounded-3xl p-8 text-center shadow-xl" id="countdown">
                             <h2 className="font-display text-3xl md:text-4xl">{lang === 'es' ? 'Cuenta regresiva para la celebración' : 'Countdown to the Celebration'}</h2>
-                            <p className="mt-2 text-[rgba(44,96,130,0.7)]">{lang === 'es' ? '¡Ya queremos celebrar contigo!' : 'We can&apos;t wait to celebrate with you!'}</p>
+                            <p className="mt-2 text-[rgba(44,96,130,0.7)]">{lang === 'es' ? '¡Ya queremos celebrar contigo!' : 'We can\'t wait to celebrate with you!'}</p>
                             <p className="mt-1 text-sm uppercase tracking-[0.4em] text-[rgba(47,156,194,0.75)]">
                                 {lang === 'es' ? '18 de julio de 2026 • 6:00 PM hora del Atlántico' : 'July 18, 2026 • 6:00 PM Atlantic Time'}
                             </p>
                             {timeLeft.completed ? (
-                                <p className="mt-6 text-2xl font-semibold text-[rgba(240,132,112,1)]">{lang === 'es' ? '¡Es hora de la fiesta! 💃🏽' : 'It&apos;s party time! 💃🏽'}</p>
+                                <p className="mt-6 text-2xl font-semibold text-[rgba(240,132,112,1)]">{lang === 'es' ? '¡Es hora de la fiesta! 💃🏽' : 'It\'s party time! 💃🏽'}</p>
                             ) : (
                                 <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
                                     {countdownUnits.map(({ label, value }) => (
@@ -586,7 +586,7 @@ function App() {
                                 <p className="mt-3 text-[rgba(44,96,130,0.8)]">
                                         {lang === 'es'
                                             ? 'Desde la misa tradicional hasta una recepción brillante, cada detalle se planificó pensando en la familia y amistades. Mira los momentos destacados de la noche y llega a tiempo para las ceremonias más importantes para Alondra y sus padres.'
-                                            : 'From the traditional mass to a sparkling reception, every detail has been planned with family and friends in mind. Take a peek at the evening&apos;s highlights and make sure you arrive in time for the ceremonies that matter most to Alondra and her parents.'}
+                                            : 'From the traditional mass to a sparkling reception, every detail has been planned with family and friends in mind. Take a peek at the evening\'s highlights and make sure you arrive in time for the ceremonies that matter most to Alondra and her parents.'}
                                 </p>
                                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                                     {MEMORY_PHOTOS.map((photo) => (
@@ -610,7 +610,7 @@ function App() {
                                             <p className="text-[rgba(44,96,130,0.7)]">
                                                 {lang === 'es'
                                                     ? 'Celebra con la corte de damas y chambelanes de Alondra durante el baile sorpresa y un brindis especial de sus padrinos.'
-                                                    : 'Celebrate with Alondra&apos;s court of damas and chambelanes during the surprise dance and a special toast from her padrinos.'}
+                                                    : 'Celebrate with Alondra\'s court of damas and chambelanes during the surprise dance and a special toast from her padrinos.'}
                                             </p>
                                         </div>
                                     </li>
@@ -621,7 +621,7 @@ function App() {
                                             <p className="text-[rgba(44,96,130,0.7)]">
                                                 {lang === 'es'
                                                     ? 'Disfruta una mesa de postres inspirada en los sabores favoritos de Alondra, además de un carrito de churros para quienes sigan bailando hasta tarde.'
-                                                    : 'Enjoy a dessert bar inspired by Alondra&apos;s favorite flavors plus a late-night churro cart for guests who stay on the dance floor.'}
+                                                    : 'Enjoy a dessert bar inspired by Alondra\'s favorite flavors plus a late-night churro cart for guests who stay on the dance floor.'}
                                             </p>
                                         </div>
                                     </li>
@@ -662,7 +662,7 @@ function App() {
                                     >
                                         {eventDetails.contactEmail}
                                     </a>
-                                    <p className="text-sm">{lang === 'es' ? 'Con gusto te ayudamos a planificar una noche perfecta.' : 'We&apos;re happy to help you plan your perfect evening.'}</p>
+                                    <p className="text-sm">{lang === 'es' ? 'Con gusto te ayudamos a planificar una noche perfecta.' : 'We\'re happy to help you plan your perfect evening.'}</p>
                                 </div>
                             </aside>
                         </section>
@@ -674,7 +674,7 @@ function App() {
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
                                             ? 'Hemos preparado la noche para que no te pierdas ninguna tradición. Llega un poco antes para tomarte fotos en el muro floral y firmar el libro de recuerdos de Alondra.'
-                                            : 'We&apos;ve curated the night so you won&apos;t miss a single tradition. Arrive a little early to snap photos by the floral wall and sign Alondra&apos;s guestbook.'}
+                                            : 'We\'ve curated the night so you won\'t miss a single tradition. Arrive a little early to snap photos by the floral wall and sign Alondra\'s guestbook.'}
                                     </p>
                                 </div>
                                 <a
@@ -702,7 +702,7 @@ function App() {
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
                                     ? 'Desde los ensayos hasta aventuras bajo el sol, disfruta un vistazo al camino de Alondra antes de su gran día.'
-                                    : 'From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra&apos;s journey leading up to the big day.'}
+                                    : 'From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra\'s journey leading up to the big day.'}
                             </p>
                             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                     {GALLERY_PHOTOS.map((photo) => (
@@ -783,7 +783,7 @@ function App() {
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
                                     ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra o compartir un detalle, explora las opciones de abajo o déjanos un sobre.'
-                                    : 'Your presence is the greatest gift! If you&apos;d like to contribute to Alondra&apos;s college dreams or share a keepsake, explore the options below or leave us an envelope.'}
+                                    : 'Your presence is the greatest gift! If you\'d like to contribute to Alondra\'s college dreams or share a keepsake, explore the options below or leave us an envelope.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Mensaje' : 'Message'}</p>
@@ -838,7 +838,7 @@ function App() {
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
                                             ? '¡Estamos emocionados de celebrar contigo! Avísanos quiénes asistirán para reservar sus asientos, atender solicitudes especiales y preparar sus detalles de bienvenida.'
-                                            : 'We can&apos;t wait to celebrate with you! Let us know who&apos;s coming so we can reserve your seats, accommodate special requests, and prepare your welcome favors.'}
+                                            : 'We can\'t wait to celebrate with you! Let us know who\'s coming so we can reserve your seats, accommodate special requests, and prepare your welcome favors.'}
                                     </p>
                                     <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.7)]">
                                     </ul>
@@ -879,7 +879,7 @@ function App() {
                                             className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm text-[rgba(44,96,130,0.95)] focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         >
                                             <option value="">{lang === 'es' ? '¿Celebras con nosotros?' : 'Will you celebrate with us?'}</option>
-                                            <option value="yes">{lang === 'es' ? 'Sí, ¡con mucha ilusión!' : 'Yes, can&apos;t wait!'}</option>
+                                            <option value="yes">{lang === 'es' ? 'Sí, ¡con mucha ilusión!' : 'Yes, can\'t wait!'}</option>
                                             <option value="no">{lang === 'es' ? 'Lamentablemente no podré asistir' : 'Sadly, unable to attend'}</option>
                                         </select>
                                         <textarea
@@ -1028,7 +1028,7 @@ function App() {
                 )}
 
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(178,226,236,0.6)] pt-6 text-center text-sm text-[rgba(44,96,130,0.6)]">
-                    <p>{lang === 'es' ? 'Hecho con ♥ para los quince de Alondra. ¡Nos vemos en la pista de baile!' : 'Made with ♥ for Alondra&apos;s quinceañera. See you on the dance floor!'}</p>
+                    <p>{lang === 'es' ? 'Hecho con ♥ para los quince de Alondra. ¡Nos vemos en la pista de baile!' : 'Made with ♥ for Alondra\'s quinceañera. See you on the dance floor!'}</p>
                 </footer>
                 </div>
             </div>
