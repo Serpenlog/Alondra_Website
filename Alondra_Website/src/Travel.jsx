@@ -102,7 +102,7 @@ const LOCAL_TIPS = {
     es: [
         {
             title: 'Detalles de Check-In',
-            body: 'Llama al equipo de reservaciones antes de llegar para confirmar depósito y habitación. El check-in temprano depende de disponibilidad.'
+            body: 'Llama al equipo de reservaciones antes de llegar para confirmar habitación. El check-in temprano depende de disponibilidad.'
         },
         {
             title: 'Tiempo de Playa',
@@ -160,7 +160,7 @@ const getText = (lang) =>
               frontDesk: 'Recepción:',
               contact: 'Contacto:',
               email: 'Correo:',
-              bookingNote: 'Las reservaciones en línea aún no están disponibles; por favor reserva directamente. Se requiere un depósito de una noche.',
+              bookingNote: 'Las reservaciones en línea aún no están disponibles; por favor reserva directamente.',
               weekSnapshot: 'Resumen de la Semana de Celebración',
               sunday: 'Domingo:',
               sundayBody: 'Llegadas tempranas y tarde relajada de playa con la familia',
@@ -286,12 +286,10 @@ export default function Travel({ details, lang = 'en' }) {
                 lang === 'es'
                     ? [
                           `Menciona el código de reservación ${details.reservationCode} y “${details.hotelBlockName}” al reservar`,
-                          'Se requiere un depósito de una noche para confirmar la estadía',
                           'Reserva directamente con el equipo del hotel — las reservaciones en línea aún no están disponibles'
                       ]
                     : [
                           `Reference reservation code ${details.reservationCode} and “${details.hotelBlockName}” when booking`,
-                          'One-night deposit required to confirm your stay',
                           'Book directly with the hotel team — online reservations are not yet available'
                       ]
         }
