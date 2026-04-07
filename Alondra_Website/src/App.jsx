@@ -526,17 +526,17 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        {lang === 'es' ? 'Por favor asiste con ' : 'Please come in'}{' '}
+                                        {lang === 'es' ? 'Código de vestimenta: ' : 'Please come in'}{' '}
                                         <a
                                             href={dressCodeImage}
                                             target="_blank"
                                             rel="noreferrer"
                                             className="font-semibold text-[rgba(240,132,112,1)] underline underline-offset-4 hover:text-[rgba(44,96,130,0.9)]"
                                         >
-                                            {lang === 'es' ? 'ropa formal en tonos beige o nude.' : 'beige or nude colored formal wear.'}
+                                            {lang === 'es' ? 'Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema.' : 'beige or nude colored formal wear.'}
                                         </a>{' '}
                                         {lang === 'es'
-                                            ? 'Los atuendos azul océano, dorado y blanco están reservados exclusivamente para Alondra.'
+                                            ? 'Los tonos blanco, dorado y azul están reservados para la quinceañera.'
                                             : 'Ocean blue, gold and white ensembles are reserved exclusively for Alondra.'}
                                     </p>
                                 </div>
@@ -683,7 +683,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    {lang === 'es' ? 'Guardar en calendario' : 'Save to Calendar'}
+                                    {lang === 'es' ? 'Reserva este momento especial en tu calendario' : 'Reserve this wonderful moment in your calendar'}
                                 </a>
                             </div>
                             <div className="mt-8 grid gap-6 md:grid-cols-2">
