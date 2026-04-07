@@ -152,6 +152,7 @@ const getText = (lang) =>
               travelGuide: 'Guía de Viaje',
               planStay: 'Planifica Tu Estadía en',
               intro: 'La celebración será en',
+              locatedAt: 'ubicado en',
               introTail:
                   'Por favor llega con suficiente tiempo para disfrutar la vista costera, tomar un refrigerio de bienvenida y prepararte para que la ceremonia comience a las 4:30 PM.',
               venueDetails: 'Detalles del Lugar',
@@ -167,6 +168,7 @@ const getText = (lang) =>
               mondayBody: 'Recorrido de ensayo al atardecer y degustación de postres (6:30 PM)',
               tuesday: 'Martes:',
               tuesdayBody: 'Ceremonia y recepción en',
+              doorsOpen: 'apertura de puertas a las 3:45 PM',
               wednesday: 'Miércoles:',
               wednesdayBody: 'Brunch de despedida con vista al Caribe (10:30 AM)',
               needHelp: '¿Necesitas ayuda durante la semana? Escribe a',
@@ -181,6 +183,7 @@ const getText = (lang) =>
               flyingTextTail: 'Ambos ofrecen transporte terrestre confiable hacia',
               groundTransportation: 'Transporte Terrestre',
               groundText: 'y los siguientes equipos de taxi con gusto te ayudarán:',
+              referenceLabel: 'menciona',
               from: 'Desde',
               highlights: 'Destacados',
               highlightsTextStart: 'Aprovecha al máximo tu tiempo en',
@@ -209,6 +212,7 @@ const getText = (lang) =>
               travelGuide: 'Travel Guide',
               planStay: 'Plan Your Stay in',
               intro: 'The celebration takes place at',
+              locatedAt: 'located at',
               introTail:
                   'Please arrive with enough time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 4:30 PM.',
               venueDetails: 'Venue Details',
@@ -224,6 +228,7 @@ const getText = (lang) =>
               mondayBody: 'Sunset rehearsal walk-through and dessert tasting (6:30 PM)',
               tuesday: 'Tuesday:',
               tuesdayBody: 'Ceremony & reception at',
+              doorsOpen: 'doors open 3:45 PM',
               wednesday: 'Wednesday:',
               wednesdayBody: 'Farewell brunch overlooking the Caribbean (10:30 AM)',
               needHelp: 'Need assistance during the week? Email',
@@ -238,6 +243,7 @@ const getText = (lang) =>
               flyingTextTail: 'Both offer reliable ground transportation to',
               groundTransportation: 'Ground Transportation',
               groundText: 'and the following taxi teams are happy to help:',
+              referenceLabel: 'reference',
               from: 'From',
               highlights: 'Highlights',
               highlightsTextStart: 'Make the most of your time in',
@@ -297,7 +303,7 @@ export default function Travel({ details, lang = 'en' }) {
                 <span className="ribbon-tag">{t.travelGuide}</span>
                 <h1 className="mt-4 font-display text-4xl">{t.planStay} {locationLabel}</h1>
                 <p className="mt-3 max-w-3xl text-[rgba(44,96,130,0.75)]">
-                    {t.intro} <strong>{details.venueName}</strong>, located at {details.venueAddressLong}. {t.introTail}
+                    {t.intro} <strong>{details.venueName}</strong>, {t.locatedAt} {details.venueAddressLong}. {t.introTail}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                     {(QUICK_LINKS[lang] ?? QUICK_LINKS.en).map((item) => (
@@ -328,7 +334,7 @@ export default function Travel({ details, lang = 'en' }) {
                         <p className="text-[rgba(44,96,130,0.6)]">{details.venueAddressLong}</p>
                         <ul className="mt-4 space-y-2 text-sm text-[rgba(44,96,130,0.6)]">
                             <li>
-                                <strong>{t.reservationCode}</strong> {details.reservationCode} (reference “{details.hotelBlockName}”)
+                                <strong>{t.reservationCode}</strong> {details.reservationCode} ({t.referenceLabel} “{details.hotelBlockName}”)
                             </li>
                             <li>
                                 <strong>{t.frontDesk}</strong>{' '}
@@ -370,7 +376,7 @@ export default function Travel({ details, lang = 'en' }) {
                                 <strong>{t.monday}</strong> {t.mondayBody}
                             </li>
                             <li>
-                                <strong>{t.tuesday}</strong> {t.tuesdayBody} {details.venueName} (doors open 3:45 PM)
+                                <strong>{t.tuesday}</strong> {t.tuesdayBody} {details.venueName} ({t.doorsOpen})
                             </li>
                             <li>
                                 <strong>{t.wednesday}</strong> {t.wednesdayBody}
@@ -446,7 +452,7 @@ export default function Travel({ details, lang = 'en' }) {
                     <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
                         <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.groundTransportation}</h3>
                         <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">
-                            {details.rideshareNote}, {t.groundText}
+                            {(lang === 'es' ? (details.rideshareNoteEs ?? details.rideshareNote) : details.rideshareNote)}, {t.groundText}
                         </p>
                         <div className="mt-4 space-y-4 text-sm text-[rgba(44,96,130,0.7)]">
                             <div>
@@ -503,7 +509,7 @@ export default function Travel({ details, lang = 'en' }) {
                 </div>
                 <div className="glass-panel rounded-3xl p-0 shadow-xl">
                     <iframe
-                        title={`${details.venueName} Directions`}
+                        title={lang === 'es' ? `Direcciones a ${details.venueName}` : `${details.venueName} Directions`}
                         src={details.mapUrl}
                         className="h-full min-h-[360px] w-full rounded-3xl"
                         loading="lazy"

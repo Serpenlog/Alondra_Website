@@ -112,28 +112,52 @@ const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=T
     alt: "alondra family pic"
 };
 
-const ITINERARY = [
-    {
-        time: '4:00 PM',
-        title: 'Guest Arrival & Welcome',
-        description: 'Sip a sparkling agua fresca, drop off gifts, and settle in before the festivities begin.'
-    },
-    {
-        time: '4:30 PM',
-        title: 'Mass of Thanksgiving',
-        description: 'Join us as we give thanks for Alondra\'s journey with a heartfelt ceremony led by Father Miguel.'
-    },
-    {
-        time: '6:00 PM',
-        title: 'Reception Grand Entrance',
-        description: 'Alondra makes her debut! Enjoy a gourmet dinner, signature mocktails, and plenty of photo moments.'
-    },
-    {
-        time: '8:00 PM',
-        title: 'Traditional Dances & Fiesta',
-        description: 'From the father-daughter dance to La Última Muñeca, dance the night away with DJ Solstice.'
-    }
-];
+const ITINERARY = {
+    en: [
+        {
+            time: '4:00 PM',
+            title: 'Guest Arrival & Welcome',
+            description: 'Sip a sparkling agua fresca, drop off gifts, and settle in before the festivities begin.'
+        },
+        {
+            time: '4:30 PM',
+            title: 'Mass of Thanksgiving',
+            description: 'Join us as we give thanks for Alondra\'s journey with a heartfelt ceremony led by Father Miguel.'
+        },
+        {
+            time: '6:00 PM',
+            title: 'Reception Grand Entrance',
+            description: 'Alondra makes her debut! Enjoy a gourmet dinner, signature mocktails, and plenty of photo moments.'
+        },
+        {
+            time: '8:00 PM',
+            title: 'Traditional Dances & Fiesta',
+            description: 'From the father-daughter dance to La Última Muñeca, dance the night away with DJ Solstice.'
+        }
+    ],
+    es: [
+        {
+            time: '4:00 PM',
+            title: 'Llegada y bienvenida',
+            description: 'Disfruta una refrescante agua fresca, deja tus regalos y acomódate antes de que comience la celebración.'
+        },
+        {
+            time: '4:30 PM',
+            title: 'Misa de acción de gracias',
+            description: 'Acompáñanos a dar gracias por la vida de Alondra en una ceremonia emotiva dirigida por el Padre Miguel.'
+        },
+        {
+            time: '6:00 PM',
+            title: 'Gran entrada a la recepción',
+            description: '¡Alondra hace su gran entrada! Disfruta una cena especial, mocktails de la casa y muchos momentos para fotos.'
+        },
+        {
+            time: '8:00 PM',
+            title: 'Bailes tradicionales y fiesta',
+            description: 'Desde el baile de padre e hija hasta La Última Muñeca, baila toda la noche con DJ Solstice.'
+        }
+    ]
+};
 
 const REAL_TAXI_SERVICES = {
     sju: [
@@ -167,6 +191,7 @@ const REAL_DETAILS = {
     venueAddressLong: 'Road 115 KM 12.2, Rincón, Puerto Rico',
     hostNames: 'Marisol Flores & Jesus Lopez',
     hostFamily: 'the Lopez family',
+    hostFamilyEs: 'la familia López',
     contactEmail: 'xv@alondradelmar.com',
     hotelBlockName: 'Quinceañera Alondra',
     reservationCode: '334',
@@ -190,7 +215,10 @@ const REAL_DETAILS = {
     ],
     travelTip:
         'Aguadilla Airport (BQN) is roughly 40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes, subject to traffic.',
+    travelTipEs:
+        'El aeropuerto de Aguadilla (BQN) está a unos 40 minutos del hotel, mientras que desde San Juan (SJU) el trayecto promedio es de 2 horas y 20 minutos, según el tránsito.',
     rideshareNote: 'Uber operates throughout Puerto Rico',
+    rideshareNoteEs: 'Uber opera en todo Puerto Rico',
     mapTitle: 'Rincón of the Seas Grand Caribbean Hotel & Villa Map',
     mapUrl:
         'https://maps.google.com/maps?q=Rinc%C3%B3n%20of%20the%20Seas%20Grand%20Caribbean%20Hotel%20%26%20Villa&t=&z=15&ie=UTF8&iwloc=&output=embed'
@@ -202,6 +230,7 @@ const DEMO_DETAILS = {
     venueAddressLong: 'Oceanview Blvd 12, Vista del Mar, CA',
     hostNames: 'Lucia Perez & Mateo Rivera',
     hostFamily: 'the Rivera family',
+    hostFamilyEs: 'la familia Rivera',
     contactEmail: 'hello@democelebration.com',
     hotelBlockName: 'Demo Celebration',
     reservationCode: '781',
@@ -225,7 +254,10 @@ const DEMO_DETAILS = {
     ],
     travelTip:
         'Harbor Point Airport (HPX) is about 35 minutes away, while Cedarwood Airport (CWT) is roughly 1 hour and 50 minutes, depending on traffic.',
+    travelTipEs:
+        'El aeropuerto Harbor Point (HPX) está a unos 35 minutos, mientras que Cedarwood (CWT) queda aproximadamente a 1 hora y 50 minutos, según el tránsito.',
     rideshareNote: 'Rideshare apps operate throughout Vista del Mar',
+    rideshareNoteEs: 'Las aplicaciones de transporte operan en toda Vista del Mar',
     mapTitle: 'Seaside Palms Event Hall Map',
     mapUrl:
         'https://maps.google.com/maps?q=Seaside%20Palms%20Event%20Hall%20Vista%20del%20Mar&t=&z=14&ie=UTF8&iwloc=&output=embed'
@@ -333,12 +365,12 @@ function App() {
 
     const countdownUnits = useMemo(
         () => [
-            { label: 'Days', value: timeLeft.days },
-            { label: 'Hours', value: timeLeft.hours },
-            { label: 'Minutes', value: timeLeft.minutes },
-            { label: 'Seconds', value: timeLeft.seconds }
+            { label: lang === 'es' ? 'Días' : 'Days', value: timeLeft.days },
+            { label: lang === 'es' ? 'Horas' : 'Hours', value: timeLeft.hours },
+            { label: lang === 'es' ? 'Minutos' : 'Minutes', value: timeLeft.minutes },
+            { label: lang === 'es' ? 'Segundos' : 'Seconds', value: timeLeft.seconds }
         ],
-        [timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds]
+        [lang, timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds]
     );
 
     return (
@@ -368,7 +400,7 @@ function App() {
                             name="phone-number"
                             type="tel"
                             autoComplete="tel"
-                            placeholder="(555) 123-4567"
+                            placeholder={lang === 'es' ? '(555) 123-4567' : '(555) 123-4567'}
                             value={phoneInput}
                             onChange={(event) => {
                                 setPhoneInput(event.target.value);
@@ -393,7 +425,7 @@ function App() {
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
                         <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Lopez Flores</p>
-                        <p className="font-display text-2xl text-[rgba(44,96,130,0.95)]">Mis XV Celebration</p>
+                        <p className="font-display text-2xl text-[rgba(44,96,130,0.95)]">{lang === 'es' ? 'Celebración de Mis XV' : 'Mis XV Celebration'}</p>
                     </div>
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(203,244,250,0.4)] p-1 shadow-lg sm:mx-0">
                         {[
@@ -421,10 +453,10 @@ function App() {
                         {guestInfo && (
                             <section className="glass-panel rounded-3xl p-6 text-center shadow-lg">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">
-                                    Invitation Access Confirmed
+                                    {lang === 'es' ? 'Acceso a la invitación confirmado' : 'Invitation Access Confirmed'}
                                 </p>
                                 <p className="mt-2 text-xl font-semibold">
-                                    Phone: {guestInfo.phone}
+                                    {lang === 'es' ? 'Teléfono' : 'Phone'}: {guestInfo.phone}
                                     {isDemo && (
                                         <span className="ml-3 rounded-full bg-[rgba(240,132,112,0.2)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,0.95)]">
                                             Demo
@@ -432,7 +464,9 @@ function App() {
                                     )}
                                 </p>
                                 <p className="text-[rgba(44,96,130,0.75)]">
-                                    We have reserved for you {guestInfo.tickets} seats, with love
+                                    {lang === 'es'
+                                        ? `Hemos reservado para ti ${guestInfo.tickets} asientos, con mucho amor`
+                                        : `We have reserved for you ${guestInfo.tickets} seats, with love`}
                                     {isDemo && (
                                         <span className="ml-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,0.85)]">
                                             Demo
@@ -443,17 +477,18 @@ function App() {
                         )}
                         <section className="text-center" id="home">
                             <div className="flex justify-center">
-                                <span className="ribbon-tag">Mis XV • July 18, 2026</span>
+                                <span className="ribbon-tag">{lang === 'es' ? 'Mis XV • 18 de julio de 2026' : 'Mis XV • July 18, 2026'}</span>
                             </div>
                             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl">
-                                The celebration of Alondra Del Mar&apos;s Quinceañera
+                                {lang === 'es' ? 'La celebración de los XV años de Alondra Del Mar' : 'The celebration of Alondra Del Mar&apos;s Quinceañera'}
                             </h1>
                             <p className="mt-4 text-lg text-[rgba(44,96,130,0.8)] md:text-xl">
-                                Join us in celebrating fifteen beautiful years of faith, family, and dreams come true.
-                                Expect joyful traditions, delicious food, and a night of dancing beneath the stars.
+                                {lang === 'es'
+                                    ? 'Acompáñanos a celebrar quince hermosos años de fe, familia y sueños cumplidos. Te esperan tradiciones llenas de alegría, comida deliciosa y una noche para bailar bajo las estrellas.'
+                                    : 'Join us in celebrating fifteen beautiful years of faith, family, and dreams come true. Expect joyful traditions, delicious food, and a night of dancing beneath the stars.'}
                             </p>
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Introduction</p>
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Introducción' : 'Introduction'}</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
                                     {(INTRO_MESSAGE[lang] ?? INTRO_MESSAGE.en).map((line) => (
                                         <p key={line} className="font-script text-2xl leading-relaxed">
@@ -478,29 +513,31 @@ function App() {
                             </div>
                             <div className="mt-8 grid gap-4 md:grid-cols-3">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
-                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Date</p>
-                                    <p className="mt-2 text-xl font-semibold">Saturday • July 18, 2026</p>
-                                    <p className="text-[rgba(44,96,130,0.7)]">Ceremony begins promptly at 6:00 PM</p>
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Fecha' : 'Date'}</p>
+                                    <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Sábado • 18 de julio de 2026' : 'Saturday • July 18, 2026'}</p>
+                                    <p className="text-[rgba(44,96,130,0.7)]">{lang === 'es' ? 'La ceremonia comienza puntualmente a las 6:00 PM' : 'Ceremony begins promptly at 6:00 PM'}</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
-                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Venue</p>
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Lugar' : 'Venue'}</p>
                                     <p className="mt-2 text-xl font-semibold">{eventDetails.venueName}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">{eventDetails.venueAddress}</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
-                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Attire</p>
-                                    <p className="mt-2 text-xl font-semibold">Formal Attire</p>
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
+                                    <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        Please come in{' '}
+                                        {lang === 'es' ? 'Por favor asiste con ' : 'Please come in'}{' '}
                                         <a
                                             href={dressCodeImage}
                                             target="_blank"
                                             rel="noreferrer"
                                             className="font-semibold text-[rgba(240,132,112,1)] underline underline-offset-4 hover:text-[rgba(44,96,130,0.9)]"
                                         >
-                                            beige or nude colored formal wear.
+                                            {lang === 'es' ? 'ropa formal en tonos beige o nude.' : 'beige or nude colored formal wear.'}
                                         </a>{' '}
-                                        Ocean blue, gold and white ensembles are reserved exclusively for Alondra.
+                                        {lang === 'es'
+                                            ? 'Los atuendos azul océano, dorado y blanco están reservados exclusivamente para Alondra.'
+                                            : 'Ocean blue, gold and white ensembles are reserved exclusively for Alondra.'}
                                     </p>
                                 </div>
                             </div>
@@ -509,25 +546,25 @@ function App() {
                                     href="#rsvp"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    RSVP Now
+                                    {lang === 'es' ? 'Confirmar asistencia' : 'RSVP Now'}
                                 </a>
                                 <a
                                     href="#itinerary"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    View Itinerary
+                                    {lang === 'es' ? 'Ver itinerario' : 'View Itinerary'}
                                 </a>
                             </div>
                         </section>
 
                         <section className="glass-panel rounded-3xl p-8 text-center shadow-xl" id="countdown">
-                            <h2 className="font-display text-3xl md:text-4xl">Countdown to the Celebration</h2>
-                            <p className="mt-2 text-[rgba(44,96,130,0.7)]">We can&apos;t wait to celebrate with you!</p>
+                            <h2 className="font-display text-3xl md:text-4xl">{lang === 'es' ? 'Cuenta regresiva para la celebración' : 'Countdown to the Celebration'}</h2>
+                            <p className="mt-2 text-[rgba(44,96,130,0.7)]">{lang === 'es' ? '¡Ya queremos celebrar contigo!' : 'We can&apos;t wait to celebrate with you!'}</p>
                             <p className="mt-1 text-sm uppercase tracking-[0.4em] text-[rgba(47,156,194,0.75)]">
-                                July 18, 2026 • 6:00 PM Atlantic Time
+                                {lang === 'es' ? '18 de julio de 2026 • 6:00 PM hora del Atlántico' : 'July 18, 2026 • 6:00 PM Atlantic Time'}
                             </p>
                             {timeLeft.completed ? (
-                                <p className="mt-6 text-2xl font-semibold text-[rgba(240,132,112,1)]">It&apos;s party time! 💃🏽</p>
+                                <p className="mt-6 text-2xl font-semibold text-[rgba(240,132,112,1)]">{lang === 'es' ? '¡Es hora de la fiesta! 💃🏽' : 'It&apos;s party time! 💃🏽'}</p>
                             ) : (
                                 <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
                                     {countdownUnits.map(({ label, value }) => (
@@ -545,11 +582,11 @@ function App() {
 
                         <section id="details" className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
                             <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                                <h2 className="font-display text-3xl">Event Highlights</h2>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Momentos destacados del evento' : 'Event Highlights'}</h2>
                                 <p className="mt-3 text-[rgba(44,96,130,0.8)]">
-                                    From the traditional mass to a sparkling reception, every detail has been planned with
-                                    family and friends in mind. Take a peek at the evening&apos;s highlights and make sure you
-                                    arrive in time for the ceremonies that matter most to Alondra and her parents.
+                                        {lang === 'es'
+                                            ? 'Desde la misa tradicional hasta una recepción brillante, cada detalle se planificó pensando en la familia y amistades. Mira los momentos destacados de la noche y llega a tiempo para las ceremonias más importantes para Alondra y sus padres.'
+                                            : 'From the traditional mass to a sparkling reception, every detail has been planned with family and friends in mind. Take a peek at the evening&apos;s highlights and make sure you arrive in time for the ceremonies that matter most to Alondra and her parents.'}
                                 </p>
                                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                                     {MEMORY_PHOTOS.map((photo) => (
@@ -569,30 +606,33 @@ function App() {
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
                                         <div>
-                                            <h3 className="text-lg font-semibold">Courtside Moments</h3>
+                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Momentos de la corte' : 'Courtside Moments'}</h3>
                                             <p className="text-[rgba(44,96,130,0.7)]">
-                                                Celebrate with Alondra&apos;s court of damas and chambelanes during the surprise dance and
-                                                a special toast from her padrinos.
+                                                {lang === 'es'
+                                                    ? 'Celebra con la corte de damas y chambelanes de Alondra durante el baile sorpresa y un brindis especial de sus padrinos.'
+                                                    : 'Celebrate with Alondra&apos;s court of damas and chambelanes during the surprise dance and a special toast from her padrinos.'}
                                             </p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
                                         <div>
-                                            <h3 className="text-lg font-semibold">Sweet Indulgences</h3>
+                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Dulces antojos' : 'Sweet Indulgences'}</h3>
                                             <p className="text-[rgba(44,96,130,0.7)]">
-                                                Enjoy a dessert bar inspired by Alondra&apos;s favorite flavors plus a late-night churro cart for
-                                                guests who stay on the dance floor.
+                                                {lang === 'es'
+                                                    ? 'Disfruta una mesa de postres inspirada en los sabores favoritos de Alondra, además de un carrito de churros para quienes sigan bailando hasta tarde.'
+                                                    : 'Enjoy a dessert bar inspired by Alondra&apos;s favorite flavors plus a late-night churro cart for guests who stay on the dance floor.'}
                                             </p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
                                         <div>
-                                            <h3 className="text-lg font-semibold">Music & Memories</h3>
+                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Música y recuerdos' : 'Music & Memories'}</h3>
                                             <p className="text-[rgba(44,96,130,0.7)]">
-                                                Our curated Spotify playlist sets the mood—be sure to hit play when you arrive and share your
-                                                song requests with the DJ booth.
+                                                {lang === 'es'
+                                                    ? 'Nuestra playlist de Spotify crea el ambiente perfecto. Dale play al llegar y comparte tus canciones favoritas con la cabina del DJ.'
+                                                    : 'Our curated Spotify playlist sets the mood—be sure to hit play when you arrive and share your song requests with the DJ booth.'}
                                             </p>
                                         </div>
                                     </li>
@@ -607,20 +647,22 @@ function App() {
                                     />
                                 </figure>
                                 <div>
-                                    <p className="font-script text-3xl text-[rgba(240,132,112,1)]">Con mucho amor</p>
+                                    <p className="font-script text-3xl text-[rgba(240,132,112,1)]">{lang === 'es' ? 'Con mucho amor' : 'With much love'}</p>
                                     <p className="mt-2 text-[rgba(44,96,130,0.7)]">
-                                        Hosted with love by her parents, {eventDetails.hostNames}, for {eventDetails.hostFamily}.
+                                        {lang === 'es'
+                                            ? `Celebrado con amor por sus padres, ${eventDetails.hostNames}, para ${eventDetails.hostFamilyEs ?? eventDetails.hostFamily}.`
+                                            : `Hosted with love by her parents, ${eventDetails.hostNames}, for ${eventDetails.hostFamily}.`}
                                     </p>
                                 </div>
                                 <div className="space-y-3 text-[rgba(44,96,130,0.7)]">
-                                    <p>Need to update your RSVP or have dietary restrictions?</p>
+                                    <p>{lang === 'es' ? '¿Necesitas actualizar tu RSVP o tienes restricciones alimentarias?' : 'Need to update your RSVP or have dietary restrictions?'}</p>
                                     <a
                                         href={`mailto:${eventDetails.contactEmail}`}
                                         className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                     >
                                         {eventDetails.contactEmail}
                                     </a>
-                                    <p className="text-sm">We&apos;re happy to help you plan your perfect evening.</p>
+                                    <p className="text-sm">{lang === 'es' ? 'Con gusto te ayudamos a planificar una noche perfecta.' : 'We&apos;re happy to help you plan your perfect evening.'}</p>
                                 </div>
                             </aside>
                         </section>
@@ -628,10 +670,11 @@ function App() {
                         <section id="itinerary" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="flex flex-col items-start justify-between gap-6 md:flex-row">
                                 <div>
-                                    <h2 className="font-display text-3xl">Evening Schedule</h2>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
-                                        We&apos;ve curated the night so you won&apos;t miss a single tradition. Arrive a little early to snap
-                                        photos by the floral wall and sign Alondra&apos;s guestbook.
+                                        {lang === 'es'
+                                            ? 'Hemos preparado la noche para que no te pierdas ninguna tradición. Llega un poco antes para tomarte fotos en el muro floral y firmar el libro de recuerdos de Alondra.'
+                                            : 'We&apos;ve curated the night so you won&apos;t miss a single tradition. Arrive a little early to snap photos by the floral wall and sign Alondra&apos;s guestbook.'}
                                     </p>
                                 </div>
                                 <a
@@ -640,11 +683,11 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    Save to Calendar
+                                    {lang === 'es' ? 'Guardar en calendario' : 'Save to Calendar'}
                                 </a>
                             </div>
                             <div className="mt-8 grid gap-6 md:grid-cols-2">
-                                {ITINERARY.map((event) => (
+                                {(ITINERARY[lang] ?? ITINERARY.en).map((event) => (
                                     <div key={event.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
                                         <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{event.time}</p>
                                         <h3 className="mt-2 text-xl font-semibold text-[rgba(44,96,130,0.9)]">{event.title}</h3>
@@ -655,9 +698,11 @@ function App() {
                         </section>
 
                         <section id="gallery" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <h2 className="font-display text-3xl text-center">Moments with Alondra</h2>
+                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Momentos con Alondra' : 'Moments with Alondra'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
-                                From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra&apos;s journey leading up to the big day.
+                                {lang === 'es'
+                                    ? 'Desde los ensayos hasta aventuras bajo el sol, disfruta un vistazo al camino de Alondra antes de su gran día.'
+                                    : 'From rehearsals to sun-kissed adventures, enjoy a glimpse of Alondra&apos;s journey leading up to the big day.'}
                             </p>
                             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                     {GALLERY_PHOTOS.map((photo) => (
@@ -677,38 +722,38 @@ function App() {
 
                         <section id="location" className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                             <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                                <h2 className="font-display text-3xl">Getting There</h2>
+                                <h2 className="font-display text-3xl">{lang === 'es' ? 'Cómo llegar' : 'Getting There'}</h2>
                                     <p className="mt-2 text-[rgba(44,96,130,0.75)]">
-                                    {eventDetails.venueName} is nestled along a stunning coastline. Guests
-                                    staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay
-                                    just steps from the oceanfront ballroom.
+                                    {lang === 'es'
+                                        ? `${eventDetails.venueName} se encuentra en una costa espectacular. Los invitados que se hospeden en la propiedad pueden coordinar con el equipo de reservaciones antes de la celebración para asegurar su estadía a pasos del salón frente al mar.`
+                                        : `${eventDetails.venueName} is nestled along a stunning coastline. Guests staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay just steps from the oceanfront ballroom.`}
                                     </p>
                                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.7)]">
                                     <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">Hotel Block:</span> Reference &ldquo;{eventDetails.hotelBlockName}&rdquo;
-                                        with reservation code {eventDetails.reservationCode} when booking directly with the hotel. Call
+                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Bloque de hotel:' : 'Hotel Block:'}</span> {lang === 'es' ? 'Menciona' : 'Reference'} &ldquo;{eventDetails.hotelBlockName}&rdquo;
+                                        {lang === 'es' ? ' y el código de reservación ' : ' with reservation code '}{eventDetails.reservationCode} {lang === 'es' ? 'al reservar directamente con el hotel. Llama al' : 'when booking directly with the hotel. Call'}
                                         <a
                                             href={`tel:${eventDetails.hotelPhone.raw}`}
                                             className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                         >
                                             {eventDetails.hotelPhone.display}
                                         </a>
-                                        {' '}or contact {eventDetails.hotelContact.name} at
+                                        {' '}{lang === 'es' ? 'o contacta a' : 'or contact'} {eventDetails.hotelContact.name} {lang === 'es' ? 'al' : 'at'}
                                         <a
                                             href={`tel:${eventDetails.hotelContact.raw}`}
                                             className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                         >
                                             {eventDetails.hotelContact.display}
                                         </a>
-                                        {' '}for assistance. A one-night deposit is required.
+                                        {' '}{lang === 'es' ? 'para asistencia. Se requiere depósito de una noche.' : 'for assistance. A one-night deposit is required.'}
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">Travel Tip:</span> {eventDetails.travelTip}
+                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Consejo de viaje:' : 'Travel Tip:'}</span> {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
                                     </li>
                                     <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">Need a ride?</span> From {majorAirport.code} call{' '}
-                                        {formatTaxiList(eventDetails.taxiServices.sju)}. From {regionalAirport.code} reach{' '}
-                                        {formatTaxiList(eventDetails.taxiServices.bqn)}. Uber is also available throughout Puerto Rico.
+                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? '¿Necesitas transporte?' : 'Need a ride?'}</span> {lang === 'es' ? `Desde ${majorAirport.code} llama a ` : `From ${majorAirport.code} call `}{' '}
+                                        {formatTaxiList(eventDetails.taxiServices.sju)}. {lang === 'es' ? `Desde ${regionalAirport.code} comunícate con ` : `From ${regionalAirport.code} reach `}{' '}
+                                        {formatTaxiList(eventDetails.taxiServices.bqn)}. {lang === 'es' ? 'Uber también está disponible en todo Puerto Rico.' : 'Uber is also available throughout Puerto Rico.'}
                                     </li>
                                 </ul>
                                 <div className="mt-6">
@@ -717,7 +762,7 @@ function App() {
                                         onClick={() => setCurrentPage('travel')}
                                         className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                     >
-                                        View Full Travel Guide
+                                        {lang === 'es' ? 'Ver guía completa de viaje' : 'View Full Travel Guide'}
                                     </button>
                                 </div>
                             </div>
@@ -734,13 +779,14 @@ function App() {
                         </section>
 
                         <section id="registry" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <h2 className="font-display text-3xl text-center">Gifts & Blessings</h2>
+                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Regalos y bendiciones' : 'Gifts & Blessings'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
-                                Your presence is the greatest gift! If you&apos;d like to contribute to Alondra&apos;s college dreams or
-                                share a keepsake, explore the options below or leave us an envelope.
+                                {lang === 'es'
+                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra o compartir un detalle, explora las opciones de abajo o déjanos un sobre.'
+                                    : 'Your presence is the greatest gift! If you&apos;d like to contribute to Alondra&apos;s college dreams or share a keepsake, explore the options below or leave us an envelope.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">Message</p>
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Mensaje' : 'Message'}</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
                                     {(GIFT_MESSAGE[lang] ?? GIFT_MESSAGE.en).map((line) => (
                                         <p key={line} className="font-script text-2xl leading-relaxed">
@@ -756,7 +802,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    Donate via Cash App
+                                    {lang === 'es' ? 'Donar por Cash App' : 'Donate via Cash App'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.zelle}
@@ -764,7 +810,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    Send with Zelle
+                                    {lang === 'es' ? 'Enviar con Zelle' : 'Send with Zelle'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.venmo}
@@ -772,7 +818,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    Send with Venmo
+                                    {lang === 'es' ? 'Enviar con Venmo' : 'Send with Venmo'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.athMovil}
@@ -780,7 +826,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
-                                    Send with ATH Móvil
+                                    {lang === 'es' ? 'Enviar con ATH Móvil' : 'Send with ATH Móvil'}
                                 </a>
                             </div>
                         </section>
@@ -788,10 +834,11 @@ function App() {
                         <section id="rsvp" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="grid gap-8 md:grid-cols-2">
                                 <div>
-                                    <h2 className="font-display text-3xl">RSVP by July 1, 2026</h2>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Confirma antes del 1 de julio de 2026' : 'RSVP by July 1, 2026'}</h2>
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                                        We can&apos;t wait to celebrate with you! Let us know who&apos;s coming so we can reserve your seats,
-                                        accommodate special requests, and prepare your welcome favors.
+                                        {lang === 'es'
+                                            ? '¡Estamos emocionados de celebrar contigo! Avísanos quiénes asistirán para reservar sus asientos, atender solicitudes especiales y preparar sus detalles de bienvenida.'
+                                            : 'We can&apos;t wait to celebrate with you! Let us know who&apos;s coming so we can reserve your seats, accommodate special requests, and prepare your welcome favors.'}
                                     </p>
                                     <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.7)]">
                                     </ul>
@@ -809,21 +856,21 @@ function App() {
                                         <input
                                             type="text"
                                             name="name"
-                                            placeholder="Your Full Name"
+                                            placeholder={lang === 'es' ? 'Tu nombre completo' : 'Your Full Name'}
                                             required
                                             className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         />
                                         <input
                                             type="email"
                                             name="email"
-                                            placeholder="Email Address"
+                                            placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
                                             required
                                             className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         />
                                         <input
                                             type="tel"
                                             name="phone"
-                                            placeholder="Phone Number"
+                                            placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
                                             className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         />
                                         <select
@@ -831,25 +878,27 @@ function App() {
                                             required
                                             className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm text-[rgba(44,96,130,0.95)] focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         >
-                                            <option value="">Will you celebrate with us?</option>
-                                            <option value="yes">Sí, can&apos;t wait!</option>
-                                            <option value="no">Sadly, unable to attend</option>
+                                            <option value="">{lang === 'es' ? '¿Celebras con nosotros?' : 'Will you celebrate with us?'}</option>
+                                            <option value="yes">{lang === 'es' ? 'Sí, ¡con mucha ilusión!' : 'Yes, can&apos;t wait!'}</option>
+                                            <option value="no">{lang === 'es' ? 'Lamentablemente no podré asistir' : 'Sadly, unable to attend'}</option>
                                         </select>
                                         <textarea
                                             name="message"
                                             rows="3"
-                                            placeholder="Share a note or song request"
+                                            placeholder={lang === 'es' ? 'Comparte una nota o petición de canción' : 'Share a note or song request'}
                                             className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         ></textarea>
                                         <button
                                             type="submit"
                                             className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                         >
-                                            Submit RSVP
+                                            {lang === 'es' ? 'Enviar confirmación' : 'Submit RSVP'}
                                         </button>
                                     </div>
                                     <p className="mt-4 text-xs text-[rgba(47,156,194,0.75)]">
-                                        This form opens a secure RSVP in a new tab so you can attach additional guests or messages.
+                                        {lang === 'es'
+                                            ? 'Este formulario abre una confirmación segura en una nueva pestaña para que puedas añadir invitados adicionales o mensajes.'
+                                            : 'This form opens a secure RSVP in a new tab so you can attach additional guests or messages.'}
                                     </p>
                                 </form>
                             </div>
@@ -858,10 +907,11 @@ function App() {
                         <section id="song-requests" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="grid gap-8 lg:grid-cols-2">
                                 <div>
-                                    <h2 className="font-display text-3xl">Song Requests & Blessings</h2>
+                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Peticiones de canciones y bendiciones' : 'Song Requests & Blessings'}</h2>
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                                        Share your favorite songs and send Alondra your heartfelt blessings below. Both forms are configured
-                                        to deliver to {BLESSING_EMAIL}.
+                                        {lang === 'es'
+                                            ? `Comparte tus canciones favoritas y envía tus bendiciones para Alondra. Ambos formularios están configurados para enviarse a ${BLESSING_EMAIL}.`
+                                            : `Share your favorite songs and send Alondra your heartfelt blessings below. Both forms are configured to deliver to ${BLESSING_EMAIL}.`}
                                     </p>
                                 </div>
                                 <div className="grid gap-6">
@@ -872,7 +922,7 @@ function App() {
                                         target="_blank"
                                     >
                                         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
-                                            Song Request Form
+                                            {lang === 'es' ? 'Formulario de canciones' : 'Song Request Form'}
                                         </p>
                                         <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
                                         <input type="hidden" name="_captcha" value="false" />
@@ -881,41 +931,41 @@ function App() {
                                             <input
                                                 type="text"
                                                 name="name"
-                                                placeholder="Your Name"
+                                                placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
                                                 required
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <input
                                                 type="email"
                                                 name="email"
-                                                placeholder="Email Address"
+                                                placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
                                                 required
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <input
                                                 type="tel"
                                                 name="phone"
-                                                placeholder="Phone Number"
+                                                placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <input
                                                 type="text"
                                                 name="song"
-                                                placeholder="Song title + artist"
+                                                placeholder={lang === 'es' ? 'Título de canción + artista' : 'Song title + artist'}
                                                 required
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <textarea
                                                 name="note"
                                                 rows="3"
-                                                placeholder="Optional message for the DJ or Alondra"
+                                                placeholder={lang === 'es' ? 'Mensaje opcional para el DJ o para Alondra' : 'Optional message for the DJ or Alondra'}
                                                 className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             ></textarea>
                                             <button
                                                 type="submit"
                                                 className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                             >
-                                                Submit Song Request
+                                                {lang === 'es' ? 'Enviar canción' : 'Submit Song Request'}
                                             </button>
                                         </div>
                                     </form>
@@ -927,7 +977,7 @@ function App() {
                                         target="_blank"
                                     >
                                         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
-                                            Blessings Form
+                                            {lang === 'es' ? 'Formulario de bendiciones' : 'Blessings Form'}
                                         </p>
                                         <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
                                         <input type="hidden" name="_captcha" value="false" />
@@ -936,27 +986,27 @@ function App() {
                                             <input
                                                 type="text"
                                                 name="name"
-                                                placeholder="Your Name"
+                                                placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
                                                 required
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <input
                                                 type="email"
                                                 name="email"
-                                                placeholder="Email Address"
+                                                placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
                                                 required
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <input
                                                 type="tel"
                                                 name="phone"
-                                                placeholder="Phone Number"
+                                                placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
                                                 className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             />
                                             <textarea
                                                 name="message"
                                                 rows="4"
-                                                placeholder="Write your blessing for Alondra"
+                                                placeholder={lang === 'es' ? 'Escribe tu bendición para Alondra' : 'Write your blessing for Alondra'}
                                                 required
                                                 className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                             ></textarea>
@@ -964,7 +1014,7 @@ function App() {
                                                 type="submit"
                                                 className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                             >
-                                                Send Your Blessing
+                                                {lang === 'es' ? 'Enviar bendición' : 'Send Your Blessing'}
                                             </button>
                                         </div>
                                     </form>
@@ -978,7 +1028,7 @@ function App() {
                 )}
 
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(178,226,236,0.6)] pt-6 text-center text-sm text-[rgba(44,96,130,0.6)]">
-                    <p>Made with ♥ for Alondra&apos;s quinceañera. See you on the dance floor!</p>
+                    <p>{lang === 'es' ? 'Hecho con ♥ para los quince de Alondra. ¡Nos vemos en la pista de baile!' : 'Made with ♥ for Alondra&apos;s quinceañera. See you on the dance floor!'}</p>
                 </footer>
                 </div>
             </div>
