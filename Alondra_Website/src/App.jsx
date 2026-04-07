@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import Envelope from './Envelope.jsx';
 import OceanBackground from './OceanBackground.jsx';
@@ -32,6 +32,8 @@ import alondra13 from './alondra_images/alondra13.JPG';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
+
+const BACKGROUND_TRACK = "/45 - Never Grow Up (Taylor's Version) [Originally Performed by Taylor Swift] [Karaoke Version].mp3";
 
 const HERO_PHOTOS = [
     { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
@@ -292,6 +294,7 @@ function App() {
     const [phoneInput, setPhoneInput] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [guestInfo, setGuestInfo] = useState(null);
+    const audioRef = useRef(null);
 
     const isOpen = accessStage === 'open';
     const isDemo = guestInfo?.isDemo ?? false;
@@ -300,6 +303,17 @@ function App() {
     const [regionalAirport, majorAirport] = eventDetails.airports;
 
     const normalizePhone = (value) => value.replace(/\D/g, '');
+
+    const playBackgroundTrack = () => {
+        if (!audioRef.current) {
+            const audio = new Audio(BACKGROUND_TRACK);
+            audio.loop = true;
+            audio.volume = 0.6;
+            audioRef.current = audio;
+        }
+
+        void audioRef.current.play().catch(() => {});
+    };
 
     const handlePasswordSubmit = (event) => {
         event.preventDefault();
@@ -316,12 +330,20 @@ function App() {
             });
             setPasswordError('');
             setAccessStage('open');
+            playBackgroundTrack();
             setCurrentPage('home');
             return;
         }
 
         setPasswordError(t.invalidPhone);
     };
+
+    useEffect(() => () => {
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current = null;
+        }
+    }, []);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -354,7 +376,10 @@ function App() {
             </button>
             {accessStage === 'sealed' && (
                 <Envelope
-                    onStampClick={() => setAccessStage('password')}
+                    onStampClick={() => {
+                        setAccessStage('password');
+                        playBackgroundTrack();
+                    }}
                     openInvitationLabel={lang === 'es' ? 'Abrir invitación' : 'Open invitation'}
                 />
             )}
