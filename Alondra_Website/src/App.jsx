@@ -161,7 +161,7 @@ const REAL_DETAILS = {
     venueAddressLong: 'Road 115 KM 12.2, Rincón, Puerto Rico',
     hostNames: 'Marisol Flores & Jesus Lopez',
     hostFamily: 'the Lopez family',
-    hostFamilyEs: 'la familia López',
+    hostFamilyEs: 'la familia López Flores',
     contactEmail: 'xv@alondradelmar.com',
     hotelBlockName: 'Quinceañera Alondra',
     reservationCode: '334',
@@ -454,7 +454,7 @@ function App() {
                             </h1>
                             <p className="mt-4 text-lg text-[rgba(44,96,130,0.8)] md:text-xl">
                                 {lang === 'es'
-                                    ? 'Entre el susurro de las olas y la luz de las estrellas y bajo de la bendición de Dios, te invitamos a celebrar los XV años de Alondra de Mar.'
+                                    ? 'Entre el susurro de las olas y la luz de las estrellas y con la bendición de Dios, te invitamos a celebrar los XV años de Alondra de Mar.'
                                     : 'Join us in celebrating fifteen beautiful years of faith, family, and dreams come true. Expect joyful traditions, delicious food, and a night of dancing beneath the stars.'}
                             </p>
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
@@ -584,28 +584,6 @@ function App() {
                                             </p>
                                         </div>
                                     </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
-                                        <div>
-                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Dulces antojos' : 'Sweet Indulgences'}</h3>
-                                            <p className="text-[rgba(44,96,130,0.7)]">
-                                                {lang === 'es'
-                                                    ? 'Disfruta una mesa de postres inspirada en los sabores favoritos de Alondra, además de un carrito de churros para quienes sigan bailando hasta tarde.'
-                                                    : 'Enjoy a dessert bar inspired by Alondra\'s favorite flavors plus a late-night churro cart for guests who stay on the dance floor.'}
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
-                                        <div>
-                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Música y recuerdos' : 'Music & Memories'}</h3>
-                                            <p className="text-[rgba(44,96,130,0.7)]">
-                                                {lang === 'es'
-                                                    ? 'Nuestra playlist de Spotify crea el ambiente perfecto. Dale play al llegar y comparte tus canciones favoritas con la cabina del DJ.'
-                                                    : 'Our curated Spotify playlist sets the mood—be sure to hit play when you arrive and share your song requests with the DJ booth.'}
-                                            </p>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                             <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 text-center shadow-xl">
@@ -643,7 +621,7 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado la noche para que no te pierdas ninguna tradición. Llega un poco antes para tomarte fotos en el muro floral y firmar el libro de recuerdos de Alondra.'
+                                            ? 'Hemos preparado esta noche con especial cuidado para que no te pierdas ninguna tradición. Te invitamos a llegar un poco antes para dejar un mensaje en el libro de recuerdos de Alondra.'
                                             : 'We\'ve curated the night so you won\'t miss a single tradition. Arrive a little early to snap photos by the floral wall and sign Alondra\'s guestbook.'}
                                     </p>
                                 </div>
@@ -695,27 +673,27 @@ function App() {
                                 <h2 className="font-display text-3xl">{lang === 'es' ? 'Cómo llegar' : 'Getting There'}</h2>
                                     <p className="mt-2 text-[rgba(44,96,130,0.75)]">
                                     {lang === 'es'
-                                        ? `${eventDetails.venueName} se encuentra en una costa espectacular. Los invitados que se hospeden en la propiedad pueden coordinar con el equipo de reservaciones antes de la celebración para asegurar su estadía a pasos del salón frente al mar.`
+                                        ? `La celebración de los XV años de Alondra del Mar tendrá lugar en el hermoso ${eventDetails.venueName}, ubicado frente a una costa espectacular en Rincón, Puerto Rico. Para una experiencia aún más especial, los invitados que deseen hospedarse en la propiedad pueden coordinar su estadía a pasos del salón frente al mar.`
                                         : `${eventDetails.venueName} is nestled along a stunning coastline. Guests staying on-site can coordinate with the reservation team ahead of the celebration to secure their stay just steps from the oceanfront ballroom.`}
                                     </p>
                                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.7)]">
                                     <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Bloque de hotel:' : 'Hotel Block:'}</span> {lang === 'es' ? 'Menciona' : 'Reference'} &ldquo;{eventDetails.hotelBlockName}&rdquo;
-                                        {lang === 'es' ? ' y el código de reservación ' : ' with reservation code '}{eventDetails.reservationCode} {lang === 'es' ? 'al reservar directamente con el hotel. Llama al' : 'when booking directly with the hotel. Call'}
+                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Hospedaje:' : 'Hotel Block:'}</span> {lang === 'es' ? 'Al realizard tu reservación, menciona' : 'Reference'} &ldquo;{eventDetails.hotelBlockName}&rdquo;
+                                        {lang === 'es' ? ' y el código de reservación ' : ' with reservation code '}{eventDetails.reservationCode} {lang === 'es' ? '. Para asistencia, puedes comunicarte con el hotel al' : 'when booking directly with the hotel. Call'}
                                         <a
                                             href={`tel:${eventDetails.hotelPhone.raw}`}
                                             className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                         >
                                             {eventDetails.hotelPhone.display}
                                         </a>
-                                        {' '}{lang === 'es' ? 'o contacta a' : 'or contact'} {eventDetails.hotelContact.name} {lang === 'es' ? 'al' : 'at'}
+                                        {' '}{lang === 'es' ? 'o con Lisandra Ayala al ' : 'or contact'} {eventDetails.hotelContact.name} {lang === 'es' ? 'al' : 'at'}
                                         <a
                                             href={`tel:${eventDetails.hotelContact.raw}`}
                                             className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                         >
                                             {eventDetails.hotelContact.display}
                                         </a>
-                                        {' '}{lang === 'es' ? 'para asistencia. Se requiere depósito de una noche.' : 'for assistance. A one-night deposit is required.'}
+                                        {' '}{lang === 'es' ? 'para asistencia.' : 'for assistance.'}
                                     </li>
                                     <li>
                                         <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Consejo de viaje:' : 'Travel Tip:'}</span> {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
@@ -772,7 +750,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    {lang === 'es' ? 'Donar por Cash App' : 'Donate via Cash App'}
+                                    {lang === 'es' ? 'Enviar Cash App' : 'Send with Cash App'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.zelle}
