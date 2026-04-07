@@ -1,4 +1,4 @@
-const beachVideoUrl = 'https://przqxcnsd1c3dswu.public.blob.vercel-storage.com/beach_video.mp4';
+import beachVideoUrl from './alondra_images/beach_video.mp4';
 function OceanBackground() {
     return (
         <div className="ocean-background" aria-hidden="true">
