@@ -854,10 +854,25 @@ function App() {
                                             <option value="yes">{lang === 'es' ? 'Sí, ¡con mucha ilusión!' : 'Yes, can\'t wait!'}</option>
                                             <option value="no">{lang === 'es' ? 'Lamentablemente no podré asistir' : 'Sadly, unable to attend'}</option>
                                         </select>
+                                        <input
+                                            type="number"
+                                            name="guest_count"
+                                            min="0"
+                                            max={guestInfo?.tickets ?? 0}
+                                            step="1"
+                                            inputMode="numeric"
+                                            required
+                                            placeholder={
+                                                lang === 'es'
+                                                    ? `Número de asientos (0 a ${guestInfo?.tickets ?? 0})`
+                                                    : `Number of seats (0 to ${guestInfo?.tickets ?? 0})`
+                                            }
+                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
+                                        />
                                         <textarea
                                             name="message"
                                             rows="3"
-                                            placeholder={lang === 'es' ? 'Comparte una nota o petición de canción' : 'Share a note or song request'}
+                                            placeholder={lang === 'es' ? 'Comparte una nota' : 'Share a note'}
                                             className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
                                         ></textarea>
                                         <button
@@ -869,8 +884,8 @@ function App() {
                                     </div>
                                     <p className="mt-4 text-xs text-[rgba(47,156,194,0.75)]">
                                         {lang === 'es'
-                                            ? 'Este formulario abre una confirmación segura en una nueva pestaña para que puedas añadir invitados adicionales o mensajes.'
-                                            : 'This form opens a secure RSVP in a new tab so you can attach additional guests or messages.'}
+                                            ? ''
+                                            : ''}
                                     </p>
                                 </form>
                             </div>
@@ -954,8 +969,8 @@ function App() {
                                     </p>
                                     <p className="mt-3 text-sm text-[rgba(44,96,130,0.7)]">
                                         {lang === 'es'
-                                            ? `Este formulario está configurado para enviarse a ${BLESSING_EMAIL}.`
-                                            : `This form is configured to deliver to ${BLESSING_EMAIL}.`}
+                                            ? ``
+                                            : ``}
                                     </p>
                                 </div>
                                 <form
