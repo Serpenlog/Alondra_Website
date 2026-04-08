@@ -48,7 +48,58 @@ const DINING_OPTIONS = [
     { name: 'Café 413' }
 ];
 
-const MUST_TRY_DISHES = ['Mofongo', 'Lechón', 'Arroz con Gandules', 'Fresh Seafood', 'Piña Colada'];
+const MUST_TRY_DISHES = {
+    en: [
+        'Cornstarch Pudding',
+        'Creamed Corn',
+        'Mallorca Sweet Bread',
+        'Pan Sobao',
+        'Puerto Rican Coffee',
+        'Mofongo',
+        'Arroz con Gandules',
+        'Arroz Mamposteao',
+        'Roast Pork',
+        'Pollo Guisado',
+        'Sancocho',
+        'Empanadillas',
+        'Alcapurrias',
+        'Bacalaitos',
+        'Sorullitos de Maíz',
+        'Rellenos de Papa',
+        'Piononos',
+        'Chicken Pinchos',
+        'Quesitos',
+        'Tembleque',
+        'Arroz con Dulce',
+        'Coquito',
+        'Fresh Seafood',
+        'Piña Colada'
+    ],
+    es: [
+        'Maicena',
+        'Crema de maíz',
+        'Mallorca',
+        'Pan sobao',
+        'Café puertorriqueño',
+        'Mofongo',
+        'Arroz con gandules',
+        'Arroz mamposteao',
+        'Lechón asado',
+        'Pollo guisado',
+        'Sancocho',
+        'Empanadillas',
+        'Alcapurrias',
+        'Bacalaitos',
+        'Sorullitos de maíz',
+        'Rellenos de papa',
+        'Piononos',
+        'Pinchos de pollo',
+        'Quesitos',
+        'Tembleque',
+        'Arroz con dulce',
+        'Coquito'
+    ]
+};
 
 const ISLAND_EXPERIENCES = {
     en: [
@@ -562,7 +613,7 @@ export default function Travel({ details, lang = 'en' }) {
                 </div>
                 <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.mustTry}</p>
-                    <p className="mt-2 text-[rgba(44,96,130,0.85)]">{MUST_TRY_DISHES.join(' · ')}</p>
+                    <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(MUST_TRY_DISHES[lang] ?? MUST_TRY_DISHES.en).join(' · ')}</p>
                     <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.tasteSoul}</p>
                 </div>
             </section>

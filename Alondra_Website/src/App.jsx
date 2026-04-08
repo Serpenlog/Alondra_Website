@@ -82,14 +82,14 @@ const GIFT_MESSAGE = {
         'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
         'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
         'If you wish to give an additional gift, it will be received with deep gratitude and much love, as a beautiful memory of this meaningful moment in my life.',
-        'For your convenience, we will have a money gift option (envelope gifts) and bank transfer available. ',
+        'For your convenience, we will have a money gift option (envelope gifts). ',
         'Thank you for being part of this dream come true.'
     ],
     es: [
         'Como las perlas escondidas en lo profundo del mar, cada regalo es un gesto lleno de amor y cariño.',
         'Tu presencia siempre será el regalo más valioso para mí, y tenerte a mi lado en este día especial llenará mi corazón de alegría.',
         'Si deseas dar un regalo adicional, lo recibiré con profunda gratitud y mucho amor, como un hermoso recuerdo de este momento tan importante en mi vida.',
-        'Para tu conveniencia, tendremos opción de regalo en efectivo (sobre) y transferencia bancaria.',
+        'Para tu conveniencia, tendremos opción de regalo en efectivo (sobre).',
         'Gracias por ser parte de este sueño hecho realidad.'
     ]
 };
@@ -161,9 +161,9 @@ const REAL_DETAILS = {
     venueName: 'Rincón of the Seas Grand Caribbean Hotel & Villa',
     venueAddress: 'Road 115 KM 12.2 • Rincón, Puerto Rico',
     venueAddressLong: 'Road 115 KM 12.2, Rincón, Puerto Rico',
-    hostNames: 'Marisol Flores & Jesus Lopez',
-    hostFamily: 'the Lopez family',
-    hostFamilyEs: 'la familia López Flores',
+    hostNames: 'Marisol & Jesus',
+    hostFamily: 'family',
+    hostFamilyEs: 'la familia',
     contactEmail: 'xv@alondradelmar.com',
     hotelBlockName: 'Quinceañera Alondra',
     reservationCode: '334',
@@ -595,8 +595,8 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Momentos destacados del evento' : 'Event Highlights'}</h2>
                                 <p className="mt-3 text-[rgba(44,96,130,0.8)]">
                                         {lang === 'es'
-                                            ? 'Desde la misa tradicional hasta una recepción brillante, cada detalle se planificó pensando en la familia y amistades. Mira los momentos destacados de la noche y llega a tiempo para las ceremonias más importantes para Alondra y sus padres.'
-                                            : 'From the traditional mass to a radiant reception, every detail was planned with family and friends in mind. See the evening’s highlights and arrive on time for the ceremonies that matter most to Alondra and her parents.'}
+                                            ? 'Desde la bendición hasta una celebración, cada detalle ha sido planificado con amor pensando en la familia y amistades!'
+                                            : 'From the blessing to a celebration, every detail has been planned with love, with family and friends in mind!'}
                                 </p>
                                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                                     {MEMORY_PHOTOS.map((photo) => (
@@ -612,19 +612,6 @@ function App() {
                                         </figure>
                                     ))}
                                 </div>
-                                <ul className="mt-6 space-y-4 text-left">
-                                    <li className="flex items-start gap-3">
-                                        <span className="mt-1 inline-flex h-3 w-3 flex-none rounded-full bg-[rgba(240,132,112,0.95)]"></span>
-                                        <div>
-                                            <h3 className="text-lg font-semibold">{lang === 'es' ? 'Momentos de la corte' : 'Court Moments'}</h3>
-                                            <p className="text-[rgba(44,96,130,0.7)]">
-                                                {lang === 'es'
-                                                    ? 'Celebra con la corte de damas y chambelanes de Alondra durante el baile sorpresa y un brindis especial de sus padrinos.'
-                                                    : 'Celebrate with Alondra\'s court of damas and chambelanes during the surprise dance and a special toast from her padrinos.'}
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
                             </div>
                             <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 text-center shadow-xl">
                                 <figure className="overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] shadow-md">
@@ -661,8 +648,8 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado esta noche con especial cuidado para que no te pierdas ninguna tradición. Te invitamos a llegar un poco antes para dejar un mensaje en el libro de recuerdos de Alondra.'
-                                            : 'We prepared this evening with special care so you do not miss any tradition. We invite you to arrive a little early to leave a message in Alondra’s memory book.'}
+                                            ? 'Hemos preparado esta noche con especial cuidado para que disfrutemos cada momento lleno entre familia y amistades cada momento lleno de amor y alegría.'
+                                            : 'We prepared this evening with special care so we can enjoy every moment together with family and friends, each moment full of love and joy.'}
                                     </p>
                                 </div>
                                 <a
@@ -767,8 +754,8 @@ function App() {
                             <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Regalos y bendiciones' : 'Gifts & Blessings'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
-                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra o compartir un detalle, explora las opciones de abajo o déjanos un sobre.'
-                                    : 'Your presence is the best gift! If you would like to support Alondra’s college dreams or share a gift, explore the options below or leave us an envelope.'}
+                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra o compartir un detalle, agradecería fuera en efectivo.'
+                                    : 'Your presence is the best gift! If you would like to support Alondra’s college dreams or share a gift, cash would be deeply appreciated.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Mensaje' : 'Message'}</p>
