@@ -29,6 +29,10 @@ import alondra11Blur from './alondra_images/alondra11_blur.png';
 import alondra12 from './alondra_images/alondra12.JPG';
 import alondra12Blur from './alondra_images/alondra12_blur.png';
 import alondra13 from './alondra_images/alondra13.JPG';
+import alondra15 from './alondra_images/alondra15.JPG';
+import alondra16 from './alondra_images/alondra16.JPG';
+import alondra17 from './alondra_images/alondra17.JPG';
+import alondra18 from './alondra_images/alondra18.JPG';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
@@ -54,6 +58,13 @@ const GALLERY_PHOTOS = [
     { src: alondra10, blurSrc: alondra10Blur, alt: 'Alondra posing along the shoreline in Puerto Rico.' },
     { src: alondra11, blurSrc: alondra11Blur, alt: 'Alondra celebrating with an elegant twirl.' },
     { src: alondra12, blurSrc: alondra12Blur, alt: 'Alondra framed by tropical greenery.' }
+];
+
+const TOP_FEATURE_PHOTOS = [
+    { src: alondra15, alt: 'Alondra by the sea in an elegant quinceañera portrait.' },
+    { src: alondra16, alt: 'Alondra smiling during a sunset beach portrait.' },
+    { src: alondra17, alt: 'Alondra in a graceful oceanfront quinceañera photo.' },
+    { src: alondra18, alt: 'Alondra posing with tropical scenery for her quinceañera.' }
 ];
 
 const INTRO_MESSAGE = {
@@ -497,6 +508,20 @@ function App() {
                                     ? 'Entre el susurro de las olas y la luz de las estrellas y con la bendición de Dios, te invitamos a celebrar los XV años de Alondra de Mar.'
                                     : 'Between the whisper of the waves, the light of the stars, and God’s blessing, we invite you to celebrate Alondra Del Mar’s fifteenth birthday.'}
                             </p>
+                            <div className="mt-8 grid gap-4">
+                                {TOP_FEATURE_PHOTOS.map((photo) => (
+                                    <figure
+                                        key={photo.src}
+                                        className="group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl"
+                                    >
+                                        <img
+                                            src={isDemo ? alondra12Blur : photo.src}
+                                            alt={photo.alt}
+                                            className="h-[72vh] min-h-[420px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    </figure>
+                                ))}
+                            </div>
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Introducción' : 'Introduction'}</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
@@ -536,19 +561,21 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        {lang === 'es' ? 'Código de vestimenta: ' : 'Please come in'}{' '}
-                                        <a
-                                            href={dressCodeImage}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="font-semibold text-[rgba(240,132,112,1)] underline underline-offset-4 hover:text-[rgba(44,96,130,0.9)]"
-                                        >
-                                            {lang === 'es' ? 'Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema.' : 'beige or nude colored formal wear.'}
-                                        </a>{' '}
+                                        {lang === 'es'
+                                            ? 'Código de vestimenta: Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema.'
+                                            : 'Please come in beige or nude colored formal wear.'}{' '}
                                         {lang === 'es'
                                             ? 'Los tonos blanco, dorado y azul están reservados para la quinceañera.'
                                             : 'White, gold, and blue tones are reserved for the quinceañera.'}
                                     </p>
+                                    <a
+                                        href={dressCodeImage}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="mt-4 inline-flex items-center justify-center rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,1)] transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                    >
+                                        {lang === 'es' ? 'Ver foto de vestimenta' : 'View attire photo'}
+                                    </a>
                                 </div>
                             </div>
                             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

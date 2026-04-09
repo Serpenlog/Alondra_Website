@@ -143,7 +143,7 @@ const LOCAL_TIPS = {
         },
         {
             title: 'Sunset Tradition',
-            body: 'Gather with family at the hotel for a sunset photo session with a view of the Caribbean Sea.'
+            body: 'The best sunsets are lived here, right in front of the Caribbean Sea!'
         }
     ],
     es: [
@@ -165,19 +165,11 @@ const getTravelHighlights = (lang) =>
                   title: 'Horario de Llegada',
                   body: 'Planea llegar al lugar para las 5:40 PM para disfrutar del recibimiento y acomodarte antes de la ceremonia.'
               },
-              {
-                  title: 'Momentos de Golden Hour',
-                  body: 'El atardecer es alrededor de las 7:00 PM en julio: perfecto para una sesión rápida de fotos familiares antes de la recepción.'
-              }
           ]
         : [
               {
                   title: 'Arrival Window',
                   body: 'Plan to arrive at the venue by 5:40 PM to enjoy the welcome and get settled before the ceremony.'
-              },
-              {
-                  title: 'Golden Hour Moments',
-                  body: 'Sunset is around 7:00 PM in July: perfect for a quick family photo session before the reception.'
               }
           ];
 
@@ -209,9 +201,9 @@ const getText = (lang) =>
               highlightsTextStart: '',
               highlightsTextEnd: '. . un lugar donde el mar susurra calma y los atardeceres pintan el cielo con tonos inolvidables. Este rincón del Caribe, uno de los lugares preferidos de Alondra Del Mar se distingue por sus playas doradas, su ambiente relajado y la belleza natural que lo envuelve. Frente a este escenario único, el Rincón of the Seas Grand Caribbean Hotel & Villas, ubicado justo a orillas del mar, será el lugar donde celebraremos este momento especial. Entre brisas suaves, olas y cielos de ensueño, te invitamos a disfrutar de la magia de Rincón y ser parte de una celebración inolvidable.',
               arrivalTransportation: 'Llegada y Transporte',
-              rentals: 'Rentas',
+              rentals: 'Recomendaciones de renta y de autos',
               carRentals: 'Alquiler de Autos',
-              placesToStay: 'Lugares Adicionales donde puedes Hospedarte',
+              placesToStay: 'Recomendaciones de lugares adicionales donde puedes hospedarte',
               carTip: '✨ Rentar auto es altamente recomendado para una experiencia sin contratiempos.',
               weather: 'Puerto Rico en Julio',
               climateTags: 'Cálido · Tropical · Radiante',
@@ -230,7 +222,7 @@ const getText = (lang) =>
               rinconHighlights: 'Destacados de Rincón',
               honor: 'Nos honra celebrar este momento inolvidable',
               inHonor: 'En honor de',
-              closing: '✨ Una noche inspirada en el océano, donde la elegancia fluye como olas y los recuerdos brillan como perlas.'
+              closing: 'Una noche inspirada en el océano, donde la elegancia fluye como olas y los recuerdos brillan como perlas.'
           }
         : {
               travelGuide: 'Travel Guide',
@@ -258,9 +250,9 @@ const getText = (lang) =>
               highlightsTextStart: '',
               highlightsTextEnd: 'a place where the sea whispers calm and sunsets paint the sky with unforgettable tones. This corner of the Caribbean—one of Alondra Del Mar’s favorite places—stands out for its golden beaches, relaxed atmosphere, and the natural beauty that surrounds it. In front of this unique setting, the Rincón of the Seas Grand Caribbean Hotel & Villas, located right by the sea, will be where we celebrate this special moment. Between soft breezes, waves, and dreamy skies, we invite you to enjoy the magic of Rincón and be part of an unforgettable celebration.',
               arrivalTransportation: 'Arrival & Transportation',
-              rentals: 'Rentals',
+              rentals: 'Recomendaciones de renta y de autos',
               carRentals: 'Car Rentals',
-              placesToStay: 'Places to Stay',
+              placesToStay: 'Recommendations of additional places to stay',
               carTip: '✨ Renting a car is highly recommended for a seamless experience.',
               weather: 'Puerto Rico in July',
               climateTags: 'Warm · Tropical · Radiant',
@@ -279,7 +271,7 @@ const getText = (lang) =>
               rinconHighlights: 'Rincón Highlights',
               honor: 'We are honored to celebrate this unforgettable moment',
               inHonor: 'In honor of',
-              closing: '✨ A night inspired by the ocean, where elegance flows like waves and memories shine like pearls.'
+              closing: 'A night inspired by the ocean, where elegance flows like waves and memories shine like pearls.'
           };
 
 export default function Travel({ details, lang = 'en' }) {
@@ -297,14 +289,14 @@ export default function Travel({ details, lang = 'en' }) {
             description:
                 lang === 'es'
                     ? 'Hospédate donde ocurre la celebración de los XV años de Alondra Del Mar y disfruta de la belleza, la comodidad del resort y el hermoso atardecer frente al mar.'
-                    : 'Stay where the celebration takes place and enjoy ocean views, resort amenities, and effortless access to every event.',
+                    : 'Stay where Alondra Del Mar’s quince celebration takes place and enjoy the beauty, resort comfort, and a beautiful sunset by the sea.',
             perks:
                 lang === 'es'
                     ? [
                           'Puedes reservar directamente con el equipo del hotel o en línea.'
                       ]
                     : [
-                          'Book directly with the hotel team for the best availability and personalized assistance'
+                          'You can book directly with the hotel team or online.'
                       ]
         }
     ];
@@ -328,7 +320,7 @@ export default function Travel({ details, lang = 'en' }) {
                         </a>
                     ))}
                 </div>
-                <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="mt-8 grid gap-4">
                     {travelHighlights.map((highlight) => (
                         <div
                             key={highlight.title}
@@ -553,10 +545,36 @@ export default function Travel({ details, lang = 'en' }) {
                 </aside>
             </section>
 
+            <section className="glass-panel rounded-3xl p-8 shadow-xl">
+                <h2 className="font-display text-3xl">{t.beautySalon}</h2>
+                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.beautySalonNote}</p>
+                <ul className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
+                    {BEAUTY_SALON_OPTIONS.map((salon) => (
+                        <li key={salon.name} className="rounded-2xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-4">
+                            <p className="font-semibold text-[rgba(44,96,130,0.9)]">{salon.name}</p>
+                            {salon.location ? <p className="text-sm">{salon.location}</p> : null}
+                            <p className="text-sm">
+                                <a href={`tel:${salon.phone.replace(/[^0-9]/g, '')}`} className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline">
+                                    {salon.phone}
+                                </a>
+                                {salon.email ? (
+                                    <>
+                                        {' · '}
+                                        <a href={`mailto:${salon.email}`} className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline">
+                                            {salon.email}
+                                        </a>
+                                    </>
+                                ) : null}
+                            </p>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+
             <section className="glass-panel rounded-3xl p-8 shadow-xl" id="climate">
                 <h2 className="font-display text-3xl">{t.weather}</h2>
                 <p className="mt-2 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.climateTags}</p>
-                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                <div className="mt-6 grid gap-4 md:grid-cols-2">
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
                         <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.avgTemp}</p>
                         <p className="mt-2 text-2xl font-semibold text-[rgba(44,96,130,0.9)]">80°F – 88°F</p>
@@ -564,10 +582,6 @@ export default function Travel({ details, lang = 'en' }) {
                     <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
                         <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.weatherFeel}</p>
                         <p className="mt-2 text-[rgba(44,96,130,0.8)]">{t.weatherFeelBody}</p>
-                    </div>
-                    <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.dressInspo}</p>
-                        <p className="mt-2 text-[rgba(44,96,130,0.8)]">{t.dressInspoBody}</p>
                     </div>
                 </div>
             </section>
@@ -597,31 +611,6 @@ export default function Travel({ details, lang = 'en' }) {
                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.mustTry}</p>
                     <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(MUST_TRY_DISHES[lang] ?? MUST_TRY_DISHES.en).join(' · ')}</p>
                     <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.tasteSoul}</p>
-                </div>
-                <div className="mt-6 rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-5 shadow">
-                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.beautySalon}</p>
-                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.beautySalonNote}</p>
-                    <ul className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {BEAUTY_SALON_OPTIONS.map((salon) => (
-                            <li key={salon.name} className="rounded-2xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-4">
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{salon.name}</p>
-                                {salon.location ? <p className="text-sm">{salon.location}</p> : null}
-                                <p className="text-sm">
-                                    <a href={`tel:${salon.phone.replace(/[^0-9]/g, '')}`} className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline">
-                                        {salon.phone}
-                                    </a>
-                                    {salon.email ? (
-                                        <>
-                                            {' · '}
-                                            <a href={`mailto:${salon.email}`} className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline">
-                                                {salon.email}
-                                            </a>
-                                        </>
-                                    ) : null}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
                 </div>
             </section>
 
