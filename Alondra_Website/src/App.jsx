@@ -704,30 +704,17 @@ function App() {
                                         : `Alondra Del Mar’s quinceañera celebration will take place at the beautiful ${eventDetails.venueName}, located along a spectacular coastline in Rincón, Puerto Rico. For an even more special experience, guests who wish to stay on the property can coordinate their stay just steps from the oceanfront ballroom.`}
                                     </p>
                                     <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.7)]">
-                                    <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Hospedaje:' : 'Hotel Block:'}</span> {lang === 'es' ? 'Al realizard tu reservación, menciona' : 'Reference'} &ldquo;{eventDetails.hotelBlockName}&rdquo;
-                                        {lang === 'es' ? ' y el código de reservación ' : ' with reservation code '}{eventDetails.reservationCode} {lang === 'es' ? '. Para asistencia, puedes comunicarte con el hotel al' : 'when booking directly with the hotel. Call'}
-                                        <a
-                                            href={`tel:${eventDetails.hotelPhone.raw}`}
-                                            className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                        >
-                                            {eventDetails.hotelPhone.display}
-                                        </a>
-                                        {' '}{lang === 'es' ? 'o con ' : 'or with'} {eventDetails.hotelContact.name} {lang === 'es' ? 'al' : 'at'}
-                                        <a
-                                            href={`tel:${eventDetails.hotelContact.raw}`}
-                                            className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                        >
-                                            {eventDetails.hotelContact.display}
-                                        </a>
-                                        {' '}{lang === 'es' ? 'para asistencia.' : 'for assistance.'}
-                                    </li>
-                                    <li>
-                                        <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Recomendaciones de viaje:' : 'Travel Tip:'}</span> {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
-                                    </li>
-                                    <li>
-                                    </li>
-                                </ul>
+                                        <li>
+                                            <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Hospedaje:' : 'Hotel Block:'}</span>{' '}
+                                            {lang === 'es'
+                                                ? 'Consulta la guía completa de viaje para ver el código de reservación, teléfonos directos y asistencia personalizada del hotel.'
+                                                : 'See the full travel guide for reservation code, direct phone numbers, and personalized hotel booking support.'}
+                                        </li>
+                                        <li>
+                                            <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Recomendaciones de viaje:' : 'Travel Tip:'}</span>{' '}
+                                            {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
+                                        </li>
+                                    </ul>
                                 <div className="mt-6">
                                     <button
                                         type="button"

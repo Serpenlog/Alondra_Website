@@ -15,19 +15,6 @@ const QUICK_LINKS = {
     ]
 };
 
-const AIRPORT_OPTIONS = {
-    en: [
-        { code: 'SJU', name: 'San Juan (SJU)', url: 'https://aeropuertosju.com', clickable: true },
-        { code: 'BQN', name: 'Aguadilla (BQN) — Closest to Rincón' },
-        { code: 'PSE', name: 'Ponce (PSE)' }
-    ],
-    es: [
-        { code: 'SJU', name: 'San Juan (SJU)', url: 'https://aeropuertosju.com', clickable: true },
-        { code: 'BQN', name: 'Aguadilla (BQN) — El más cercano a Rincón' },
-        { code: 'PSE', name: 'Ponce (PSE)' }
-    ]
-};
-
 const CAR_RENTALS = [
     { name: 'Enterprise', url: 'https://www.enterprise.com' },
     { name: 'Hertz', url: 'https://www.hertz.com' },
@@ -209,9 +196,7 @@ const getText = (lang) =>
               contact: 'Contacto:',
               email: 'Correo:',
               whereToStay: 'Dónde Hospedarte',
-              whereStayTextStart: 'Hospédate en la propiedad para disfrutar la brisa del océano y acceso fácil a cada evento. Menciona',
-              whereStayTextMid: 'y el código de reservación',
-              whereStayTextEnd: 'para agregarte a nuestra lista de bienvenida y recibir la tarifa grupal.',
+              whereStayTextStart: 'Si deseas hospedarte en la propiedad, el hotel del evento es nuestra opción recomendada por su comodidad y cercanía a la celebración.',
               checkAvailability: 'Ver Disponibilidad',
               flyingIn: 'Llegando en Avión',
               flyingText: 'Elige entre',
@@ -260,9 +245,7 @@ const getText = (lang) =>
               contact: 'Contact:',
               email: 'Email:',
               whereToStay: 'Where to Stay',
-              whereStayTextStart: 'Stay right on property to enjoy the ocean breeze and effortless access to every event. Mention',
-              whereStayTextMid: 'and reservation code',
-              whereStayTextEnd: 'to be added to our welcome list and receive the group rate.',
+              whereStayTextStart: 'If you would like to stay on property, the venue hotel is our recommended option for easy access to the celebration.',
               checkAvailability: 'Check Availability',
               flyingIn: 'Flying In',
               flyingText: 'Choose between',
@@ -318,10 +301,10 @@ export default function Travel({ details, lang = 'en' }) {
             perks:
                 lang === 'es'
                     ? [
-                          `Menciona el código de reservación ${details.reservationCode} y “${details.hotelBlockName}” al reservar`
+                          'Reserva directamente con el equipo del hotel para asegurar disponibilidad y atención personalizada'
                       ]
                     : [
-                          `Reference reservation code ${details.reservationCode} and “${details.hotelBlockName}” when booking`
+                          'Book directly with the hotel team for the best availability and personalized assistance'
                       ]
         }
     ];
@@ -401,7 +384,7 @@ export default function Travel({ details, lang = 'en' }) {
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
                     <h2 className="font-display text-3xl">{t.whereToStay}</h2>
                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                        {t.whereStayTextStart} “{details.hotelBlockName}” {t.whereStayTextMid} {details.reservationCode} {t.whereStayTextEnd}
+                        {t.whereStayTextStart}
                     </p>
                     <div className="mt-6 space-y-6">
                         {hotels.map((hotel) => (
@@ -524,22 +507,11 @@ export default function Travel({ details, lang = 'en' }) {
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
                     <h2 className="font-display text-3xl">{t.arrivalTransportation}</h2>
                     <div className="mt-6 space-y-4">
-                        {(AIRPORT_OPTIONS[lang] ?? AIRPORT_OPTIONS.en).map((airport) => (
+                        {details.airports.map((airport) => (
                             <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
-                                <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{airport.name}</h3>
-                                {airport.clickable ? (
-                                    <a
-                                        href={airport.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="mt-2 inline-block text-sm font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                    >
-                                        {airport.url}
-                                    </a>
-                                ) : (
-                                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{airport.url}</p>
-                                )}
+                                <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{getAirportName(airport)}</h3>
+                                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{getAirportDetails(airport)}</p>
                             </div>
                         ))}
                     </div>
