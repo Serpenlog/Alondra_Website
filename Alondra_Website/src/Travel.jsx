@@ -153,7 +153,7 @@ const LOCAL_TIPS = {
         },
         {
             title: 'Tradición del Atardecer',
-            body: 'Reúnete con la familia en el hotel para una sesión de fotos al atardecer con vista al Mar Caribe.'
+            body: 'Los mejores atardeceres los vivirás aquí! Frente al mar Caribe!'
         }
     ]
 };
@@ -196,7 +196,7 @@ const getText = (lang) =>
               contact: 'Contacto:',
               email: 'Correo:',
               whereToStay: 'Dónde Hospedarte',
-              whereStayTextStart: 'Si deseas hospedarte en la propiedad, el hotel del evento es nuestra opción recomendada por su comodidad y cercanía a la celebración.',
+              whereStayTextStart: '',
               checkAvailability: 'Ver Disponibilidad',
               flyingIn: 'Llegando en Avión',
               flyingText: 'Elige entre',
@@ -245,7 +245,7 @@ const getText = (lang) =>
               contact: 'Contact:',
               email: 'Email:',
               whereToStay: 'Where to Stay',
-              whereStayTextStart: 'If you would like to stay on property, the venue hotel is our recommended option for easy access to the celebration.',
+              whereStayTextStart: '',
               checkAvailability: 'Check Availability',
               flyingIn: 'Flying In',
               flyingText: 'Choose between',
@@ -296,12 +296,12 @@ export default function Travel({ details, lang = 'en' }) {
             distance: lang === 'es' ? 'Hospedaje en el mismo lugar del evento' : 'On-site accommodations at the venue',
             description:
                 lang === 'es'
-                    ? 'Hospédate donde ocurre la celebración de los XV años de Alondra Del Mar y disfruta de la belleza y comodidad del resort, el hermoso atardecer frente al mar.'
+                    ? 'Hospédate donde ocurre la celebración de los XV años de Alondra Del Mar y disfruta de la belleza, la comodidad del resort y el hermoso atardecer frente al mar.'
                     : 'Stay where the celebration takes place and enjoy ocean views, resort amenities, and effortless access to every event.',
             perks:
                 lang === 'es'
                     ? [
-                          'Reserva directamente con el equipo del hotel para asegurar disponibilidad y atención personalizada'
+                          'Puedes reservar directamente con el equipo del hotel o en línea.'
                       ]
                     : [
                           'Book directly with the hotel team for the best availability and personalized assistance'

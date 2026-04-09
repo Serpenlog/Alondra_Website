@@ -434,7 +434,7 @@ function App() {
                 <div className="ocean-content">
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
-                        <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Lopez Flores</p>
+                        <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Del Mar</p>
                         <p className="font-display text-2xl text-[rgba(44,96,130,0.95)]">{lang === 'es' ? 'Celebración de Mis XV' : 'Mis XV Celebration'}</p>
                     </div>
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(203,244,250,0.4)] p-1 shadow-lg sm:mx-0">
@@ -595,8 +595,8 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Momentos destacados del evento' : 'Event Highlights'}</h2>
                                 <p className="mt-3 text-[rgba(44,96,130,0.8)]">
                                         {lang === 'es'
-                                            ? 'Desde la bendición hasta una celebración, cada detalle ha sido planificado con amor pensando en la familia y amistades!'
-                                            : 'From the blessing to a celebration, every detail has been planned with love, with family and friends in mind!'}
+                                            ? 'Desde la bendición hasta la celebración, cada detalle ha sido planificado con amor pensando en la familia y amistades!'
+                                            : 'From the blessing to the celebration, every detail has been planned with love, with family and friends in mind!'}
                                 </p>
                                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                                     {MEMORY_PHOTOS.map((photo) => (
@@ -796,8 +796,8 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Confirma antes del 10 de mayo de 2026' : 'RSVP by May 10, 2026'}</h2>
                                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? '¡Estamos emocionados de celebrar contigo! Avísanos quiénes asistirán para reservar sus asientos, atender solicitudes especiales y preparar sus detalles de bienvenida.'
-                                            : 'We are excited to celebrate with you! Let us know who will attend so we can reserve your seats, accommodate special requests, and prepare your welcome details.'}
+                                            ? '¡Estamos emocionados de celebrar contigo!'
+                                            : 'We are excited to celebrate with you!'}
                                     </p>
                                     <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.7)]">
                                     </ul>
