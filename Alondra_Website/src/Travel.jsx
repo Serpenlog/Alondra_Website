@@ -306,12 +306,10 @@ export default function Travel({ details, lang = 'en' }) {
             perks:
                 lang === 'es'
                     ? [
-                          `Menciona el código de reservación ${details.reservationCode} y “${details.hotelBlockName}” al reservar`,
-                          'Reserva directamente con el equipo del hotel — las reservaciones en línea aún no están disponibles'
+                          `Menciona el código de reservación ${details.reservationCode} y “${details.hotelBlockName}” al reservar`
                       ]
                     : [
-                          `Reference reservation code ${details.reservationCode} and “${details.hotelBlockName}” when booking`,
-                          'Book directly with the hotel team — online reservations are not yet available'
+                          `Reference reservation code ${details.reservationCode} and “${details.hotelBlockName}” when booking`
                       ]
         }
     ];
