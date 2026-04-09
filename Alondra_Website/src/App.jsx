@@ -626,7 +626,7 @@ function App() {
                                     <p className="mt-2 text-[rgba(44,96,130,0.7)]">
                                         {lang === 'es'
                                             ? `Celebrando con amor por sus padres, ${eventDetails.hostNames}.`
-                                            : `Hosted with love by her parents, ${eventDetails.hostNames}, for ${eventDetails.hostFamily}.`}
+                                            : `Celebrating with love from her parents, ${eventDetails.hostNames}.`}
                                     </p>
                                 </div>
                                 <div className="space-y-3 text-[rgba(44,96,130,0.7)]">
@@ -649,7 +649,7 @@ function App() {
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
                                             ? 'Hemos preparado esta noche con especial cuidado para que disfrutemos cada momento junto a la familia y amistades que sea un momento lleno de amor y alegría para todos.'
-                                            : 'We prepared this evening with special care so we can enjoy every moment together with family and friends, each moment full of love and joy.'}
+                                            : 'We have prepared this evening with special care so we can enjoy every moment together with family and friends, making it a night full of love and joy for everyone.'}
                                     </p>
                                 </div>
                                 <a
@@ -713,7 +713,7 @@ function App() {
                                         >
                                             {eventDetails.hotelPhone.display}
                                         </a>
-                                        {' '}{lang === 'es' ? 'o con ' : 'or contact'} {eventDetails.hotelContact.name} {lang === 'es' ? 'al' : 'at'}
+                                        {' '}{lang === 'es' ? 'o con ' : 'or with'} {eventDetails.hotelContact.name} {lang === 'es' ? 'al' : 'at'}
                                         <a
                                             href={`tel:${eventDetails.hotelContact.raw}`}
                                             className="ml-1 font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"

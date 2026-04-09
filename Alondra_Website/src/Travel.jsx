@@ -48,6 +48,14 @@ const DINING_OPTIONS = [
     { name: 'Café 413' }
 ];
 
+
+const BEAUTY_SALON_OPTIONS = [
+    { name: "D'Salon", location: 'Vista Mar Plaza #6, Rincón', phone: '(787) 616-6485' },
+    { name: 'Bi Makeup & Hair', location: 'Aguada', phone: '(787) 649-7702' },
+    { name: 'Unique Hair Studio', location: 'Road 115, Rincón', phone: '(787) 823-5200' },
+    { name: 'Chic Make Up By Sally Rodriguez', phone: '(787) 464-0395', email: 's.chicmakeup@gmail.com' }
+];
+
 const MUST_TRY_DISHES = {
     en: [
         'Cornstarch Pudding',
@@ -228,6 +236,8 @@ const getText = (lang) =>
               dressInspo: 'Inspiración de Vestimenta',
               dressInspoBody: 'Resort elegante · Estilo costero chic · Telas livianas',
               curatedDining: 'Gastronomía Recomendada',
+              beautySalon: 'Opciones de Arreglo Personal',
+              beautySalonNote: 'Le recomendamos comunicarse directamente y agendar cita para peinados y/o maquillaje.',
               mustTry: 'Imperdibles',
               tasteSoul: '✨ Un sabor al alma de Puerto Rico',
               islandExperiences: 'Experiencias en la Isla',
@@ -277,6 +287,8 @@ const getText = (lang) =>
               dressInspo: 'Dress Code Inspiration',
               dressInspoBody: 'Elegant Resort · Coastal Chic · Light Fabrics',
               curatedDining: 'Curated Dining',
+              beautySalon: 'Beauty Salon Options',
+              beautySalonNote: 'We recommend contacting them directly to schedule appointments for hairstyling and/or makeup.',
               mustTry: 'Must Try',
               tasteSoul: '✨ A taste of Puerto Rico\'s soul',
               islandExperiences: 'Island Experiences',
@@ -613,6 +625,31 @@ export default function Travel({ details, lang = 'en' }) {
                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.mustTry}</p>
                     <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(MUST_TRY_DISHES[lang] ?? MUST_TRY_DISHES.en).join(' · ')}</p>
                     <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.tasteSoul}</p>
+                </div>
+                <div className="mt-6 rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-5 shadow">
+                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.beautySalon}</p>
+                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.beautySalonNote}</p>
+                    <ul className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
+                        {BEAUTY_SALON_OPTIONS.map((salon) => (
+                            <li key={salon.name} className="rounded-2xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-4">
+                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{salon.name}</p>
+                                {salon.location ? <p className="text-sm">{salon.location}</p> : null}
+                                <p className="text-sm">
+                                    <a href={`tel:${salon.phone.replace(/[^0-9]/g, '')}`} className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline">
+                                        {salon.phone}
+                                    </a>
+                                    {salon.email ? (
+                                        <>
+                                            {' · '}
+                                            <a href={`mailto:${salon.email}`} className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline">
+                                                {salon.email}
+                                            </a>
+                                        </>
+                                    ) : null}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </section>
 
