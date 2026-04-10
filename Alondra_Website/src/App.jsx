@@ -524,7 +524,7 @@ function App() {
                                 ))}
                             </div>
                             <div className="glass-panel mt-8 rounded-3xl p-6 text-left shadow-lg">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Introducción' : 'Introduction'}</p>
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? '' : ''}</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
                                     {(INTRO_MESSAGE[lang] ?? INTRO_MESSAGE.en).map((line) => (
                                         <p key={line} className="font-script text-2xl leading-relaxed">
@@ -657,7 +657,7 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado esta noche con especial cuidado para que disfrutemos cada momento junto a la familia y amistades que sea un momento lleno de amor y alegría para todos.'
+                                            ? 'Hemos preparado esta noche con especial cuidado para que disfrutemos cada momento junto a la familia y amistades y que sea un momento lleno de amor y alegría para todos.'
                                             : 'We have prepared this evening with special care so we can enjoy every moment together with family and friends, making it a night full of love and joy for everyone.'}
                                     </p>
                                 </div>
