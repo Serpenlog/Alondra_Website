@@ -220,6 +220,73 @@ body {
   animation-duration: 11s;
 }
 
+.form-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(44, 96, 130, 0.28);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.form-modal {
+  width: min(560px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(135deg, rgba(203, 244, 250, 0.95), rgba(255, 214, 201, 0.94));
+  border: 1px solid rgba(178, 226, 236, 0.75);
+  border-radius: 24px;
+  box-shadow: 0 24px 55px rgba(44, 96, 130, 0.28);
+  padding: 1.5rem;
+}
+
+.form-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(178, 226, 236, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.75rem 1rem;
+  color: rgba(44, 96, 130, 0.95);
+  font-size: 0.95rem;
+}
+
+.form-textarea {
+  border-radius: 18px;
+}
+
+.form-actions {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.form-submit,
+.form-cancel {
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  cursor: pointer;
+}
+
+.form-submit {
+  background: rgba(44, 96, 130, 0.95);
+  color: #fff;
+}
+
+.form-cancel {
+  border: 1px solid rgba(178, 226, 236, 0.8);
+  background: rgba(255, 214, 201, 0.8);
+  color: rgba(240, 132, 112, 1);
+}
+
 @keyframes waveDrift {
   0% {
     transform: translateX(-2.8%) translateY(0);

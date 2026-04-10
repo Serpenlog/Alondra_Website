@@ -10,12 +10,6 @@ import alondra2 from './alondra_images/alondra2.JPG';
 import alondra2Blur from './alondra_images/alondra2_blur.png';
 import alondra3 from './alondra_images/alondra3.JPG';
 import alondra3Blur from './alondra_images/alondra3_blur.png';
-import alondra4 from './alondra_images/alondra4.JPG';
-import alondra4Blur from './alondra_images/alondra4_blur.png';
-import alondra5 from './alondra_images/alondra5.JPG';
-import alondra5Blur from './alondra_images/alondra5_blur.png';
-import alondra6 from './alondra_images/alondra6.JPG';
-import alondra6Blur from './alondra_images/alondra6_blur.png';
 import alondra7 from './alondra_images/alondra7.JPG';
 import alondra7Blur from './alondra_images/alondra7_blur.png';
 import alondra8 from './alondra_images/alondra8.JPG';
@@ -42,12 +36,6 @@ const HERO_PHOTOS = [
     { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
     { src: alondra2, blurSrc: alondra2Blur, alt: 'Alondra posing gracefully against a tropical backdrop.' },
     { src: alondra3, blurSrc: alondra3Blur, alt: 'Alondra taking in the coastal sunset before her celebration.' }
-];
-
-const MEMORY_PHOTOS = [
-    { src: alondra4, blurSrc: alondra4Blur, alt: 'Alondra holding her bouquet during a quiet moment.' },
-    { src: alondra5, blurSrc: alondra5Blur, alt: 'Alondra glancing over her shoulder with a playful grin.' },
-    { src: alondra6, blurSrc: alondra6Blur, alt: 'Alondra adjusting her tiara before the festivities.' }
 ];
 
 const GALLERY_PHOTOS = [
@@ -115,14 +103,7 @@ const PAYMENT_LINKS = {
 const RSVP_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
 const SONG_REQUEST_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
 const BLESSING_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
-const BLESSING_EMAIL = 'xv@alondradelmar.com';
-const FALLBACK_BLESSING_EMAIL = 'alondra.honey0629@gmail.com';
-
-const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Alondra's Quinceañera")}&dates=20260718T220000Z/20260719T030000Z&ctz=America/Puerto_Rico&details=${encodeURIComponent("Join us to celebrate Alondra's Quinceañera!")}&location=${encodeURIComponent("Road 115, Km 12.2, 26 Sea Bch Dr, Rincón, 00677, Puerto Rico")}`;const FEATURE_PHOTO = {
-    src: alondra15,
-    blurSrc: alondra9Blur,
-    alt: "alondra family pic"
-};
+const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Alondra's Quinceañera")}&dates=20260718T220000Z/20260719T030000Z&ctz=America/Puerto_Rico&details=${encodeURIComponent("Join us to celebrate Alondra's Quinceañera!")}&location=${encodeURIComponent("Road 115, Km 12.2, 26 Sea Bch Dr, Rincón, 00677, Puerto Rico")}`;
 
 const ITINERARY = {
     en: [
@@ -260,9 +241,6 @@ const DEMO_DETAILS = {
         'https://maps.google.com/maps?q=Seaside%20Palms%20Event%20Hall%20Vista%20del%20Mar&t=&z=14&ie=UTF8&iwloc=&output=embed'
 };
 
-const formatTaxiList = (services) =>
-    services.map((service) => `${service.name} (${service.phone})`).join(', ');
-
 const UI_TEXT = {
     en: {
         navHome: 'Home',
@@ -319,6 +297,7 @@ function App() {
     const [phoneInput, setPhoneInput] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [guestInfo, setGuestInfo] = useState(null);
+    const [activeForm, setActiveForm] = useState(null);
     const audioRef = useRef(null);
 
     const isOpen = accessStage === 'open';
@@ -390,6 +369,14 @@ function App() {
         [lang, timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds]
     );
 
+    const closeActiveForm = () => setActiveForm(null);
+
+    const handleOverlayClick = (event) => {
+        if (event.target === event.currentTarget) {
+            closeActiveForm();
+        }
+    };
+
     return (
         <>
             <button
@@ -442,11 +429,7 @@ function App() {
             >
                 <OceanBackground />
                 <div className="ocean-content">
-                <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between">
-                    <div className="space-y-1">
-                        <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Del Mar</p>
-                        <p className="font-display text-2xl text-[rgba(44,96,130,0.95)]">{lang === 'es' ? 'Celebración de Mis XV' : 'Mis XV Celebration'}</p>
-                    </div>
+                <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-center">
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(203,244,250,0.4)] p-1 shadow-lg sm:mx-0">
                         {[
                             { key: 'home', label: t.navHome },
@@ -471,6 +454,13 @@ function App() {
                 {currentPage === 'home' ? (
                     <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col gap-20">
                         {guestInfo && (
+                            <>
+                                <div className="space-y-1 text-center">
+                                    <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Del Mar</p>
+                                    <p className="font-display text-3xl text-[rgba(44,96,130,0.95)] md:text-4xl">
+                                        {lang === 'es' ? 'Celebración de Mis XV' : 'Mis XV Celebration'}
+                                    </p>
+                                </div>
                             <section className="glass-panel rounded-3xl p-6 text-center shadow-lg">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">
                                     {lang === 'es' ? 'Acceso a la invitación confirmado' : 'Invitation Access Confirmed'}
@@ -494,6 +484,7 @@ function App() {
                                     )}
                                 </p>
                             </section>
+                            </>
                         )}
                         <section className="text-center" id="home">
                             <div className="flex justify-center">
@@ -578,12 +569,13 @@ function App() {
                                 </div>
                             </div>
                             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-                                <a
-                                    href="#rsvp"
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveForm('rsvp')}
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
                                     {lang === 'es' ? 'Confirmar asistencia' : 'RSVP Now'}
-                                </a>
+                                </button>
                                 <a
                                     href="#itinerary"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
@@ -614,58 +606,6 @@ function App() {
                                     ))}
                                 </div>
                             )}
-                        </section>
-
-                        <section id="details" className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-                            <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Momentos destacados del evento' : 'Event Highlights'}</h2>
-                                <p className="mt-3 text-[rgba(44,96,130,0.8)]">
-                                        {lang === 'es'
-                                            ? 'Desde la bendición hasta la celebración, cada detalle ha sido planificado con amor pensando en la familia y amistades!'
-                                            : 'From the blessing to the celebration, every detail has been planned with love, with family and friends in mind!'}
-                                </p>
-                                <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                                    {MEMORY_PHOTOS.map((photo) => (
-                                        <figure
-                                            key={photo.src}
-                                            className="group overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] shadow-md"
-                                        >
-                                            <img
-                                                src={isDemo ? photo.blurSrc : photo.src}
-                                                alt={photo.alt}
-                                                className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                            />
-                                        </figure>
-                                    ))}
-                                </div>
-                            </div>
-                            <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 text-center shadow-xl">
-                                <figure className="overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] shadow-md">
-                                    <img
-                                        src={isDemo ? FEATURE_PHOTO.blurSrc : FEATURE_PHOTO.src}
-                                        alt={FEATURE_PHOTO.alt}
-                                        className="h-180 w-full object-cover"
-                                    />
-                                </figure>
-                                <div>
-                                    <p className="font-script text-3xl text-[rgba(240,132,112,1)]">{lang === 'es' ? 'Con mucho amor' : 'With much love'}</p>
-                                    <p className="mt-2 text-[rgba(44,96,130,0.7)]">
-                                        {lang === 'es'
-                                            ? `Celebrando con amor por sus padres, ${eventDetails.hostNames}.`
-                                            : `Joyfully hosted by her parents, ${eventDetails.hostNames}.`}
-                                    </p>
-                                </div>
-                                <div className="space-y-3 text-[rgba(44,96,130,0.7)]">
-                                    <p>{lang === 'es' ? '¿Necesitas actualizar tu RSVP o tienes restricciones alimentarias?' : 'Need to update your RSVP or have dietary restrictions?'}</p>
-                                    <a
-                                        href={`mailto:${eventDetails.contactEmail}`}
-                                        className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                    >
-                                        {eventDetails.contactEmail}
-                                    </a>
-                                    <p className="text-sm">{lang === 'es' ? 'Con gusto te ayudamos a planificar una noche perfecta.' : 'We can\'t wait to celebrate this special night with you.'}</p>
-                                </div>
-                            </aside>
                         </section>
 
                         <section id="itinerary" className="glass-panel rounded-3xl p-8 shadow-xl">
@@ -816,230 +756,90 @@ function App() {
                             </div>
                         </section>
 
-                        <section id="rsvp" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <div className="grid gap-8 md:grid-cols-2">
-                                <div>
-                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Confirma antes del 10 de mayo de 2026' : 'RSVP by May 10, 2026'}</h2>
-                                    <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                                        {lang === 'es'
-                                            ? '¡Estamos emocionados de celebrar contigo!'
-                                            : 'We are excited to celebrate with you!'}
-                                    </p>
-                                    <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.7)]">
-                                    </ul>
-                                </div>
-                                <form
-                                    className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md"
-                                    action={RSVP_FORM_ENDPOINT}
-                                    method="post"
-                                    target="_blank"
-                                >
-                                    <input type="hidden" name="_subject" value="New RSVP - Alondra's Quinceañera" />
-                                    <input type="hidden" name="_captcha" value="false" />
-                                    <input type="hidden" name="_template" value="table" />
-                                    <div className="grid gap-4">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder={lang === 'es' ? 'Tu nombre completo' : 'Your Full Name'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <select
-                                            name="attendance"
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm text-[rgba(44,96,130,0.95)] focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        >
-                                            <option value="">{lang === 'es' ? '¿Celebras con nosotros?' : 'Will you celebrate with us?'}</option>
-                                            <option value="yes">{lang === 'es' ? 'Sí, ¡con mucha ilusión!' : 'Yes, can\'t wait!'}</option>
-                                            <option value="no">{lang === 'es' ? 'Lamentablemente no podré asistir' : 'Sadly, unable to attend'}</option>
-                                        </select>
-                                        <input
-                                            type="number"
-                                            name="guest_count"
-                                            min="0"
-                                            max={guestInfo?.tickets ?? 0}
-                                            step="1"
-                                            inputMode="numeric"
-                                            required
-                                            placeholder={
-                                                lang === 'es'
-                                                    ? `Número de asientos (0 a ${guestInfo?.tickets ?? 0})`
-                                                    : `Number of seats (0 to ${guestInfo?.tickets ?? 0})`
-                                            }
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <textarea
-                                            name="message"
-                                            rows="3"
-                                            placeholder={lang === 'es' ? 'Comparte una nota' : 'Share a note'}
-                                            className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        ></textarea>
-                                        <button
-                                            type="submit"
-                                            className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
-                                        >
-                                            {lang === 'es' ? 'Enviar confirmación' : 'Submit RSVP'}
-                                        </button>
-                                    </div>
-                                    <p className="mt-4 text-xs text-[rgba(47,156,194,0.75)]">
-                                        {lang === 'es'
-                                            ? ''
-                                            : ''}
-                                    </p>
-                                </form>
-                            </div>
-                        </section>
-
-                        <section id="song-requests" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <div className="grid gap-8 lg:grid-cols-2">
-                                <div>
-                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Peticiones de canciones' : 'Song Requests'}</h2>
-                                    <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                                        {lang === 'es'
-                                            ? `¿Tienes una recomendación especial para la pista de baile? Compártenos tus canciones favoritas para celebrar juntos.`
-                                            : `Have a favorite recommendation for the dance floor? Share the songs you would love to hear during the celebration.`}
-                                    </p>
-                                </div>
-                                <form
-                                    className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 shadow-md"
-                                    action={SONG_REQUEST_FORM_ENDPOINT}
-                                    method="post"
-                                    target="_blank"
-                                >
-                                    <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
-                                        {lang === 'es' ? 'Formulario de canciones' : 'Song Request Form'}
-                                    </p>
-                                    <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
-                                    <input type="hidden" name="_captcha" value="false" />
-                                    <input type="hidden" name="_template" value="table" />
-                                    <div className="grid gap-3">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="text"
-                                            name="song"
-                                            placeholder={lang === 'es' ? 'Título de canción + artista' : 'Song title + artist'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <textarea
-                                            name="note"
-                                            rows="3"
-                                            placeholder={lang === 'es' ? 'Mensaje opcional para el DJ o para Alondra' : 'Optional message for the DJ or Alondra'}
-                                            className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-white/70 px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        ></textarea>
-                                        <button
-                                            type="submit"
-                                            className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
-                                        >
-                                            {lang === 'es' ? 'Enviar canción' : 'Submit Song Request'}
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </section>
-
-                        <section id="blessings" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <div className="grid gap-8 lg:grid-cols-2">
-                                <div>
-                                    <h2 className="font-display text-3xl">{lang === 'es' ? 'Bendiciones' : 'Blessings'}</h2>
-                                    <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                                        {lang === 'es'
-                                            ? `Tus palabras serán como perlas guardadas en el corazón de Alondra. Déjanos tu bendición para este nuevo capítulo.`
-                                            : `Your words will be like pearls kept close to Alondra’s heart. Leave your blessing for this beautiful new chapter.`}
-                                    </p>
-                                    <p className="mt-3 text-sm text-[rgba(44,96,130,0.7)]">
-                                        {lang === 'es'
-                                            ? ``
-                                            : ``}
-                                    </p>
-                                </div>
-                                <form
-                                    className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md"
-                                    action={BLESSING_FORM_ENDPOINT}
-                                    method="post"
-                                    target="_blank"
-                                >
-                                    <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[rgba(44,96,130,0.8)]">
-                                        {lang === 'es' ? 'Formulario de bendiciones' : 'Blessings Form'}
-                                    </p>
-                                    <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
-                                    <input type="hidden" name="_captcha" value="false" />
-                                    <input type="hidden" name="_template" value="table" />
-                                    <div className="grid gap-3">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'}
-                                            required
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'}
-                                            className="rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        />
-                                        <textarea
-                                            name="message"
-                                            rows="4"
-                                            placeholder={lang === 'es' ? 'Escribe tu bendición para Alondra' : 'Write your blessing for Alondra'}
-                                            required
-                                            className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.85)] px-4 py-3 text-sm focus:border-[rgba(47,156,194,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(178,226,236,0.7)]"
-                                        ></textarea>
-                                        <button
-                                            type="submit"
-                                            className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
-                                        >
-                                            {lang === 'es' ? 'Enviar bendición' : 'Send Your Blessing'}
-                                        </button>
-                                    </div>
-                                </form>
+                        <section className="glass-panel rounded-3xl p-8 text-center shadow-xl">
+                            <h2 className="font-display text-3xl">{lang === 'es' ? 'Envíanos tu formulario' : 'Send Us Your Form'}</h2>
+                            <p className="mt-3 text-[rgba(44,96,130,0.75)]">
+                                {lang === 'es'
+                                    ? 'Selecciona una opción y el formulario aparecerá sin salir de la invitación.'
+                                    : 'Choose an option and the form will appear without leaving the invitation page.'}
+                            </p>
+                            <div className="mt-6 flex flex-wrap justify-center gap-4">
+                                <button type="button" onClick={() => setActiveForm('rsvp')} className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]">
+                                    {lang === 'es' ? 'Confirmar asistencia' : 'RSVP'}
+                                </button>
+                                <button type="button" onClick={() => setActiveForm('song')} className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]">
+                                    {lang === 'es' ? 'Sugerir canción' : 'Song Suggestion'}
+                                </button>
+                                <button type="button" onClick={() => setActiveForm('blessing')} className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]">
+                                    {lang === 'es' ? 'Enviar bendición' : 'Blessings'}
+                                </button>
                             </div>
                         </section>
 
                 </main>
                 ) : (
                     <Travel details={eventDetails} lang={lang} />
+                )}
+                {activeForm && (
+                    <div className="form-overlay" onClick={handleOverlayClick}>
+                        <div className="form-modal">
+                            <h3 className="font-display text-3xl text-[rgba(44,96,130,0.95)]">
+                                {activeForm === 'rsvp'
+                                    ? (lang === 'es' ? 'Confirma antes del 10 de mayo de 2026' : 'RSVP by May 10, 2026')
+                                    : activeForm === 'song'
+                                        ? (lang === 'es' ? 'Sugerencia de canción' : 'Song Suggestion')
+                                        : (lang === 'es' ? 'Bendiciones' : 'Blessings')}
+                            </h3>
+                            <iframe title="form-submit-target" name="form-submit-target" className="hidden" />
+                            {activeForm === 'rsvp' && (
+                                <form className="mt-4 grid gap-4" action={RSVP_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={closeActiveForm}>
+                                    <input type="hidden" name="_subject" value="New RSVP - Alondra's Quinceañera" />
+                                    <input type="hidden" name="_captcha" value="false" />
+                                    <input type="hidden" name="_template" value="table" />
+                                    <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre completo' : 'Your Full Name'} required className="form-input" />
+                                    <input type="email" name="email" placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'} required className="form-input" />
+                                    <input type="tel" name="phone" placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'} className="form-input" />
+                                    <select name="attendance" required className="form-input">
+                                        <option value="">{lang === 'es' ? '¿Celebras con nosotros?' : 'Will you celebrate with us?'}</option>
+                                        <option value="yes">{lang === 'es' ? 'Sí, ¡con mucha ilusión!' : 'Yes, can\'t wait!'}</option>
+                                        <option value="no">{lang === 'es' ? 'Lamentablemente no podré asistir' : 'Sadly, unable to attend'}</option>
+                                    </select>
+                                    <input type="number" name="guest_count" min="0" max={guestInfo?.tickets ?? 0} step="1" inputMode="numeric" required placeholder={lang === 'es' ? `Número de asientos (0 a ${guestInfo?.tickets ?? 0})` : `Number of seats (0 to ${guestInfo?.tickets ?? 0})`} className="form-input" />
+                                    <textarea name="message" rows="3" placeholder={lang === 'es' ? 'Comparte una nota' : 'Share a note'} className="form-input form-textarea"></textarea>
+                                    <div className="form-actions">
+                                        <button type="submit" className="form-submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+                                        <button type="button" onClick={closeActiveForm} className="form-cancel">{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
+                                    </div>
+                                </form>
+                            )}
+                            {activeForm === 'song' && (
+                                <form className="mt-4 grid gap-4" action={SONG_REQUEST_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={closeActiveForm}>
+                                    <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
+                                    <input type="hidden" name="_captcha" value="false" />
+                                    <input type="hidden" name="_template" value="table" />
+                                    <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'} required className="form-input" />
+                                    <input type="text" name="song" placeholder={lang === 'es' ? 'Escribe tu sugerencia de canción' : 'Write your song suggestion'} required className="form-input" />
+                                    <div className="form-actions">
+                                        <button type="submit" className="form-submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+                                        <button type="button" onClick={closeActiveForm} className="form-cancel">{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
+                                    </div>
+                                </form>
+                            )}
+                            {activeForm === 'blessing' && (
+                                <form className="mt-4 grid gap-4" action={BLESSING_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={closeActiveForm}>
+                                    <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
+                                    <input type="hidden" name="_captcha" value="false" />
+                                    <input type="hidden" name="_template" value="table" />
+                                    <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'} required className="form-input" />
+                                    <input type="text" name="message" placeholder={lang === 'es' ? 'Escribe tu bendición' : 'Write your blessing'} required className="form-input" />
+                                    <div className="form-actions">
+                                        <button type="submit" className="form-submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+                                        <button type="button" onClick={closeActiveForm} className="form-cancel">{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
+                                    </div>
+                                </form>
+                            )}
+                        </div>
+                    </div>
                 )}
 
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(178,226,236,0.6)] pt-6 text-center text-sm text-[rgba(44,96,130,0.6)]">
