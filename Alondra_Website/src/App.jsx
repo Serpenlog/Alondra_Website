@@ -763,7 +763,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    {lang === 'es' ? 'Enviar con Cash App' : 'Send with Cash App'}
+                                    {lang === 'es' ? 'Cash App' : 'Cash App'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.athMovil}
@@ -771,7 +771,7 @@ function App() {
                                     rel="noreferrer"
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    {lang === 'es' ? 'Enviar con ATH Móvil' : 'Send with ATH Móvil'}
+                                    {lang === 'es' ? 'ATH Móvil' : 'ATH Móvil'}
                                 </a>
                             </div>
                         </section>
