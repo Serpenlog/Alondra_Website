@@ -65,13 +65,13 @@ const GIFT_MESSAGE = {
     en: [
         'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
         'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
-        'If you wish to give an additional gift, it will be received with deep gratitude and much love, as a beautiful memory of this meaningful moment in my life.',
+        '',
         'Thank you for being part of this dream come true.'
     ],
     es: [
         'Como las perlas escondidas en lo profundo del mar, cada regalo es un gesto lleno de amor y cariño.',
         'Tu presencia siempre será el regalo más valioso para mí, y tenerte a mi lado en este día especial llenará mi corazón de alegría.',
-        'Si deseas dar un regalo adicional, lo recibiré con profunda gratitud y mucho amor, como un hermoso recuerdo de este momento tan importante en mi vida.',
+        '',
         'Gracias por ser parte de este sueño hecho realidad.'
     ]
 };
@@ -552,8 +552,8 @@ function App() {
                                     <p className="text-[rgba(44,96,130,0.7)]">
                                         <strong>
                                             {lang === 'es'
-                                                ? 'Código de vestimenta: Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema. Como se ha indicado, los colores dorado, blanco y azul (incluyendo tonos similares) están especialmente reservados para la princesa de la noche.'
-                                                : 'Please come in beige or nude colored formal wear. As stated, gold, white, and blue (including similar tones) are specially reserved for the princess of the night.'}
+                                                ? 'Código de vestimenta: Elegante. En armonía con la celebración, sugerimos vestir en tonos nude y crema. Los colores dorado, blanco y azul están especialmente reservados para la princesa de la noche.'
+                                                : 'Please come in beige or nude colored formal wear. Colors gold, white, and blue are specially reserved for the princess of the night.'}
                                         </strong>{' '}
                                         {lang === 'es'
                                             ? 'Se les pide a los invitados que no usen estos colores para mantener su día verdaderamente especial. Gracias por respetarlo.'
@@ -592,7 +592,7 @@ function App() {
                                             </p>
                                             <p className="mt-3 text-[rgba(44,96,130,0.78)]">
                                                 {lang === 'es'
-                                                    ? 'Con mucha alegría, ofrecido por sus padres, Marisol y Jesús.'
+                                                    ? 'Y con mucha alegría, ofrecido por sus padres, Marisol y Jesús.'
                                                     : 'Joyfully hosted by her parents, Marisol & Jesus.'}
                                             </p>
                                         </div>
@@ -752,7 +752,7 @@ function App() {
                                     : 'Your presence is the best gift! If you would like to support Alondra Del Mar’s college dreams or share a gift, cash would be deeply appreciated.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Mensaje' : 'Message'}</p>
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? '' : ''}</p>
                                 <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
                                     {(GIFT_MESSAGE[lang] ?? GIFT_MESSAGE.en).map((line) => (
                                         <p key={line} className="font-script text-2xl leading-relaxed">
