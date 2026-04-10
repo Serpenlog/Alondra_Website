@@ -112,9 +112,14 @@ const ITINERARY = {
             description: 'Between the whisper of the waves and the light of sunset, we will experience a moment full of blessing at 6:00 PM. We recommend arriving 20 minutes early so you do not miss any details.'
         },
         {
-            time: 'X:00 PM',
-            title: 'Dinner and Dance',
-            description: 'After the blessing, we will celebrate together with family and friends with a reception, dinner, and dancing.'
+            time: '6:30 PM',
+            title: 'Cocktail',
+            description: 'After the blessing, we invite you to enjoy a welcome cocktail by the sea. It will be an ideal moment to spend time together before the celebration begins.'
+        },
+        {
+            time: '7:00 PM',
+            title: 'Presentation, Dinner, and Dance',
+            description: 'We will begin the celebration with a special presentation, followed by a delicious dinner. Then the dance floor opens so we can celebrate together with a night full of music, dancing, and unforgettable moments.'
         }
     ],
     es: [
@@ -470,7 +475,7 @@ function App() {
                         {guestInfo && (
                             <>
                                 <div className="space-y-1 text-center">
-                                    <p className="text-xs uppercase tracking-[0.5em] text-[rgba(47,156,194,0.75)]">Alondra Del Mar</p>
+                                    <p className="text-3xl text-[rgba(44,96,130,0.95)] md:text-4xl">Alondra Del Mar</p>
                                     <p className="font-display text-3xl text-[rgba(44,96,130,0.95)] md:text-4xl">
                                         {lang === 'es' ? 'Celebración de Mis XV' : 'Mis XV Celebration'}
                                     </p>
