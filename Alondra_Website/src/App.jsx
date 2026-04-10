@@ -111,7 +111,7 @@ const ITINERARY = {
         {
             time: '6:00 PM',
             title: 'Blessing',
-            description: 'Between the whisper of the waves and the light of sunset, we will experience a moment full of blessing at 6:00 PM. We recommend arriving 20 minutes early so you do not miss any details. We will share more information soon.'
+            description: 'Between the whisper of the waves and the light of sunset, we will experience a moment full of blessing at 6:00 PM. We recommend arriving 20 minutes early so you do not miss any details.'
         },
         {
             time: 'X:00 PM',
@@ -123,7 +123,7 @@ const ITINERARY = {
         {
             time: '6:00 PM',
             title: 'Bendición',
-            description: 'Entre el susurro de las olas y la luz del atardecer, viviremos un momento lleno de bendición a las 6:00 PM. Te recomendamos llegar 20 minutos antes para no perder ningún detalle. Pronto compartiremos más información.'
+            description: 'Entre el susurro de las olas y la luz del atardecer, viviremos un momento lleno de bendición a las 6:00 PM. Te recomendamos llegar 20 minutos antes para no perder ningún detalle.'
         },
         {
             time: 'X:00 PM',
@@ -620,6 +620,14 @@ function App() {
                                     {lang === 'es' ? 'Confirmar asistencia' : 'RSVP Now'}
                                 </button>
                                 <a
+                                    href={CALENDAR_EVENT_URL}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                >
+                                    {lang === 'es' ? 'Reserva este momento especial en tu calendario' : 'Reserve this wonderful moment in your calendar'}
+                                </a>
+                                <a
                                     href="#itinerary"
                                     className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
                                 >
@@ -661,14 +669,6 @@ function App() {
                                             : 'We have prepared this evening with special care so we can enjoy every moment together with family and friends, making it a night full of love and joy for everyone.'}
                                     </p>
                                 </div>
-                                <a
-                                    href={CALENDAR_EVENT_URL}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
-                                >
-                                    {lang === 'es' ? 'Reserva este momento especial en tu calendario' : 'Reserve this wonderful moment in your calendar'}
-                                </a>
                             </div>
                             <div className="mt-8 grid gap-6 md:grid-cols-2">
                                 {(ITINERARY[lang] ?? ITINERARY.en).map((event) => (
