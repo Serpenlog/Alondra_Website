@@ -81,7 +81,7 @@ const PAYMENT_LINKS = {
     cashApp: 'https://cash.app/$alondradmar',
     zelle: 'https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6ImNvcmFsaXRvZGVsbWFyMThAaG90bWFpbC5jb20iLCJhY3Rpb24iOiJwYXltZW50IiwibmFtZSI6Ik1hcmlzb2wgRmxvcmVzIn0=',
     venmo: 'https://cash.app/$alondradmar',
-    athMovil: 'https://cash.app/$alondradmar'
+    athMovil: 'https://athmovil.blob.core.windows.net/athmovildeeplinking/Deep-Linking/deep.html?74ff061b98d7ab2708799bcd255ebef881db6d39cc702b4eee8a8babfb7b80e3'
 };
 
 const RSVP_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
