@@ -549,7 +549,7 @@ function App() {
                                     <p className="text-[rgba(44,96,130,0.7)]">{eventDetails.venueAddress}</p>
                                 </div>
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-4 grid gap-4 md:grid-cols-2">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
@@ -574,6 +574,31 @@ function App() {
                                     >
                                         {lang === 'es' ? 'Ver foto de vestimenta' : 'View attire photo'}
                                     </a>
+                                </div>
+                                <div className="glass-panel rounded-3xl p-6 text-center shadow-lg">
+                                    <div className="mx-auto max-w-sm">
+                                        <div className="overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
+                                            <img
+                                                src={isDemo ? alondra12Blur : alondra15}
+                                                alt={
+                                                    lang === 'es'
+                                                        ? 'Alondra junto al mar en un retrato elegante.'
+                                                        : 'Alondra by the sea in an elegant portrait.'
+                                                }
+                                                className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+                                            />
+                                        </div>
+                                        <div className="mt-5">
+                                            <p className="font-script text-4xl leading-tight text-[rgba(44,96,130,0.9)]">
+                                                {lang === 'es' ? 'Con mucho amor' : 'With much love'}
+                                            </p>
+                                            <p className="mt-3 text-[rgba(44,96,130,0.78)]">
+                                                {lang === 'es'
+                                                    ? 'Con mucha alegría, ofrecido por sus padres, Marisol y Jesús.'
+                                                    : 'Joyfully hosted by her parents, Marisol & Jesus.'}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

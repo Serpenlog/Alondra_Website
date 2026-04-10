@@ -222,7 +222,7 @@ const getText = (lang) =>
               rinconHighlights: 'Destacados de Rincón',
               honor: 'Nos honra celebrar este momento inolvidable',
               inHonor: 'En honor de',
-              closing: 'Una noche inspirada en el océano, donde la elegancia fluye como olas y los recuerdos brillan como perlas.'
+              closing: 'Una noche inspirada en el océano, donde la alegría fluye como olas y los recuerdos brillan como perlas.'
           }
         : {
               travelGuide: 'Travel Guide',
@@ -271,7 +271,7 @@ const getText = (lang) =>
               rinconHighlights: 'Rincón Highlights',
               honor: 'We are honored to celebrate this unforgettable moment',
               inHonor: 'In honor of',
-              closing: 'A night inspired by the ocean, where elegance flows like waves and memories shine like pearls.'
+              closing: 'A night inspired by the ocean, where happiness flows like waves and memories shine like pearls.'
           };
 
 export default function Travel({ details, lang = 'en' }) {
