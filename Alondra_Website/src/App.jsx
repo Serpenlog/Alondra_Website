@@ -81,14 +81,12 @@ const GIFT_MESSAGE = {
         'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
         'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
         'If you wish to give an additional gift, it will be received with deep gratitude and much love, as a beautiful memory of this meaningful moment in my life.',
-        'For your convenience, we will have a money gift option (envelope gifts). ',
         'Thank you for being part of this dream come true.'
     ],
     es: [
         'Como las perlas escondidas en lo profundo del mar, cada regalo es un gesto lleno de amor y cariño.',
         'Tu presencia siempre será el regalo más valioso para mí, y tenerte a mi lado en este día especial llenará mi corazón de alegría.',
         'Si deseas dar un regalo adicional, lo recibiré con profunda gratitud y mucho amor, como un hermoso recuerdo de este momento tan importante en mi vida.',
-        'Para tu conveniencia, tendremos opción de regalo en efectivo (sobre).',
         'Gracias por ser parte de este sueño hecho realidad.'
     ]
 };
@@ -753,8 +751,8 @@ function App() {
                             <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Regalos y bendiciones' : 'Gifts & Blessings'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
-                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra o compartir un detalle, agradecería fuera en efectivo.'
-                                    : 'Your presence is the best gift! If you would like to support Alondra’s college dreams or share a gift, cash would be deeply appreciated.'}
+                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra Del Mar o compartir un detalle, agradecería fuera en efectivo.'
+                                    : 'Your presence is the best gift! If you would like to support Alondra Del Mar’s college dreams or share a gift, cash would be deeply appreciated.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Mensaje' : 'Message'}</p>
