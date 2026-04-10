@@ -28,7 +28,6 @@ import alondra11 from './alondra_images/alondra11.JPG';
 import alondra11Blur from './alondra_images/alondra11_blur.png';
 import alondra12 from './alondra_images/alondra12.JPG';
 import alondra12Blur from './alondra_images/alondra12_blur.png';
-import alondra13 from './alondra_images/alondra13.JPG';
 import alondra15 from './alondra_images/alondra15.JPG';
 import alondra16 from './alondra_images/alondra16.JPG';
 import alondra17 from './alondra_images/alondra17.JPG';
@@ -120,7 +119,7 @@ const BLESSING_EMAIL = 'xv@alondradelmar.com';
 const FALLBACK_BLESSING_EMAIL = 'alondra.honey0629@gmail.com';
 
 const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Alondra's Quinceañera")}&dates=20260718T220000Z/20260719T030000Z&ctz=America/Puerto_Rico&details=${encodeURIComponent("Join us to celebrate Alondra's Quinceañera!")}&location=${encodeURIComponent("Road 115, Km 12.2, 26 Sea Bch Dr, Rincón, 00677, Puerto Rico")}`;const FEATURE_PHOTO = {
-    src: alondra13,
+    src: alondra15,
     blurSrc: alondra9Blur,
     alt: "alondra family pic"
 };
@@ -653,7 +652,7 @@ function App() {
                                     <p className="mt-2 text-[rgba(44,96,130,0.7)]">
                                         {lang === 'es'
                                             ? `Celebrando con amor por sus padres, ${eventDetails.hostNames}.`
-                                            : `Celebrating with love from her parents, ${eventDetails.hostNames}.`}
+                                            : `Joyfully hosted by her parents, ${eventDetails.hostNames}.`}
                                     </p>
                                 </div>
                                 <div className="space-y-3 text-[rgba(44,96,130,0.7)]">
@@ -664,7 +663,7 @@ function App() {
                                     >
                                         {eventDetails.contactEmail}
                                     </a>
-                                    <p className="text-sm">{lang === 'es' ? 'Con gusto te ayudamos a planificar una noche perfecta.' : 'We\'re happy to help you plan your perfect evening.'}</p>
+                                    <p className="text-sm">{lang === 'es' ? 'Con gusto te ayudamos a planificar una noche perfecta.' : 'We can\'t wait to celebrate this special night with you.'}</p>
                                 </div>
                             </aside>
                         </section>
