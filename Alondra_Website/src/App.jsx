@@ -4,12 +4,6 @@ import Envelope from './Envelope.jsx';
 import OceanBackground from './OceanBackground.jsx';
 import Travel from './Travel.jsx';
 import { guestList } from './data/guestList.js';
-import alondra1 from './alondra_images/alondra1.JPG';
-import alondra1Blur from './alondra_images/alondra1_blur.png';
-import alondra2 from './alondra_images/alondra2.JPG';
-import alondra2Blur from './alondra_images/alondra2_blur.png';
-import alondra3 from './alondra_images/alondra3.JPG';
-import alondra3Blur from './alondra_images/alondra3_blur.png';
 import alondra7 from './alondra_images/alondra7.JPG';
 import alondra7Blur from './alondra_images/alondra7_blur.png';
 import alondra8 from './alondra_images/alondra8.JPG';
@@ -33,12 +27,6 @@ const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
 
 const BACKGROUND_TRACK = "/45 - Never Grow Up (Taylor's Version) [Originally Performed by Taylor Swift] [Karaoke Version].mp3";
 
-const HERO_PHOTOS = [
-    { src: alondra1, blurSrc: alondra1Blur, alt: 'Portrait of Alondra sharing a joyful smile in her quinceañera gown.' },
-    { src: alondra2, blurSrc: alondra2Blur, alt: 'Alondra posing gracefully against a tropical backdrop.' },
-    { src: alondra3, blurSrc: alondra3Blur, alt: 'Alondra taking in the coastal sunset before her celebration.' }
-];
-
 const GALLERY_PHOTOS = [
     { src: alondra7, blurSrc: alondra7Blur, alt: 'Alondra laughing with loved ones.' },
     { src: alondra8, blurSrc: alondra8Blur, alt: 'Alondra dancing beneath twinkling lights.' },
@@ -49,10 +37,7 @@ const GALLERY_PHOTOS = [
 ];
 
 const TOP_FEATURE_PHOTOS = [
-    { src: alondra15, alt: 'Alondra by the sea in an elegant quinceañera portrait.' },
-    { src: alondra16, alt: 'Alondra smiling during a sunset beach portrait.' },
-    { src: alondra17, alt: 'Alondra in a graceful oceanfront quinceañera photo.' },
-    { src: alondra18, alt: 'Alondra posing with tropical scenery for her quinceañera.' }
+    { src: alondra16, alt: 'Alondra smiling during a sunset beach portrait.' }
 ];
 
 const INTRO_MESSAGE = {
@@ -541,20 +526,13 @@ function App() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                                {HERO_PHOTOS.map((photo) => (
-                                    <figure
-                                        key={photo.src}
-                                        className="group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl"
-                                    >
-                                        <img
-                                            src={isDemo ? photo.blurSrc : photo.src}
-                                            alt={photo.alt}
-                                            className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    </figure>
-                                ))}
-                            </div>
+                            <figure className="mt-10 group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
+                                <img
+                                    src={isDemo ? alondra12Blur : alondra17}
+                                    alt="Alondra in a graceful oceanfront quinceañera photo."
+                                    className="h-[72vh] min-h-[420px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </figure>
                             <div className="mt-8 grid gap-4 md:grid-cols-2">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Fecha' : 'Date'}</p>
@@ -666,6 +644,13 @@ function App() {
                                 </div>
                             )}
                         </section>
+                        <figure className="group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
+                            <img
+                                src={isDemo ? alondra12Blur : alondra18}
+                                alt="Alondra posing with tropical scenery for her quinceañera."
+                                className="h-[72vh] min-h-[420px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </figure>
 
                         <section id="itinerary" className="glass-panel rounded-3xl p-8 shadow-xl">
                             <div className="flex flex-col items-start justify-between gap-6 md:flex-row">
