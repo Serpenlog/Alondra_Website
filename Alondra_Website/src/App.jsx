@@ -112,6 +112,11 @@ const ITINERARY = {
             time: '6:00 PM',
             title: 'Blessing',
             description: 'Between the whisper of the waves and the light of sunset, we will experience a moment full of blessing at 6:00 PM. We recommend arriving 20 minutes early so you do not miss any details. We will share more information soon.'
+        },
+        {
+            time: 'X:00 PM',
+            title: 'Dinner and Dance',
+            description: 'After the blessing, we will celebrate together with family and friends with a reception, dinner, and dancing.'
         }
     ],
     es: [
@@ -119,6 +124,11 @@ const ITINERARY = {
             time: '6:00 PM',
             title: 'Bendición',
             description: 'Entre el susurro de las olas y la luz del atardecer, viviremos un momento lleno de bendición a las 6:00 PM. Te recomendamos llegar 20 minutos antes para no perder ningún detalle. Pronto compartiremos más información.'
+        },
+        {
+            time: 'X:00 PM',
+            title: 'Cena y Baile',
+            description: 'Después de la bendición, celebraremos juntos a familiares y amigos con una recepción, cena y baile.'
         }
     ]
 };
