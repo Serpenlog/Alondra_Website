@@ -550,14 +550,9 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
-                                        <strong>
-                                            {lang === 'es'
-                                                ? 'Código de vestimenta: Elegante. En armonía con la celebración, sugerimos vestir en tonos nude y crema. Los colores dorado, blanco y azul están especialmente reservados para la princesa de la noche.'
-                                                : 'Please come in beige or nude colored formal wear. Colors gold, white, and blue are specially reserved for the princess of the night.'}
-                                        </strong>{' '}
                                         {lang === 'es'
-                                            ? 'Se les pide a los invitados que no usen estos colores para mantener su día verdaderamente especial. Gracias por respetarlo.'
-                                            : 'Guests are asked not to wear these colors in order to keep her day truly special. Thank you for respecting this.'}
+                                            ? 'Código de vestimenta: Elegante. En armonía con la celebración, sugerimos vestir en tonos nude y crema. Los colores dorado, blanco y azul están especialmente reservados para quinceañera. Gracias.'
+                                            : 'Dress code: Elegant. In harmony with the celebration, we suggest wearing nude and cream tones. Gold, white, and blue are specially reserved for the quinceañera. Thank you.'}
                                     </p>
                                     <img
                                         src={dressCodeSilhouette}
@@ -603,7 +598,7 @@ function App() {
                                 <button
                                     type="button"
                                     onClick={() => setActiveForm('rsvp')}
-                                    className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                    className="min-w-[19rem] rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-center text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
                                     {lang === 'es' ? 'Confirmar asistencia' : 'RSVP Now'}
                                 </button>
@@ -660,8 +655,8 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado esta noche con especial cuidado para que disfrutemos cada momento junto a la familia y amistades y que sea un momento lleno de amor y alegría para todos.'
-                                            : 'We have prepared this evening with special care so we can enjoy every moment together with family and friends, making it a night full of love and joy for everyone.'}
+                                            ? 'Hemos preparado esta noche con especial carino para que juntos disfrutemos cada momento lleno de amor y alegria! Los esperamos con los brazos abiertos!'
+                                            : 'We have prepared this evening with special care so that together we can enjoy every moment filled with love and joy! We are waiting for you with open arms!'}
                                     </p>
                                 </div>
                             </div>
@@ -745,7 +740,7 @@ function App() {
                         </section>
 
                         <section id="registry" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Regalos y bendiciones' : 'Gifts & Blessings'}</h2>
+                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Obsequios y Bendiciones' : 'Gifts and Blessings'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
                                     ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra Del Mar o compartir un detalle, agradecería fuera en efectivo.'
@@ -769,22 +764,6 @@ function App() {
                                     className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
                                     {lang === 'es' ? 'Enviar con Cash App' : 'Send with Cash App'}
-                                </a>
-                                <a
-                                    href={PAYMENT_LINKS.zelle}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
-                                >
-                                    {lang === 'es' ? 'Enviar con Zelle' : 'Send with Zelle'}
-                                </a>
-                                <a
-                                    href={PAYMENT_LINKS.venmo}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
-                                >
-                                    {lang === 'es' ? 'Enviar con Venmo' : 'Send with Venmo'}
                                 </a>
                                 <a
                                     href={PAYMENT_LINKS.athMovil}
