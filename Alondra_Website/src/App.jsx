@@ -95,7 +95,7 @@ const GIFT_MESSAGE = {
 
 const PAYMENT_LINKS = {
     cashApp: 'https://cash.app/$alondradmar',
-    zelle: 'https://cash.app/$alondradmar',
+    zelle: 'https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6ImNvcmFsaXRvZGVsbWFyMThAaG90bWFpbC5jb20iLCJhY3Rpb24iOiJwYXltZW50IiwibmFtZSI6Ik1hcmlzb2wgRmxvcmVzIn0=',
     venmo: 'https://cash.app/$alondradmar',
     athMovil: 'https://cash.app/$alondradmar'
 };
@@ -760,8 +760,8 @@ function App() {
                             <h2 className="font-display text-3xl">{lang === 'es' ? 'Envíanos tu formulario' : 'Send Us Your Form'}</h2>
                             <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
-                                    ? 'Selecciona una opción y el formulario aparecerá sin salir de la invitación.'
-                                    : 'Choose an option and the form will appear without leaving the invitation page.'}
+                                    ? ''
+                                    : ''}
                             </p>
                             <div className="mt-6 flex flex-wrap justify-center gap-4">
                                 <button type="button" onClick={() => setActiveForm('rsvp')} className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]">
