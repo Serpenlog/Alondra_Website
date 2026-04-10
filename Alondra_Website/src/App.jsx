@@ -679,6 +679,9 @@ function App() {
                                     </div>
                                 ))}
                             </div>
+                            <p className="mt-6 text-lg text-[rgba(44,96,130,0.75)]">
+                                {lang === 'es' ? 'Compartiremos más información pronto.' : 'We will share more information soon.'}
+                            </p>
                         </section>
 
                         <section id="gallery" className="glass-panel rounded-3xl p-8 shadow-xl">
