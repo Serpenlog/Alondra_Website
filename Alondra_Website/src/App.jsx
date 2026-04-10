@@ -124,9 +124,14 @@ const ITINERARY = {
             description: 'Entre el susurro de las olas y la luz del atardecer, viviremos un momento lleno de bendición a las 6:00 PM. Te recomendamos llegar 20 minutos antes para no perder ningún detalle.'
         },
         {
-            time: 'X:00 PM',
-            title: 'Cena y Baile',
-            description: 'Después de la bendición, celebraremos juntos a familiares y amigos con una recepción, cena y baile.'
+            time: '6:30 PM',
+            title: 'Cocktail',
+            description: 'Después de la bendición, los invitamos a disfrutar de un cocktail de bienvenida frente al mar. Será un momento ideal para convivir juntos antes de comenzar la celebración.'
+        },
+        {
+            time: '7:00 PM',
+            title: 'Presentación, Cena y Baile',
+            description: 'Daremos inicio a la celebración con una recepción especial, seguida de una deliciosa cena. Después la pista se abre para festejar juntos una noche llena de música, baile y momentos inolvidables.'
         }
     ]
 };
@@ -678,7 +683,7 @@ function App() {
                                 ))}
                             </div>
                             <p className="mt-6 text-lg text-[rgba(44,96,130,0.75)]">
-                                {lang === 'es' ? 'Compartiremos más información pronto.' : 'We will share more information soon.'}
+                                {lang === 'es' ? 'Compartiremos más información pronto. Esta invitación se actualizará automaticamente segun se acerque la fecha.' : 'We will share more information soon. This page will update automatically as we get closer to the date.'}
                             </p>
                         </section>
 
