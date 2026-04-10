@@ -110,14 +110,14 @@ const ITINERARY = {
     en: [
         {
             time: '6:00 PM',
-            title: 'Welcome',
+            title: 'Blessing',
             description: 'Between the whisper of the waves and the light of sunset, we will experience a moment full of blessing at 6:00 PM. We recommend arriving 20 minutes early so you do not miss any details. We will share more information soon.'
         }
     ],
     es: [
         {
             time: '6:00 PM',
-            title: 'Bienvenida',
+            title: 'Bendición',
             description: 'Entre el susurro de las olas y la luz del atardecer, viviremos un momento lleno de bendición a las 6:00 PM. Te recomendamos llegar 20 minutos antes para no perder ningún detalle. Pronto compartiremos más información.'
         }
     ]
@@ -540,8 +540,8 @@ function App() {
                             <div className="mt-8 grid gap-4 md:grid-cols-2">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Fecha' : 'Date'}</p>
-                                    <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Sábado • 18 de julio de 2026' : 'Saturday • July 18, 2026'}</p>
-                                    <p className="text-[rgba(44,96,130,0.7)]">{lang === 'es' ? 'La ceremonia comienza puntualmente a las 6:00 PM' : 'Ceremony begins promptly at 6:00 PM'}</p>
+                                    <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Sábado • 18 de julio de 2026 • 6:00 PM' : 'Saturday • July 18, 2026 • 6:00 PM'}</p>
+                                    <p className="text-[rgba(44,96,130,0.7)]">{lang === 'es' ? '' : ''}</p>
                                 </div>
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Lugar' : 'Venue'}</p>
