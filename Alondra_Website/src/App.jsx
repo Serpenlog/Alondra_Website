@@ -506,12 +506,12 @@ function App() {
                                 {TOP_FEATURE_PHOTOS.map((photo) => (
                                     <figure
                                         key={photo.src}
-                                        className="group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl"
+                                        className="group relative aspect-[2048/2103] overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl"
                                     >
                                         <img
                                             src={isDemo ? alondra12Blur : photo.src}
                                             alt={photo.alt}
-                                            className="h-[72vh] min-h-[420px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                         />
                                     </figure>
                                 ))}
@@ -526,11 +526,11 @@ function App() {
                                     ))}
                                 </div>
                             </div>
-                            <figure className="mt-10 group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
+                            <figure className="mt-10 group relative aspect-[2048/2456] overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
                                 <img
                                     src={isDemo ? alondra12Blur : alondra17}
                                     alt="Alondra in a graceful oceanfront quinceañera photo."
-                                    className="h-[72vh] min-h-[420px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                 />
                             </figure>
                             <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -554,8 +554,8 @@ function App() {
                                             ? 'Código de vestimenta: Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema.'
                                             : 'Please come in beige or nude colored formal wear.'}{' '}
                                         {lang === 'es'
-                                            ? 'Los tonos blanco, dorado y azul están reservados para la quinceañera.'
-                                            : 'White, gold, and blue tones are reserved for the quinceañera.'}
+                                            ? 'Como se ha indicado, los colores dorado, blanco y azul (incluyendo tonos similares) están especialmente reservados para la princesa de la noche. Se les pide a los invitados que no usen estos colores para mantener su día verdaderamente especial. Gracias por respetarlo.'
+                                            : 'As stated, gold, white, and blue (including similar tones) are specially reserved for the princess of the night. Guests are asked not to wear these colors in order to keep her day truly special. Thank you for respecting this.'}
                                     </p>
                                     <img
                                         src={dressCodeSilhouette}
@@ -644,11 +644,11 @@ function App() {
                                 </div>
                             )}
                         </section>
-                        <figure className="group relative overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
+                        <figure className="group relative aspect-[2048/3071] overflow-hidden rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] shadow-xl">
                             <img
                                 src={isDemo ? alondra12Blur : alondra18}
                                 alt="Alondra posing with tropical scenery for her quinceañera."
-                                className="h-[72vh] min-h-[420px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                             />
                         </figure>
 
