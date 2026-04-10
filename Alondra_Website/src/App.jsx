@@ -27,6 +27,7 @@ import alondra16 from './alondra_images/alondra16.JPG';
 import alondra17 from './alondra_images/alondra17.JPG';
 import alondra18 from './alondra_images/alondra18.JPG';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
+import dressCodeSilhouette from './alondra_images/dress_code_silhouette.PNG';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
 
@@ -536,7 +537,7 @@ function App() {
                                     </figure>
                                 ))}
                             </div>
-                            <div className="mt-8 grid gap-4 md:grid-cols-3">
+                            <div className="mt-8 grid gap-4 md:grid-cols-2">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Fecha' : 'Date'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Sábado • 18 de julio de 2026' : 'Saturday • July 18, 2026'}</p>
@@ -547,6 +548,8 @@ function App() {
                                     <p className="mt-2 text-xl font-semibold">{eventDetails.venueName}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">{eventDetails.venueAddress}</p>
                                 </div>
+                            </div>
+                            <div className="mt-4">
                                 <div className="glass-panel rounded-3xl p-6 text-left shadow-lg">
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
@@ -558,6 +561,11 @@ function App() {
                                             ? 'Los tonos blanco, dorado y azul están reservados para la quinceañera.'
                                             : 'White, gold, and blue tones are reserved for the quinceañera.'}
                                     </p>
+                                    <img
+                                        src={dressCodeSilhouette}
+                                        alt={lang === 'es' ? 'Silueta de referencia para código de vestimenta formal.' : 'Reference silhouette for formal dress code.'}
+                                        className="mt-4 w-full rounded-2xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.5)] object-cover shadow-md"
+                                    />
                                     <a
                                         href={dressCodeImage}
                                         target="_blank"
@@ -797,7 +805,7 @@ function App() {
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
                                     <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre completo' : 'Your Full Name'} required className="form-input" />
-                                    <input type="email" name="email" placeholder={lang === 'es' ? 'Correo electrónico' : 'Email Address'} required className="form-input" />
+                                    <input type="email" name="email" placeholder={lang === 'es' ? 'Correo electrónico (opcional)' : 'Email Address (Optional)'} className="form-input" />
                                     <input type="tel" name="phone" placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'} className="form-input" />
                                     <select name="attendance" required className="form-input">
                                         <option value="">{lang === 'es' ? '¿Celebras con nosotros?' : 'Will you celebrate with us?'}</option>
