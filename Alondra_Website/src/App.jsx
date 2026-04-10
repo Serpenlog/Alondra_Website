@@ -550,12 +550,14 @@ function App() {
                                     <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? 'Vestimenta' : 'Attire'}</p>
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
+                                        <strong>
+                                            {lang === 'es'
+                                                ? 'Código de vestimenta: Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema. Como se ha indicado, los colores dorado, blanco y azul (incluyendo tonos similares) están especialmente reservados para la princesa de la noche.'
+                                                : 'Please come in beige or nude colored formal wear. As stated, gold, white, and blue (including similar tones) are specially reserved for the princess of the night.'}
+                                        </strong>{' '}
                                         {lang === 'es'
-                                            ? 'Código de vestimenta: Elegante en armonía con la celebración, sugerimos vestir en tonos nude y crema.'
-                                            : 'Please come in beige or nude colored formal wear.'}{' '}
-                                        {lang === 'es'
-                                            ? 'Como se ha indicado, los colores dorado, blanco y azul (incluyendo tonos similares) están especialmente reservados para la princesa de la noche. Se les pide a los invitados que no usen estos colores para mantener su día verdaderamente especial. Gracias por respetarlo.'
-                                            : 'As stated, gold, white, and blue (including similar tones) are specially reserved for the princess of the night. Guests are asked not to wear these colors in order to keep her day truly special. Thank you for respecting this.'}
+                                            ? 'Se les pide a los invitados que no usen estos colores para mantener su día verdaderamente especial. Gracias por respetarlo.'
+                                            : 'Guests are asked not to wear these colors in order to keep her day truly special. Thank you for respecting this.'}
                                     </p>
                                     <img
                                         src={dressCodeSilhouette}
