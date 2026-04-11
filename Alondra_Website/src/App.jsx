@@ -21,6 +21,7 @@ import alondra16 from './alondra_images/alondra16.JPG';
 import alondra17 from './alondra_images/alondra17.JPG';
 import alondra18 from './alondra_images/alondra18.JPG';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
+import dressCodeImage2 from './alondra_images/dressCodeImage2.jpeg';
 import dressCodeSilhouette from './alondra_images/dress_code_silhouette.PNG';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
@@ -560,7 +561,7 @@ function App() {
                                         className="mt-4 w-full rounded-2xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.5)] object-cover shadow-md"
                                     />
                                     <a
-                                        href={dressCodeImage}
+                                        href={lang === 'es' ? dressCodeImage2 : dressCodeImage}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="mt-4 inline-flex items-center justify-center rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,1)] transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"

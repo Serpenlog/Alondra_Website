@@ -23,8 +23,20 @@ const CAR_RENTALS = [
 ];
 
 const STAY_RENTALS = [
-    { name: 'Airbnb in Rincón', url: 'https://www.airbnb.com/s/Rincon--Puerto-Rico/homes' },
-    { name: 'Guesthouses in Rincón', url: 'https://www.booking.com/searchresults.html?ss=Rincon%2C+Puerto+Rico&nflt=ht_id%3D216' }
+    {
+        name: {
+            en: 'Airbnb in Rincón',
+            es: 'Airbnb en Rincón'
+        },
+        url: 'https://www.airbnb.com/s/Rincon--Puerto-Rico/homes'
+    },
+    {
+        name: {
+            en: 'Guesthouses in Rincón',
+            es: 'Guesthouses en Rincón'
+        },
+        url: 'https://www.booking.com/searchresults.html?ss=Rincon%2C+Puerto+Rico&nflt=ht_id%3D216'
+    }
 ];
 
 const DINING_OPTIONS = [
@@ -201,7 +213,7 @@ const getText = (lang) =>
               highlightsTextStart: '',
               highlightsTextEnd: '. . un lugar donde el mar susurra calma y los atardeceres pintan el cielo con tonos inolvidables. Este rincón del Caribe, uno de los lugares preferidos de Alondra Del Mar se distingue por sus playas doradas, su ambiente relajado y la belleza natural que lo envuelve. Frente a este escenario único, el Rincón of the Seas Grand Caribbean Hotel & Villas, ubicado justo a orillas del mar, será el lugar donde celebraremos este momento especial. Entre brisas suaves, olas y cielos de ensueño, te invitamos a disfrutar de la magia de Rincón y ser parte de una celebración inolvidable.',
               arrivalTransportation: 'Llegada y Transporte',
-              rentals: 'Recomendaciones de renta y de autos',
+              rentals: 'Recomendaciones de Renta y de Autos',
               carRentals: 'Alquiler de Autos',
               placesToStay: 'Recomendaciones de lugares adicionales donde puedes hospedarte',
               carTip: '✨ Rentar auto es altamente recomendado para una experiencia sin contratiempos.',
@@ -250,7 +262,7 @@ const getText = (lang) =>
               highlightsTextStart: '',
               highlightsTextEnd: 'a place where the sea whispers calm and sunsets paint the sky with unforgettable tones. This corner of the Caribbean—one of Alondra Del Mar’s favorite places—stands out for its golden beaches, relaxed atmosphere, and the natural beauty that surrounds it. In front of this unique setting, the Rincón of the Seas Grand Caribbean Hotel & Villas, located right by the sea, will be where we celebrate this special moment. Between soft breezes, waves, and dreamy skies, we invite you to enjoy the magic of Rincón and be part of an unforgettable celebration.',
               arrivalTransportation: 'Arrival & Transportation',
-              rentals: 'Recomendaciones de renta y de autos',
+              rentals: 'Car and Rental Recommendations',
               carRentals: 'Car Rentals',
               placesToStay: 'Recommendations of additional places to stay',
               carTip: '✨ Renting a car is highly recommended for a seamless experience.',
@@ -530,14 +542,14 @@ export default function Travel({ details, lang = 'en' }) {
                     <h3 className="mt-8 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.placesToStay}</h3>
                     <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
                         {STAY_RENTALS.map((rental) => (
-                            <li key={rental.name}>
+                            <li key={rental.name.en}>
                                 <a
                                     href={rental.url}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
                                 >
-                                    {rental.name}
+                                    {rental.name[lang]}
                                 </a>
                             </li>
                         ))}
