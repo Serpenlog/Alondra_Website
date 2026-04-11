@@ -21,7 +21,7 @@ import alondra16 from './alondra_images/alondra16.JPG';
 import alondra17 from './alondra_images/alondra17.JPG';
 import alondra18 from './alondra_images/alondra18.JPG';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
-import dressCodeImage2 from './alondra_images/dressCodeImage2.jpeg';
+import dressCodeImage2 from './alondra_images/dressCodeImage2.JPG';
 import dressCodeSilhouette from './alondra_images/dress_code_silhouette.PNG';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
