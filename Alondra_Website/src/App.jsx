@@ -53,7 +53,7 @@ const INTRO_MESSAGE = {
     es: [
         'En las profundidades del mar, donde la luz danza entre las olas y las perlas guardan sus secretos, Dios escribe historias llenas de amor y propósito…',
         'Hoy, una de esas historias florece en una joven llena de luz, belleza y sueños.',
-        'Con gran alegría, te invitamos a ser parte de este momento tan especial y celebrar los 15 años de Alondra Del Mar.',
+        'Con gran alegría, te invitamos a ser parte de este momento tan especial y celebrar los XV años de Alondra Del Mar.',
         'Una noche mágica donde el brillo del océano, la delicadeza de las perlas y la bendición de Dios se unirán para crear recuerdos inolvidables.',
         'Tu presencia será la joya más valiosa de esta celebración.',
         'Con amor,',
@@ -551,7 +551,7 @@ function App() {
                                     <p className="mt-2 text-xl font-semibold">{lang === 'es' ? 'Vestimenta formal' : 'Formal Attire'}</p>
                                     <p className="text-[rgba(44,96,130,0.7)]">
                                         {lang === 'es'
-                                            ? 'Código de vestimenta: Elegante. En armonía con la celebración, sugerimos vestir en tonos nude y crema. Los colores dorado, blanco y azul están especialmente reservados para quinceañera. Gracias.'
+                                            ? 'Código de vestimenta: Elegante. En armonía con la celebración, sugerimos vestir en tonos nude y crema. Los colores dorado, blanco y azul están especialmente reservados para la quinceañera. Gracias.'
                                             : 'Dress code: Elegant. In harmony with the celebration, we suggest wearing nude and cream tones. Gold, white, and blue are specially reserved for the quinceañera. Thank you.'}
                                     </p>
                                     <img
@@ -655,7 +655,7 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado esta noche con especial carino para que juntos disfrutemos cada momento lleno de amor y alegria! Los esperamos con los brazos abiertos!'
+                                            ? 'Hemos preparado esta noche con especial cariño para que juntos disfrutemos cada momento lleno de amor y alegría! Los esperamos con los brazos abiertos!'
                                             : 'We have prepared this evening with special care so that together we can enjoy every moment filled with love and joy! We are waiting for you with open arms!'}
                                     </p>
                                 </div>
@@ -670,7 +670,7 @@ function App() {
                                 ))}
                             </div>
                             <p className="mt-6 text-lg text-[rgba(44,96,130,0.75)]">
-                                {lang === 'es' ? 'Compartiremos más información pronto. Esta invitación se actualizará automaticamente segun se acerque la fecha.' : 'We will share more information soon. This page will update automatically as we get closer to the date.'}
+                                {lang === 'es' ? 'Compartiremos más información pronto. Esta invitación se actualizará automaticamente según se acerque la fecha.' : 'We will share more information soon. This page will update automatically as we get closer to the date.'}
                             </p>
                         </section>
 
