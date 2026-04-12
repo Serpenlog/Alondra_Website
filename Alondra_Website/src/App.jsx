@@ -3,7 +3,7 @@ import './App.css';
 import Envelope from './Envelope.jsx';
 import OceanBackground from './OceanBackground.jsx';
 import Travel from './Travel.jsx';
-import { guestList } from './data/guestList.js';
+import { guestList, normalizePhone } from './data/guestList.js';
 import alondra7 from './alondra_images/alondra7.JPG';
 import alondra7Blur from './alondra_images/alondra7_blur.png';
 import alondra8 from './alondra_images/alondra19.JPG';
@@ -309,9 +309,7 @@ function App() {
     const isDemo = guestInfo?.isDemo ?? false;
     const t = UI_TEXT[lang];
     const eventDetails = isDemo ? DEMO_DETAILS : REAL_DETAILS;
-    const [regionalAirport, majorAirport] = eventDetails.airports;
-
-    const normalizePhone = (value) => value.replace(/\D/g, '');
+    const canAccessTravelPage = guestInfo?.experience?.pages?.travel ?? true;
 
     const playBackgroundTrack = () => {
         if (!audioRef.current) {
@@ -337,6 +335,7 @@ function App() {
                 tickets: isDemoAccess ? demoTickets : match.tickets,
                 isDemo: isDemoAccess
             });
+            setLang(match.experience?.defaultLanguage ?? 'en');
             setPasswordError('');
             setAccessStage('open');
             playBackgroundTrack();
@@ -363,6 +362,22 @@ function App() {
             clearInterval(timer);
         };
     }, []);
+
+    useEffect(() => {
+        if (!canAccessTravelPage && currentPage === 'travel') {
+            setCurrentPage('home');
+        }
+    }, [canAccessTravelPage, currentPage]);
+
+    const availablePages = useMemo(() => {
+        const pages = [{ key: 'home', label: t.navHome }];
+
+        if (canAccessTravelPage) {
+            pages.push({ key: 'travel', label: t.navTravel });
+        }
+
+        return pages;
+    }, [canAccessTravelPage, t.navHome, t.navTravel]);
 
     const countdownUnits = useMemo(
         () => [
@@ -436,10 +451,7 @@ function App() {
                 <div className="ocean-content">
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-center">
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(203,244,250,0.4)] p-1 shadow-lg sm:mx-0">
-                        {[
-                            { key: 'home', label: t.navHome },
-                            { key: 'travel', label: t.navTravel }
-                        ].map(({ key, label }) => (
+                        {availablePages.map(({ key, label }) => (
                             <button
                                 key={key}
                                 type="button"
@@ -719,13 +731,15 @@ function App() {
                                         </li>
                                     </ul>
                                 <div className="mt-6">
-                                    <button
-                                        type="button"
-                                        onClick={() => setCurrentPage('travel')}
-                                        className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
-                                    >
-                                        {lang === 'es' ? 'Ver guía completa de viaje' : 'View Full Travel Guide'}
-                                    </button>
+                                    {canAccessTravelPage && (
+                                        <button
+                                            type="button"
+                                            onClick={() => setCurrentPage('travel')}
+                                            className="rounded-full border border-[rgba(178,226,236,0.7)] bg-[rgba(255,214,201,0.75)] px-6 py-2 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                        >
+                                            {lang === 'es' ? 'Ver guía completa de viaje' : 'View Full Travel Guide'}
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                             <div className="overflow-hidden rounded-3xl shadow-xl">
@@ -799,7 +813,7 @@ function App() {
 
                 </main>
                 ) : (
-                    <Travel details={eventDetails} lang={lang} />
+                    <Travel details={eventDetails} lang={lang} sectionVisibility={guestInfo?.experience?.sections} />
                 )}
                 {activeForm && (
                     <div className="form-overlay" onClick={handleOverlayClick}>

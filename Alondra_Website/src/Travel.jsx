@@ -286,7 +286,7 @@ const getText = (lang) =>
               closing: 'A night inspired by the ocean, where happiness flows like waves and memories shine like pearls.'
           };
 
-export default function Travel({ details, lang = 'en' }) {
+export default function Travel({ details, lang = 'en', sectionVisibility = {} }) {
     const t = getText(lang);
     const travelHighlights = getTravelHighlights(lang);
     const locationLabel = details.venueAddressLong.split(',').slice(1).join(',').trim() || (lang === 'es' ? 'el área' : 'the area');
@@ -294,6 +294,7 @@ export default function Travel({ details, lang = 'en' }) {
     const getAirportName = (airport) => (lang === 'es' ? (airport.nameEs ?? airport.name) : airport.name);
     const getAirportDetails = (airport) => (lang === 'es' ? (airport.detailsEs ?? airport.details) : airport.details);
     const airportNameList = details.airports.map((airport) => getAirportName(airport)).join(', ');
+    const canShowSection = (sectionKey) => sectionVisibility[sectionKey] ?? true;
     const hotels = [
         {
             name: details.venueName,
@@ -384,7 +385,7 @@ export default function Travel({ details, lang = 'en' }) {
                 </div>
             </section>
 
-            <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <section className={`grid gap-6 ${canShowSection('flyingIn') ? 'lg:grid-cols-[1.1fr_0.9fr]' : ''}`}>
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
                     <h2 className="font-display text-3xl">{t.whereToStay}</h2>
                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
@@ -421,63 +422,65 @@ export default function Travel({ details, lang = 'en' }) {
                     </div>
                 </div>
 
-                <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 shadow-xl">
-                    <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] p-6 shadow-md">
-                        <h2 className="font-display text-3xl">{t.flyingIn}</h2>
-                        <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                            {t.flyingText} {airportNameList}.
-                        </p>
-                    </div>
-                    <div className="space-y-4">
-                        {details.airports.map((airport) => (
-                            <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
-                                <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{getAirportName(airport)}</h3>
-                                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{getAirportDetails(airport)}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
-                        <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.groundTransportation}</h3>
-                        <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">
-                            {(lang === 'es' ? (details.rideshareNoteEs ?? details.rideshareNote) : details.rideshareNote)}, {t.groundText}
-                        </p>
-                        <div className="mt-4 space-y-4 text-sm text-[rgba(44,96,130,0.7)]">
-                            <div>
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {getAirportName(majorAirport)}</p>
-                                <ul className="mt-2 space-y-1">
-                                    {details.taxiServices.sju.map((service) => (
-                                        <li key={service.name}>
-                                            {service.name}{' '}
-                                            <a
-                                                href={`tel:${service.phone.replace(/[^0-9]/g, '')}`}
-                                                className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                            >
-                                                {service.phone}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div>
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {getAirportName(regionalAirport)}</p>
-                                <ul className="mt-2 space-y-1">
-                                    {details.taxiServices.bqn.map((service) => (
-                                        <li key={service.name}>
-                                            {service.name}{' '}
-                                            <a
-                                                href={`tel:${service.phone.replace(/[^0-9]/g, '')}`}
-                                                className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                            >
-                                                {service.phone}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
+                {canShowSection('flyingIn') && (
+                    <aside className="glass-panel flex flex-col gap-6 rounded-3xl p-8 shadow-xl">
+                        <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.6)] p-6 shadow-md">
+                            <h2 className="font-display text-3xl">{t.flyingIn}</h2>
+                            <p className="mt-3 text-[rgba(44,96,130,0.75)]">
+                                {t.flyingText} {airportNameList}.
+                            </p>
+                        </div>
+                        <div className="space-y-4">
+                            {details.airports.map((airport) => (
+                                <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
+                                    <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{getAirportName(airport)}</h3>
+                                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{getAirportDetails(airport)}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
+                            <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{t.groundTransportation}</h3>
+                            <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">
+                                {(lang === 'es' ? (details.rideshareNoteEs ?? details.rideshareNote) : details.rideshareNote)}, {t.groundText}
+                            </p>
+                            <div className="mt-4 space-y-4 text-sm text-[rgba(44,96,130,0.7)]">
+                                <div>
+                                    <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {getAirportName(majorAirport)}</p>
+                                    <ul className="mt-2 space-y-1">
+                                        {details.taxiServices.sju.map((service) => (
+                                            <li key={service.name}>
+                                                {service.name}{' '}
+                                                <a
+                                                    href={`tel:${service.phone.replace(/[^0-9]/g, '')}`}
+                                                    className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
+                                                >
+                                                    {service.phone}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-[rgba(44,96,130,0.9)]">{t.from} {getAirportName(regionalAirport)}</p>
+                                    <ul className="mt-2 space-y-1">
+                                        {details.taxiServices.bqn.map((service) => (
+                                            <li key={service.name}>
+                                                {service.name}{' '}
+                                                <a
+                                                    href={`tel:${service.phone.replace(/[^0-9]/g, '')}`}
+                                                    className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
+                                                >
+                                                    {service.phone}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </aside>
+                    </aside>
+                )}
             </section>
 
             <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
