@@ -128,6 +128,9 @@ const ITINERARY = {
     ]
 };
 
+// Keep itinerary event cards in the code for easy re-enable closer to the event date.
+const SHOW_ITINERARY_DETAILS = false;
+
 const REAL_TAXI_SERVICES = {
     sju: [
         { name: 'Wilbert Taxis', phone: '787-479-9767' },
@@ -682,17 +685,19 @@ function App() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="mt-8 grid gap-6 md:grid-cols-2">
-                                {(ITINERARY[lang] ?? ITINERARY.en).map((event) => (
-                                    <div key={event.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
-                                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{event.time}</p>
-                                        <h3 className="mt-2 text-xl font-semibold text-[rgba(44,96,130,0.9)]">{event.title}</h3>
-                                        <p className="mt-2 text-[rgba(44,96,130,0.7)]">{event.description}</p>
-                                    </div>
-                                ))}
-                            </div>
+                            {SHOW_ITINERARY_DETAILS ? (
+                                <div className="mt-8 grid gap-6 md:grid-cols-2">
+                                    {(ITINERARY[lang] ?? ITINERARY.en).map((event) => (
+                                        <div key={event.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
+                                            <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{event.time}</p>
+                                            <h3 className="mt-2 text-xl font-semibold text-[rgba(44,96,130,0.9)]">{event.title}</h3>
+                                            <p className="mt-2 text-[rgba(44,96,130,0.7)]">{event.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : null}
                             <p className="mt-6 text-lg text-[rgba(44,96,130,0.75)]">
-                                {lang === 'es' ? 'Compartiremos más información pronto. Esta invitación se actualizará automaticamente según se acerque la fecha.' : 'We will share more information soon. This page will update automatically as we get closer to the date.'}
+                                {lang === 'es' ? 'Compartiremos más información pronto.' : 'We will share more information soon.'}
                             </p>
                         </section>
 

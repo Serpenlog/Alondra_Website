@@ -201,6 +201,13 @@ const getText = (lang) =>
               email: 'Correo:',
               whereToStay: 'Dónde Hospedarte',
               whereStayTextStart: '',
+              travelRequirementsTitle: 'Requisitos de viaje para Puerto Rico',
+              travelRequirementsIntro:
+                  'Puerto Rico es parte de Estados Unidos, por lo que si viajas desde cualquier estado de E.U tu vuelo se considera doméstico.',
+              travelRequirementsAdults: 'Adultos: llevar una identificación oficial vigente (REAL ID o pasaporte).',
+              travelRequirementsChildren:
+                  'Niños: no es obligatorio presentar identificación, pero se recomienda llevar certificado de nacimiento por cualquier imprevisto.',
+              travelRequirementsClosing: '¡Nos emociona celebrar contigo y verte pronto en la isla!',
               checkAvailability: 'Ver Disponibilidad',
               flyingIn: 'Llegando en Avión',
               flyingText: 'Elige entre',
@@ -250,6 +257,13 @@ const getText = (lang) =>
               email: 'Email:',
               whereToStay: 'Where to Stay',
               whereStayTextStart: '',
+              travelRequirementsTitle: 'Travel Requirements for Puerto Rico',
+              travelRequirementsIntro:
+                  'Puerto Rico is part of the United States, so if you are traveling from any U.S. state, your flight is considered domestic.',
+              travelRequirementsAdults: 'Adults: bring a valid government-issued ID (REAL ID or passport).',
+              travelRequirementsChildren:
+                  'Children: an ID is not required, but bringing a birth certificate is recommended in case of any unexpected situation.',
+              travelRequirementsClosing: 'We are excited to celebrate with you and see you soon on the island!',
               checkAvailability: 'Check Availability',
               flyingIn: 'Flying In',
               flyingText: 'Choose between',
@@ -420,6 +434,17 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
                             </div>
                         ))}
                     </div>
+                    {canShowSection('travelRequirements') && (
+                        <div className="mt-8 rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-6 shadow-md">
+                            <h3 className="text-xl font-semibold text-[rgba(44,96,130,0.9)]">{t.travelRequirementsTitle}</h3>
+                            <p className="mt-3 text-[rgba(44,96,130,0.75)]">{t.travelRequirementsIntro}</p>
+                            <ul className="mt-4 space-y-2 text-[rgba(44,96,130,0.75)]">
+                                <li>• {t.travelRequirementsAdults}</li>
+                                <li>• {t.travelRequirementsChildren}</li>
+                            </ul>
+                            <p className="mt-4 text-[rgba(44,96,130,0.75)]">{t.travelRequirementsClosing}</p>
+                        </div>
+                    )}
                 </div>
 
                 {canShowSection('flyingIn') && (

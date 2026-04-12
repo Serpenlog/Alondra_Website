@@ -8,7 +8,8 @@ const REGION_EXPERIENCE_CONFIG = {
             travel: true
         },
         sections: {
-            flyingIn: true
+            flyingIn: true,
+            travelRequirements: true
         }
     },
     PR: {
@@ -17,7 +18,8 @@ const REGION_EXPERIENCE_CONFIG = {
             travel: true
         },
         sections: {
-            flyingIn: false
+            flyingIn: false,
+            travelRequirements: false
         }
     },
     US: {
@@ -26,7 +28,8 @@ const REGION_EXPERIENCE_CONFIG = {
             travel: true
         },
         sections: {
-            flyingIn: true
+            flyingIn: true,
+            travelRequirements: true
         }
     }
 };
