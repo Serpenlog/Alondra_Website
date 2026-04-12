@@ -23,6 +23,7 @@ import alondra18 from './alondra_images/alondra18.JPG';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
 import dressCodeImage2 from './alondra_images/dressCodeImage2.JPG';
 import dressCodeSilhouette from './alondra_images/dress_code_silhouette.PNG';
+import usaaZelleQr from './alondra_images/USAA.png';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
 
@@ -303,6 +304,7 @@ function App() {
     const [passwordError, setPasswordError] = useState('');
     const [guestInfo, setGuestInfo] = useState(null);
     const [activeForm, setActiveForm] = useState(null);
+    const [activeGiftModal, setActiveGiftModal] = useState(null);
     const audioRef = useRef(null);
 
     const isOpen = accessStage === 'open';
@@ -390,10 +392,17 @@ function App() {
     );
 
     const closeActiveForm = () => setActiveForm(null);
+    const closeActiveGiftModal = () => setActiveGiftModal(null);
 
     const handleOverlayClick = (event) => {
         if (event.target === event.currentTarget) {
             closeActiveForm();
+        }
+    };
+
+    const handleGiftOverlayClick = (event) => {
+        if (event.target === event.currentTarget) {
+            closeActiveGiftModal();
         }
     };
 
@@ -772,22 +781,16 @@ function App() {
                                 </div>
                             </div>
                             <div className="mt-8 flex flex-wrap justify-center gap-4">
-                                <a
-                                    href={PAYMENT_LINKS.cashApp}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveGiftModal('options')}
+                                    className="inline-flex items-center gap-2 rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
                                 >
-                                    {lang === 'es' ? 'Cash App' : 'Cash App'}
-                                </a>
-                                <a
-                                    href={PAYMENT_LINKS.athMovil}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
-                                >
-                                    {lang === 'es' ? 'ATH Móvil' : 'ATH Móvil'}
-                                </a>
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+                                        <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm2.12-.75 7.63 5.72L19.63 6H4.37Zm15.88 1.88-6.97 5.23a2.25 2.25 0 0 1-2.56 0L3.75 7.88v9.37c0 .41.34.75.75.75h15a.75.75 0 0 0 .75-.75V7.88Z" />
+                                    </svg>
+                                    <span>{lang === 'es' ? 'Obsequios' : 'Gifts'}</span>
+                                </button>
                             </div>
                         </section>
 
@@ -873,6 +876,67 @@ function App() {
                                     </div>
                                 </form>
                             )}
+                        </div>
+                    </div>
+                )}
+                {activeGiftModal && (
+                    <div className="form-overlay" onClick={handleGiftOverlayClick}>
+                        <div className="form-modal">
+                            {activeGiftModal === 'options' && (
+                                <div>
+                                    <h3 className="font-display text-3xl text-[rgba(44,96,130,0.95)] text-center">
+                                        {lang === 'es' ? 'Opciones de obsequio' : 'Gift Options'}
+                                    </h3>
+                                    <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
+                                        {lang === 'es' ? 'Gracias por tu cariño y apoyo.' : 'Thank you for your love and support.'}
+                                    </p>
+                                    <div className="mt-6 flex flex-wrap justify-center gap-4">
+                                        <a
+                                            href={PAYMENT_LINKS.cashApp}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                        >
+                                            Cash App
+                                        </a>
+                                        <a
+                                            href={PAYMENT_LINKS.athMovil}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                        >
+                                            ATH Móvil
+                                        </a>
+                                        <button
+                                            type="button"
+                                            onClick={() => setActiveGiftModal('zelle')}
+                                            className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]"
+                                        >
+                                            Zelle
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                            {activeGiftModal === 'zelle' && (
+                                <div>
+                                    <h3 className="font-display text-3xl text-[rgba(44,96,130,0.95)] text-center">
+                                        {lang === 'es' ? 'Zelle' : 'Zelle'}
+                                    </h3>
+                                    <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
+                                        {lang === 'es' ? 'Escanea este código QR para enviar tu obsequio por Zelle.' : 'Scan this QR code to send your gift through Zelle.'}
+                                    </p>
+                                    <img
+                                        src={usaaZelleQr}
+                                        alt={lang === 'es' ? 'Código QR de Zelle para obsequios.' : 'Zelle QR code for gifts.'}
+                                        className="mx-auto mt-5 w-full max-w-sm rounded-2xl border border-[rgba(178,226,236,0.75)] bg-white p-2 shadow-md"
+                                    />
+                                </div>
+                            )}
+                            <div className="form-actions mt-6">
+                                <button type="button" onClick={closeActiveGiftModal} className="form-cancel">
+                                    {lang === 'es' ? 'Cerrar' : 'Close'}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
