@@ -504,8 +504,8 @@ function App() {
                                 </p>
                                 <p className="text-[rgba(44,96,130,0.75)]">
                                     {lang === 'es'
-                                        ? `Hemos reservado para ti ${guestInfo.tickets} asientos, con mucho amor`
-                                        : `We have reserved for you ${guestInfo.tickets} seats, with love`}
+                                        ? `Hemos reservado para ti ${guestInfo.tickets} ${guestInfo.tickets === 1 ? 'asiento' : 'asientos'}, con mucho amor`
+                                        : `We have reserved for you ${guestInfo.tickets} ${guestInfo.tickets === 1 ? 'seat' : 'seats'}, with love`}
                                     {isDemo && (
                                         <span className="ml-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,0.85)]">
                                             Demo
