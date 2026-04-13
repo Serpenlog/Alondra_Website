@@ -19,7 +19,7 @@ import alondra12Blur from './alondra_images/alondra12_blur.png';
 import alondra15 from './alondra_images/alondra15.JPG';
 import alondra16 from './alondra_images/alondra16.JPG';
 import alondra17 from './alondra_images/alondra17.JPG';
-import alondra18 from './alondra_images/alondra18.JPG';
+import alondra18 from './alondra_images/alondra18.png';
 import dressCodeImage from './alondra_images/alondra_dress_code.jpeg';
 import dressCodeImage2 from './alondra_images/dressCodeImage2.JPG';
 import dressCodeSilhouette from './alondra_images/dress_code_silhouette.PNG';
