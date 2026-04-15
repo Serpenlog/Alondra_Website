@@ -680,7 +680,7 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado esta noche con especial cariño para que juntos disfrutemos cada momento lleno de amor y alegría! Los esperamos con los brazos abiertos!'
+                                            ? 'Hemos preparado esta noche especial con cariño para que juntos disfrutemos cada momento lleno de amor y alegría! Los esperamos con los brazos abiertos!'
                                             : 'We have prepared this evening with special care so that together we can enjoy every moment filled with love and joy! We are waiting for you with open arms!'}
                                     </p>
                                 </div>
