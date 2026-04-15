@@ -315,6 +315,8 @@ function App() {
     const t = UI_TEXT[lang];
     const eventDetails = isDemo ? DEMO_DETAILS : REAL_DETAILS;
     const canAccessTravelPage = guestInfo?.experience?.pages?.travel ?? true;
+    const welcomePrefix = guestInfo?.region === 'PR' ? 'Bienvenido' : 'Welcome';
+    const welcomeTitle = guestInfo?.title || guestInfo?.phone || '';
 
     const playBackgroundTrack = () => {
         if (!audioRef.current) {
@@ -492,10 +494,10 @@ function App() {
                                 </div>
                             <section className="glass-panel rounded-3xl p-6 text-center shadow-lg">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">
-                                    {lang === 'es' ? 'Acceso a la invitación confirmado' : 'Invitation Access Confirmed'}
+                                    {lang === 'es' ? 'Acceso a la invitación' : 'Invitation Access'}
                                 </p>
                                 <p className="mt-2 text-xl font-semibold">
-                                    {lang === 'es' ? 'Teléfono' : 'Phone'}: {guestInfo.phone}
+                                    {welcomePrefix}: {welcomeTitle}
                                     {isDemo && (
                                         <span className="ml-3 rounded-full bg-[rgba(240,132,112,0.2)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(240,132,112,0.95)]">
                                             Demo
