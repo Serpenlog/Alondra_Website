@@ -255,19 +255,19 @@ const UI_TEXT = {
         navHome: 'Home',
         navTravel: 'Travel Info',
         langButton: 'Español',
-        unlockTitle: 'Enter your phone number to continue',
-        phoneLabel: 'Phone number',
+        unlockTitle: 'Enter your entry code to continue',
+        phoneLabel: 'Entry code',
         unlockButton: 'Unlock Invitation',
-        invalidPhone: 'That phone number is not on the guest list. Please try again.'
+        invalidPhone: 'Invalid code. Please try again.'
     },
     es: {
         navHome: 'Inicio',
         navTravel: 'Viaje',
         langButton: 'English',
-        unlockTitle: 'Ingresa tu número de teléfono para continuar',
-        phoneLabel: 'Número de teléfono',
+        unlockTitle: 'Ingresa tu código de acceso para continuar',
+        phoneLabel: 'Código de acceso',
         unlockButton: 'Abrir invitación',
-        invalidPhone: 'Ese número no está en la lista de invitados. Inténtalo nuevamente.'
+        invalidPhone: 'Código inválido. Inténtalo de nuevo.'
     }
 };
 
@@ -433,15 +433,14 @@ function App() {
                 <div className="password-overlay">
                     <form className="password-card" onSubmit={handlePasswordSubmit}>
                         <p className="password-title">{t.unlockTitle}</p>
-                        <label className="password-label" htmlFor="phone-number">
+                        <label className="password-label" htmlFor="entry-code">
                             {t.phoneLabel}
                         </label>
                         <input
-                            id="phone-number"
-                            name="phone-number"
+                            id="entry-code"
+                            name="entry-code"
                             type="tel"
-                            autoComplete="tel"
-                            placeholder={lang === 'es' ? '(555) 123-4567' : '(555) 123-4567'}
+                            autoComplete="off"
                             value={phoneInput}
                             onChange={(event) => {
                                 setPhoneInput(event.target.value);
@@ -698,7 +697,7 @@ function App() {
                                     ))}
                                 </div>
                             ) : null}
-                            <p className="mt-6 text-lg text-[rgba(44,96,130,0.75)]">
+                            <p className="mt-6 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es' ? 'Compartiremos más información pronto. Esta invitación se actualizará automaticamente según se acerque la fecha.' : 'We will share more information soon. This invitation will be updated automatically as the date approaches.'}
                             </p>
                         </section>
