@@ -704,11 +704,11 @@ function App() {
                         </section>
 
                         <section id="gallery" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Momentos con Alondra' : 'Moments with Alondra'}</h2>
+                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Momentos de Alondra' : 'Moments of Alondra'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
-                                    ? 'Desde sus primeros sueños hasta los momentos que la han hecho brillar, descubre un vistazo al camino de Alondra Del Mar antes de su gran día.'
-                                    : 'From her earliest dreams to the moments that have made her shine, discover a glimpse of Alondra Del Mar’s journey before her big day.'}
+                                    ? ''
+                                    : ''}
                             </p>
                             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                     {GALLERY_PHOTOS.map((photo) => (
