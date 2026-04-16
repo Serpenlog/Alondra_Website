@@ -699,7 +699,7 @@ function App() {
                                 </div>
                             ) : null}
                             <p className="mt-6 text-lg text-[rgba(44,96,130,0.75)]">
-                                {lang === 'es' ? 'Compartiremos más información pronto.' : 'We will share more information soon.'}
+                                {lang === 'es' ? 'Compartiremos más información pronto. Esta invitación se actualizará automaticamente según se acerque la fecha.' : 'We will share more information soon. This invitation will be updated automatically as the date approaches.'}
                             </p>
                         </section>
 
