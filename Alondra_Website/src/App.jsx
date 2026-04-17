@@ -681,8 +681,8 @@ function App() {
                                     <h2 className="font-display text-3xl">{lang === 'es' ? 'Programa de la noche' : 'Evening Schedule'}</h2>
                                     <p className="mt-2 max-w-2xl text-[rgba(44,96,130,0.75)]">
                                         {lang === 'es'
-                                            ? 'Hemos preparado esta noche especial con cariño para que juntos disfrutemos cada momento lleno de amor y alegría! Los esperamos con los brazos abiertos!'
-                                            : 'We have prepared this evening with special care so that together we can enjoy every moment filled with love and joy! We are waiting for you with open arms!'}
+                                            ? 'Hemos preparado esta noche especial con cariño para que juntos disfrutemos cada momento, lleno de amor y alegría! Los esperamos con los brazos abiertos!'
+                                            : 'We have prepared this evening with special care so that together we can enjoy every moment, filled with love and joy! We are waiting for you with open arms!'}
                                     </p>
                                 </div>
                             </div>
@@ -773,8 +773,8 @@ function App() {
                             <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Obsequios y Bendiciones' : 'Gifts and Blessings'}</h2>
                             <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
-                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra Del Mar o compartir un detalle, agradecería fuera en efectivo.'
-                                    : 'Your presence is the best gift! If you would like to support Alondra Del Mar’s college dreams or share a gift, cash would be deeply appreciated.'}
+                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra Del Mar o compartir un detalle, agradeceríamos fuera en efectivo.'
+                                    : 'Your presence is the best gift! If you would like to support Alondra Del Mar’s college dreams or share a gift, we would deeply appreciate cash.'}
                             </p>
                             <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
                                 <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? '' : ''}</p>
