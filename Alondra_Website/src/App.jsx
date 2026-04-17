@@ -376,6 +376,14 @@ function App() {
         }
     }, [canAccessTravelPage, currentPage]);
 
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, [currentPage, isOpen]);
+
     const availablePages = useMemo(() => {
         const pages = [{ key: 'home', label: t.navHome }];
 

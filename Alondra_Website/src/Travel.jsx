@@ -194,7 +194,7 @@ const getText = (lang) =>
               locatedAt: 'ubicado en',
               introTail:
                   'Por favor llega con suficiente tiempo para disfrutar la vista costera y prepararte para el comienzo de la ceremonia de bendición a las 6:00 PM.',
-              venueDetails: 'Detalles del Lugar',
+              venueDetails: 'Detalles del lugar (si decides hospedarte en el resort)',
               reservationCode: 'Código de Reservación:',
               frontDesk: 'Recepción:',
               contact: 'Contacto:',
@@ -250,7 +250,7 @@ const getText = (lang) =>
               locatedAt: 'located at',
               introTail:
                   'Please arrive with enough time to soak in the coastal views and prepare for the ceremony to begin at 6:00 PM.',
-              venueDetails: 'Venue Details',
+              venueDetails: 'Venue details (if you decide to stay at the resort)',
               reservationCode: 'Reservation Code:',
               frontDesk: 'Front Desk:',
               contact: 'Contact:',
