@@ -9,7 +9,13 @@ const REGION_EXPERIENCE_CONFIG = {
         },
         sections: {
             flyingIn: true,
-            travelRequirements: true
+            travelRequirements: true,
+            arrivalTransportation: true,
+            rentals: true,
+            weather: true,
+            curatedDining: true,
+            islandExperiences: true,
+            culturalScenic: true
         }
     },
     PR: {
@@ -19,7 +25,13 @@ const REGION_EXPERIENCE_CONFIG = {
         },
         sections: {
             flyingIn: false,
-            travelRequirements: false
+            travelRequirements: false,
+            arrivalTransportation: false,
+            rentals: false,
+            weather: false,
+            curatedDining: false,
+            islandExperiences: false,
+            culturalScenic: false
         }
     },
     US: {
@@ -29,7 +41,13 @@ const REGION_EXPERIENCE_CONFIG = {
         },
         sections: {
             flyingIn: true,
-            travelRequirements: true
+            travelRequirements: true,
+            arrivalTransportation: true,
+            rentals: true,
+            weather: true,
+            curatedDining: true,
+            islandExperiences: true,
+            culturalScenic: true
         }
     }
 };

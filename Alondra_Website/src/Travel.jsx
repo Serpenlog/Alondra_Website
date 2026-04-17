@@ -2,15 +2,15 @@ import './App.css';
 
 const QUICK_LINKS = {
     en: [
-        { label: '✧ Plan Your Trip', href: '#added-plan-your-trip' },
-        { label: '✧ Explore Puerto Rico', href: '#explore-puerto-rico' },
-        { label: '✧ Dining Guide', href: '#dining-guide' },
+        { label: '✧ Plan Your Trip', href: '#added-plan-your-trip', sectionKey: 'arrivalTransportation' },
+        { label: '✧ Explore Puerto Rico', href: '#explore-puerto-rico', sectionKey: 'islandExperiences' },
+        { label: '✧ Dining Guide', href: '#dining-guide', sectionKey: 'curatedDining' },
         { label: '✧ Travel Details', href: '#added-travel-details' }
     ],
     es: [
-        { label: '✧ Planifica Tu Viaje', href: '#added-plan-your-trip' },
-        { label: '✧ Explora Puerto Rico', href: '#explore-puerto-rico' },
-        { label: '✧ Guía Gastronómica', href: '#dining-guide' },
+        { label: '✧ Planifica Tu Viaje', href: '#added-plan-your-trip', sectionKey: 'arrivalTransportation' },
+        { label: '✧ Explora Puerto Rico', href: '#explore-puerto-rico', sectionKey: 'islandExperiences' },
+        { label: '✧ Guía Gastronómica', href: '#dining-guide', sectionKey: 'curatedDining' },
         { label: '✧ Detalles de Viaje', href: '#added-travel-details' }
     ]
 };
@@ -218,7 +218,7 @@ const getText = (lang) =>
               from: 'Desde',
               highlights: 'Destacados',
               highlightsTextStart: '',
-              highlightsTextEnd: '. . un lugar donde el mar susurra calma y los atardeceres pintan el cielo con tonos inolvidables. Este rincón del Caribe, uno de los lugares preferidos de Alondra Del Mar se distingue por sus playas doradas, su ambiente relajado y la belleza natural que lo envuelve. Frente a este escenario único, el Rincón of the Seas Grand Caribbean Hotel & Villas, ubicado justo a orillas del mar, será el lugar donde celebraremos este momento especial. Entre brisas suaves, olas y cielos de ensueño, te invitamos a disfrutar de la magia de Rincón y ser parte de una celebración inolvidable.',
+              highlightsTextEnd: 'un lugar donde el mar susurra calma y los atardeceres pintan el cielo con tonos inolvidables. Este rincón del Caribe, uno de los lugares preferidos de Alondra Del Mar se distingue por sus playas doradas, su ambiente relajado y la belleza natural que lo envuelve. Frente a este escenario único, el Rincón of the Seas Grand Caribbean Hotel & Villas, ubicado justo a orillas del mar, será el lugar donde celebraremos este momento especial. Entre brisas suaves, olas y cielos de ensueño, te invitamos a disfrutar de la magia de Rincón y ser parte de una celebración inolvidable.',
               arrivalTransportation: 'Llegada y Transporte',
               rentals: 'Recomendaciones de Renta y de Autos',
               carRentals: 'Alquiler de Autos',
@@ -309,6 +309,7 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
     const getAirportDetails = (airport) => (lang === 'es' ? (airport.detailsEs ?? airport.details) : airport.details);
     const airportNameList = details.airports.map((airport) => getAirportName(airport)).join(', ');
     const canShowSection = (sectionKey) => sectionVisibility[sectionKey] ?? true;
+    const quickLinks = (QUICK_LINKS[lang] ?? QUICK_LINKS.en).filter((item) => !item.sectionKey || canShowSection(item.sectionKey));
     const hotels = [
         {
             name: details.venueName,
@@ -337,7 +338,7 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
                     {t.intro} <strong>{details.venueName}</strong>, {t.locatedAt} {details.venueAddressLong}. {t.introTail}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
-                    {(QUICK_LINKS[lang] ?? QUICK_LINKS.en).map((item) => (
+                    {quickLinks.map((item) => (
                         <a
                             key={item.label}
                             href={item.href}
@@ -535,55 +536,61 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
                 </div>
             </section>
 
-            <section id="added-plan-your-trip" className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">{t.arrivalTransportation}</h2>
-                    <div className="mt-6 space-y-4">
-                        {details.airports.map((airport) => (
-                            <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
-                                <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{getAirportName(airport)}</h3>
-                                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{getAirportDetails(airport)}</p>
+            {(canShowSection('arrivalTransportation') || canShowSection('rentals')) && (
+                <section id="added-plan-your-trip" className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+                    {canShowSection('arrivalTransportation') && (
+                        <div className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <h2 className="font-display text-3xl">{t.arrivalTransportation}</h2>
+                            <div className="mt-6 space-y-4">
+                                {details.airports.map((airport) => (
+                                    <div key={airport.code} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-5 shadow">
+                                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{airport.code}</p>
+                                        <h3 className="mt-1 text-lg font-semibold text-[rgba(44,96,130,0.9)]">{getAirportName(airport)}</h3>
+                                        <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{getAirportDetails(airport)}</p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                    <p className="mt-6 text-sm text-[rgba(44,96,130,0.7)]">{t.carTip}</p>
-                </div>
-                <aside className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">{t.rentals}</h2>
-                    <h3 className="mt-6 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.carRentals}</h3>
-                    <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {CAR_RENTALS.map((rental) => (
-                            <li key={rental.name}>
-                                <a
-                                    href={rental.url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                >
-                                    {rental.name}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
+                            <p className="mt-6 text-sm text-[rgba(44,96,130,0.7)]">{t.carTip}</p>
+                        </div>
+                    )}
+                    {canShowSection('rentals') && (
+                        <aside className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <h2 className="font-display text-3xl">{t.rentals}</h2>
+                            <h3 className="mt-6 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.carRentals}</h3>
+                            <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                {CAR_RENTALS.map((rental) => (
+                                    <li key={rental.name}>
+                                        <a
+                                            href={rental.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
+                                        >
+                                            {rental.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
 
-                    <h3 className="mt-8 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.placesToStay}</h3>
-                    <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {STAY_RENTALS.map((rental) => (
-                            <li key={rental.name.en}>
-                                <a
-                                    href={rental.url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                >
-                                    {rental.name[lang]}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </aside>
-            </section>
+                            <h3 className="mt-8 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.placesToStay}</h3>
+                            <ul className="mt-3 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                {STAY_RENTALS.map((rental) => (
+                                    <li key={rental.name.en}>
+                                        <a
+                                            href={rental.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
+                                        >
+                                            {rental.name[lang]}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </aside>
+                    )}
+                </section>
+            )}
 
             <section className="glass-panel rounded-3xl p-8 shadow-xl">
                 <h2 className="font-display text-3xl">{t.beautySalon}</h2>
@@ -611,77 +618,87 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
                 </ul>
             </section>
 
-            <section className="glass-panel rounded-3xl p-8 shadow-xl" id="climate">
-                <h2 className="font-display text-3xl">{t.weather}</h2>
-                <p className="mt-2 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.climateTags}</p>
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
-                    <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.avgTemp}</p>
-                        <p className="mt-2 text-2xl font-semibold text-[rgba(44,96,130,0.9)]">80°F – 88°F</p>
-                    </div>
-                    <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.weatherFeel}</p>
-                        <p className="mt-2 text-[rgba(44,96,130,0.8)]">{t.weatherFeelBody}</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="dining-guide" className="glass-panel rounded-3xl p-8 shadow-xl">
-                <h2 className="font-display text-3xl">{t.curatedDining}</h2>
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
-                    {DINING_OPTIONS.map((spot) => (
-                        <div key={spot.name} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-5 shadow">
-                            <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{spot.name}</h3>
-                            {spot.clickable ? (
-                                <a
-                                    href={spot.url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="mt-2 inline-block text-sm font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
-                                >
-                                    {spot.url}
-                                </a>
-                            ) : (
-                                <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{spot.url}</p>
-                            )}
+            {canShowSection('weather') && (
+                <section className="glass-panel rounded-3xl p-8 shadow-xl" id="climate">
+                    <h2 className="font-display text-3xl">{t.weather}</h2>
+                    <p className="mt-2 text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.climateTags}</p>
+                    <div className="mt-6 grid gap-4 md:grid-cols-2">
+                        <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
+                            <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.avgTemp}</p>
+                            <p className="mt-2 text-2xl font-semibold text-[rgba(44,96,130,0.9)]">80°F – 88°F</p>
                         </div>
-                    ))}
-                </div>
-                <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
-                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.mustTry}</p>
-                    <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(MUST_TRY_DISHES[lang] ?? MUST_TRY_DISHES.en).join(' · ')}</p>
-                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.tasteSoul}</p>
-                </div>
-            </section>
-
-            <section id="explore-puerto-rico" className="grid gap-6 lg:grid-cols-2">
-                <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">{t.islandExperiences}</h2>
-                    <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {(ISLAND_EXPERIENCES[lang] ?? ISLAND_EXPERIENCES.en).map((item) => (
-                            <li key={item.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-4 shadow">
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{item.title}</p>
-                                <p className="text-sm">{item.details}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="glass-panel rounded-3xl p-8 shadow-xl">
-                    <h2 className="font-display text-3xl">{t.culturalScenic}</h2>
-                    <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
-                        {(CULTURAL_SCENIC[lang] ?? CULTURAL_SCENIC.en).map((item) => (
-                            <li key={item.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-4 shadow">
-                                <p className="font-semibold text-[rgba(44,96,130,0.9)]">{item.title}</p>
-                                <p className="text-sm">{item.details}</p>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
-                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.rinconHighlights}</p>
-                        <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(RINCON_HIGHLIGHTS[lang] ?? RINCON_HIGHLIGHTS.en).join(' · ')}</p>
+                        <div className="rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(255,214,201,0.65)] p-5 shadow">
+                            <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.weatherFeel}</p>
+                            <p className="mt-2 text-[rgba(44,96,130,0.8)]">{t.weatherFeelBody}</p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
+
+            {canShowSection('curatedDining') && (
+                <section id="dining-guide" className="glass-panel rounded-3xl p-8 shadow-xl">
+                    <h2 className="font-display text-3xl">{t.curatedDining}</h2>
+                    <div className="mt-6 grid gap-4 md:grid-cols-2">
+                        {DINING_OPTIONS.map((spot) => (
+                            <div key={spot.name} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.75)] p-5 shadow">
+                                <h3 className="text-lg font-semibold text-[rgba(44,96,130,0.9)]">{spot.name}</h3>
+                                {spot.clickable ? (
+                                    <a
+                                        href={spot.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="mt-2 inline-block text-sm font-semibold text-[rgba(240,132,112,1)] underline-offset-4 hover:underline"
+                                    >
+                                        {spot.url}
+                                    </a>
+                                ) : (
+                                    <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{spot.url}</p>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
+                        <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.mustTry}</p>
+                        <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(MUST_TRY_DISHES[lang] ?? MUST_TRY_DISHES.en).join(' · ')}</p>
+                        <p className="mt-2 text-sm text-[rgba(44,96,130,0.7)]">{t.tasteSoul}</p>
+                    </div>
+                </section>
+            )}
+
+            {(canShowSection('islandExperiences') || canShowSection('culturalScenic')) && (
+                <section id="explore-puerto-rico" className="grid gap-6 lg:grid-cols-2">
+                    {canShowSection('islandExperiences') && (
+                        <div className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <h2 className="font-display text-3xl">{t.islandExperiences}</h2>
+                            <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                {(ISLAND_EXPERIENCES[lang] ?? ISLAND_EXPERIENCES.en).map((item) => (
+                                    <li key={item.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-4 shadow">
+                                        <p className="font-semibold text-[rgba(44,96,130,0.9)]">{item.title}</p>
+                                        <p className="text-sm">{item.details}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    {canShowSection('culturalScenic') && (
+                        <div className="glass-panel rounded-3xl p-8 shadow-xl">
+                            <h2 className="font-display text-3xl">{t.culturalScenic}</h2>
+                            <ul className="mt-6 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                {(CULTURAL_SCENIC[lang] ?? CULTURAL_SCENIC.en).map((item) => (
+                                    <li key={item.title} className="rounded-3xl border border-[rgba(255,214,201,0.6)] bg-[rgba(255,214,201,0.8)] p-4 shadow">
+                                        <p className="font-semibold text-[rgba(44,96,130,0.9)]">{item.title}</p>
+                                        <p className="text-sm">{item.details}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="mt-6 rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.45)] p-5 shadow">
+                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{t.rinconHighlights}</p>
+                                <p className="mt-2 text-[rgba(44,96,130,0.85)]">{(RINCON_HIGHLIGHTS[lang] ?? RINCON_HIGHLIGHTS.en).join(' . ')}</p>
+                            </div>
+                        </div>
+                    )}
+                </section>
+            )}
 
             <section className="glass-panel rounded-3xl p-8 text-center shadow-xl">
                 <p className="text-lg text-[rgba(44,96,130,0.75)]">{t.honor}</p>
