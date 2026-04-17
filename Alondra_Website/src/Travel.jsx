@@ -193,7 +193,7 @@ const getText = (lang) =>
               intro: 'La celebración será en',
               locatedAt: 'ubicado en',
               introTail:
-                  'Por favor llega con suficiente tiempo para disfrutar la vista costera, tomar un refrigerio de bienvenida y prepararte para que la ceremonia comience a las 6:00 PM.',
+                  'Por favor llega con suficiente tiempo para disfrutar la vista costera y prepararte para que la ceremonia comience a las 6:00 PM.',
               venueDetails: 'Detalles del Lugar',
               reservationCode: 'Código de Reservación:',
               frontDesk: 'Recepción:',
@@ -249,7 +249,7 @@ const getText = (lang) =>
               intro: 'The celebration takes place at',
               locatedAt: 'located at',
               introTail:
-                  'Please arrive with enough time to soak in the coastal views, enjoy a welcome refreshment, and prepare for the ceremony to begin at 6:00 PM.',
+                  'Please arrive with enough time to soak in the coastal views and prepare for the ceremony to begin at 6:00 PM.',
               venueDetails: 'Venue Details',
               reservationCode: 'Reservation Code:',
               frontDesk: 'Front Desk:',
@@ -513,7 +513,7 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
                 <div className="glass-panel rounded-3xl p-8 shadow-xl">
                     <h2 className="font-display text-3xl">{locationLabel} {t.highlights}</h2>
                     <p className="mt-3 text-[rgba(44,96,130,0.75)]">
-                        {t.highlightsTextStart} {locationLabel}. {t.highlightsTextEnd}
+                        {t.highlightsTextStart} {locationLabel}... {t.highlightsTextEnd}
                     </p>
                     <ul className="mt-6 space-y-4 text-[rgba(44,96,130,0.7)]">
                         {(LOCAL_TIPS[lang] ?? LOCAL_TIPS.en).map((tip) => (

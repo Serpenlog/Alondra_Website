@@ -801,16 +801,13 @@ function App() {
                         </section>
 
                         <section className="glass-panel rounded-3xl p-8 text-center shadow-xl">
-                            <h2 className="font-display text-3xl">{lang === 'es' ? 'Envíanos tu formulario' : 'Send Us Your Form'}</h2>
+                            <h2 className="font-display text-3xl">{lang === 'es' ? '' : ''}</h2>
                             <p className="mt-3 text-[rgba(44,96,130,0.75)]">
                                 {lang === 'es'
                                     ? ''
                                     : ''}
                             </p>
                             <div className="mt-6 flex flex-wrap justify-center gap-4">
-                                <button type="button" onClick={() => setActiveForm('rsvp')} className="rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]">
-                                    {lang === 'es' ? 'Confirmar asistencia' : 'RSVP'}
-                                </button>
                                 <button type="button" onClick={() => setActiveForm('song')} className="rounded-full border border-[rgba(178,226,236,0.8)] bg-[rgba(255,214,201,0.75)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-[rgba(240,132,112,1)] shadow-lg transition hover:border-[rgba(47,156,194,0.55)] hover:text-[rgba(44,96,130,0.9)]">
                                     {lang === 'es' ? 'Sugerir canción' : 'Song Suggestion'}
                                 </button>
