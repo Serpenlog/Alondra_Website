@@ -310,6 +310,8 @@ function App() {
     const [guestInfo, setGuestInfo] = useState(null);
     const [activeForm, setActiveForm] = useState(null);
     const [activeGiftModal, setActiveGiftModal] = useState(null);
+    const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+    const [formWasSent, setFormWasSent] = useState(false);
     const audioRef = useRef(null);
 
     const isOpen = accessStage === 'open';
@@ -407,8 +409,26 @@ function App() {
         [lang, timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds]
     );
 
-    const closeActiveForm = () => setActiveForm(null);
+    const closeActiveForm = () => {
+        setActiveForm(null);
+        setIsFormSubmitting(false);
+        setFormWasSent(false);
+    };
     const closeActiveGiftModal = () => setActiveGiftModal(null);
+
+    const handleGuestFormSubmit = () => {
+        setIsFormSubmitting(true);
+        setFormWasSent(false);
+    };
+
+    const handleFormSubmitTargetLoad = () => {
+        if (!isFormSubmitting) {
+            return;
+        }
+
+        setIsFormSubmitting(false);
+        setFormWasSent(true);
+    };
 
     const handleOverlayClick = (event) => {
         if (event.target === event.currentTarget) {
@@ -842,9 +862,16 @@ function App() {
                                         ? (lang === 'es' ? 'Sugerencia de canción' : 'Song Suggestion')
                                         : (lang === 'es' ? 'Bendiciones' : 'Blessings')}
                             </h3>
-                            <iframe title="form-submit-target" name="form-submit-target" className="hidden" />
+                            <iframe title="form-submit-target" name="form-submit-target" className="hidden" onLoad={handleFormSubmitTargetLoad} />
+                            {formWasSent && (
+                                <p className="mt-3 rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">
+                                    {lang === 'es'
+                                        ? '¡Tu formulario fue enviado correctamente!'
+                                        : 'Your form was successfully sent!'}
+                                </p>
+                            )}
                             {activeForm === 'rsvp' && (
-                                <form className="mt-4 grid gap-4" action={RSVP_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={closeActiveForm}>
+                                <form className="mt-4 grid gap-4" action={RSVP_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={handleGuestFormSubmit}>
                                     <input type="hidden" name="_subject" value="New RSVP - Alondra's Quinceañera" />
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
@@ -859,33 +886,33 @@ function App() {
                                     <input type="number" name="guest_count" min="0" max={guestInfo?.tickets ?? 0} step="1" inputMode="numeric" required placeholder={lang === 'es' ? `Número de asientos (0 a ${guestInfo?.tickets ?? 0})` : `Number of seats (0 to ${guestInfo?.tickets ?? 0})`} className="form-input" />
                                     <textarea name="message" rows="3" placeholder={lang === 'es' ? 'Comparte una nota' : 'Share a note'} className="form-input form-textarea"></textarea>
                                     <div className="form-actions">
-                                        <button type="submit" className="form-submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+                                        <button type="submit" disabled={isFormSubmitting} className="form-submit">{isFormSubmitting ? (lang === 'es' ? 'Enviando...' : 'Sending...') : (lang === 'es' ? 'Enviar' : 'Send')}</button>
                                         <button type="button" onClick={closeActiveForm} className="form-cancel">{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
                                     </div>
                                 </form>
                             )}
                             {activeForm === 'song' && (
-                                <form className="mt-4 grid gap-4" action={SONG_REQUEST_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={closeActiveForm}>
+                                <form className="mt-4 grid gap-4" action={SONG_REQUEST_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={handleGuestFormSubmit}>
                                     <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
                                     <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'} required className="form-input" />
                                     <input type="text" name="song" placeholder={lang === 'es' ? 'Escribe tu sugerencia de canción' : 'Write your song suggestion'} required className="form-input" />
                                     <div className="form-actions">
-                                        <button type="submit" className="form-submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+                                        <button type="submit" disabled={isFormSubmitting} className="form-submit">{isFormSubmitting ? (lang === 'es' ? 'Enviando...' : 'Sending...') : (lang === 'es' ? 'Enviar' : 'Send')}</button>
                                         <button type="button" onClick={closeActiveForm} className="form-cancel">{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
                                     </div>
                                 </form>
                             )}
                             {activeForm === 'blessing' && (
-                                <form className="mt-4 grid gap-4" action={BLESSING_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={closeActiveForm}>
+                                <form className="mt-4 grid gap-4" action={BLESSING_FORM_ENDPOINT} method="post" target="form-submit-target" onSubmit={handleGuestFormSubmit}>
                                     <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
                                     <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'} required className="form-input" />
                                     <input type="text" name="message" placeholder={lang === 'es' ? 'Escribe tu bendición' : 'Write your blessing'} required className="form-input" />
                                     <div className="form-actions">
-                                        <button type="submit" className="form-submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+                                        <button type="submit" disabled={isFormSubmitting} className="form-submit">{isFormSubmitting ? (lang === 'es' ? 'Enviando...' : 'Sending...') : (lang === 'es' ? 'Enviar' : 'Send')}</button>
                                         <button type="button" onClick={closeActiveForm} className="form-cancel">{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
                                     </div>
                                 </form>
