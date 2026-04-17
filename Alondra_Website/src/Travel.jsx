@@ -40,7 +40,7 @@ const STAY_RENTALS = [
 ];
 
 const DINING_OPTIONS = [
-    { name: 'The Beach House', url: 'https://www.beachhouserincon.com', clickable: true },
+    { name: 'The Beach House' },
     { name: 'Tamboo Restaurant' },
     { name: 'La Copa Llena' },
     { name: 'La Cambija' },
@@ -174,14 +174,14 @@ const getTravelHighlights = (lang) =>
     lang === 'es'
         ? [
               {
-                  title: 'Horario de Llegada',
-                  body: 'Planea llegar al lugar para las 5:40 PM para disfrutar del recibimiento y acomodarte antes de la ceremonia.'
+                  title: 'Horario de llegada',
+                  body: 'Sugerimos llegar alrededor de las 5:40 p.m. para disfrutar del recibimiento y acomodarte tranquilamente antes de la ceremonia.'
               },
           ]
         : [
               {
                   title: 'Arrival Window',
-                  body: 'Plan to arrive at the venue by 5:40 PM to enjoy the welcome and get settled before the ceremony.'
+                  body: 'We suggest arriving around 5:40 p.m. so you can enjoy the welcome and settle in calmly before the ceremony.'
               }
           ];
 
@@ -190,10 +190,10 @@ const getText = (lang) =>
         ? {
               travelGuide: 'Guía de Viaje',
               planStay: 'Planifica Tu Estadía en',
-              intro: 'La celebración será en',
-              locatedAt: 'ubicado en',
+              intro: 'La celebración tendrá lugar en',
+              introVenue: 'Rincón of the Seas Grand Caribbean Hotel & Villa, ubicado en Road 115, KM 12.2, Rincón, Puerto Rico.',
               introTail:
-                  'Por favor llega con suficiente tiempo para disfrutar la vista costera y prepararte para el comienzo de la ceremonia de bendición a las 6:00 PM.',
+                  'Te recomendamos llegar con anticipación para disfrutar de la vista costera y prepararte con calma antes de la ceremonia, que dará inicio a las 6:00 p.m.',
               venueDetails: 'Detalles del lugar (si decides hospedarte en el resort)',
               reservationCode: 'Código de Reservación:',
               frontDesk: 'Recepción:',
@@ -246,10 +246,10 @@ const getText = (lang) =>
         : {
               travelGuide: 'Travel Guide',
               planStay: 'Plan Your Stay in',
-              intro: 'The celebration takes place at',
-              locatedAt: 'located at',
+              intro: 'The celebration will take place at',
+              introVenue: 'Rincón of the Seas Grand Caribbean Hotel & Villa, located at Road 115, KM 12.2, Rincón, Puerto Rico.',
               introTail:
-                  'Please arrive with enough time to soak in the coastal views and prepare for the ceremony to begin at 6:00 PM.',
+                  'We recommend arriving early to enjoy the coastal views and prepare calmly before the ceremony begins at 6:00 p.m.',
               venueDetails: 'Venue details (if you decide to stay at the resort)',
               reservationCode: 'Reservation Code:',
               frontDesk: 'Front Desk:',
@@ -335,7 +335,7 @@ export default function Travel({ details, lang = 'en', sectionVisibility = {} })
                 <span className="ribbon-tag">{t.travelGuide}</span>
                 <h1 className="mt-4 font-display text-4xl">{t.planStay} {locationLabel}</h1>
                 <p className="mt-3 max-w-3xl text-[rgba(44,96,130,0.75)]">
-                    {t.intro} <strong>{details.venueName}</strong>, {t.locatedAt} {details.venueAddressLong}. {t.introTail}
+                    {t.intro} <strong>{t.introVenue}</strong> {t.introTail}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                     {quickLinks.map((item) => (

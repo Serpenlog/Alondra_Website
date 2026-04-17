@@ -317,7 +317,7 @@ function App() {
     const t = UI_TEXT[lang];
     const eventDetails = isDemo ? DEMO_DETAILS : REAL_DETAILS;
     const canAccessTravelPage = guestInfo?.experience?.pages?.travel ?? true;
-    const welcomePrefix = guestInfo?.region === 'PR' ? 'Bienvenido' : 'Welcome';
+    const welcomePrefix = lang === 'es' ? 'Bienvenido' : 'Welcome';
     const welcomeTitle = guestInfo?.title || guestInfo?.phone || '';
     const rsvpDeadline = guestInfo?.hasDateChange ? DATE_CHANGE_RSVP_DEADLINE : DEFAULT_RSVP_DEADLINE;
 
