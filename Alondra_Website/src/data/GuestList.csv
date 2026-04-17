@@ -18,8 +18,8 @@ Mama,Alondra,PR,,,1,,X,629,1,,Quinceañera!!!,,110,
 ,Pita,PR,,,17,,X,787-438-6031,4,,"Felipa, Sanchez, Miguelina & Joe","Felipa, Sanchez, Miguelina, Joe",,
 ,Sanchez,PR,,,18,,X,787-438-6031,4,,"Felipa, Sanchez, Miguelina & Joe","Felipa, Sanchez, Miguelina, Joe",,
 ,Hilda y Jose,PR,,,19,,X,787-546-5536,3,,Hilda y Familia,"Hilda, Grace, Jose",,
-,Ashley,US,,,20,X,,407-453-6581,2,,Ashley & Wesley,"Ashley, Wesley",,
-,Ashley Esposo,US,,,21,X,,407-453-6581,2,,Ashley & Wesley,"Ashley, Wesley",,
+,Ashley,US,,,20,X,,407-453-6581,2,,Ashley & Wesley,"Ashley, Wesley",,X
+,Ashley Esposo,US,,,21,X,,407-453-6581,2,,Ashley & Wesley,"Ashley, Wesley",,X
 ,Nana,PR,,,22,,X,787-329-7429,2,,Ileana & Abner,"Ileana, Abner",,
 ,Abdiel,PR,,,23,,X,787-329-7429,2,,Ileana & Abner,"Ileana, Abner",,
 ,Noel,PR,,X,24,,X,787-904-1523,3,,"Noel, Ivonne & Familia","Noel, Ivonne, Leo",,
@@ -47,44 +47,44 @@ Mama,Alondra,PR,,,1,,X,629,1,,Quinceañera!!!,,110,
 ,Aidi 2,PR,,X,46,,X,787-241-0043,2,,Soniaidyl & Familia,"Soniaidyl, Soniaidyl esposo",,
 ,Miyady,PR,,,47,,X,787-632-9787,3,,Miyady & Familia,"Miyady, esposo, hijo",,
 ,Miyady,PR,,,48,,X,787-632-9786,3,,Miyady & Familia,"Miyady, esposo, hijo",,
-,Tio Vitin,PR,,,49,,X,787-432-0095,2,,Tio Vitin & Titi Rosin,"Vitin, Rosin",,
-,Titi Rosin,PR,,,50,,X,787-432-0095,2,,Tio Vitin & Titi Rosin,"Vitin, Rosin",,
-,Rosita,PR,,,51,,X,787-290-9894,1,,Rosita,Rosita,,
+,Tio Vitin,PR,,,49,,X,787-432-0095,2,,Tio Vitin & Titi Rosin,"Vitin, Rosin",,X
+,Titi Rosin,PR,,,50,,X,787-432-0095,2,,Tio Vitin & Titi Rosin,"Vitin, Rosin",,X
+,Rosita,PR,,,51,,X,787-290-9894,1,,Rosita,Rosita,,X
 ,Tio Miguelito,US,,,52,X,,609-832-4501,1,,Tio Miguelito,Tio Miguelito,0,
-Papa,Sandra,PR,,,53,,X,787-674-2633,1,,Sandra,Sandra,,
-,Joan,PR,,X,54,,X,787-618-0371,3,,Joan,Joan,,
-,Joan 2,PR,,,55,,X,787-618-0371,3,,Joan,Joan,,
-,Joan 3,PR,,,56,,X,787-618-0371,3,,Joan,Joan,,
-,Nanny,PR,,,57,x,x,915-449-3504,4,,Nanny & Familia,Nanny,,
+Papa,Sandra,PR,,,53,,X,787-674-2633,1,,Sandra,Sandra,,X
+,Joan,PR,,X,54,,X,787-618-0371,3,,Joan,Joan,,X
+,Joan 2,PR,,,55,,X,787-618-0371,3,,Joan,Joan,,X
+,Joan 3,PR,,,56,,X,787-618-0371,3,,Joan,Joan,,X
+,Nanny,US,,,57,x,x,915-449-3504,4,,Nanny & Familia,Nanny,,X
 Amistades de familia,John Vecino,US,,X,58,x,x,956-587-2416,2,,John & Akilah,"John, Akilah",,X
 ,John Vecino 2,US,,X,59,x,x,956-587-1243,2,,John & Akilah,"John, Akilah",,X
 ,Aracely fotografía ,US,,,60,x,x,956-929-0304,3,,Aracely & Family,Aracely,0,X
-,Corin,US,,,61,,x,787-671-2498,2,,Yizteimar & Abdiel,"Corin, Abdiel",,
-,Corin,US,,,62,,x,787-671-2498,2,,Yizteimar & Abdiel,"Corin, Abdiel",,
-,Blanca,US,,,63,,x,516-850-3885,4,,"Denny, Blanca & Family","Deniz, Blanca, ",,
-,Blanca,US,,,64,,x,516-850-3885,4,,"Denny, Blanca & Family",,,
-,Blanca,US,,X,65,,x,516-850-3885,4,,"Denny, Blanca & Family",,,
-,Blanca,US,,X,66,,x,516-850-3885,4,,"Denny, Blanca & Family",,,
-,Mietzy,US,,,67,x,,787-345-8736,3,,"Mietzy, Ninno & Familia","Mietzy, Ninno, Familia",,
-,Mietzy,US,,X,68,X,,787-345-8736,3,,"Mietzy, Ninno & Familia","Mietzy, Ninno, Familia",,
-,Mietzy,US,,X,69,X,,787-345-8736,3,,"Mietzy, Ninno & Familia","Mietzy, Ninno, Familia",,
+,Corin,US,,,61,,x,787-671-2498,2,,Yizteimar & Abdiel,"Corin, Abdiel",,X
+,Corin,US,,,62,,x,787-671-2498,2,,Yizteimar & Abdiel,"Corin, Abdiel",,X
+,Blanca,US,,,63,,x,516-850-3885,4,,"Denny, Blanca & Family","Deniz, Blanca, ",,X
+,Blanca,US,,,64,,x,516-850-3885,4,,"Denny, Blanca & Family",,,X
+,Blanca,US,,X,65,,x,516-850-3885,4,,"Denny, Blanca & Family",,,X
+,Blanca,US,,X,66,,x,516-850-3885,4,,"Denny, Blanca & Family",,,X
+,Mietzy,US,,,67,x,,787-345-8736,3,,"Mietzy, Ninno & Familia","Mietzy, Ninno, Familia",,X
+,Mietzy,US,,X,68,X,,787-345-8736,3,,"Mietzy, Ninno & Familia","Mietzy, Ninno, Familia",,X
+,Mietzy,US,,X,69,X,,787-345-8736,3,,"Mietzy, Ninno & Familia","Mietzy, Ninno, Familia",,X
 ,Tere,US,,,70,x,,787-565-3930,2,,Tere & Elliott,,0,X
 ,marelys,PR,,,71,,X,787-579-3317,4,,Mareliz & Familia,"Mareliz, esposo, dos hijos",0,X
-,Ivana,US,,,72,x,,956-862-2555,4,,Ivana,,0,
-,Naomi,US,,X,73,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,
-,Naomi,US,,X,74,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,
-,Naomi,US,,,75,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,
-,Naomi,US,,,76,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,
-,Jenesis,US,,X,77,x,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,
-,Jenesis,US,,X,78,x,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,
-,Jenesis,US,,,79,x,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,
-,Jenesis,US,,,80,X,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,
-,Lucia,US,,,81,x,,956-460-7543,4,,Lucia & Family,"Lucia, mom, dad, sister",,
-,Camila+,US,,,82,x,,956-330-9449,3,,Camila & Family,"Camila, mom, lady",,
-,Camila,US,,,83,x,,956-330-9449,3,,Camila & Family,"Camila, mom, lady",,
-,Camila,US,,,84,x,,956-330-9449,3,,Camila & Family,"Camila, mom, lady",,
-,Maestra de Math,US,,,85,x,,,3,,Vanessa Cruz & Family,,0,
-,Irais,US,,,86,x,,956-739-7495,2,,Irais & Family,,0,
+,Ivana,US,,,72,x,,956-862-2555,4,,Ivana,,0,X
+,Naomi,US,,X,73,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,X
+,Naomi,US,,X,74,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,X
+,Naomi,US,,,75,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,X
+,Naomi,US,,,76,X,,956-529-8058,4,,Naomi & Familia,"Naomi, mama, papa, hermana",,X
+,Jenesis,US,,X,77,x,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,X
+,Jenesis,US,,X,78,x,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,X
+,Jenesis,US,,,79,x,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,X
+,Jenesis,US,,,80,X,,956-827–7758,4,,Jenesis & Family,"Jenesis, mama, papa, hermana",,X
+,Lucia,US,,,81,x,,956-460-7543,4,,Lucia & Family,"Lucia, mom, dad, sister",,X
+,Camila+,US,,,82,x,,956-330-9449,3,,Camila & Family,"Camila, mom, lady",,X
+,Camila,US,,,83,x,,956-330-9449,3,,Camila & Family,"Camila, mom, lady",,X
+,Camila,US,,,84,x,,956-330-9449,3,,Camila & Family,"Camila, mom, lady",,X
+,Maestra de Math,US,,,85,x,,,3,,Vanessa Cruz & Family,,0,X
+,Irais,US,,,86,x,,956-739-7495,2,,Irais & Family,,0,X
 ,Gaby ,US,,,87,x,,956-607-4616,2,,Gaby & Janelle,,0,
 ,Brianda,US,,,88,x,,956-862-7887,2,,Brianda & Barbara,,0,
 ,Julie,US,,,89,X,,956-862-9125,4,,Julie & Family,,0,
