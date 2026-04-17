@@ -201,9 +201,9 @@ const REAL_DETAILS = {
         }
     ],
     travelTip:
-        'Aguadilla Airport (BQN) is roughly 40 minutes from the hotel, while San Juan Airport (SJU) averages about 2 hours and 20 minutes, subject to traffic.',
+        '',
     travelTipEs:
-        'El aeropuerto de Aguadilla (BQN) se encuentra a aproximadamente 40 minutos del hotel. Desde el aeropuerto de San Juan (SJU) el trayecto es de alrededor es de 2 horas y 20 minutos, dependiendo del tránsito.',
+        '',
     rideshareNote: 'Uber operates throughout Puerto Rico',
     rideshareNoteEs: 'Uber opera en todo Puerto Rico',
     mapTitle: 'Rincón of the Seas Grand Caribbean Hotel & Villa Map',
@@ -741,7 +741,7 @@ function App() {
                                                 : 'See the full travel guide for reservation code, direct phone numbers, and personalized hotel booking support.'}
                                         </li>
                                         <li>
-                                            <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? 'Recomendaciones de viaje:' : 'Travel Tip:'}</span>{' '}
+                                            <span className="font-semibold text-[rgba(44,96,130,0.9)]">{lang === 'es' ? '' : ''}</span>{' '}
                                             {lang === 'es' ? (eventDetails.travelTipEs ?? eventDetails.travelTip) : eventDetails.travelTip}
                                         </li>
                                     </ul>
