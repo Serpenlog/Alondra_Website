@@ -26,6 +26,8 @@ import dressCodeSilhouette from './alondra_images/dress_code_silhouette.PNG';
 import usaaZelleQr from './alondra_images/USAA.png';
 
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
+const DEFAULT_RSVP_DEADLINE = 'May 10, 2026';
+const DATE_CHANGE_RSVP_DEADLINE = 'May 1, 2026';
 
 const BACKGROUND_TRACK = "/45 - Never Grow Up (Taylor's Version) [Originally Performed by Taylor Swift] [Karaoke Version].mp3";
 
@@ -317,6 +319,7 @@ function App() {
     const canAccessTravelPage = guestInfo?.experience?.pages?.travel ?? true;
     const welcomePrefix = guestInfo?.region === 'PR' ? 'Bienvenido' : 'Welcome';
     const welcomeTitle = guestInfo?.title || guestInfo?.phone || '';
+    const rsvpDeadline = guestInfo?.hasDateChange ? DATE_CHANGE_RSVP_DEADLINE : DEFAULT_RSVP_DEADLINE;
 
     const playBackgroundTrack = () => {
         if (!audioRef.current) {
@@ -834,7 +837,7 @@ function App() {
                         <div className="form-modal">
                             <h3 className="font-display text-3xl text-[rgba(44,96,130,0.95)]">
                                 {activeForm === 'rsvp'
-                                    ? (lang === 'es' ? 'Confirma antes del 10 de mayo de 2026' : 'RSVP by May 10, 2026')
+                                    ? (lang === 'es' ? `Confirma antes del ${rsvpDeadline === DATE_CHANGE_RSVP_DEADLINE ? '1' : '10'} de mayo de 2026` : `RSVP by ${rsvpDeadline}`)
                                     : activeForm === 'song'
                                         ? (lang === 'es' ? 'Sugerencia de canción' : 'Song Suggestion')
                                         : (lang === 'es' ? 'Bendiciones' : 'Blessings')}

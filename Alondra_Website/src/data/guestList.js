@@ -61,6 +61,8 @@ const parseInteger = (value) => {
     return Number.isFinite(parsed) ? parsed : 0;
 };
 
+const parseDateChangeFlag = (value = '') => String(value).trim().toUpperCase() === 'X';
+
 const parseCsvRow = (row = '') => {
     const columns = [];
     let value = '';
@@ -99,6 +101,7 @@ const parseGuestList = (csvText) => {
     const phoneIndex = headers.findIndex((header) => header === 'num de teléfono');
     const ticketsIndex = headers.findIndex((header) => header === 'cantidad de invitados');
     const titleIndex = headers.findIndex((header) => header === 'titulo');
+    const dateChangeIndex = headers.findIndex((header) => header === 'date change');
 
     if (regionIndex === -1 || phoneIndex === -1 || ticketsIndex === -1 || titleIndex === -1) {
         return [];
@@ -121,6 +124,7 @@ const parseGuestList = (csvText) => {
         const region = normalizeRegion(columns[regionIndex] ?? '');
         const tickets = parseInteger(columns[ticketsIndex] ?? '');
         const title = String(columns[titleIndex] ?? '').trim();
+        const hasDateChange = dateChangeIndex !== -1 && parseDateChangeFlag(columns[dateChangeIndex] ?? '');
         const existing = guestsByPhone.get(phone);
 
         if (!existing) {
@@ -128,7 +132,8 @@ const parseGuestList = (csvText) => {
                 phone,
                 region,
                 tickets,
-                title
+                title,
+                hasDateChange
             });
             continue;
         }
@@ -137,7 +142,8 @@ const parseGuestList = (csvText) => {
             ...existing,
             region: existing.region || region,
             tickets: Math.max(existing.tickets, tickets),
-            title: existing.title || title
+            title: existing.title || title,
+            hasDateChange: existing.hasDateChange || hasDateChange
         });
     }
 
