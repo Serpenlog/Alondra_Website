@@ -926,7 +926,7 @@ function App() {
                                         {lang === 'es' ? 'Zelle' : 'Zelle'}
                                     </h3>
                                     <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
-                                        {lang === 'es' ? 'Escanea este código QR para enviar tu obsequio por Zelle.' : 'Scan this QR code to send your gift through Zelle.'}
+                                        {lang === 'es' ? 'Escanea este código QR para enviar tu obsequio por Zelle. coralitodelmar18@hotmail.com' : 'Scan this QR code to send your gift through Zelle. coralitodelmar18@hotmail.com'}
                                     </p>
                                     <img
                                         src={usaaZelleQr}
