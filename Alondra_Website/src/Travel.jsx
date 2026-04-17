@@ -193,7 +193,7 @@ const getText = (lang) =>
               intro: 'La celebración será en',
               locatedAt: 'ubicado en',
               introTail:
-                  'Por favor llega con suficiente tiempo para disfrutar la vista costera y prepararte para que la ceremonia comience a las 6:00 PM.',
+                  'Por favor llega con suficiente tiempo para disfrutar la vista costera y prepararte para el comienzo de la ceremonia de bendición a las 6:00 PM.',
               venueDetails: 'Detalles del Lugar',
               reservationCode: 'Código de Reservación:',
               frontDesk: 'Recepción:',
@@ -240,7 +240,7 @@ const getText = (lang) =>
               culturalScenic: 'Cultural y Escénico',
               rinconHighlights: 'Destacados de Rincón',
               honor: 'Nos honra celebrar este momento inolvidable',
-              inHonor: 'En honor de',
+              inHonor: 'En honor a',
               closing: 'Una noche inspirada en el océano, donde la alegría fluye como olas y los recuerdos brillan como perlas.'
           }
         : {
