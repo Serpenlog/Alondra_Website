@@ -166,6 +166,15 @@ body {
   object-fit: cover;
 }
 
+.ocean-video-static {
+  background: radial-gradient(
+    circle at top,
+    rgba(178, 226, 236, 0.6) 0%,
+    rgba(203, 244, 250, 0.65) 45%,
+    rgba(255, 214, 201, 0.65) 100%
+  );
+}
+
 .ocean-video-overlay {
   position: absolute;
   inset: 0;
@@ -262,6 +271,91 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.settings-button {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 85;
+  border-radius: 999px;
+  border: 1px solid rgba(178, 226, 236, 0.8);
+  background: rgba(255, 214, 201, 0.82);
+  padding: 0.45rem 0.85rem;
+  color: rgba(44, 96, 130, 0.9);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(44, 96, 130, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.settings-button:hover {
+  background: rgba(203, 244, 250, 0.88);
+  transform: translateY(-1px);
+}
+
+.settings-popover {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 4.35rem;
+  z-index: 86;
+  width: min(220px, calc(100vw - 2.5rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(178, 226, 236, 0.8);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 44px rgba(44, 96, 130, 0.25);
+  padding: 0.85rem;
+}
+
+.settings-title {
+  margin: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(47, 156, 194, 0.85);
+}
+
+.settings-action {
+  border: 1px solid rgba(178, 226, 236, 0.8);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: rgba(44, 96, 130, 0.9);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.settings-action-active {
+  background: rgba(203, 244, 250, 0.75);
+}
+
+.settings-action-danger {
+  border-color: rgba(240, 132, 112, 0.4);
+  color: rgba(184, 73, 53, 0.95);
+}
+
+.settings-close {
+  border: none;
+  background: transparent;
+  color: rgba(44, 96, 130, 0.75);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem 0;
 }
 
 .form-submit,

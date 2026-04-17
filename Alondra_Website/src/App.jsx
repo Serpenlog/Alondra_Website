@@ -91,6 +91,9 @@ const PAYMENT_LINKS = {
 const RSVP_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
 const SONG_REQUEST_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
 const BLESSING_FORM_ENDPOINT = 'https://formsubmit.co/xv@alondradelmar.com';
+const ACCESS_SESSION_STORAGE_KEY = 'alondraGuestAccess';
+const MUSIC_PREFERENCE_STORAGE_KEY = 'alondraMusicEnabled';
+const VIDEO_PREFERENCE_STORAGE_KEY = 'alondraVideoEnabled';
 const CALENDAR_EVENT_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Alondra's Quinceañera")}&dates=20260718T220000Z/20260719T030000Z&ctz=America/Puerto_Rico&details=${encodeURIComponent("Join us to celebrate Alondra's Quinceañera!")}&location=${encodeURIComponent("Road 115, Km 12.2, 26 Sea Bch Dr, Rincón, 00677, Puerto Rico")}`;
 
 const ITINERARY = {
@@ -260,7 +263,15 @@ const UI_TEXT = {
         unlockTitle: 'Enter your entry code to continue',
         phoneLabel: 'Entry code',
         unlockButton: 'Unlock Invitation',
-        invalidPhone: 'Invalid code. Please try again.'
+        invalidPhone: 'Invalid code. Please try again.',
+        settingsButton: 'Settings',
+        settingsTitle: 'Quick Settings',
+        musicOn: 'Music On',
+        musicOff: 'Music Off',
+        videoOn: 'Video On',
+        videoOff: 'Video Off',
+        logout: 'Log Out',
+        closeSettings: 'Close'
     },
     es: {
         navHome: 'Inicio',
@@ -269,7 +280,15 @@ const UI_TEXT = {
         unlockTitle: 'Ingresa tu código de acceso para continuar',
         phoneLabel: 'Código de acceso',
         unlockButton: 'Abrir invitación',
-        invalidPhone: 'Código inválido. Inténtalo de nuevo.'
+        invalidPhone: 'Código inválido. Inténtalo de nuevo.',
+        settingsButton: 'Ajustes',
+        settingsTitle: 'Ajustes rápidos',
+        musicOn: 'Música activada',
+        musicOff: 'Música desactivada',
+        videoOn: 'Video activado',
+        videoOff: 'Video desactivado',
+        logout: 'Cerrar sesión',
+        closeSettings: 'Cerrar'
     }
 };
 
@@ -312,6 +331,9 @@ function App() {
     const [activeGiftModal, setActiveGiftModal] = useState(null);
     const [isFormSubmitting, setIsFormSubmitting] = useState(false);
     const [formWasSent, setFormWasSent] = useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isMusicEnabled, setIsMusicEnabled] = useState(() => window.localStorage.getItem(MUSIC_PREFERENCE_STORAGE_KEY) !== 'false');
+    const [isVideoEnabled, setIsVideoEnabled] = useState(() => window.localStorage.getItem(VIDEO_PREFERENCE_STORAGE_KEY) !== 'false');
     const audioRef = useRef(null);
 
     const isOpen = accessStage === 'open';
@@ -324,6 +346,10 @@ function App() {
     const rsvpDeadline = guestInfo?.hasDateChange ? DATE_CHANGE_RSVP_DEADLINE : DEFAULT_RSVP_DEADLINE;
 
     const playBackgroundTrack = () => {
+        if (!isMusicEnabled) {
+            return;
+        }
+
         if (!audioRef.current) {
             const audio = new Audio(BACKGROUND_TRACK);
             audio.loop = true;
@@ -334,24 +360,38 @@ function App() {
         void audioRef.current.play().catch(() => {});
     };
 
+    const setAuthenticatedGuest = (match) => {
+        const isDemoAccess = Boolean(match.demo);
+        const demoTickets = Math.floor(Math.random() * 4) + 1;
+        const authenticatedGuest = {
+            ...match,
+            tickets: isDemoAccess ? demoTickets : match.tickets,
+            isDemo: isDemoAccess
+        };
+
+        setGuestInfo(authenticatedGuest);
+        setLang(match.experience?.defaultLanguage ?? 'en');
+        setPasswordError('');
+        setAccessStage('open');
+        setCurrentPage('home');
+        playBackgroundTrack();
+
+        window.localStorage.setItem(
+            ACCESS_SESSION_STORAGE_KEY,
+            JSON.stringify({
+                phone: match.phone,
+                title: match.title
+            })
+        );
+    };
+
     const handlePasswordSubmit = (event) => {
         event.preventDefault();
         const normalized = normalizePhone(phoneInput);
         const match = guestList.find((entry) => entry.phone === normalized);
 
         if (match) {
-            const isDemoAccess = Boolean(match.demo);
-            const demoTickets = Math.floor(Math.random() * 4) + 1;
-            setGuestInfo({
-                ...match,
-                tickets: isDemoAccess ? demoTickets : match.tickets,
-                isDemo: isDemoAccess
-            });
-            setLang(match.experience?.defaultLanguage ?? 'en');
-            setPasswordError('');
-            setAccessStage('open');
-            playBackgroundTrack();
-            setCurrentPage('home');
+            setAuthenticatedGuest(match);
             return;
         }
 
@@ -374,6 +414,46 @@ function App() {
             clearInterval(timer);
         };
     }, []);
+
+    useEffect(() => {
+        const savedGuestAccess = window.localStorage.getItem(ACCESS_SESSION_STORAGE_KEY);
+
+        if (!savedGuestAccess) {
+            return;
+        }
+
+        try {
+            const savedData = JSON.parse(savedGuestAccess);
+            const normalizedPhone = normalizePhone(savedData?.phone ?? '');
+            const match = guestList.find((entry) => entry.phone === normalizedPhone);
+
+            if (!match) {
+                window.localStorage.removeItem(ACCESS_SESSION_STORAGE_KEY);
+                return;
+            }
+
+            setAuthenticatedGuest(match);
+        } catch {
+            window.localStorage.removeItem(ACCESS_SESSION_STORAGE_KEY);
+        }
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem(MUSIC_PREFERENCE_STORAGE_KEY, String(isMusicEnabled));
+
+        if (!isMusicEnabled && audioRef.current) {
+            audioRef.current.pause();
+            return;
+        }
+
+        if (isMusicEnabled && isOpen) {
+            playBackgroundTrack();
+        }
+    }, [isMusicEnabled, isOpen]);
+
+    useEffect(() => {
+        window.localStorage.setItem(VIDEO_PREFERENCE_STORAGE_KEY, String(isVideoEnabled));
+    }, [isVideoEnabled]);
 
     useEffect(() => {
         if (!canAccessTravelPage && currentPage === 'travel') {
@@ -416,6 +496,31 @@ function App() {
     };
     const closeActiveGiftModal = () => setActiveGiftModal(null);
 
+    const toggleMusic = () => {
+        setIsMusicEnabled((previous) => !previous);
+    };
+
+    const toggleVideo = () => {
+        setIsVideoEnabled((previous) => !previous);
+    };
+
+    const handleLogout = () => {
+        window.localStorage.removeItem(ACCESS_SESSION_STORAGE_KEY);
+        setGuestInfo(null);
+        setPhoneInput('');
+        setPasswordError('');
+        setCurrentPage('home');
+        setActiveForm(null);
+        setActiveGiftModal(null);
+        setIsSettingsOpen(false);
+        setAccessStage('password');
+
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+        }
+    };
+
     const handleGuestFormSubmit = () => {
         setIsFormSubmitting(true);
         setFormWasSent(false);
@@ -451,6 +556,34 @@ function App() {
             >
                 {t.langButton}
             </button>
+            {isOpen && (
+                <button
+                    type="button"
+                    aria-haspopup="dialog"
+                    aria-expanded={isSettingsOpen}
+                    onClick={() => setIsSettingsOpen((previous) => !previous)}
+                    className="settings-button"
+                >
+                    ⚙ {t.settingsButton}
+                </button>
+            )}
+            {isOpen && isSettingsOpen && (
+                <div className="settings-popover" role="dialog" aria-modal="false" aria-label={t.settingsTitle}>
+                    <p className="settings-title">{t.settingsTitle}</p>
+                    <button type="button" onClick={toggleMusic} className={`settings-action ${isMusicEnabled ? 'settings-action-active' : ''}`}>
+                        {isMusicEnabled ? t.musicOn : t.musicOff}
+                    </button>
+                    <button type="button" onClick={toggleVideo} className={`settings-action ${isVideoEnabled ? 'settings-action-active' : ''}`}>
+                        {isVideoEnabled ? t.videoOn : t.videoOff}
+                    </button>
+                    <button type="button" onClick={handleLogout} className="settings-action settings-action-danger">
+                        {t.logout}
+                    </button>
+                    <button type="button" onClick={() => setIsSettingsOpen(false)} className="settings-close">
+                        {t.closeSettings}
+                    </button>
+                </div>
+            )}
             {accessStage === 'sealed' && (
                 <Envelope
                     onStampClick={() => {
@@ -491,7 +624,7 @@ function App() {
             <div
                 className={`ocean-page min-h-screen w-full px-6 py-12 text-[rgba(44,96,130,0.95)] transition-opacity duration-500 ease-out md:px-10 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
             >
-                <OceanBackground />
+                <OceanBackground isVideoEnabled={isVideoEnabled} />
                 <div className="ocean-content">
                 <header className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-center">
                     <nav className="mx-auto flex w-full max-w-sm justify-center gap-2 rounded-full border border-[rgba(178,226,236,0.6)] bg-[rgba(203,244,250,0.4)] p-1 shadow-lg sm:mx-0">
@@ -875,6 +1008,8 @@ function App() {
                                     <input type="hidden" name="_subject" value="New RSVP - Alondra's Quinceañera" />
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
+                                    <input type="hidden" name="entry_code" value={guestInfo?.phone ?? ''} />
+                                    <input type="hidden" name="entry_name" value={guestInfo?.title ?? ''} />
                                     <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre completo' : 'Your Full Name'} required className="form-input" />
                                     <input type="email" name="email" placeholder={lang === 'es' ? 'Correo electrónico (opcional)' : 'Email Address (Optional)'} className="form-input" />
                                     <input type="tel" name="phone" placeholder={lang === 'es' ? 'Número de teléfono' : 'Phone Number'} className="form-input" />
@@ -896,6 +1031,8 @@ function App() {
                                     <input type="hidden" name="_subject" value="Song Request - Alondra's Quinceañera" />
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
+                                    <input type="hidden" name="entry_code" value={guestInfo?.phone ?? ''} />
+                                    <input type="hidden" name="entry_name" value={guestInfo?.title ?? ''} />
                                     <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'} required className="form-input" />
                                     <input type="text" name="song" placeholder={lang === 'es' ? 'Escribe tu sugerencia de canción' : 'Write your song suggestion'} required className="form-input" />
                                     <div className="form-actions">
@@ -909,6 +1046,8 @@ function App() {
                                     <input type="hidden" name="_subject" value="Blessing Message - Alondra's Quinceañera" />
                                     <input type="hidden" name="_captcha" value="false" />
                                     <input type="hidden" name="_template" value="table" />
+                                    <input type="hidden" name="entry_code" value={guestInfo?.phone ?? ''} />
+                                    <input type="hidden" name="entry_name" value={guestInfo?.title ?? ''} />
                                     <input type="text" name="name" placeholder={lang === 'es' ? 'Tu nombre' : 'Your Name'} required className="form-input" />
                                     <input type="text" name="message" placeholder={lang === 'es' ? 'Escribe tu bendición' : 'Write your blessing'} required className="form-input" />
                                     <div className="form-actions">
