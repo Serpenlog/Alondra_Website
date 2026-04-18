@@ -175,7 +175,7 @@ const getTravelHighlights = (lang) =>
         ? [
               {
                   title: 'Horario de llegada',
-                  body: 'Sugerimos llegar alrededor de las 5:40 p.m. para disfrutar del recibimiento y acomodarte tranquilamente antes de la ceremonia.'
+                  body: 'Sugerimos llegar alrededor de las 5:40 p.m. para disfrutar del recibimiento y acomodarte tranquilamente antes de la ceremonia de bendición.'
               },
           ]
         : [
