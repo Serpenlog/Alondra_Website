@@ -78,13 +78,17 @@ const GIFT_MESSAGE = {
         'Like the pearls hidden in the depths of the sea, every gift is a gesture filled with love and care.',
         'Your presence will always be the most precious gift to me, and simply having you by my side on this special day will fill my heart with joy.',
         '',
-        'Thank you for being part of this dream come true.'
+        'Thank you for being part of this dream come true.',
+        'With love,',
+        'Alondra Del Mar'
     ],
     es: [
         'Como las perlas escondidas en lo profundo del mar, cada regalo es un gesto lleno de amor y cariño.',
         'Tu presencia siempre será el regalo más valioso para mí, y tenerte a mi lado en este día especial llenará mi corazón de alegría.',
         '',
-        'Gracias por ser parte de este sueño hecho realidad.'
+        'Gracias por ser parte de este sueño hecho realidad.',
+        'Con amor,',
+        'Alondra Del Mar'
     ]
 };
 
@@ -1135,7 +1139,7 @@ function App() {
                 )}
 
                 <footer className="mx-auto mt-20 w-full max-w-6xl border-t border-[rgba(178,226,236,0.6)] pt-6 text-center text-sm text-[rgba(44,96,130,0.6)]">
-                    <p>{lang === 'es' ? 'Hecho con ♥ para los quince de Alondra. ¡Nos vemos en la pista de baile!' : 'Made with ♥ for Alondra\'s quinceañera. See you on the dance floor!'}</p>
+                    <p>{lang === 'es' ? 'Hecho con ♥ para los quince de Alondra. ¡Nos vemos en la pista de baile!' : ''}</p>
                 </footer>
                 </div>
             </div>
