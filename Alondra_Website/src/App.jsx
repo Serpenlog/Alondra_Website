@@ -28,8 +28,8 @@ import usaaZelleQr from './alondra_images/USAA.png';
 const EVENT_DATE = new Date('2026-07-18T18:00:00-04:00');
 const RSVP_DEADLINES = {
     default: {
-        en: 'May 10, 2026',
-        es: '10 de mayo de 2026'
+        en: 'May 14, 2026',
+        es: '14 de mayo de 2026'
     },
     dateChanged: {
         en: 'May 1, 2026',
