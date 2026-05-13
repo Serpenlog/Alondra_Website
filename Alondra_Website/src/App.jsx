@@ -32,8 +32,8 @@ const RSVP_DEADLINES = {
         es: '14 de mayo de 2026'
     },
     dateChanged: {
-        en: 'May 1, 2026',
-        es: '1 de mayo de 2026'
+        en: 'May 27, 2026',
+        es: '27 de mayo de 2026'
     }
 };
 
