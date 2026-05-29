@@ -61,7 +61,20 @@ const parseInteger = (value) => {
     return Number.isFinite(parsed) ? parsed : 0;
 };
 
-const parseDateChangeFlag = (value = '') => String(value).trim().toUpperCase() === 'X';
+const DATE_CHANGE_DEADLINE_KEYS = {
+    X: 'dateChanged',
+    Y: 'dateChangedJune11'
+};
+
+const parseDateChangeDeadlineKey = (value = '') => DATE_CHANGE_DEADLINE_KEYS[String(value).trim().toUpperCase()] ?? null;
+
+const getPreferredDeadlineKey = (currentKey, nextKey) => {
+    if (nextKey === 'dateChangedJune11' || currentKey === 'dateChangedJune11') {
+        return 'dateChangedJune11';
+    }
+
+    return currentKey ?? nextKey;
+};
 
 const parseCsvRow = (row = '') => {
     const columns = [];
@@ -124,7 +137,7 @@ const parseGuestList = (csvText) => {
         const region = normalizeRegion(columns[regionIndex] ?? '');
         const tickets = parseInteger(columns[ticketsIndex] ?? '');
         const title = String(columns[titleIndex] ?? '').trim();
-        const hasDateChange = dateChangeIndex !== -1 && parseDateChangeFlag(columns[dateChangeIndex] ?? '');
+        const dateChangeDeadlineKey = dateChangeIndex !== -1 ? parseDateChangeDeadlineKey(columns[dateChangeIndex] ?? '') : null;
         const existing = guestsByPhone.get(phone);
 
         if (!existing) {
@@ -133,7 +146,8 @@ const parseGuestList = (csvText) => {
                 region,
                 tickets,
                 title,
-                hasDateChange
+                hasDateChange: Boolean(dateChangeDeadlineKey),
+                dateChangeDeadlineKey
             });
             continue;
         }
@@ -143,7 +157,8 @@ const parseGuestList = (csvText) => {
             region: existing.region || region,
             tickets: Math.max(existing.tickets, tickets),
             title: existing.title || title,
-            hasDateChange: existing.hasDateChange || hasDateChange
+            dateChangeDeadlineKey: getPreferredDeadlineKey(existing.dateChangeDeadlineKey, dateChangeDeadlineKey),
+            hasDateChange: existing.hasDateChange || Boolean(dateChangeDeadlineKey)
         });
     }
 
