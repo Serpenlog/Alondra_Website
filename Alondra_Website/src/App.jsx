@@ -34,6 +34,10 @@ const RSVP_DEADLINES = {
     dateChanged: {
         en: 'May 27, 2026',
         es: '27 de mayo de 2026'
+    },
+    dateChangedJune11: {
+        en: 'June 11, 2026',
+        es: '11 de junio de 2026'
     }
 };
 
@@ -355,7 +359,7 @@ function App() {
     const canAccessTravelPage = guestInfo?.experience?.pages?.travel ?? true;
     const welcomePrefix = lang === 'es' ? 'Bienvenido' : 'Welcome';
     const welcomeTitle = guestInfo?.title || guestInfo?.phone || '';
-    const rsvpDeadline = guestInfo?.hasDateChange ? RSVP_DEADLINES.dateChanged : RSVP_DEADLINES.default;
+    const rsvpDeadline = RSVP_DEADLINES[guestInfo?.dateChangeDeadlineKey] ?? RSVP_DEADLINES.default;
 
     const playBackgroundTrack = () => {
         if (!isMusicEnabled) {
