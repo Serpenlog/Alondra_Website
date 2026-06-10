@@ -63,17 +63,31 @@ const parseInteger = (value) => {
 
 const DATE_CHANGE_DEADLINE_KEYS = {
     X: 'dateChanged',
-    Y: 'dateChangedJune11'
+    Y: 'dateChangedJune11',
+    Z: 'dateChangedJune25'
 };
 
 const parseDateChangeDeadlineKey = (value = '') => DATE_CHANGE_DEADLINE_KEYS[String(value).trim().toUpperCase()] ?? null;
 
+const DATE_CHANGE_DEADLINE_PRIORITY = [
+    'dateChanged',
+    'dateChangedJune11',
+    'dateChangedJune25'
+];
+
 const getPreferredDeadlineKey = (currentKey, nextKey) => {
-    if (nextKey === 'dateChangedJune11' || currentKey === 'dateChangedJune11') {
-        return 'dateChangedJune11';
+    if (!currentKey) {
+        return nextKey;
     }
 
-    return currentKey ?? nextKey;
+    if (!nextKey) {
+        return currentKey;
+    }
+
+    const currentPriority = DATE_CHANGE_DEADLINE_PRIORITY.indexOf(currentKey);
+    const nextPriority = DATE_CHANGE_DEADLINE_PRIORITY.indexOf(nextKey);
+
+    return nextPriority > currentPriority ? nextKey : currentKey;
 };
 
 const parseCsvRow = (row = '') => {
