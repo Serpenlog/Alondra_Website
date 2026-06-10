@@ -364,6 +364,7 @@ function App() {
     const welcomePrefix = lang === 'es' ? 'Bienvenido' : 'Welcome';
     const welcomeTitle = guestInfo?.title || guestInfo?.phone || '';
     const rsvpDeadline = RSVP_DEADLINES[guestInfo?.dateChangeDeadlineKey] ?? RSVP_DEADLINES.default;
+    const showGiftsAndBlessings = !(guestInfo?.region === 'PR' && guestInfo?.dateChangeDeadlineKey === 'dateChangedJune25');
 
     const playBackgroundTrack = () => {
         if (!isMusicEnabled) {
@@ -958,36 +959,38 @@ function App() {
                             </div>
                         </section>
 
-                        <section id="registry" className="glass-panel rounded-3xl p-8 shadow-xl">
-                            <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Obsequios y Bendiciones' : 'Gifts and Blessings'}</h2>
-                            <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
-                                {lang === 'es'
-                                    ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra Del Mar o compartir un detalle, agradeceríamos fuera en efectivo.'
-                                    : 'Your presence is the best gift! If you would like to support Alondra Del Mar’s college dreams or share a gift, we would deeply appreciate cash.'}
-                            </p>
-                            <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
-                                <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? '' : ''}</p>
-                                <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
-                                    {(GIFT_MESSAGE[lang] ?? GIFT_MESSAGE.en).map((line) => (
-                                        <p key={line} className="font-script text-2xl leading-relaxed">
-                                            {line}
-                                        </p>
-                                    ))}
+                        {showGiftsAndBlessings && (
+                            <section id="registry" className="glass-panel rounded-3xl p-8 shadow-xl">
+                                <h2 className="font-display text-3xl text-center">{lang === 'es' ? 'Obsequios y Bendiciones' : 'Gifts and Blessings'}</h2>
+                                <p className="mt-3 text-center text-[rgba(44,96,130,0.75)]">
+                                    {lang === 'es'
+                                        ? '¡Tu presencia es el mejor regalo! Si deseas apoyar los sueños universitarios de Alondra Del Mar o compartir un detalle, agradeceríamos fuera en efectivo.'
+                                        : 'Your presence is the best gift! If you would like to support Alondra Del Mar’s college dreams or share a gift, we would deeply appreciate cash.'}
+                                </p>
+                                <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-[rgba(178,226,236,0.6)] bg-[rgba(178,226,236,0.35)] p-6 text-left shadow-md">
+                                    <p className="text-sm uppercase tracking-[0.3em] text-[rgba(47,156,194,0.75)]">{lang === 'es' ? '' : ''}</p>
+                                    <div className="mt-4 space-y-3 text-[rgba(44,96,130,0.8)]">
+                                        {(GIFT_MESSAGE[lang] ?? GIFT_MESSAGE.en).map((line) => (
+                                            <p key={line} className="font-script text-2xl leading-relaxed">
+                                                {line}
+                                            </p>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="mt-8 flex flex-wrap justify-center gap-4">
-                                <button
-                                    type="button"
-                                    onClick={() => setActiveGiftModal('options')}
-                                    className="inline-flex items-center gap-2 rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
-                                >
-                                    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-                                        <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm2.12-.75 7.63 5.72L19.63 6H4.37Zm15.88 1.88-6.97 5.23a2.25 2.25 0 0 1-2.56 0L3.75 7.88v9.37c0 .41.34.75.75.75h15a.75.75 0 0 0 .75-.75V7.88Z" />
-                                    </svg>
-                                    <span>{lang === 'es' ? 'Obsequios' : 'Gifts'}</span>
-                                </button>
-                            </div>
-                        </section>
+                                <div className="mt-8 flex flex-wrap justify-center gap-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => setActiveGiftModal('options')}
+                                        className="inline-flex items-center gap-2 rounded-full bg-[rgba(44,96,130,0.95)] px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition hover:bg-[rgba(44,96,130,0.85)]"
+                                    >
+                                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+                                            <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm2.12-.75 7.63 5.72L19.63 6H4.37Zm15.88 1.88-6.97 5.23a2.25 2.25 0 0 1-2.56 0L3.75 7.88v9.37c0 .41.34.75.75.75h15a.75.75 0 0 0 .75-.75V7.88Z" />
+                                        </svg>
+                                        <span>{lang === 'es' ? 'Obsequios' : 'Gifts'}</span>
+                                    </button>
+                                </div>
+                            </section>
+                        )}
 
                         <section className="glass-panel rounded-3xl p-8 text-center shadow-xl">
                             <h2 className="font-display text-3xl">{lang === 'es' ? '' : ''}</h2>
