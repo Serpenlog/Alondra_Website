@@ -65,7 +65,8 @@ const DATE_CHANGE_DEADLINE_KEYS = {
     X: 'dateChanged',
     Y: 'dateChangedJune11',
     Z: 'dateChangedJune25',
-    A: 'dateChangedJuly13'
+    A: 'dateChangedJuly13',
+    B: 'dateChangedJuly5'
 };
 
 const parseDateChangeDeadlineKey = (value = '') => DATE_CHANGE_DEADLINE_KEYS[String(value).trim().toUpperCase()] ?? null;
@@ -75,6 +76,7 @@ const DATE_CHANGE_DEADLINE_PRIORITY = [
     'dateChangedJune11',
     'dateChangedJune25',
     'dateChangedJuly13',
+    'dateChangedJuly5'
 ];
 
 const getPreferredDeadlineKey = (currentKey, nextKey) => {

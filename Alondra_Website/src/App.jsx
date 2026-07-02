@@ -46,6 +46,10 @@ const RSVP_DEADLINES = {
     dateChangedJuly13: {
         en: 'July 13, 2026',
         es: '13 de julio de 2026'
+    },
+    dateChangedJuly5: {
+        en: 'July 5, 2026',
+        es: '5 de julio de 2026'
     }
 };
 
